@@ -33,26 +33,26 @@ export const showcase = {
   // clientes ficticios recorrentes (nunca misturar personas entre secoes)
   clientes: [
     { nome: 'Construtora Horizonte Ltda.', cnpj: '10.001.001/0001-01' },
-    { nome: 'Brasa Sul Industria de Alimentos Ltda.', cnpj: '10.002.002/0001-02' },
-    { nome: 'Clinica Horizonte Saude Ltda.', cnpj: '10.003.003/0001-03' },
-    { nome: 'Vertice Distribuidora Atacadista Ltda.', cnpj: '10.004.004/0001-04' },
-    { nome: 'MobiTech Solucoes Digitais Ltda.', cnpj: '10.005.005/0001-05' },
+    { nome: 'Brasa Sul Indústria de Alimentos Ltda.', cnpj: '10.002.002/0001-02' },
+    { nome: 'Clínica Horizonte Saúde Ltda.', cnpj: '10.003.003/0001-03' },
+    { nome: 'Vértice Distribuidora Atacadista Ltda.', cnpj: '10.004.004/0001-04' },
+    { nome: 'MobiTech Soluções Digitais Ltda.', cnpj: '10.005.005/0001-05' },
   ],
 } as const;
 
 // Selos e disclaimers reutilizados nos frames
-export const seloExemplo = 'Exemplo ilustrativo · dados de demonstracao';
+export const seloExemplo = 'Exemplo ilustrativo · dados de demonstração';
 export const disclaimerTributario =
-  'Simulacao com base nos dados fornecidos. Nao substitui parecer profissional.';
+  'Simulação com base nos dados fornecidos. Não substitui parecer profissional.';
 export const avisoFaseTestes =
-  'Recurso em fase de testes. Valores finais das aliquotas e datas da reforma ainda podem sofrer mudancas.';
+  'Recurso em fase de testes. Valores finais das alíquotas e datas da reforma ainda podem sofrer mudanças.';
 
 // CTA padrao (PRD secao 2)
-export const CTA_PRIMARIO = 'Agende a demo com os dados do seu escritorio';
+export const CTA_PRIMARIO = 'Agende a demo com os dados do seu escritório';
 export const CTA_ANCORA = '#agendar';
 
 // WhatsApp (fallback / flutuante). Numero placeholder ate o time definir.
 export const WHATSAPP_NUM = '5511999999999';
 export const WHATSAPP_MSG =
-  'Ola, quero agendar a demo da Kontiva com os dados do meu escritorio.';
+  'Olá, quero agendar a demo da Kontiva com os dados do meu escritório.';
 export const whatsappHref = `https://wa.me/${WHATSAPP_NUM}?text=${encodeURIComponent(WHATSAPP_MSG)}`;

@@ -6,19 +6,19 @@ import Icon from '../Icon.astro';
 import { showcase, avisoFaseTestes } from '../../data/showcase';
 
 const rank = [
-  { nome: 'Construtora Horizonte Ltda.', regime: 'Presumido', impacto: 'Alto', melhor: 'Lucro Real', delta: 'R$ 63.960/ano', bar: 96, flag: true },
-  { nome: 'Brasa Sul Industria de Alimentos Ltda.', regime: 'Real', impacto: 'Alto', melhor: 'Lucro Real', delta: 'R$ 41.220/ano', bar: 74, flag: true },
-  { nome: 'Vertice Distribuidora Atacadista Ltda.', regime: 'Presumido', impacto: 'Medio', melhor: 'Presumido', delta: 'R$ 18.400/ano', bar: 48, flag: false },
-  { nome: 'Clinica Horizonte Saude Ltda.', regime: 'Simples', impacto: 'Baixo', melhor: 'Simples', delta: 'R$ 4.900/ano', bar: 22, flag: false },
+  { nome: 'Construtora Horizonte Ltda.', regime: 'Presumido', impacto: 'Alto', melhor: 'Lucro Real', delta: 'R$ 63.960/ano', flag: true },
+  { nome: 'Brasa Sul Indústria de Alimentos Ltda.', regime: 'Real', impacto: 'Alto', melhor: 'Lucro Real', delta: 'R$ 41.220/ano', flag: true },
+  { nome: 'Vértice Distribuidora Atacadista Ltda.', regime: 'Presumido', impacto: 'Médio', melhor: 'Presumido', delta: 'R$ 18.400/ano', flag: false },
+  { nome: 'Clínica Horizonte Saúde Ltda.', regime: 'Simples', impacto: 'Baixo', melhor: 'Simples', delta: 'R$ 4.900/ano', flag: false },
 ];
 ---
-<AppFrame active="simulacoes" crumb={['Simulacoes', 'Carteira', 'Reforma tributaria']}>
+<AppFrame active="simulacoes" crumb={['Simulações', 'Carteira', 'Reforma tributária']}>
   <div class="af-warn">
     <span class="tag">Recurso em fase de testes</span>
     <span class="msg">{avisoFaseTestes}</span>
   </div>
 
-  <div class="af-eyebrow"><span class="d"></span> Simulacao em massa · IBS/CBS/ICMS/ISS</div>
+  <div class="af-eyebrow"><span class="d"></span> Simulação em massa · IBS/CBS/ICMS/ISS</div>
   <h2 class="af-h" style="margin-top:12px;">Carteira <span class="it">inteira</span>, ranqueada.</h2>
 
   <div class="af-rankhead" style="margin-top:16px;">
@@ -41,11 +41,11 @@ const rank = [
 
   <div class="af-table">
     <div class="af-thead" style="grid-template-columns: 1.8fr 0.9fr 0.8fr 1fr 1fr;">
-      <span>Cliente</span><span>Regime atual</span><span>Impacto</span><span>Cenario recomendado</span><span>Economia estimada</span>
+      <span>Cliente</span><span>Regime atual</span><span>Impacto</span><span>Cenário recomendado</span><span>Economia estimada</span>
     </div>
     {rank.map((r) => (
       <div class={`af-trow ${r.flag ? 'flag' : ''}`} style="grid-template-columns: 1.8fr 0.9fr 0.8fr 1fr 1fr;">
-        <div class="af-name">{r.nome}<small>Simulacao 2026</small></div>
+        <div class="af-name">{r.nome}<small>Simulação 2026</small></div>
         <div class="af-mut">{r.regime}</div>
         <div>
           <span class={`af-badge ${r.flag ? 'cyan' : 'neutral'}`}>{r.impacto}</span>

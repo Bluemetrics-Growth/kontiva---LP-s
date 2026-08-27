@@ -2,9 +2,9 @@
 // S9 CTA final + formulario. Conversao (metrica unica).
 import Icon from './Icon.astro';
 const setup = [
-  'Agende a demo. Nossa equipe configura com voce, sem custo.',
+  'Agende a demo. Nossa equipe configura com você, sem custo.',
   'Rodamos os agentes numa amostra controlada da sua carteira.',
-  'Voce ve o resultado em reais e decide. Sem compromisso.',
+  'Você vê o resultado em reais e decide. Sem compromisso.',
 ];
 ---
 <section class="final" id="agendar" aria-labelledby="final-h">
@@ -12,7 +12,7 @@ const setup = [
     <div class="final-copy reveal">
       <div class="eyebrow"><span class="dot-cyan"></span> Agende a demo</div>
       <h2 id="final-h" style="margin-top:20px;">Veja o Kontiva operando na sua carteira. <span class="hl">Antes de pagar qualquer coisa.</span></h2>
-      <p class="final-sub">Nossa equipe configura os agentes com voce e roda numa amostra controlada dos seus clientes. Voce decide depois de ver o numero.</p>
+      <p class="final-sub">Nossa equipe configura os agentes com você e roda numa amostra controlada dos seus clientes. Você decide depois de ver o número.</p>
 
       <div class="setup-steps">
         {setup.map((s, i) => (
@@ -23,8 +23,8 @@ const setup = [
 
     <div class="form-card reveal delay-1" id="form-card">
       <div class="form-body">
-        <h3>Agende a demo com os dados do seu escritorio</h3>
-        <p class="fc-sub">Cinco campos. Nossa equipe responde em ate 1 dia util.</p>
+        <h3>Agende a demo com os dados do seu escritório</h3>
+        <p class="fc-sub">Cinco campos. Nossa equipe responde em até 1 dia útil.</p>
 
         <form id="lead-form" novalidate action="" method="post">
           <div class="f-field" data-field="nome">
@@ -37,26 +37,26 @@ const setup = [
             <div class="f-field" data-field="whatsapp">
               <label for="lf-whats">WhatsApp</label>
               <input id="lf-whats" name="whatsapp" type="tel" inputmode="tel" placeholder="(00) 00000-0000" required autocomplete="tel" aria-describedby="err-whats" />
-              <div class="f-error" id="err-whats">Numero incompleto. Inclua o DDD.</div>
+              <div class="f-error" id="err-whats">Número incompleto. Inclua o DDD.</div>
             </div>
             <div class="f-field" data-field="carteira">
               <label for="lf-carteira">Clientes na carteira</label>
               <input id="lf-carteira" name="carteira" type="number" min="1" step="1" placeholder="Ex: 180" required aria-describedby="err-carteira" />
-              <div class="f-error" id="err-carteira">Informe um numero maior que zero.</div>
+              <div class="f-error" id="err-carteira">Informe um número maior que zero.</div>
             </div>
           </div>
 
           <div class="f-field" data-field="email">
-            <label for="lf-email">E-mail do escritorio</label>
+            <label for="lf-email">E-mail do escritório</label>
             <input id="lf-email" name="email" type="email" placeholder="voce@seuescritorio.com.br" required autocomplete="email" aria-describedby="err-email" />
-            <div class="f-error" id="err-email">E-mail invalido. Confira e tente de novo.</div>
+            <div class="f-error" id="err-email">E-mail inválido. Confira e tente de novo.</div>
           </div>
 
           <div class="f-field" data-field="sistema">
-            <label for="lf-sistema">Sistema que voce usa <span class="opt">(ajuda a preparar a demo)</span></label>
+            <label for="lf-sistema">Sistema que você usa <span class="opt">(ajuda a preparar a demo)</span></label>
             <select id="lf-sistema" name="sistema">
               <option value="">Selecione</option>
-              <option>Dominio</option>
+              <option>Domínio</option>
               <option>Alterdata</option>
               <option>Questor</option>
               <option>Planilhas</option>
@@ -66,16 +66,16 @@ const setup = [
 
           <!-- honeypot anti-spam -->
           <div class="f-honeypot" aria-hidden="true">
-            <label for="lf-empresa-site">Nao preencha este campo</label>
+            <label for="lf-empresa-site">Não preencha este campo</label>
             <input id="lf-empresa-site" name="empresa_site" type="text" tabindex="-1" autocomplete="off" />
           </div>
 
           <button type="submit" class="btn btn-primary btn-block btn-lg" id="lf-submit" data-cta="form">Agendar minha demo</button>
 
-          <p class="f-consent">Ao enviar, voce concorda em ser contatado pela nossa equipe. Seus dados ficam protegidos e voce pode pedir a exclusao quando quiser.</p>
+          <p class="f-consent">Ao enviar, você concorda em ser contatado pela nossa equipe. Seus dados ficam protegidos e você pode pedir a exclusão quando quiser.</p>
 
           <div class="form-sendfail" id="form-sendfail" role="alert">
-            Nao conseguimos enviar agora. Tente de novo, ou chame a gente no WhatsApp.
+            Não conseguimos enviar agora. Tente de novo, ou chame a gente no WhatsApp.
             <a href="#" class="btn btn-dark btn-block" style="margin-top:10px;" id="sendfail-wa" target="_blank" rel="noreferrer" data-cta="whatsapp">Falar no WhatsApp</a>
           </div>
         </form>
@@ -84,7 +84,7 @@ const setup = [
       <div class="form-success" id="form-success" role="status" aria-live="polite">
         <span class="ok-ico"><Icon name="check" size={26} /></span>
         <h3>Recebemos seu contato.</h3>
-        <p>Nossa equipe responde em ate 1 dia util para agendar a demo e combinar a amostra da sua carteira.</p>
+        <p>Nossa equipe responde em até 1 dia útil para agendar a demo e combinar a amostra da sua carteira.</p>
       </div>
 
       <p class="form-honesty">Setup assistido em turmas limitadas pela nossa capacidade de onboarding.</p>
@@ -157,7 +157,7 @@ const setup = [
     };
 
     const buildWa = (data: Record<string, string>) => {
-      const msg = `Ola, quero agendar a demo da Kontiva com os dados do meu escritorio.%0A%0ANome: ${data.nome || ''}%0AWhatsApp: ${data.whatsapp || ''}%0AE-mail: ${data.email || ''}%0AClientes na carteira: ${data.carteira || ''}%0ASistema: ${data.sistema || 'nao informado'}`;
+      const msg = `Olá, quero agendar a demo da Kontiva com os dados do meu escritório.%0A%0ANome: ${data.nome || ''}%0AWhatsApp: ${data.whatsapp || ''}%0AE-mail: ${data.email || ''}%0AClientes na carteira: ${data.carteira || ''}%0ASistema: ${data.sistema || 'não informado'}`;
       return `https://wa.me/${WHATSAPP_NUM}?text=${msg}`;
     };
 

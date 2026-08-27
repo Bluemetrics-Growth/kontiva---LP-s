@@ -9,7 +9,7 @@ const meses = ['Jan','Fev','Mar','Abr','Mai','Jun','Jul','Ago','Set','Out','Nov'
 const alt = [28, 34, 41, 52, 60, 68, 82, 100, 86, 71, 58, 47];
 const peakIdx = 7;
 ---
-<AppFrame active="simulacoes" crumb={['Simulacoes', 'Construtora Horizonte', 'Fluxo de caixa']}>
+<AppFrame active="simulacoes" crumb={['Simulações', 'Construtora Horizonte', 'Fluxo de caixa']}>
   <div class="af-warn">
     <span class="tag">Recurso em fase de testes</span>
     <span class="msg">{avisoFaseTestes}</span>
@@ -22,14 +22,14 @@ const peakIdx = 7;
 
   <div class="af-tabs">
     <span class="af-tab">Resultado</span>
-    <span class="af-tab">Lancamentos e notas</span>
+    <span class="af-tab">Lançamentos e notas</span>
     <span class="af-tab on">Fluxo de caixa</span>
   </div>
 
   <div class="af-cashcard">
     <div class="af-cashhead">
       <h4>Fluxo de caixa</h4>
-      <span class="note">Entradas, saidas e saldo tributario mes a mes.</span>
+      <span class="note">Entradas, saídas e saldo tributário mês a mês.</span>
     </div>
     <div class="af-check"><span class="box"><Icon name="check" size={11} /></span> Simular split payment do IBS/CBS em 2027</div>
 
@@ -43,9 +43,9 @@ const peakIdx = 7;
       ))}
     </div>
     <div class="af-chart-cap">
-      <span class="k"><span class="sw" style="background:var(--ciano);"></span> Mes de pico do imposto na venda</span>
-      <span class="k"><span class="sw" style="background:color-mix(in oklab, var(--azul-profundo) 20%, #cdd6e4);"></span> Saida projetada mensal</span>
+      <span class="k"><span class="sw" style="background:var(--ciano);"></span> Mês de pico do imposto na venda</span>
+      <span class="k"><span class="sw" style="background:color-mix(in oklab, var(--azul-profundo) 20%, #cdd6e4);"></span> Saída projetada mensal</span>
     </div>
   </div>
-  <p class="disclaimer">Projecao 2027 com base nos dados fornecidos. Nao substitui parecer profissional.</p>
+  <p class="disclaimer">Projeção 2027 com base nos dados fornecidos. Não substitui parecer profissional.</p>
 </AppFrame>

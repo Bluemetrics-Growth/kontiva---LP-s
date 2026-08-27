@@ -11,17 +11,17 @@ interface Props {
 const { active, crumb } = Astro.props as Props;
 
 const nav = [
-  { key: 'inicio', label: 'Inicio', icon: 'home' },
+  { key: 'inicio', label: 'Início', icon: 'home' },
   { key: 'clientes', label: 'Clientes', icon: 'users' },
   { key: 'contratos', label: 'Contratos', icon: 'contract', sub: true },
-  { key: 'relatorios', label: 'Relatorios', icon: 'report', sub: true },
-  { key: 'simulacoes', label: 'Simulacoes Tributarias', icon: 'sim', sub: true },
+  { key: 'relatorios', label: 'Relatórios', icon: 'report', sub: true },
+  { key: 'simulacoes', label: 'Simulações Tributárias', icon: 'sim', sub: true },
   { key: 'documentos', label: 'Documentos', icon: 'folder' },
   { key: 'fornecedores', label: 'Fornecedores', icon: 'truck' },
-  { key: 'cobranca', label: 'Cobranca', icon: 'billing' },
-  { key: 'inteligencia', label: 'Inteligencia', icon: 'brain' },
+  { key: 'cobranca', label: 'Cobrança', icon: 'billing' },
+  { key: 'inteligencia', label: 'Inteligência', icon: 'brain' },
   { key: 'guias', label: 'Guias', icon: 'guide' },
-  { key: 'configuracoes', label: 'Configuracoes', icon: 'settings' },
+  { key: 'configuracoes', label: 'Configurações', icon: 'settings' },
 ];
 ---
 <div class="af-wrap" aria-hidden="true"><div class="appframe">
@@ -30,7 +30,7 @@ const nav = [
       <span class="lock">Kontiva<span class="ai">.ai</span></span>
       <span class="af-collapse"><Icon name="chevleft" size={14} /></span>
     </div>
-    <div class="af-navlabel">Navegacao</div>
+    <div class="af-navlabel">Navegação</div>
     <nav class="af-nav">
       {nav.map((n) => (
         <a href="#" class={`${n.sub ? 'sub' : ''} ${active === n.key ? 'active' : ''}`.trim()}>

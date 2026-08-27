@@ -203,7 +203,7 @@ p.lead { font-size: var(--fs-lead); line-height: 1.5; color: var(--cinza-escuro)
 @media (max-width: 820px) {
   .ladder-row { grid-template-columns: 1fr; gap: 8px; padding: 18px 20px; }
   .ladder-row.head { display: none; }
-  .ladder-who::before { content: "Quem esta la: "; color: rgba(234,246,255,0.4); }
+  .ladder-who::before { content: "Quem está lá: "; color: rgba(234,246,255,0.4); }
   .ladder-pos::before { content: "Kontiva: "; color: rgba(234,246,255,0.4); }
 }
 
