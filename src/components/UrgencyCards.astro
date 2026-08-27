@@ -36,9 +36,9 @@ const cards = [
       {cards.map((c, i) => (
         <article class={`u-card reveal delay-${i + 1}`}>
           <div class="u-eyebrow"><span class="u-ico"><Icon name={c.ico} size={16} /></span> {c.eyebrow}</div>
-          <div class="u-block"><div class="u-label fato">Fato</div><p>{c.fato}</p></div>
-          <div class="u-block"><div class="u-label consequencia">Consequência</div><p>{c.consequencia}</p></div>
-          <div class="u-block"><div class="u-label caminho">Caminho</div><p>{c.caminho}</p></div>
+          <div class="u-block b-fato"><div class="u-label fato">Fato</div><p>{c.fato}</p></div>
+          <div class="u-block b-cons"><div class="u-label consequencia">Consequência</div><p>{c.consequencia}</p></div>
+          <div class="u-block b-cam"><div class="u-label caminho">Caminho</div><p>{c.caminho}</p></div>
         </article>
       ))}
     </div>
