@@ -1,0 +1,30 @@
+/* Componentes compartilhados além da Landing (origem: Kontiva Contato.html / Landing v3) */
+
+/* Lang toggle PT/EN */
+.lang-toggle { display: inline-flex; align-items: center; gap: 2px; border: 1px solid rgba(10,31,63,0.12); border-radius: var(--r-pill); padding: 3px; background: var(--branco); }
+.lang-toggle button { border: none; background: transparent; cursor: pointer; font-family: inherit; font-size: 11px; font-weight: 700; letter-spacing: 0.06em; padding: 5px 10px; border-radius: var(--r-pill); color: var(--cinza-texto); transition: background .2s, color .2s; }
+.lang-toggle button.on { background: var(--azul-profundo); color: var(--branco); }
+
+/* Campos de formulário */
+.f-field { margin-bottom: 16px; }
+.f-field label { display: block; font-size: 12px; font-weight: 600; color: var(--cinza-escuro); margin-bottom: 7px; }
+.f-field label .opt { color: var(--cinza-texto); font-weight: 500; }
+.f-field input, .f-field textarea, .f-field select { width: 100%; padding: 12px 14px; border: 1px solid var(--border-on-light-strong); border-radius: var(--r-sm); font-family: inherit; font-size: 14px; color: var(--azul-profundo); background: var(--branco); transition: border-color .2s, box-shadow .2s; box-sizing: border-box; }
+.f-field input::placeholder, .f-field textarea::placeholder { color: #9AA2AF; }
+.f-field input:focus, .f-field textarea:focus, .f-field select:focus { outline: none; border-color: var(--ciano); box-shadow: 0 0 0 3px color-mix(in oklab, var(--ciano) 20%, transparent); }
+.f-field textarea { resize: vertical; min-height: 96px; }
+.f-row { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+
+/* Badges de status (deck) */
+.badge { font-family: var(--font-mono); font-size: 11px; font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase; padding: 5px 10px; border-radius: var(--r-pill); white-space: nowrap; display: inline-block; }
+.badge.on { background: var(--ciano); color: var(--azul-profundo); }
+.badge.dev { background: color-mix(in oklab, var(--ciano) 16%, transparent); color: color-mix(in oklab, var(--ciano) 70%, var(--azul-profundo)); border: 1px solid color-mix(in oklab, var(--ciano) 45%, transparent); }
+.badge.neutral { background: rgba(10,31,63,0.06); color: var(--cinza-texto); }
+
+/* Card claro de conteúdo */
+.card { background: var(--branco); border: 1px solid var(--border-on-light); border-radius: var(--r-xl); padding: 28px; transition: transform .2s ease, border-color .2s ease, box-shadow .2s ease; }
+.card:hover { transform: translateY(-4px); border-color: color-mix(in oklab, var(--ciano) 40%, transparent); box-shadow: var(--shadow-card); }
+
+/* Card escuro (produto/resultado) */
+.card-dark { background: var(--azul-profundo); color: var(--claro-escuro); border-radius: var(--r-xl); padding: 28px; position: relative; overflow: hidden; box-shadow: var(--shadow-dark); }
+.card-dark::before { content: ""; position: absolute; inset: 0; background: radial-gradient(420px 200px at 100% 0%, color-mix(in oklab, var(--ciano) 22%, transparent), transparent 70%); pointer-events: none; }
