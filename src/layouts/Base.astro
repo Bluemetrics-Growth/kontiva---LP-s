@@ -1,0 +1,131 @@
+---
+import '../styles/tokens.css';
+import '../styles/lp.css';
+
+interface Props {
+  title?: string;
+  description?: string;
+}
+const {
+  title = 'Kontiva · O agente de IA que opera a reforma tributaria no seu escritorio',
+  description = 'Responda a reforma com fonte, simule a carteira inteira de uma vez e opere creditos, fornecedores e caixa do split payment. Veja rodando nos seus dados, sem custo.',
+} = Astro.props as Props;
+
+const canonical = 'https://lp.kontiva.ai/';
+const ogImage = 'https://lp.kontiva.ai/og/og.png';
+
+const orgLd = {
+  '@context': 'https://schema.org',
+  '@type': 'Organization',
+  name: 'Kontiva',
+  url: canonical,
+  description: 'Hub de agentes de IA para escritorios contabeis. Uma empresa BlueMetrics.',
+  parentOrganization: { '@type': 'Organization', name: 'BlueMetrics' },
+};
+const siteLd = {
+  '@context': 'https://schema.org',
+  '@type': 'WebSite',
+  name: 'Kontiva',
+  url: canonical,
+  inLanguage: 'pt-BR',
+};
+---
+<!doctype html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>{title}</title>
+    <meta name="description" content={description} />
+    <link rel="canonical" href={canonical} />
+    <meta name="theme-color" content="#0A1F3F" />
+    <meta name="robots" content="index, follow" />
+
+    <!-- Open Graph -->
+    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content="Kontiva" />
+    <meta property="og:locale" content="pt_BR" />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:url" content={canonical} />
+    <meta property="og:image" content={ogImage} />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content={title} />
+    <meta name="twitter:description" content={description} />
+    <meta name="twitter:image" content={ogImage} />
+
+    <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+
+    <!-- Fontes do design system (Google Fonts, font-display swap) -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Instrument+Serif:ital@0;1&family=JetBrains+Mono:wght@400;500;600&display=swap"
+      rel="stylesheet"
+    />
+
+    <!-- Sem JS: mostra todo o conteudo (a pagina le e converte sem JS, PRD 9.8) -->
+    <noscript>
+      <style>.reveal { opacity: 1 !important; transform: none !important; }</style>
+    </noscript>
+
+    <script type="application/ld+json" set:html={JSON.stringify(orgLd)} />
+    <script type="application/ld+json" set:html={JSON.stringify(siteLd)} />
+  </head>
+  <body>
+    <a href="#agendar" class="skip-link">Pular para o agendamento</a>
+    <slot />
+
+    <script>
+      // Reveal on scroll (IntersectionObserver, threshold 0.12). Respeita reduced-motion.
+      const reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+      const els = document.querySelectorAll<HTMLElement>('.reveal');
+      if (reduce || !('IntersectionObserver' in window)) {
+        els.forEach((el) => el.classList.add('in'));
+      } else {
+        const io = new IntersectionObserver(
+          (entries) => {
+            entries.forEach((en) => {
+              if (en.isIntersecting) {
+                en.target.classList.add('in');
+                io.unobserve(en.target);
+              }
+            });
+          },
+          { threshold: 0.12 }
+        );
+        els.forEach((el) => io.observe(el));
+      }
+
+      // Tracking (dataLayer)
+      const track = (name: string, data: Record<string, unknown> = {}) => {
+        const w = window as any;
+        w.dataLayer = w.dataLayer || [];
+        w.dataLayer.push({ event: name, ...data });
+      };
+
+      // view_hero
+      const hero = document.getElementById('topo');
+      if (hero) {
+        const ho = new IntersectionObserver(
+          (e) => {
+            if (e[0].isIntersecting) { track('view_hero'); ho.disconnect(); }
+          },
+          { threshold: 0.3 }
+        );
+        ho.observe(hero);
+      }
+
+      // cta_click + whatsapp_click, com posicao
+      document.addEventListener('click', (e) => {
+        const t = (e.target as HTMLElement).closest('[data-cta]') as HTMLElement | null;
+        if (!t) return;
+        const pos = t.getAttribute('data-cta') || 'unknown';
+        track('cta_click', { position: pos });
+        if (pos === 'whatsapp') track('whatsapp_click');
+      });
+    </script>
+  </body>
+</html>
