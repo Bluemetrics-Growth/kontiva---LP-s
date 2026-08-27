@@ -1,0 +1,23 @@
+---
+// Mock de chat (S7). Numeros da carteira-vitrine (showcase 7.1).
+import Icon from '../Icon.astro';
+import { showcase } from '../../data/showcase';
+---
+<div class="chat-mock reveal">
+  <div class="chat-head">
+    <div class="t"><span class="k"><Icon name="sparkle" size={15} /></span> Perguntar ao Claude</div>
+    <span class="live">Conectado</span>
+  </div>
+  <div class="chat-body">
+    <div class="bubble q">Quais dos meus clientes do Presumido ganhariam migrando pro Real em 2027?</div>
+    <div class="bubble a">
+      Encontrei <b>{showcase.ganhamRealMigracao}</b> na sua carteira que reduziriam a carga migrando para o Lucro Real em 2027, somando <b>{showcase.ganhamRealValor}</b> de economia estimada.
+      <span class="src">fonte: simulacao em massa · aliquota vigente lida do sistema</span>
+    </div>
+    <div class="bubble q">Projete o caixa do split payment da Construtora Horizonte em 2027.</div>
+    <div class="bubble a">
+      No split, o imposto sai na venda. O buraco de caixa chega ao pico de <b>{showcase.buracoCaixaPico}</b> no mes mais forte. Preparei o relatorio de aviso para voce enviar ao cliente.
+      <span class="src">fonte: aba fluxo de caixa · projecao 2027</span>
+    </div>
+  </div>
+</div>

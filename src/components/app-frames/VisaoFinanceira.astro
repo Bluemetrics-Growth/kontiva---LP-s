@@ -1,0 +1,38 @@
+---
+// Tela Inicio / Visao financeira (Screenshot 4). Usada no hero (S1).
+import AppFrame from './AppFrame.astro';
+import Icon from '../Icon.astro';
+import { showcase } from '../../data/showcase';
+---
+<AppFrame active="inicio" crumb={['Inicio', 'Indicadores']}>
+  <div class="af-eyebrow"><span class="d"></span> Trabalho do mes</div>
+  <div style="display:flex; align-items:flex-start; justify-content:space-between; gap:16px; flex-wrap:wrap;">
+    <h2 class="af-h">Visao <span class="it">financeira</span>.</h2>
+    <div class="af-compet">
+      <div class="k">Competencia</div>
+      <div class="v">{showcase.competencia}</div>
+    </div>
+  </div>
+  <p class="af-sub">Comece pelo que precisa de atencao agora. Os indicadores abaixo dao contexto ao fechamento da competencia.</p>
+
+  <div class="af-hero-cards" style="margin-top:18px;">
+    <div class="af-hero-card spot">
+      <div class="hl"><span class="i"><Icon name="bolt" size={14} /></span> Creditos identificados</div>
+      <div class="big">{showcase.creditosRecuperaveis}</div>
+      <div class="sl">Recuperaveis em 60 meses</div>
+      <div class="fn">Cliente destaque, estimativa</div>
+    </div>
+    <div class="af-hero-card">
+      <div class="hl"><span class="i"><Icon name="radar" size={14} /></span> Impacto da reforma</div>
+      <div class="big">{showcase.impactoAlto} <span style="font-size:0.5em; color:var(--cinza-texto); font-weight:600;">de {showcase.carteiraTotal}</span></div>
+      <div class="sl">Clientes com impacto alto</div>
+      <div class="fn">Ranking da simulacao em massa</div>
+    </div>
+  </div>
+
+  <div class="af-tiles">
+    <div class="af-tile"><span class="ti"><Icon name="report" size={16} /></span><div><div class="tt">Relatorios</div><div class="ts">Enviar e revisar dados mensais</div></div></div>
+    <div class="af-tile"><span class="ti"><Icon name="billing" size={16} /></span><div><div class="tt">Valores a cobrar</div><div class="ts">Gerar e acompanhar cobrancas</div></div></div>
+    <div class="af-tile"><span class="ti"><Icon name="contract" size={16} /></span><div><div class="tt">Contratos</div><div class="ts">{showcase.contratosAtivos}</div></div></div>
+  </div>
+</AppFrame>
