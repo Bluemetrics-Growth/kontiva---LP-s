@@ -1,0 +1,760 @@
+<!-- @dsCard group="Website" viewport="1440x900" subtitle="Contato — hero, form, WhatsApp, endereços, mapa" name="Contato" --><!doctype html>
+<html lang="pt-BR" data-lang="pt">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Kontiva.ai — Fale com a gente</title>
+  <meta name="description" content="Mande seus contratos e descubra quanto o seu escritório deixa de cobrar. Diagnóstico gratuito, sem compromisso, com resposta humana em 1 dia útil." />
+  <!-- Sistema visual: ver DESIGN.md -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Instrument+Serif:ital@0;1&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet" />
+  <style>
+    /* Kontiva.ai — Página de Contato — espelho fiel do DESIGN.md / Landing v3 */
+    :root {
+      --azul-profundo: #0A1F3F;
+      --azul-profundo-2: #122A52;
+      --ciano: #00D4FF;
+      --ciano-suave: #E0F9FF;
+      --branco: #FFFFFF;
+      --cinza-claro: #F2F4F7;
+      --cinza-texto: #6B7280;
+      --cinza-escuro: #374151;
+      --accent-boost: 1.05;
+      --font-display: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+      --font-body: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+      --font-serif-italic: 'Instrument Serif', Georgia, serif;
+      --font-mono: 'JetBrains Mono', ui-monospace, monospace;
+    }
+
+    * { box-sizing: border-box; }
+
+    html, body {
+      margin: 0; padding: 0;
+      background: var(--branco);
+      color: var(--azul-profundo);
+      font-family: var(--font-body);
+      font-feature-settings: "ss01", "cv11";
+      -webkit-font-smoothing: antialiased;
+      text-rendering: optimizeLegibility;
+    }
+
+    a { color: inherit; text-decoration: none; }
+
+    .shell { max-width: 1240px; margin: 0 auto; padding: 0 32px; }
+
+    /* Nav */
+    .nav {
+      position: sticky; top: 0; z-index: 50;
+      background: rgba(255,255,255,0.82);
+      backdrop-filter: saturate(1.2) blur(14px);
+      -webkit-backdrop-filter: saturate(1.2) blur(14px);
+      border-bottom: 1px solid rgba(10,31,63,0.06);
+      transition: background .4s ease, border-color .4s ease;
+    }
+    .nav.nav-dark { background: rgba(10,31,63,0.94); border-bottom-color: rgba(255,255,255,0.08); }
+    .nav.nav-dark .nav-links { color: rgba(234,246,255,0.72); }
+    .nav.nav-dark .nav-links a:hover { color: #FFFFFF; }
+    .nav.nav-dark .lang-toggle { background: transparent; border-color: rgba(255,255,255,0.22); }
+    .nav.nav-dark .lang-toggle button { color: rgba(234,246,255,0.6); }
+    .nav.nav-dark .lang-toggle button.on { background: var(--ciano); color: var(--azul-profundo); }
+    .nav-inner { display: flex; align-items: center; justify-content: space-between; height: 72px; }
+    .brand-img { height: 24px; width: auto; display: block; }
+    .nav .brand-img-light { display: none; }
+    .nav.nav-dark .brand-img-light { display: block; }
+    .nav.nav-dark .brand-img-color { display: none; }
+    footer .brand-img { height: 22px; }
+    .nav-left { display: flex; align-items: center; gap: 56px; min-width: 0; }
+    .nav-right { display: flex; gap: 24px; align-items: center; }
+    .nav-links { display: flex; gap: 24px; align-items: center; color: var(--cinza-escuro); font-size: 13px; font-weight: 500; }
+    .nav-links a { transition: color .2s; }
+    .nav-links a:hover { color: var(--azul-profundo); }
+    @media (max-width: 960px) { .nav-links { display: none; } }
+    @media (max-width: 560px) { .nav .btn-primary { display: none; } }
+
+    /* Lang toggle */
+    .lang-toggle { display: inline-flex; align-items: center; gap: 2px; border: 1px solid rgba(10,31,63,0.12); border-radius: 99px; padding: 3px; background: var(--branco); }
+    .lang-toggle button { border: none; background: transparent; cursor: pointer; font-family: inherit; font-size: 11px; font-weight: 700; letter-spacing: 0.06em; padding: 5px 10px; border-radius: 99px; color: var(--cinza-texto); transition: background .2s, color .2s; }
+    .lang-toggle button.on { background: var(--azul-profundo); color: var(--branco); }
+
+    /* Buttons */
+    .btn { display: inline-flex; align-items: center; justify-content: center; gap: 10px; padding: 14px 22px; font-weight: 600; font-size: 15px; letter-spacing: -0.01em; border-radius: 10px; border: 1px solid transparent; cursor: pointer; transition: transform .15s ease, box-shadow .2s ease, background .2s; white-space: nowrap; font-family: inherit; }
+    .btn-primary { background: var(--ciano); color: var(--azul-profundo); box-shadow: 0 1px 0 rgba(0,0,0,0.04), 0 10px 30px -10px color-mix(in oklab, var(--ciano) calc(70% * var(--accent-boost)), transparent); }
+    .btn-primary:hover { transform: translateY(-1px); box-shadow: 0 1px 0 rgba(0,0,0,0.04), 0 18px 40px -12px color-mix(in oklab, var(--ciano) calc(80% * var(--accent-boost)), transparent); }
+    .btn-ghost { background: transparent; color: var(--azul-profundo); border-color: rgba(10,31,63,0.14); }
+    .btn-ghost:hover { background: var(--cinza-claro); }
+    .btn-dark { background: var(--azul-profundo); color: var(--branco); }
+    .btn-dark:hover { background: var(--azul-profundo-2); }
+    .btn .whats { width: 18px; height: 18px; display: inline-block; flex-shrink: 0; }
+
+    /* On dark backgrounds */
+    .on-dark .btn-ghost { color: #EAF6FF; border-color: rgba(255,255,255,0.2); }
+    .on-dark .btn-ghost:hover { background: rgba(255,255,255,0.06); }
+
+    /* Sections */
+    section { padding: 120px 0; position: relative; }
+    @media (max-width: 720px) { section { padding: 80px 0; } }
+
+    .eyebrow { display: inline-flex; align-items: center; gap: 10px; font-size: 12px; font-weight: 600; letter-spacing: 0.12em; text-transform: uppercase; color: var(--cinza-texto); }
+    .eyebrow.light { color: rgba(234,246,255,0.66); }
+    .eyebrow .dot-cyan { width: 6px; height: 6px; border-radius: 50%; background: var(--ciano); box-shadow: 0 0 0 4px color-mix(in oklab, var(--ciano) 18%, transparent); }
+
+    h1, h2, h3, h4 { font-family: var(--font-display); letter-spacing: -0.03em; margin: 0; color: var(--azul-profundo); font-weight: 700; text-wrap: balance; }
+    h1 { font-size: clamp(40px, 6.2vw, 82px); line-height: 0.98; letter-spacing: -0.04em; }
+    h2 { font-size: clamp(32px, 4vw, 56px); line-height: 1.04; }
+    h3 { font-size: clamp(20px, 2.2vw, 26px); line-height: 1.2; }
+    p.lead { font-size: clamp(18px, 1.6vw, 22px); line-height: 1.5; color: var(--cinza-escuro); text-wrap: pretty; }
+    p { color: var(--cinza-escuro); line-height: 1.55; }
+    .serif-accent { font-family: var(--font-serif-italic); font-style: italic; font-weight: 400; letter-spacing: -0.01em; }
+
+    /* Reveal */
+    .reveal { opacity: 0; transform: translateY(24px); transition: opacity .8s ease, transform .8s cubic-bezier(.2,.7,.1,1); }
+    .reveal.in { opacity: 1; transform: none; }
+    .reveal.delay-1 { transition-delay: .08s; }
+    .reveal.delay-2 { transition-delay: .16s; }
+    .reveal.delay-3 { transition-delay: .24s; }
+    .reveal.delay-4 { transition-delay: .32s; }
+
+    /* ===== Hero ===== */
+    .hero { padding: 104px 0 96px; position: relative; overflow: hidden; background: linear-gradient(180deg, #E3F0FB 0%, #F4F9FE 55%, var(--branco) 100%); }
+    .hero::before {
+      content: ""; position: absolute; inset: 0; pointer-events: none;
+      background: radial-gradient(680px 360px at 78% 8%, color-mix(in oklab, var(--ciano) 14%, transparent), transparent 70%);
+    }
+    .hero-inner { position: relative; max-width: 880px; }
+    .crumbs { display: flex; align-items: center; gap: 8px; font-size: 13px; color: var(--cinza-texto); margin-bottom: 28px; }
+    .crumbs a:hover { color: var(--azul-profundo); }
+    .crumbs span { color: rgba(10,31,63,0.3); }
+    .hero h1 { margin-top: 22px; }
+    .hero-sub { margin: 28px 0 38px; max-width: 600px; }
+    .hero-cta-row { display: flex; flex-wrap: wrap; gap: 14px; align-items: center; }
+    .hero-meta { display: flex; gap: 28px; margin-top: 44px; color: var(--cinza-texto); font-size: 13px; flex-wrap: wrap; }
+    .hero-meta div { display: flex; align-items: center; gap: 8px; }
+    .hero-meta .tick { width: 16px; height: 16px; border-radius: 50%; background: color-mix(in oklab, var(--ciano) 22%, white); display: inline-flex; align-items: center; justify-content: center; color: var(--azul-profundo); flex-shrink: 0; }
+
+    /* ===== Contato (form + whatsapp) ===== */
+    .contato { background: var(--branco); }
+    .contato-grid { display: grid; grid-template-columns: 1.15fr 0.85fr; gap: 56px; align-items: start; }
+    @media (max-width: 920px) { .contato-grid { grid-template-columns: 1fr; gap: 40px; } }
+
+    .form-card { background: var(--branco); border: 1px solid rgba(10,31,63,0.08); border-radius: 22px; padding: 36px; box-shadow: 0 20px 60px -20px rgba(10,31,63,0.15); }
+    .form-card h2.form-title { font-size: clamp(26px, 2.6vw, 34px); line-height: 1.08; }
+    .form-card .form-lead { margin: 12px 0 26px; font-size: 15px; color: var(--cinza-escuro); }
+    .f-row { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+    @media (max-width: 520px) { .f-row { grid-template-columns: 1fr; } }
+    .f-field { margin-bottom: 16px; }
+    .f-field label { display: block; font-size: 12px; font-weight: 600; color: var(--cinza-escuro); margin-bottom: 7px; }
+    .f-field label .opt { color: var(--cinza-texto); font-weight: 500; }
+    .f-field input, .f-field textarea, .f-field select { width: 100%; padding: 12px 14px; border: 1px solid rgba(10,31,63,0.14); border-radius: 10px; font-family: inherit; font-size: 14px; color: var(--azul-profundo); background: var(--branco); transition: border-color .2s, box-shadow .2s; }
+    .f-field input::placeholder, .f-field textarea::placeholder { color: #9AA2AF; }
+    .f-field input:focus, .f-field textarea:focus, .f-field select:focus { outline: none; border-color: var(--ciano); box-shadow: 0 0 0 3px color-mix(in oklab, var(--ciano) 20%, transparent); }
+    .f-field textarea { resize: vertical; min-height: 96px; }
+    .form-error { display: none; margin: 0 0 14px; padding: 10px 14px; border-radius: 10px; background: #FFF1EC; color: #A3401A; font-size: 13px; }
+    .form-error.show { display: block; }
+    .form-note { margin: 16px 0 0; font-size: 12px; color: var(--cinza-texto); line-height: 1.5; }
+    .form-note a { color: var(--cinza-escuro); text-decoration: underline; text-underline-offset: 2px; }
+    .form-success { padding: 32px 28px; border-radius: 16px; background: color-mix(in oklab, var(--ciano) 12%, white); border: 1px solid color-mix(in oklab, var(--ciano) 40%, transparent); }
+    .form-success .check { width: 44px; height: 44px; border-radius: 50%; background: var(--ciano); display: inline-flex; align-items: center; justify-content: center; color: var(--azul-profundo); margin-bottom: 16px; }
+    .form-success .t { font-weight: 700; font-size: 20px; margin-bottom: 8px; color: var(--azul-profundo); }
+    .form-success .s { font-size: 14px; color: var(--cinza-escuro); line-height: 1.55; }
+    .form-success button { margin-top: 18px; }
+
+    /* WhatsApp aside + o que esperar */
+    .aside-stack { display: flex; flex-direction: column; gap: 24px; }
+    .wa-card { background: var(--azul-profundo); color: #EAF6FF; border-radius: 20px; padding: 28px; position: relative; overflow: hidden; box-shadow: 0 30px 80px -30px rgba(10,31,63,0.4), 0 0 0 1px rgba(10,31,63,0.08); }
+    .wa-card::before { content: ""; position: absolute; inset: 0; background: radial-gradient(420px 200px at 100% 0%, color-mix(in oklab, var(--ciano) 22%, transparent), transparent 70%); pointer-events: none; }
+    .wa-card .wa-eyebrow { font-family: var(--font-mono); font-size: 11px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--ciano); margin-bottom: 14px; position: relative; }
+    .wa-card h3 { color: #EAF6FF; font-size: 22px; position: relative; }
+    .wa-card .wa-num { font-family: var(--font-mono); font-size: 18px; font-weight: 600; color: #EAF6FF; margin: 16px 0 20px; letter-spacing: 0.01em; position: relative; display: flex; align-items: center; gap: 10px; }
+    .wa-card .wa-num .pulse { width: 8px; height: 8px; border-radius: 50%; background: var(--ciano); box-shadow: 0 0 0 0 color-mix(in oklab, var(--ciano) 60%, transparent); animation: pulse 1.8s ease-out infinite; }
+    @keyframes pulse { 0% { box-shadow: 0 0 0 0 color-mix(in oklab, var(--ciano) 55%, transparent); } 70% { box-shadow: 0 0 0 12px transparent; } 100% { box-shadow: 0 0 0 0 transparent; } }
+    .wa-card .btn { position: relative; width: 100%; }
+
+    .expect-card { background: var(--branco); border: 1px solid rgba(10,31,63,0.08); border-radius: 20px; padding: 28px; }
+    .expect-card .ex-eyebrow { font-family: var(--font-mono); font-size: 11px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--cinza-texto); margin-bottom: 18px; }
+    .steps { display: flex; flex-direction: column; gap: 18px; }
+    .step { display: grid; grid-template-columns: 36px 1fr; gap: 14px; align-items: start; }
+    .step .num { width: 36px; height: 36px; border-radius: 10px; background: var(--ciano-suave); color: var(--azul-profundo); display: inline-flex; align-items: center; justify-content: center; font-family: var(--font-mono); font-size: 13px; font-weight: 600; }
+    .step .st-title { font-weight: 600; font-size: 14.5px; color: var(--azul-profundo); margin: 2px 0 4px; }
+    .step .st-desc { font-size: 13px; color: var(--cinza-texto); line-height: 1.5; }
+
+    /* ===== Endereços ===== */
+    .enderecos { background: var(--cinza-claro); }
+    .sec-head { max-width: 700px; margin-bottom: 56px; }
+    .sec-head h2 { margin-top: 18px; }
+    .sec-head p { margin-top: 18px; font-size: 17px; }
+    .office-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; }
+    @media (max-width: 860px) { .office-grid { grid-template-columns: 1fr; } }
+    .office { background: var(--branco); border: 1px solid rgba(10,31,63,0.08); border-radius: 20px; padding: 28px; display: flex; flex-direction: column; transition: transform .2s ease, border-color .2s ease, box-shadow .2s ease; }
+    .office:hover { transform: translateY(-4px); border-color: color-mix(in oklab, var(--ciano) 40%, transparent); box-shadow: 0 24px 60px -28px rgba(10,31,63,0.22); }
+    .office-top { display: flex; align-items: center; justify-content: space-between; margin-bottom: 18px; }
+    .office-city { font-size: 19px; font-weight: 700; letter-spacing: -0.02em; }
+    .office-flag { font-family: var(--font-mono); font-size: 11px; font-weight: 600; letter-spacing: 0.1em; padding: 4px 9px; border-radius: 99px; background: var(--ciano-suave); color: var(--azul-profundo); }
+    .office-region { font-size: 12px; color: var(--cinza-texto); margin-bottom: 14px; }
+    .office-addr { font-size: 14px; color: var(--cinza-escuro); line-height: 1.65; flex: 1; }
+    .office-addr .pin { display: inline-block; }
+    .office-link { display: inline-flex; align-items: center; gap: 6px; margin-top: 20px; font-size: 13px; font-weight: 600; color: var(--azul-profundo); }
+    .office-link svg { transition: transform .2s ease; }
+    .office-link:hover svg { transform: translateX(3px); }
+
+    /* ===== Mapa ===== */
+    .mapa { background: var(--branco); }
+    .map-tabs { display: inline-flex; gap: 4px; padding: 4px; background: var(--cinza-claro); border-radius: 99px; margin-bottom: 28px; }
+    .map-tabs button { border: none; background: transparent; cursor: pointer; font-family: inherit; font-size: 13.5px; font-weight: 600; color: var(--cinza-escuro); padding: 9px 18px; border-radius: 99px; transition: background .2s, color .2s; }
+    .map-tabs button.on { background: var(--branco); color: var(--azul-profundo); box-shadow: 0 4px 14px -6px rgba(10,31,63,0.2); }
+    .map-frame { position: relative; border-radius: 20px; overflow: hidden; border: 1px solid rgba(10,31,63,0.1); box-shadow: 0 20px 60px -28px rgba(10,31,63,0.2); }
+    .map-frame iframe { display: block; width: 100%; height: 480px; border: 0; filter: grayscale(0.12) contrast(1.02); }
+    @media (max-width: 720px) { .map-frame iframe { height: 360px; } }
+    .map-pane { display: none; }
+    .map-pane.on { display: block; }
+
+    /* ===== Outros canais ===== */
+    .canais { background: var(--ciano-suave); }
+    .canal-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; }
+    @media (max-width: 860px) { .canal-grid { grid-template-columns: 1fr 1fr; } }
+    @media (max-width: 520px) { .canal-grid { grid-template-columns: 1fr; } }
+    .canal { background: var(--branco); border: 1px solid rgba(10,31,63,0.08); border-radius: 18px; padding: 24px; display: flex; flex-direction: column; gap: 4px; transition: transform .2s ease, border-color .2s ease, box-shadow .2s ease; }
+    .canal:hover { transform: translateY(-3px); border-color: color-mix(in oklab, var(--ciano) 40%, transparent); box-shadow: 0 20px 50px -28px rgba(10,31,63,0.2); }
+    .canal-ico { width: 40px; height: 40px; border-radius: 11px; background: var(--cinza-claro); display: inline-flex; align-items: center; justify-content: center; color: var(--azul-profundo); margin-bottom: 14px; }
+    .canal-label { font-family: var(--font-mono); font-size: 11px; letter-spacing: 0.12em; text-transform: uppercase; color: var(--cinza-texto); }
+    .canal-value { font-size: 16px; font-weight: 600; color: var(--azul-profundo); letter-spacing: -0.01em; }
+    .canal-desc { font-size: 13px; color: var(--cinza-texto); margin-top: 4px; line-height: 1.5; }
+    .ph-flag { display: inline-block; font-family: var(--font-mono); font-size: 9.5px; letter-spacing: 0.1em; text-transform: uppercase; color: var(--cinza-texto); border: 1px dashed rgba(10,31,63,0.22); border-radius: 99px; padding: 2px 7px; margin-left: 8px; vertical-align: middle; }
+
+    /* Footer */
+    footer { background: var(--azul-profundo); color: rgba(234,246,255,0.6); font-size: 14px; padding: 80px 0 0; border-top: 1px solid rgba(255,255,255,0.06); }
+    .footer-grid { display: grid; grid-template-columns: 1.5fr 1fr 1fr 1fr; gap: 48px; padding-bottom: 64px; }
+    @media (max-width: 880px) { .footer-grid { grid-template-columns: 1fr 1fr; } }
+    @media (max-width: 560px) { .footer-grid { grid-template-columns: 1fr; } }
+    .footer-brand { display: flex; flex-direction: column; align-items: flex-start; gap: 20px; }
+    .footer-tagline { margin: 0; max-width: 320px; font-size: 14px; line-height: 1.6; color: rgba(234,246,255,0.6); }
+    .social-row { display: flex; gap: 10px; }
+    .social-row a { width: 38px; height: 38px; border-radius: 50%; border: 1px solid rgba(255,255,255,0.14); display: inline-flex; align-items: center; justify-content: center; color: rgba(234,246,255,0.7); transition: border-color .2s, color .2s, background .2s; }
+    .social-row a:hover { border-color: var(--ciano); color: var(--ciano); background: rgba(0,212,255,0.06); }
+    .footer-col { display: flex; flex-direction: column; gap: 12px; }
+    .footer-col h5 { margin: 0 0 6px; font-family: var(--font-mono); font-size: 11px; font-weight: 600; letter-spacing: 0.14em; text-transform: uppercase; color: var(--ciano); }
+    .footer-col a { color: rgba(234,246,255,0.7); font-size: 14px; transition: color .2s; }
+    .footer-col a:hover { color: #EAF6FF; }
+    .footer-legal { border-top: 1px solid rgba(255,255,255,0.08); padding: 22px 0 28px; display: flex; justify-content: space-between; align-items: center; gap: 16px; flex-wrap: wrap; font-size: 12.5px; }
+    .footer-bm { color: rgba(234,246,255,0.75); font-weight: 500; transition: color .2s; }
+    a.footer-bm:hover { color: var(--ciano); }
+    .footer-legal-links { display: flex; gap: 8px; align-items: center; }
+    .footer-legal-links a { color: rgba(234,246,255,0.55); transition: color .2s; }
+    .footer-legal-links a:hover { color: #EAF6FF; }
+
+    @media (prefers-reduced-motion: reduce) {
+      .reveal { opacity: 1; transform: none; transition: none; }
+      .wa-card .wa-num .pulse { animation: none; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- ============ NAV ============ -->
+<nav class="nav nav-dark">
+  <div class="shell nav-inner">
+    <div class="nav-left">
+      <a href="Kontiva Landing v3.html" aria-label="Kontiva.ai">
+        <img class="brand-img brand-img-light" src="assets/kontiva-logo-light.png" alt="Kontiva.ai" />
+        <img class="brand-img brand-img-color" src="assets/kontiva-logo-color.png" alt="Kontiva.ai" />
+      </a>
+      <div class="nav-links">
+        <a href="Kontiva Landing v3.html#como-funciona" data-pt="Como funciona" data-en="How it works">Como funciona</a>
+        <a href="Kontiva Landing v3.html#calculadora" data-pt="Calculadora" data-en="Calculator">Calculadora</a>
+        <a href="Kontiva Landing v3.html#planos" data-pt="Planos" data-en="Pricing">Planos</a>
+        <a href="Kontiva Landing v3.html#faq">FAQ</a>
+        <a href="#form" data-pt="Contato" data-en="Contact" style="color: var(--ciano);">Contato</a>
+      </div>
+    </div>
+    <div class="nav-right">
+      <div class="lang-toggle">
+        <button type="button" data-lang="pt" class="on">PT</button>
+        <button type="button" data-lang="en">EN</button>
+      </div>
+      <a href="https://wa.me/5551926343014?text=Ol%C3%A1%2C%20gostaria%20de%20conhecer%20a%20Kontiva.ai"
+         data-pt-href="https://wa.me/5551926343014?text=Ol%C3%A1%2C%20gostaria%20de%20conhecer%20a%20Kontiva.ai"
+         data-en-href="https://wa.me/5551926343014?text=Hi%2C%20I%20would%20like%20to%20learn%20more%20about%20Kontiva.ai"
+         target="_blank" rel="noreferrer" class="btn btn-primary" style="padding: 10px 18px; font-size: 14px;">
+        <svg class="whats" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M19.05 4.91A10 10 0 0 0 4.04 18.26L3 22l3.83-1.01A10 10 0 1 0 19.05 4.91zM12 20.15a8.14 8.14 0 0 1-4.15-1.13l-.3-.18-2.27.6.6-2.22-.19-.32A8.15 8.15 0 1 1 12 20.15zm4.46-6.1c-.24-.12-1.44-.71-1.66-.79-.22-.08-.38-.12-.54.12-.16.24-.62.79-.76.95-.14.16-.28.18-.52.06-.24-.12-1.02-.38-1.94-1.2-.72-.64-1.2-1.42-1.34-1.66-.14-.24-.02-.37.1-.49.1-.1.24-.28.36-.42.12-.14.16-.24.24-.4.08-.16.04-.3-.02-.42-.06-.12-.54-1.3-.74-1.78-.2-.48-.4-.42-.54-.42h-.46c-.16 0-.4.06-.62.3-.22.24-.84.82-.84 2 0 1.18.86 2.32.98 2.48.12.16 1.7 2.6 4.12 3.64.57.25 1.02.4 1.37.5.57.18 1.1.16 1.51.1.46-.07 1.44-.59 1.64-1.16.2-.57.2-1.06.14-1.16-.06-.1-.22-.16-.46-.28z" fill="currentColor"/></svg>
+        <span data-pt="Falar no WhatsApp" data-en="Chat on WhatsApp">Falar no WhatsApp</span>
+      </a>
+    </div>
+  </div>
+</nav>
+
+<!-- ============ HERO ============ -->
+<section class="hero" data-screen-label="Contato — Hero">
+  <div class="shell">
+    <div class="hero-inner">
+      <div class="crumbs reveal">
+        <a href="Kontiva Landing v3.html" data-pt="Início" data-en="Home">Início</a>
+        <span aria-hidden="true">›</span>
+        <span data-pt="Contato" data-en="Contact" style="color: var(--cinza-escuro);">Contato</span>
+      </div>
+      <div class="eyebrow reveal">
+        <span class="dot-cyan"></span>
+        <span data-pt="Fale com a Kontiva" data-en="Talk to Kontiva">Fale com a Kontiva</span>
+      </div>
+      <h1 class="reveal delay-1"
+          data-pt='Mande seus contratos. A gente <span class="serif-accent">mostra</span> o que falta cobrar.'
+          data-en='Send your contracts. We <span class="serif-accent">show</span> what is left to bill.'>Mande seus contratos. A gente <span class="serif-accent">mostra</span> o que falta cobrar.</h1>
+      <p class="lead hero-sub reveal delay-2"
+         data-pt="Avaliação gratuita, sem compromisso. A gente lê alguns contratos e relatórios do seu escritório, cruza com o que foi cobrado e te diz quanto passou despercebido."
+         data-en="Free assessment, no strings attached. We read a few of your firm's contracts and reports, cross-check them with what was billed and tell you how much slipped through.">Avaliação gratuita, sem compromisso. A gente lê alguns contratos e relatórios do seu escritório, cruza com o que foi cobrado e te diz quanto passou despercebido.</p>
+      <div class="hero-cta-row reveal delay-3">
+        <a href="#form" class="btn btn-dark">
+          <span data-pt="Enviar contratos para avaliação" data-en="Send contracts for assessment">Enviar contratos para avaliação</span>
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M5 12h14M13 5l7 7-7 7" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </a>
+        <a href="https://wa.me/5551926343014?text=Ol%C3%A1%2C%20quero%20uma%20avalia%C3%A7%C3%A3o%20gratuita%20dos%20meus%20contratos%20na%20Kontiva.ai"
+           data-pt-href="https://wa.me/5551926343014?text=Ol%C3%A1%2C%20quero%20uma%20avalia%C3%A7%C3%A3o%20gratuita%20dos%20meus%20contratos%20na%20Kontiva.ai"
+           data-en-href="https://wa.me/5551926343014?text=Hi%2C%20I%20want%20a%20free%20assessment%20of%20my%20contracts%20with%20Kontiva.ai"
+           target="_blank" rel="noreferrer" class="btn btn-ghost">
+          <svg class="whats" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M19.05 4.91A10 10 0 0 0 4.04 18.26L3 22l3.83-1.01A10 10 0 1 0 19.05 4.91zM12 20.15a8.14 8.14 0 0 1-4.15-1.13l-.3-.18-2.27.6.6-2.22-.19-.32A8.15 8.15 0 1 1 12 20.15zm4.46-6.1c-.24-.12-1.44-.71-1.66-.79-.22-.08-.38-.12-.54.12-.16.24-.62.79-.76.95-.14.16-.28.18-.52.06-.24-.12-1.02-.38-1.94-1.2-.72-.64-1.2-1.42-1.34-1.66-.14-.24-.02-.37.1-.49.1-.1.24-.28.36-.42.12-.14.16-.24.24-.4.08-.16.04-.3-.02-.42-.06-.12-.54-1.3-.74-1.78-.2-.48-.4-.42-.54-.42h-.46c-.16 0-.4.06-.62.3-.22.24-.84.82-.84 2 0 1.18.86 2.32.98 2.48.12.16 1.7 2.6 4.12 3.64.57.25 1.02.4 1.37.5.57.18 1.1.16 1.51.1.46-.07 1.44-.59 1.64-1.16.2-.57.2-1.06.14-1.16-.06-.1-.22-.16-.46-.28z" fill="currentColor"/></svg>
+          <span data-pt="Falar no WhatsApp" data-en="Chat on WhatsApp">Falar no WhatsApp</span>
+        </a>
+      </div>
+      <div class="hero-meta reveal delay-4">
+        <div>
+          <span class="tick"><svg width="9" height="9" viewBox="0 0 24 24" fill="none"><path d="M5 13l4 4L19 7" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+          <span data-pt="Sem custo e sem compromisso" data-en="No cost, no commitment">Sem custo e sem compromisso</span>
+        </div>
+        <div>
+          <span class="tick"><svg width="9" height="9" viewBox="0 0 24 24" fill="none"><path d="M5 13l4 4L19 7" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+          <span data-pt="Seus dados ficam só com a gente" data-en="Your data stays with us">Seus dados ficam só com a gente</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ FORM + WHATSAPP ============ -->
+<section class="contato" id="form" data-screen-label="Contato — Formulário">
+  <div class="shell contato-grid">
+    <!-- Form -->
+    <div class="form-card reveal">
+      <h2 class="form-title"
+          data-pt="Conte o cenário do seu escritório."
+          data-en="Tell us about your firm.">Conte o cenário do seu escritório.</h2>
+      <p class="form-lead"
+         data-pt="Dois minutos. A gente volta com as instruções para enviar os contratos da avaliação."
+         data-en="Two minutes. We'll reply with the steps to send the contracts for the assessment.">Dois minutos. A gente volta com as instruções para enviar os contratos da avaliação.</p>
+
+      <form id="lead-form" novalidate="">
+        <p class="form-error" id="form-error"
+           data-pt-msg="Não conseguimos enviar agora. Tente de novo em instantes — ou chame no WhatsApp."
+           data-en-msg="We couldn't send it right now. Try again in a moment — or reach us on WhatsApp."></p>
+
+        <div class="f-row">
+          <div class="f-field">
+            <label for="f-nome" data-pt="Nome" data-en="Name">Nome</label>
+            <input type="text" id="f-nome" name="name" required autocomplete="name" placeholder="Seu nome" data-pt-placeholder="Seu nome" data-en-placeholder="Your name" />
+          </div>
+          <div class="f-field">
+            <label for="f-empresa" data-pt="Escritório / empresa" data-en="Firm / company">Escritório / empresa</label>
+            <input type="text" id="f-empresa" name="company" required autocomplete="organization" placeholder="Nome do escritório" data-pt-placeholder="Nome do escritório" data-en-placeholder="Firm name" />
+          </div>
+        </div>
+
+        <div class="f-row">
+          <div class="f-field">
+            <label for="f-email" data-pt="E-mail corporativo" data-en="Work e-mail">E-mail corporativo</label>
+            <input type="email" id="f-email" name="email" required autocomplete="email" placeholder="voce@escritorio.com.br" data-pt-placeholder="voce@escritorio.com.br" data-en-placeholder="you@firm.com" />
+          </div>
+          <div class="f-field">
+            <label for="f-tel" data-pt="Telefone / WhatsApp <span class='opt'>(opcional)</span>" data-en="Phone / WhatsApp <span class='opt'>(optional)</span>">Telefone / WhatsApp <span class="opt">(opcional)</span></label>
+            <input type="tel" id="f-tel" name="phone" autocomplete="tel" placeholder="(51) 99999-9999" data-pt-placeholder="(51) 99999-9999" data-en-placeholder="+55 51 99999-9999" />
+          </div>
+        </div>
+
+        <div class="f-field">
+          <label for="f-clientes" data-pt="Quantos clientes seu escritório atende?" data-en="How many clients does your firm serve?">Quantos clientes seu escritório atende?</label>
+          <select id="f-clientes" name="clients">
+            <option value="" data-pt="Selecione" data-en="Select">Selecione</option>
+            <option value="1-50" data-pt="Até 50 clientes" data-en="Up to 50 clients">Até 50 clientes</option>
+            <option value="50-150" data-pt="50 a 150 clientes" data-en="50 to 150 clients">50 a 150 clientes</option>
+            <option value="150-400" data-pt="150 a 400 clientes" data-en="150 to 400 clients">150 a 400 clientes</option>
+            <option value="400+" data-pt="Mais de 400 clientes" data-en="More than 400 clients">Mais de 400 clientes</option>
+          </select>
+        </div>
+
+        <div class="f-field">
+          <label for="f-msg" data-pt="Mensagem <span class='opt'>(opcional)</span>" data-en="Message <span class='opt'>(optional)</span>">Mensagem <span class="opt">(opcional)</span></label>
+          <textarea id="f-msg" name="message" placeholder="Conte um pouco sobre o seu escritório e o que você quer resolver." data-pt-placeholder="Conte um pouco sobre o seu escritório e o que você quer resolver." data-en-placeholder="Tell us a bit about your firm and what you want to solve."></textarea>
+        </div>
+
+        <button type="submit" class="btn btn-dark" style="width: 100%;" id="lead-submit">
+          <span data-pt="Enviar e receber a avaliação" data-en="Send and get the assessment">Enviar e receber a avaliação</span>
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M5 12h14M13 5l7 7-7 7" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </button>
+
+        <p class="form-note">
+          <span data-pt="Seus dados são usados apenas para retornar este contato. Ao enviar, você concorda com a nossa" data-en="Your data is used only to reply to this message. By sending, you agree to our">Seus dados são usados apenas para retornar este contato. Ao enviar, você concorda com a nossa</span>
+          <a href="#" data-pt="Política de Privacidade" data-en="Privacy Policy">Política de Privacidade</a>.
+        </p>
+      </form>
+
+      <div class="form-success" id="form-success" style="display: none;">
+        <div class="check"><svg width="22" height="22" viewBox="0 0 24 24" fill="none"><path d="M5 13l4 4L19 7" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+        <div class="t" data-pt="Recebemos seu contato." data-en="We got your message.">Recebemos seu contato.</div>
+        <div class="s" data-pt="Em até 1 dia útil alguém do time responde com as instruções para enviar os contratos da avaliação." data-en="Within 1 business day someone from the team replies with the steps to send the contracts for the assessment.">Em até 1 dia útil alguém do time responde com as instruções para enviar os contratos da avaliação.</div>
+        <button type="button" class="btn btn-ghost" id="form-reset" data-pt="Enviar nova mensagem" data-en="Send another message">Enviar nova mensagem</button>
+      </div>
+    </div>
+
+    <!-- WhatsApp + o que esperar -->
+    <div class="aside-stack">
+      <div class="wa-card reveal delay-1">
+        <div class="wa-eyebrow" data-pt="Atalho direto" data-en="Direct shortcut">Atalho direto</div>
+        <h3 data-pt="Prefere falar agora?" data-en="Rather talk now?">Prefere falar agora?</h3>
+        <div class="wa-num"><span class="pulse"></span> +55 51 92634-3014</div>
+        <a href="https://wa.me/5551926343014?text=Ol%C3%A1%2C%20quero%20falar%20com%20a%20Kontiva.ai"
+           data-pt-href="https://wa.me/5551926343014?text=Ol%C3%A1%2C%20quero%20falar%20com%20a%20Kontiva.ai"
+           data-en-href="https://wa.me/5551926343014?text=Hi%2C%20I%20want%20to%20talk%20to%20Kontiva.ai"
+           target="_blank" rel="noreferrer" class="btn btn-primary">
+          <svg class="whats" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M19.05 4.91A10 10 0 0 0 4.04 18.26L3 22l3.83-1.01A10 10 0 1 0 19.05 4.91zM12 20.15a8.14 8.14 0 0 1-4.15-1.13l-.3-.18-2.27.6.6-2.22-.19-.32A8.15 8.15 0 1 1 12 20.15zm4.46-6.1c-.24-.12-1.44-.71-1.66-.79-.22-.08-.38-.12-.54.12-.16.24-.62.79-.76.95-.14.16-.28.18-.52.06-.24-.12-1.02-.38-1.94-1.2-.72-.64-1.2-1.42-1.34-1.66-.14-.24-.02-.37.1-.49.1-.1.24-.28.36-.42.12-.14.16-.24.24-.4.08-.16.04-.3-.02-.42-.06-.12-.54-1.3-.74-1.78-.2-.48-.4-.42-.54-.42h-.46c-.16 0-.4.06-.62.3-.22.24-.84.82-.84 2 0 1.18.86 2.32.98 2.48.12.16 1.7 2.6 4.12 3.64.57.25 1.02.4 1.37.5.57.18 1.1.16 1.51.1.46-.07 1.44-.59 1.64-1.16.2-.57.2-1.06.14-1.16-.06-.1-.22-.16-.46-.28z" fill="currentColor"/></svg>
+          <span data-pt="Abrir conversa no WhatsApp" data-en="Open WhatsApp chat">Abrir conversa no WhatsApp</span>
+        </a>
+      </div>
+
+      <div class="expect-card reveal delay-2">
+        <div class="ex-eyebrow" data-pt="O que acontece depois" data-en="What happens next">O que acontece depois</div>
+        <div class="steps">
+          <div class="step">
+            <span class="num">01</span>
+            <div>
+              <div class="st-title" data-pt="Confirmação na hora" data-en="Instant confirmation">Confirmação na hora</div>
+              <div class="st-desc" data-pt="Você recebe um e-mail confirmando o envio em segundos." data-en="You get an e-mail confirming the submission in seconds.">Você recebe um e-mail confirmando o envio em segundos.</div>
+            </div>
+          </div>
+          <div class="step">
+            <span class="num">02</span>
+            <div>
+              <div class="st-title" data-pt="Resposta em 1 dia útil" data-en="Reply within 1 business day">Resposta em 1 dia útil</div>
+              <div class="st-desc" data-pt="A gente volta com as instruções para enviar 5 contratos da avaliação." data-en="We reply with the steps to send 5 contracts for the assessment.">A gente volta com as instruções para enviar 5 contratos da avaliação.</div>
+            </div>
+          </div>
+          <div class="step">
+            <span class="num">03</span>
+            <div>
+              <div class="st-title" data-pt="Diagnóstico dos contratos" data-en="Contract diagnosis">Diagnóstico dos contratos</div>
+              <div class="st-desc" data-pt="Mostramos quanto ficou sem cobrar — reajustes, excedentes e cláusulas esquecidas." data-en="We show what went unbilled — index adjustments, overages and forgotten clauses.">Mostramos quanto ficou sem cobrar — reajustes, excedentes e cláusulas esquecidas.</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ ENDEREÇOS ============ -->
+<section class="enderecos" data-screen-label="Contato — Endereços">
+  <div class="shell">
+    <div class="sec-head reveal">
+      <div class="eyebrow"><span class="dot-cyan"></span> <span data-pt="Onde estamos" data-en="Where we are">Onde estamos</span></div>
+      <h2 data-pt='Três escritórios. Um time <span class="serif-accent">único</span>.' data-en='Three offices. One <span class="serif-accent">single</span> team.'>Três escritórios. Um time <span class="serif-accent">único</span>.</h2>
+      <p data-pt="Sul, Sudeste e Estados Unidos. Mesmo padrão de entrega em qualquer geografia." data-en="South Brazil, Southeast Brazil and the United States. Same delivery standard everywhere.">Sul, Sudeste e Estados Unidos. Mesmo padrão de entrega em qualquer geografia.</p>
+    </div>
+    <div class="office-grid">
+      <div class="office reveal delay-1">
+        <div class="office-top">
+          <span class="office-city">Porto Alegre</span>
+          <span class="office-flag">BR</span>
+        </div>
+        <div class="office-region">RS, Brasil</div>
+        <div class="office-addr">
+          Tecnopuc — Av. Ipiranga, 6681<br/>
+          Sala 909, prédio 99A · Bairro Partenon<br/>
+          Porto Alegre — RS · CEP 90619-900
+        </div>
+        <a class="office-link" href="https://www.google.com/maps/search/?api=1&query=Av.+Ipiranga,+6681,+Porto+Alegre,+RS" target="_blank" rel="noreferrer">
+          <span data-pt="Ver no mapa" data-en="View on map">Ver no mapa</span>
+          <svg width="13" height="13" viewBox="0 0 24 24" fill="none"><path d="M5 12h14M13 5l7 7-7 7" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </a>
+      </div>
+      <div class="office reveal delay-2">
+        <div class="office-top">
+          <span class="office-city">São Paulo</span>
+          <span class="office-flag">BR</span>
+        </div>
+        <div class="office-region">SP, Brasil</div>
+        <div class="office-addr">
+          Av. Pres. Juscelino Kubitschek, 2041<br/>
+          12º andar · Vila Nova Conceição<br/>
+          São Paulo — SP · CEP 04543-011
+        </div>
+        <a class="office-link" href="https://www.google.com/maps/search/?api=1&query=Av.+Juscelino+Kubitschek,+2041,+S%C3%A3o+Paulo,+SP" target="_blank" rel="noreferrer">
+          <span data-pt="Ver no mapa" data-en="View on map">Ver no mapa</span>
+          <svg width="13" height="13" viewBox="0 0 24 24" fill="none"><path d="M5 12h14M13 5l7 7-7 7" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </a>
+      </div>
+      <div class="office reveal delay-3">
+        <div class="office-top">
+          <span class="office-city">Charlotte</span>
+          <span class="office-flag">US</span>
+        </div>
+        <div class="office-region">NC, USA</div>
+        <div class="office-addr">
+          13850 Ballantyne Corporate Pl #390<br/>
+          Charlotte, NC 28277<br/>
+          United States
+        </div>
+        <a class="office-link" href="https://www.google.com/maps/search/?api=1&query=13850+Ballantyne+Corporate+Pl,+Charlotte,+NC+28277" target="_blank" rel="noreferrer">
+          <span data-pt="Ver no mapa" data-en="View on map">Ver no mapa</span>
+          <svg width="13" height="13" viewBox="0 0 24 24" fill="none"><path d="M5 12h14M13 5l7 7-7 7" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ MAPA ============ -->
+<section class="mapa" data-screen-label="Contato — Mapa">
+  <div class="shell">
+    <div class="sec-head reveal" style="margin-bottom: 32px;">
+      <div class="eyebrow"><span class="dot-cyan"></span> <span data-pt="No mapa" data-en="On the map">No mapa</span></div>
+      <h2 style="font-size: clamp(28px, 3.2vw, 44px);" data-pt="Encontre a gente." data-en="Find us.">Encontre a gente.</h2>
+    </div>
+    <div class="map-tabs reveal" role="tablist">
+      <button type="button" class="on" data-map="poa">Porto Alegre</button>
+      <button type="button" data-map="sp">São Paulo</button>
+      <button type="button" data-map="clt">Charlotte</button>
+    </div>
+    <div class="map-frame reveal delay-1">
+      <div class="map-pane on" id="map-poa">
+        <iframe title="Mapa Porto Alegre" loading="lazy" referrerpolicy="no-referrer-when-downgrade" src="https://maps.google.com/maps?q=Av.+Ipiranga+6681+Porto+Alegre+RS+90619-900&output=embed"></iframe>
+      </div>
+      <div class="map-pane" id="map-sp">
+        <iframe title="Mapa São Paulo" loading="lazy" referrerpolicy="no-referrer-when-downgrade" src="https://maps.google.com/maps?q=Av.+Juscelino+Kubitschek+2041+Vila+Nova+Conceicao+Sao+Paulo+SP+04543-011&output=embed"></iframe>
+      </div>
+      <div class="map-pane" id="map-clt">
+        <iframe title="Mapa Charlotte" loading="lazy" referrerpolicy="no-referrer-when-downgrade" src="https://maps.google.com/maps?q=13850+Ballantyne+Corporate+Pl+%23390+Charlotte+NC+28277&output=embed"></iframe>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ OUTROS CANAIS ============ -->
+<section class="canais" data-screen-label="Contato — Outros canais">
+  <div class="shell">
+    <div class="sec-head reveal">
+      <div class="eyebrow"><span class="dot-cyan"></span> <span data-pt="Outros canais" data-en="Other channels">Outros canais</span></div>
+      <h2 style="font-size: clamp(28px, 3.2vw, 44px);" data-pt="Prefere outro caminho?" data-en="Prefer another way?">Prefere outro caminho?</h2>
+      <p data-pt="Cada canal tem uma porta. Escolha o que faz mais sentido para o seu pedido." data-en="Each channel has its door. Pick the one that fits your request.">Cada canal tem uma porta. Escolha o que faz mais sentido para o seu pedido.</p>
+    </div>
+    <!-- PLACEHOLDER: e-mails, LinkedIn e Instagram da Kontiva a confirmar -->
+    <div class="canal-grid">
+      <a class="canal reveal delay-1" href="https://wa.me/5551926343014?text=Ol%C3%A1%2C%20vim%20pelo%20site%20da%20Kontiva.ai" target="_blank" rel="noreferrer">
+        <span class="canal-ico"><svg width="20" height="20" viewBox="0 0 24 24" fill="none"><path d="M19.05 4.91A10 10 0 0 0 4.04 18.26L3 22l3.83-1.01A10 10 0 1 0 19.05 4.91zM12 20.15a8.14 8.14 0 0 1-4.15-1.13l-.3-.18-2.27.6.6-2.22-.19-.32A8.15 8.15 0 1 1 12 20.15zm4.46-6.1c-.24-.12-1.44-.71-1.66-.79-.22-.08-.38-.12-.54.12-.16.24-.62.79-.76.95-.14.16-.28.18-.52.06-.24-.12-1.02-.38-1.94-1.2-.72-.64-1.2-1.42-1.34-1.66-.14-.24-.02-.37.1-.49.1-.1.24-.28.36-.42.12-.14.16-.24.24-.4.08-.16.04-.3-.02-.42-.06-.12-.54-1.3-.74-1.78-.2-.48-.4-.42-.54-.42h-.46c-.16 0-.4.06-.62.3-.22.24-.84.82-.84 2 0 1.18.86 2.32.98 2.48.12.16 1.7 2.6 4.12 3.64.57.25 1.02.4 1.37.5.57.18 1.1.16 1.51.1.46-.07 1.44-.59 1.64-1.16.2-.57.2-1.06.14-1.16-.06-.1-.22-.16-.46-.28z" fill="currentColor"/></svg></span>
+        <span class="canal-label">WhatsApp Business</span>
+        <span class="canal-value">+55 51 92634-3014</span>
+        <span class="canal-desc" data-pt="Fale na hora com o nosso time." data-en="Talk to our team right now.">Fale na hora com o nosso time.</span>
+      </a>
+
+      <a class="canal reveal delay-3" href="mailto:privacidade@kontiva.ai">
+        <span class="canal-ico"><svg width="20" height="20" viewBox="0 0 24 24" fill="none"><path d="M12 3l7 3v5c0 4.5-3 8-7 10-4-2-7-5.5-7-10V6l7-3z" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/><path d="M9 12l2 2 4-4" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+        <span class="canal-label" data-pt="Privacidade · DPO" data-en="Privacy · DPO">Privacidade · DPO</span>
+        <span class="canal-value">privacidade@kontiva.ai <span class="ph-flag" data-pt="placeholder" data-en="placeholder">placeholder</span></span>
+        <span class="canal-desc" data-pt="Exercício de direitos da LGPD." data-en="LGPD rights requests.">Exercício de direitos da LGPD.</span>
+      </a>
+
+      <a class="canal reveal delay-1" href="#">
+        <span class="canal-ico"><svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M4.98 3.5C4.98 4.88 3.87 6 2.5 6S0 4.88 0 3.5 1.12 1 2.5 1s2.48 1.12 2.48 2.5zM.5 8h4V23h-4V8zm7.5 0h3.8v2.05h.05c.53-1 1.83-2.05 3.77-2.05 4.03 0 4.78 2.65 4.78 6.1V23h-4v-7.9c0-1.88-.04-4.3-2.62-4.3-2.63 0-3.03 2.05-3.03 4.17V23H8V8z"/></svg></span>
+        <span class="canal-label">LinkedIn</span>
+        <span class="canal-value">/company/kontiva <span class="ph-flag" data-pt="placeholder" data-en="placeholder">placeholder</span></span>
+        <span class="canal-desc" data-pt="Novidades, vagas e bastidores." data-en="News, jobs and behind the scenes.">Novidades, vagas e bastidores.</span>
+      </a>
+
+      <a class="canal reveal delay-2" href="#">
+        <span class="canal-ico"><svg width="20" height="20" viewBox="0 0 24 24" fill="none"><rect x="2.5" y="2.5" width="19" height="19" rx="5" stroke="currentColor" stroke-width="1.8"/><circle cx="12" cy="12" r="4.2" stroke="currentColor" stroke-width="1.8"/><circle cx="17.4" cy="6.6" r="1.3" fill="currentColor"/></svg></span>
+        <span class="canal-label">Instagram</span>
+        <span class="canal-value">@kontiva.ai <span class="ph-flag" data-pt="placeholder" data-en="placeholder">placeholder</span></span>
+        <span class="canal-desc" data-pt="Cultura, eventos e conteúdo." data-en="Culture, events and content.">Cultura, eventos e conteúdo.</span>
+      </a>
+
+      <a class="canal reveal delay-3" href="Kontiva Landing v3.html#calculadora">
+        <span class="canal-ico"><svg width="20" height="20" viewBox="0 0 24 24" fill="none"><rect x="5" y="3" width="14" height="18" rx="2.5" stroke="currentColor" stroke-width="1.8"/><path d="M8 7h8M8 11h2M12 11h2M16 11h.01M8 15h2M12 15h2M16 15h.01M8 19h6" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg></span>
+        <span class="canal-label" data-pt="Antes de falar" data-en="Before you reach out">Antes de falar</span>
+        <span class="canal-value" data-pt="Calculadora de perdas" data-en="Loss calculator">Calculadora de perdas</span>
+        <span class="canal-desc" data-pt="Estime em 1 minuto quanto você deixa de cobrar." data-en="Estimate in 1 minute how much goes unbilled.">Estime em 1 minuto quanto você deixa de cobrar.</span>
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- ============ FOOTER ============ -->
+<footer>
+  <div class="shell">
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <img class="brand-img" src="assets/kontiva-logo-light.png" alt="Kontiva.ai" />
+        <p class="footer-tagline"
+           data-pt="Gestão de contratos e cobrança com IA, de ponta a ponta, para escritórios de contabilidade."
+           data-en="AI-powered contract and billing management, end to end, for accounting firms.">Gestão de contratos e cobrança com IA, de ponta a ponta, para escritórios de contabilidade.</p>
+        <a href="https://wa.me/5551926343014?text=Ol%C3%A1%2C%20vim%20pelo%20site%20da%20Kontiva.ai"
+           data-pt-href="https://wa.me/5551926343014?text=Ol%C3%A1%2C%20vim%20pelo%20site%20da%20Kontiva.ai"
+           data-en-href="https://wa.me/5551926343014?text=Hi%2C%20I%20came%20from%20the%20Kontiva.ai%20website"
+           target="_blank" rel="noreferrer" class="btn btn-primary" style="padding: 11px 18px; font-size: 14px; align-self: flex-start;">
+          <svg class="whats" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M19.05 4.91A10 10 0 0 0 4.04 18.26L3 22l3.83-1.01A10 10 0 1 0 19.05 4.91zM12 20.15a8.14 8.14 0 0 1-4.15-1.13l-.3-.18-2.27.6.6-2.22-.19-.32A8.15 8.15 0 1 1 12 20.15zm4.46-6.1c-.24-.12-1.44-.71-1.66-.79-.22-.08-.38-.12-.54.12-.16.24-.62.79-.76.95-.14.16-.28.18-.52.06-.24-.12-1.02-.38-1.94-1.2-.72-.64-1.2-1.42-1.34-1.66-.14-.24-.02-.37.1-.49.1-.1.24-.28.36-.42.12-.14.16-.24.24-.4.08-.16.04-.3-.02-.42-.06-.12-.54-1.3-.74-1.78-.2-.48-.4-.42-.54-.42h-.46c-.16 0-.4.06-.62.3-.22.24-.84.82-.84 2 0 1.18.86 2.32.98 2.48.12.16 1.7 2.6 4.12 3.64.57.25 1.02.4 1.37.5.57.18 1.1.16 1.51.1.46-.07 1.44-.59 1.64-1.16.2-.57.2-1.06.14-1.16-.06-.1-.22-.16-.46-.28z" fill="currentColor"/></svg>
+          <span data-pt="Chame agora no WhatsApp" data-en="Chat with us on WhatsApp">Chame agora no WhatsApp</span>
+        </a>
+        <div class="social-row">
+          <a href="#" aria-label="LinkedIn"><svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M4.98 3.5C4.98 4.88 3.87 6 2.5 6S0 4.88 0 3.5 1.12 1 2.5 1s2.48 1.12 2.48 2.5zM.5 8h4V23h-4V8zm7.5 0h3.8v2.05h.05c.53-1 1.83-2.05 3.77-2.05 4.03 0 4.78 2.65 4.78 6.1V23h-4v-7.9c0-1.88-.04-4.3-2.62-4.3-2.63 0-3.03 2.05-3.03 4.17V23H8V8z"/></svg></a>
+          <a href="#" aria-label="Instagram"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" aria-hidden="true"><rect x="2.5" y="2.5" width="19" height="19" rx="5" stroke="currentColor" stroke-width="1.8"/><circle cx="12" cy="12" r="4.2" stroke="currentColor" stroke-width="1.8"/><circle cx="17.4" cy="6.6" r="1.3" fill="currentColor"/></svg></a>
+        </div>
+      </div>
+      <div class="footer-col">
+        <h5 data-pt="Produto" data-en="Product">Produto</h5>
+        <a href="Kontiva Landing v3.html#como-funciona" data-pt="Como funciona" data-en="How it works">Como funciona</a>
+        <a href="Kontiva Landing v3.html#calculadora" data-pt="Calculadora" data-en="Calculator">Calculadora</a>
+        <a href="Kontiva Landing v3.html#planos" data-pt="Planos" data-en="Pricing">Planos</a>
+      </div>
+      <div class="footer-col">
+        <h5 data-pt="Empresa" data-en="Company">Empresa</h5>
+        <a href="Kontiva Landing v3.html#faq">FAQ</a>
+        <a href="#form" data-pt="Avaliação gratuita" data-en="Free assessment">Avaliação gratuita</a>
+      </div>
+      <div class="footer-col">
+        <h5 data-pt="Contato" data-en="Contact">Contato</h5>
+        <a href="#form" data-pt="Formulário" data-en="Form">Formulário</a>
+        <a href="https://wa.me/5551926343014?text=Ol%C3%A1%2C%20vim%20pelo%20site%20da%20Kontiva.ai"
+           data-pt-href="https://wa.me/5551926343014?text=Ol%C3%A1%2C%20vim%20pelo%20site%20da%20Kontiva.ai"
+           data-en-href="https://wa.me/5551926343014?text=Hi%2C%20I%20came%20from%20the%20Kontiva.ai%20website"
+           target="_blank" rel="noreferrer">WhatsApp</a>
+        <a href="mailto:privacidade@kontiva.ai" data-pt="Privacidade" data-en="Privacy">Privacidade</a>
+      </div>
+    </div>
+    <div class="footer-legal">
+      <div data-pt="© 2026 Kontiva.ai · Todos os direitos reservados." data-en="© 2026 Kontiva.ai · All rights reserved.">© 2026 Kontiva.ai · Todos os direitos reservados.</div>
+      <a class="footer-bm" href="https://www.bluemetrics.ai" target="_blank" rel="noreferrer" data-pt="Kontiva é uma empresa BlueMetrics." data-en="Kontiva is a BlueMetrics company.">Kontiva é uma empresa BlueMetrics.</a>
+      <div class="footer-legal-links">
+        <a href="#" data-pt="Política de Privacidade" data-en="Privacy Policy">Política de Privacidade</a>
+        <span aria-hidden="true">·</span>
+        <a href="#" data-pt="Termos de Uso" data-en="Terms of Use">Termos de Uso</a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<!-- ============ SCRIPTS ============ -->
+<script>
+  /* Idioma PT/EN */
+  (function () {
+    var LANG_KEY = 'kontiva_lang';
+    var browserLang = (navigator.language || 'pt').toLowerCase().indexOf('pt') === 0 ? 'pt' : 'en';
+    var stored;
+    try { stored = localStorage.getItem(LANG_KEY) || browserLang; } catch (e) { stored = browserLang; }
+
+    function applyLang(lang) {
+      document.documentElement.lang = lang === 'en' ? 'en' : 'pt-BR';
+      document.documentElement.setAttribute('data-lang', lang);
+      try { localStorage.setItem(LANG_KEY, lang); } catch (e) {}
+      document.querySelectorAll('[data-pt]').forEach(function (el) {
+        el.innerHTML = lang === 'en' ? el.dataset.en : el.dataset.pt;
+      });
+      document.querySelectorAll('[data-pt-placeholder]').forEach(function (el) {
+        el.placeholder = lang === 'en' ? el.dataset.enPlaceholder : el.dataset.ptPlaceholder;
+      });
+      document.querySelectorAll('[data-pt-href]').forEach(function (el) {
+        el.href = lang === 'en' ? el.dataset.enHref : el.dataset.ptHref;
+      });
+      document.querySelectorAll('.lang-toggle button').forEach(function (btn) {
+        btn.classList.toggle('on', btn.dataset.lang === lang);
+      });
+    }
+
+    document.querySelectorAll('.lang-toggle button').forEach(function (btn) {
+      btn.addEventListener('click', function () { applyLang(btn.dataset.lang); });
+    });
+
+    applyLang(stored);
+  })();
+</script>
+
+<script>
+  /* Reveal on scroll */
+  (function () {
+    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+      document.querySelectorAll('.reveal').forEach(function (el) { el.classList.add('in'); });
+      return;
+    }
+    var items = document.querySelectorAll('.reveal');
+    if (!('IntersectionObserver' in window)) {
+      items.forEach(function (el) { el.classList.add('in'); });
+      return;
+    }
+    var obs = new IntersectionObserver(function (entries, observer) {
+      entries.forEach(function (e) {
+        if (e.isIntersecting) { e.target.classList.add('in'); observer.unobserve(e.target); }
+      });
+    }, { threshold: 0.12 });
+    items.forEach(function (el) { obs.observe(el); });
+  })();
+</script>
+
+<script>
+  /* Nav: escura no topo, branca ao rolar */
+  (function () {
+    var nav = document.querySelector('.nav');
+    if (!nav) return;
+    function onScroll() { nav.classList.toggle('nav-dark', window.scrollY <= 40); }
+    onScroll();
+    window.addEventListener('scroll', onScroll, { passive: true });
+  })();
+</script>
+
+<script>
+  /* Abas do mapa */
+  (function () {
+    var tabs = document.querySelectorAll('.map-tabs button');
+    var map = { poa: 'map-poa', sp: 'map-sp', clt: 'map-clt' };
+    tabs.forEach(function (btn) {
+      btn.addEventListener('click', function () {
+        tabs.forEach(function (b) { b.classList.remove('on'); });
+        btn.classList.add('on');
+        Object.keys(map).forEach(function (k) {
+          document.getElementById(map[k]).classList.toggle('on', k === btn.dataset.map);
+        });
+      });
+    });
+  })();
+</script>
+
+<script>
+  /* Form — simula sucesso no preview de design */
+  (function () {
+    var form = document.getElementById('lead-form');
+    if (!form) return;
+    var errorEl = document.getElementById('form-error');
+    var submitBtn = document.getElementById('lead-submit');
+    var successEl = document.getElementById('form-success');
+    var resetBtn = document.getElementById('form-reset');
+
+    form.addEventListener('submit', function (e) {
+      e.preventDefault();
+      errorEl.classList.remove('show');
+      if (!form.reportValidity()) return;
+
+      submitBtn.disabled = true;
+      submitBtn.style.opacity = '0.6';
+
+      setTimeout(function () {
+        form.style.display = 'none';
+        successEl.style.display = 'block';
+        submitBtn.disabled = false;
+        submitBtn.style.opacity = '';
+      }, 800);
+    });
+
+    if (resetBtn) {
+      resetBtn.addEventListener('click', function () {
+        form.reset();
+        successEl.style.display = 'none';
+        form.style.display = 'block';
+      });
+    }
+  })();
+</script>
+
+</body>
+</html>

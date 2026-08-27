@@ -1,0 +1,15 @@
+:root {
+  /* Radii (DESIGN.md §5) */
+  --r-xs: 6px;   /* tags mono, chips */
+  --r-sm: 10px;  /* botões, sheet rows */
+  --r-md: 12px;  /* radar rows, k-cards */
+  --r-lg: 16px;  /* calc-result */
+  --r-xl: 20px;  /* painéis, cards grandes (18–22px) */
+  --r-pill: 99px;
+
+  /* Sombras — sempre tingidas de azul, nunca preto puro */
+  --shadow-card: 0 20px 60px -20px rgba(10,31,63,0.15);
+  --shadow-dark: 0 30px 80px -30px rgba(10,31,63,0.4), 0 0 0 1px rgba(10,31,63,0.08);
+  --shadow-glow: 0 1px 0 rgba(0,0,0,0.04), 0 10px 30px -10px color-mix(in oklab, var(--ciano) calc(70% * var(--accent-boost)), transparent);
+  --shadow-glow-hover: 0 1px 0 rgba(0,0,0,0.04), 0 18px 40px -12px color-mix(in oklab, var(--ciano) calc(80% * var(--accent-boost)), transparent);
+}

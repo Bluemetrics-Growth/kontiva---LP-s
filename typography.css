@@ -1,0 +1,15 @@
+:root {
+  --font-display: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+  --font-body: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+  --font-serif-italic: 'Instrument Serif', Georgia, serif;
+  --font-mono: 'JetBrains Mono', ui-monospace, monospace;
+
+  /* Escala (DESIGN.md §3) */
+  --fs-h1: clamp(48px, 7vw, 96px);
+  --fs-h2: clamp(36px, 4.4vw, 64px);
+  --fs-h3: clamp(22px, 2.2vw, 28px);
+  --fs-lead: clamp(18px, 1.6vw, 22px);
+  --fs-body: 15px;
+  --fs-eyebrow: 12px;
+}
+.serif-accent { font-family: var(--font-serif-italic); font-style: italic; font-weight: 400; letter-spacing: -0.01em; }

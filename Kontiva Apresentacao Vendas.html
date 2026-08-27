@@ -1,0 +1,722 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Kontiva.ai — Apresentação de Vendas</title>
+<!-- Sistema visual: ver DESIGN.md -->
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Instrument+Serif:ital@0;1&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet" />
+<style>
+  :root {
+    --azul-profundo: #0A1F3F;
+    --azul-profundo-2: #122A52;
+    --ciano: #00D4FF;
+    --ciano-suave: #E0F9FF;
+    --branco: #FFFFFF;
+    --cinza-claro: #F2F4F7;
+    --cinza-texto: #6B7280;
+    --cinza-escuro: #374151;
+    --claro-escuro: #EAF6FF;
+    --accent-boost: 1.05;
+    --font-display: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+    --font-body: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+    --font-serif-italic: 'Instrument Serif', Georgia, serif;
+    --font-mono: 'JetBrains Mono', ui-monospace, monospace;
+  }
+
+  * { box-sizing: border-box; }
+  html, body { margin: 0; padding: 0; background: #05101f; }
+  deck-stage:not(:defined) { visibility: hidden; }
+
+  .serif { font-family: var(--font-serif-italic); font-style: italic; font-weight: 400; letter-spacing: -0.01em; }
+
+  /* ===== Slide base ===== */
+  section {
+    font-family: var(--font-body);
+    color: var(--azul-profundo);
+    background: var(--branco);
+    -webkit-font-smoothing: antialiased;
+    font-feature-settings: "ss01", "cv11";
+    overflow: hidden;
+  }
+  .slide {
+    position: absolute; inset: 0;
+    padding: 92px 120px 84px;
+    display: flex; flex-direction: column;
+  }
+  .slide.dark { background: var(--azul-profundo); color: var(--claro-escuro); }
+  .slide.gray { background: var(--cinza-claro); }
+  .slide.cyan { background: var(--ciano-suave); }
+
+  /* Backdrops */
+  .slide.dark::before {
+    content: ""; position: absolute; inset: 0; pointer-events: none;
+    background: radial-gradient(900px 480px at 82% 6%, color-mix(in oklab, var(--ciano) 15%, transparent), transparent 70%);
+  }
+
+  /* ===== Shared type ===== */
+  .eyebrow { display: inline-flex; align-items: center; gap: 14px; font-family: var(--font-mono); font-size: 17px; font-weight: 600; letter-spacing: 0.18em; text-transform: uppercase; color: var(--cinza-texto); }
+  .dark .eyebrow { color: rgba(234,246,255,0.62); }
+  .eyebrow .dot { width: 9px; height: 9px; border-radius: 50%; background: var(--ciano); box-shadow: 0 0 0 6px color-mix(in oklab, var(--ciano) 18%, transparent); flex-shrink: 0; }
+
+  h1.title { font-family: var(--font-display); font-weight: 700; letter-spacing: -0.035em; line-height: 1.0; margin: 0; }
+  h2.title { font-family: var(--font-display); font-weight: 700; letter-spacing: -0.03em; line-height: 1.03; margin: 0; font-size: 62px; }
+  .lead { font-size: 27px; line-height: 1.45; color: var(--cinza-escuro); font-weight: 400; max-width: 1180px; }
+  .dark .lead { color: rgba(234,246,255,0.82); }
+
+  .head { display: flex; flex-direction: column; gap: 22px; }
+  .head .lead { margin-top: 6px; }
+
+  /* ===== Footer strip ===== */
+  .foot { position: absolute; left: 120px; right: 120px; bottom: 46px; display: flex; align-items: center; justify-content: space-between; font-family: var(--font-mono); font-size: 16px; letter-spacing: 0.06em; color: var(--cinza-texto); }
+  .dark .foot { color: rgba(234,246,255,0.5); }
+  .foot .brand { display: inline-flex; align-items: baseline; gap: 0; font-weight: 500; }
+  .foot .num { font-variant-numeric: tabular-nums; }
+  .k-dot { color: var(--ciano); }
+
+  /* Logo lockup */
+  .logo { display: inline-flex; align-items: baseline; font-family: var(--font-display); font-weight: 700; letter-spacing: -0.03em; }
+  .logo .c { color: var(--ciano); }
+
+  /* ===== Cards ===== */
+  .card { background: var(--branco); border: 1px solid rgba(10,31,63,0.09); border-radius: 20px; padding: 34px; }
+  .gray .card, .cyan .card { box-shadow: 0 24px 60px -34px rgba(10,31,63,0.18); }
+  .card-dark { background: #0E244A; border: 1px solid rgba(255,255,255,0.08); border-radius: 20px; padding: 34px; color: var(--claro-escuro); position: relative; overflow: hidden; }
+  .card h3 { font-family: var(--font-display); font-weight: 700; font-size: 27px; letter-spacing: -0.02em; margin: 0 0 12px; }
+  .card p, .card-dark p { font-size: 20px; line-height: 1.5; color: var(--cinza-escuro); margin: 0; }
+  .card-dark p { color: rgba(234,246,255,0.78); }
+  .card-dark h3 { color: var(--claro-escuro); font-family: var(--font-display); font-weight: 700; font-size: 27px; margin: 0 0 12px; letter-spacing: -0.02em; }
+
+  .card-ico { width: 56px; height: 56px; border-radius: 14px; background: var(--ciano-suave); color: var(--azul-profundo); display: inline-flex; align-items: center; justify-content: center; margin-bottom: 22px; }
+  .card-dark .card-ico { background: color-mix(in oklab, var(--ciano) 20%, transparent); color: var(--ciano); }
+
+  /* Status badge */
+  .badge { font-family: var(--font-mono); font-size: 14px; font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase; padding: 6px 13px; border-radius: 99px; white-space: nowrap; }
+  .badge.on { background: var(--ciano); color: var(--azul-profundo); }
+  .badge.dev { background: color-mix(in oklab, var(--ciano) 16%, transparent); color: var(--ciano); border: 1px solid color-mix(in oklab, var(--ciano) 45%, transparent); }
+  .badge.road { background: rgba(234,246,255,0.08); color: rgba(234,246,255,0.6); border: 1px solid rgba(255,255,255,0.14); }
+
+  .note { font-family: var(--font-mono); font-size: 15px; letter-spacing: 0.02em; color: var(--cinza-texto); line-height: 1.5; }
+  .dark .note { color: rgba(234,246,255,0.44); }
+
+  /* Big stat */
+  .stat-num { font-family: var(--font-display); font-weight: 700; letter-spacing: -0.04em; line-height: 0.9; font-variant-numeric: tabular-nums; color: var(--ciano); }
+  .stat-label { font-size: 20px; line-height: 1.4; color: rgba(234,246,255,0.78); }
+
+  /* Chips */
+  .chip { font-family: var(--font-mono); font-size: 18px; font-weight: 500; padding: 12px 20px; border-radius: 12px; background: rgba(234,246,255,0.06); border: 1px solid rgba(255,255,255,0.12); color: var(--claro-escuro); }
+  .light .chip, .chip.light { background: var(--branco); border: 1px solid rgba(10,31,63,0.1); color: var(--azul-profundo); }
+
+  ul.ticks { list-style: none; padding: 0; margin: 0; display: flex; flex-direction: column; gap: 16px; }
+  ul.ticks li { display: grid; grid-template-columns: 30px 1fr; gap: 14px; align-items: start; font-size: 21px; line-height: 1.4; color: var(--cinza-escuro); }
+  .dark ul.ticks li { color: rgba(234,246,255,0.82); }
+  ul.ticks .tk { width: 28px; height: 28px; border-radius: 50%; background: var(--ciano-suave); color: var(--azul-profundo); display: inline-flex; align-items: center; justify-content: center; margin-top: 2px; flex-shrink: 0; }
+  .dark ul.ticks .tk { background: color-mix(in oklab, var(--ciano) 22%, transparent); color: var(--ciano); }
+
+  @media (prefers-reduced-motion: no-preference) {
+    [data-deck-active] .anim { opacity: 0; transform: translateY(22px); animation: rise .7s cubic-bezier(.2,.7,.1,1) forwards; }
+    [data-deck-active] .anim.d1 { animation-delay: .08s; }
+    [data-deck-active] .anim.d2 { animation-delay: .16s; }
+    [data-deck-active] .anim.d3 { animation-delay: .24s; }
+    [data-deck-active] .anim.d4 { animation-delay: .32s; }
+    [data-deck-active] .anim.d5 { animation-delay: .40s; }
+    @keyframes rise { to { opacity: 1; transform: none; } }
+  }
+</style>
+</head>
+<body>
+
+<deck-stage width="1920" height="1080">
+
+  <!-- ============ 01 — COVER ============ -->
+  <section data-label="Capa">
+    <div class="slide dark">
+      <div style="display:flex; align-items:center; justify-content:space-between;">
+        <div class="logo" style="font-size:30px;">Kontiva<span class="c">.ai</span></div>
+        <div class="eyebrow"><span class="dot"></span> Apresentação · 2026</div>
+      </div>
+
+      <div style="margin-top:auto; margin-bottom:auto; max-width:1400px;">
+        <div class="eyebrow anim" style="color:var(--ciano); margin-bottom:34px;">Service-as-Software para contabilidade</div>
+        <h1 class="title anim d1" style="font-size:104px; color:var(--claro-escuro);">A camada de IA que <span class="serif" style="color:var(--ciano);">opera</span><br/>o seu escritório de contabilidade</h1>
+        <p class="lead anim d2" style="margin-top:38px; font-size:30px; max-width:1000px;">Começa pelo controle de faturamento. Não para nele. Um hub de agentes de IA sobre os mesmos dados, permissões e trilha de auditoria.</p>
+      </div>
+
+      <div class="foot">
+        <span class="brand">kontiva<span class="k-dot">.</span>ai</span>
+        <span class="num">01 / 16</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ 02 — QUANTO DEIXA NA MESA ============ -->
+  <section data-label="Quanto deixa na mesa">
+    <div class="slide gray">
+      <div class="head">
+        <div class="eyebrow anim"><span class="dot"></span> O ponto cego</div>
+        <h2 class="title anim d1" style="font-size:72px; max-width:1400px;">Quanto dinheiro o seu escritório<br/>deixa na mesa <span class="serif">todo mês?</span></h2>
+      </div>
+
+      <div style="display:grid; grid-template-columns:repeat(4,1fr); gap:24px; margin-top:66px;">
+        <div class="card anim d1">
+          <div class="card-ico"><svg width="26" height="26" viewBox="0 0 24 24" fill="none"><path d="M4 7h16M4 12h16M4 17h10" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg></div>
+          <h3>Serviço não faturado</h3>
+          <p>Trabalho entregue que nunca virou cobrança.</p>
+        </div>
+        <div class="card anim d2">
+          <div class="card-ico"><svg width="26" height="26" viewBox="0 0 24 24" fill="none"><path d="M12 4v16M6 9l6-5 6 5" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+          <h3>Reajuste esquecido</h3>
+          <p>Índices anuais que não subiram na fatura.</p>
+        </div>
+        <div class="card anim d3">
+          <div class="card-ico"><svg width="26" height="26" viewBox="0 0 24 24" fill="none"><path d="M3 17l5-5 4 4 8-8" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+          <h3>Excedente batido</h3>
+          <p>Volume acima do contrato que passou despercebido.</p>
+        </div>
+        <div class="card anim d4">
+          <div class="card-ico"><svg width="26" height="26" viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="8" stroke="currentColor" stroke-width="1.8"/><path d="M12 8v4l3 2" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+          <h3>Horas conferindo</h3>
+          <p>Equipe na planilha em vez de atender o cliente.</p>
+        </div>
+      </div>
+
+      <p class="lead anim d4" style="margin-top:56px; font-size:29px; max-width:1300px; color:var(--azul-profundo); font-weight:500;">A maior parte dos escritórios não sabe o número — e é justamente aí que ele cresce.</p>
+
+      <div class="foot"><span class="brand">kontiva<span class="k-dot">.</span>ai</span><span class="num">02 / 16</span></div>
+    </div>
+  </section>
+
+  <!-- ============ 03 — RECEITA QUE VAZA / PRODUTIVIDADE ============ -->
+  <section data-label="Receita que vaza">
+    <div class="slide">
+      <div class="head">
+        <div class="eyebrow anim"><span class="dot"></span> O custo invisível</div>
+        <h2 class="title anim d1">Receita que <span class="serif">vaza</span> — e produtividade que se perde</h2>
+      </div>
+
+      <div style="display:grid; grid-template-columns:1fr 1fr; gap:40px; margin-top:52px; align-items:stretch;">
+        <div class="card-dark anim d1" style="display:flex; flex-direction:column;">
+          <div style="display:flex; align-items:baseline; gap:20px;">
+            <div class="stat-num" style="font-size:96px;">1–5%</div>
+            <div style="color:rgba(234,246,255,0.72); font-size:20px; line-height:1.35;">da receita é o<br/>vazamento típico</div>
+          </div>
+          <p style="margin-top:8px; color:rgba(234,246,255,0.78); font-size:20px;">Até <strong style="color:var(--ciano);">5–8%</strong> em serviços profissionais, por falhas de cobrança e contrato.</p>
+          <ul class="ticks" style="margin-top:26px;">
+            <li><span class="tk"><svg width="15" height="15" viewBox="0 0 24 24" fill="none"><path d="M5 13l4 4L19 7" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/></svg></span>Excedentes e trabalho fora de escopo não cobrados</li>
+            <li><span class="tk"><svg width="15" height="15" viewBox="0 0 24 24" fill="none"><path d="M5 13l4 4L19 7" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/></svg></span>Reajustes anuais (IPCA-E) esquecidos ou atrasados</li>
+            <li><span class="tk"><svg width="15" height="15" viewBox="0 0 24 24" fill="none"><path d="M5 13l4 4L19 7" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/></svg></span>Cálculo de excedente incorreto no próprio ERP</li>
+          </ul>
+        </div>
+
+        <div class="card anim d2" style="display:flex; flex-direction:column; background:var(--cinza-claro); border:none;">
+          <h3 style="font-size:30px;">Produtividade que se perde</h3>
+          <p style="font-size:21px;">Toda a operação depende de sócios e sêniores conferindo, do zero, a cada ciclo — e do conhecimento que vive na cabeça das pessoas.</p>
+          <ul class="ticks" style="margin-top:26px;">
+            <li><span class="tk"><svg width="15" height="15" viewBox="0 0 24 24" fill="none"><path d="M5 13l4 4L19 7" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/></svg></span>Revisão manual que trava o fechamento</li>
+            <li><span class="tk"><svg width="15" height="15" viewBox="0 0 24 24" fill="none"><path d="M5 13l4 4L19 7" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/></svg></span>Retrabalho e conferência repetitiva</li>
+            <li><span class="tk"><svg width="15" height="15" viewBox="0 0 24 24" fill="none"><path d="M5 13l4 4L19 7" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/></svg></span>Dependência de pessoas-chave (risco de saída)</li>
+            <li><span class="tk"><svg width="15" height="15" viewBox="0 0 24 24" fill="none"><path d="M5 13l4 4L19 7" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/></svg></span>Menos tempo para o que gera receita: o cliente</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="foot"><span class="note">Vazamento: Maxio / MGI Research (leakage 1–5% da receita; 5–8% em serviços profissionais).</span><span class="num" style="font-family:var(--font-mono);">03 / 16</span></div>
+    </div>
+  </section>
+
+  <!-- ============ 04 — O PROBLEMA ESTÁ ANTES ============ -->
+  <section data-label="Antes da cobrança">
+    <div class="slide gray">
+      <div class="head">
+        <div class="eyebrow anim"><span class="dot"></span> A raiz</div>
+        <h2 class="title anim d1" style="max-width:1400px;">O problema está <span class="serif">antes</span> da cobrança, não nela</h2>
+        <p class="lead anim d2">Seu sistema de cobrança foi feito para emitir a fatura depois que o valor já é conhecido. Ninguém resolve bem a etapa anterior: decidir qual é o valor correto.</p>
+      </div>
+
+      <div style="display:grid; grid-template-columns:repeat(3,1fr); gap:24px; margin-top:60px;">
+        <div class="card anim d2">
+          <div class="card-ico"><svg width="26" height="26" viewBox="0 0 24 24" fill="none"><path d="M4 5h16M4 10h16M4 15h9M4 20h13" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg></div>
+          <h3>Regras não estruturadas</h3>
+          <p>As regras de faturamento vivem em contratos, planilhas, PDFs, e-mails e WhatsApp — nunca como dados que o sistema entende.</p>
+        </div>
+        <div class="card anim d3">
+          <div class="card-ico"><svg width="26" height="26" viewBox="0 0 24 24" fill="none"><rect x="4" y="4" width="16" height="16" rx="3" stroke="currentColor" stroke-width="1.8"/><path d="M9 12l2 2 4-4" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+          <h3>O ERP executa, não valida</h3>
+          <p>Ele cobra o valor que recebe. Não compara contrato × trabalho feito, nem checa se o excedente está certo.</p>
+        </div>
+        <div class="card anim d4">
+          <div class="card-ico"><svg width="26" height="26" viewBox="0 0 24 24" fill="none"><circle cx="12" cy="8" r="4" stroke="currentColor" stroke-width="1.8"/><path d="M5 20c0-3.3 3.1-6 7-6s7 2.7 7 6" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg></div>
+          <h3>Conhecimento na cabeça</h3>
+          <p>Quem sabe as exceções de cada cliente é uma pessoa. Se ela sai, o controle sai junto.</p>
+        </div>
+      </div>
+
+      <div class="foot"><span class="brand">kontiva<span class="k-dot">.</span>ai</span><span class="num">04 / 16</span></div>
+    </div>
+  </section>
+
+  <!-- ============ 05 — O QUE É A KONTIVA ============ -->
+  <section data-label="O que é a Kontiva">
+    <div class="slide dark">
+      <div class="head">
+        <div class="eyebrow anim" style="color:var(--ciano);"><span class="dot"></span> O que é a Kontiva</div>
+        <h2 class="title anim d1" style="color:var(--claro-escuro); max-width:1300px;">Um hub de agentes de IA para o <span class="serif" style="color:var(--ciano);">seu</span> escritório</h2>
+        <p class="lead anim d2">Service-as-Software: a IA não entrega só a ferramenta — entrega a atividade pronta, com controle, registro e explicação. Você começa pelo faturamento e ativa novos agentes conforme cresce a confiança.</p>
+      </div>
+
+      <div style="display:flex; flex-direction:column; gap:16px; margin-top:52px;">
+        <div class="anim d2" style="display:flex; align-items:center; justify-content:space-between; gap:24px; padding:24px 30px; border-radius:16px; background:color-mix(in oklab, var(--ciano) 10%, transparent); border:1px solid color-mix(in oklab, var(--ciano) 40%, transparent);">
+          <div style="display:flex; align-items:center; gap:22px;">
+            <span style="width:46px; height:46px; border-radius:12px; background:var(--ciano); color:var(--azul-profundo); display:inline-flex; align-items:center; justify-content:center;"><svg width="24" height="24" viewBox="0 0 24 24" fill="none"><path d="M4 13l4 4 12-12" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+            <span style="font-family:var(--font-display); font-weight:700; font-size:28px; color:var(--claro-escuro);">Controle de faturamento</span>
+          </div>
+          <span class="badge on">Disponível · o primeiro layer</span>
+        </div>
+
+        <div class="anim d3" style="display:flex; align-items:center; justify-content:space-between; gap:24px; padding:22px 30px; border-radius:16px; background:rgba(234,246,255,0.04); border:1px solid rgba(255,255,255,0.09);">
+          <span style="font-family:var(--font-display); font-weight:600; font-size:25px; color:rgba(234,246,255,0.9);">Simulação tributária &amp; créditos</span>
+          <span class="badge dev">Em desenvolvimento</span>
+        </div>
+        <div class="anim d3" style="display:flex; align-items:center; justify-content:space-between; gap:24px; padding:22px 30px; border-radius:16px; background:rgba(234,246,255,0.04); border:1px solid rgba(255,255,255,0.09);">
+          <span style="font-family:var(--font-display); font-weight:600; font-size:25px; color:rgba(234,246,255,0.9);">Controle documental</span>
+          <span class="badge road">Roadmap</span>
+        </div>
+        <div class="anim d4" style="display:flex; align-items:center; justify-content:space-between; gap:24px; padding:22px 30px; border-radius:16px; background:rgba(234,246,255,0.04); border:1px solid rgba(255,255,255,0.09);">
+          <span style="font-family:var(--font-display); font-weight:600; font-size:25px; color:rgba(234,246,255,0.9);">Comunicação com o cliente</span>
+          <span class="badge road">Roadmap</span>
+        </div>
+        <div class="anim d4" style="display:flex; align-items:center; justify-content:space-between; gap:24px; padding:22px 30px; border-radius:16px; background:rgba(234,246,255,0.04); border:1px solid rgba(255,255,255,0.09);">
+          <span style="font-family:var(--font-display); font-weight:600; font-size:25px; color:rgba(234,246,255,0.9);">Assistente de conhecimento</span>
+          <span class="badge road">Roadmap</span>
+        </div>
+      </div>
+
+      <div class="foot"><span class="note" style="color:rgba(234,246,255,0.55);">Uma plataforma, muitos agentes — todos sobre os mesmos dados, permissões e trilha de auditoria.</span><span class="num" style="font-family:var(--font-mono);">05 / 16</span></div>
+    </div>
+  </section>
+
+  <!-- ============ 06 — PRIMEIRO LAYER EM AÇÃO ============ -->
+  <section data-label="Primeiro layer em ação">
+    <div class="slide">
+      <div class="head">
+        <div class="eyebrow anim"><span class="dot"></span> O primeiro layer em ação</div>
+        <h2 class="title anim d1">Do contrato à cobrança certa — com <span class="serif">explicação</span></h2>
+      </div>
+
+      <!-- Flow chain -->
+      <div class="anim d2" style="display:flex; align-items:stretch; gap:0; margin-top:50px; flex-wrap:nowrap;">
+        <!-- nodes -->
+        <div class="flow-node">Contrato</div>
+        <div class="flow-arrow">→</div>
+        <div class="flow-node">Regras</div>
+        <div class="flow-arrow">→</div>
+        <div class="flow-node">Relatório</div>
+        <div class="flow-arrow">→</div>
+        <div class="flow-node">Cálculo</div>
+        <div class="flow-arrow">→</div>
+        <div class="flow-node">Explicação</div>
+        <div class="flow-arrow">→</div>
+        <div class="flow-node accent">Sua decisão</div>
+        <div class="flow-arrow">→</div>
+        <div class="flow-node solid">Cobrança</div>
+      </div>
+
+      <p class="lead anim d2" style="margin-top:44px; max-width:1300px;">Cada valor vem com o porquê: qual regra, qual dado, como chegou ali — pronto para revisar internamente e justificar ao cliente.</p>
+
+      <div style="display:grid; grid-template-columns:repeat(3,1fr); gap:24px; margin-top:44px;">
+        <div class="card anim d3">
+          <h3>Rastreável</h3>
+          <p>Toda cobrança tem cláusula, input e histórico de aprovação.</p>
+        </div>
+        <div class="card anim d4">
+          <h3>Defensável</h3>
+          <p>Explicação clara que sustenta a conversa com o cliente.</p>
+        </div>
+        <div class="card anim d5">
+          <h3>Sem migrar</h3>
+          <p>Integra ao Asaas, Nibo, Conta Azul e Omie — você continua onde já emite.</p>
+        </div>
+      </div>
+
+      <div class="foot"><span class="brand">kontiva<span class="k-dot">.</span>ai</span><span class="num">06 / 16</span></div>
+    </div>
+  </section>
+
+  <!-- ============ 07 — NÍVEL DE AUTONOMIA ============ -->
+  <section data-label="Nível de autonomia">
+    <div class="slide gray">
+      <div class="head">
+        <div class="eyebrow anim"><span class="dot"></span> Você decide o nível de autonomia</div>
+        <h2 class="title anim d1">Do controle total à <span class="serif">automação</span> completa</h2>
+        <p class="lead anim d2">A aprovação humana é o padrão — e é uma escolha sua, não uma imposição. Conforme a confiança cresce, você libera mais autonomia para a IA, no seu ritmo.</p>
+      </div>
+
+      <div style="display:grid; grid-template-columns:repeat(3,1fr); gap:24px; margin-top:60px;">
+        <div class="card anim d2" style="border-top:4px solid var(--ciano);">
+          <span class="badge on" style="margin-bottom:20px; display:inline-block;">Padrão</span>
+          <h3 style="margin-top:16px;">Human-in-the-loop</h3>
+          <p>A IA propõe e explica; uma pessoa revisa e aprova cada cobrança antes de qualquer ação.</p>
+        </div>
+        <div class="card anim d3">
+          <span class="badge" style="margin-bottom:20px; display:inline-block; background:rgba(10,31,63,0.06); color:var(--cinza-texto);">Opcional</span>
+          <h3 style="margin-top:16px;">Automação assistida</h3>
+          <p>A IA executa os casos simples e de baixo risco; o time revisa só as exceções sinalizadas.</p>
+        </div>
+        <div class="card anim d4">
+          <span class="badge" style="margin-bottom:20px; display:inline-block; background:rgba(10,31,63,0.06); color:var(--cinza-texto);">Opcional</span>
+          <h3 style="margin-top:16px;">Automação completa</h3>
+          <p>A IA opera o fluxo ponta a ponta, dentro das regras e limites que você definir.</p>
+        </div>
+      </div>
+
+      <div class="foot"><span class="brand">kontiva<span class="k-dot">.</span>ai</span><span class="num">07 / 16</span></div>
+    </div>
+  </section>
+
+  <!-- ============ 08 — RECEITA PROTEGIDA ============ -->
+  <section data-label="Receita protegida">
+    <div class="slide">
+      <div class="head">
+        <div class="eyebrow anim"><span class="dot"></span> O resultado</div>
+        <h2 class="title anim d1">Receita protegida, <span class="serif">recuperada</span> e defensável</h2>
+      </div>
+
+      <div style="display:grid; grid-template-columns:repeat(2,1fr); gap:24px; margin-top:56px;">
+        <div class="card anim d1">
+          <div class="card-ico"><svg width="26" height="26" viewBox="0 0 24 24" fill="none"><path d="M4 12a8 8 0 1 1 2.5 5.8" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/><path d="M4 20v-4h4" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+          <h3>Recupera o que escapou</h3>
+          <p>Excedentes, reajustes e trabalho fora de escopo que deixaram de ser cobrados voltam para o radar.</p>
+        </div>
+        <div class="card anim d2">
+          <div class="card-ico"><svg width="26" height="26" viewBox="0 0 24 24" fill="none"><path d="M12 3l7 3v5c0 4.5-3 8-7 10-4-2-7-5.5-7-10V6l7-3z" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/></svg></div>
+          <h3>Protege daqui pra frente</h3>
+          <p>Subcobrança, cálculo errado e regra aplicada de forma inconsistente param de corroer a margem.</p>
+        </div>
+        <div class="card anim d3">
+          <div class="card-ico"><svg width="26" height="26" viewBox="0 0 24 24" fill="none"><rect x="4" y="4" width="16" height="16" rx="3" stroke="currentColor" stroke-width="1.8"/><path d="M9 12l2 2 4-4" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+          <h3>Cobra com segurança</h3>
+          <p>Cada valor é defensável — reduz disputa com cliente e dependência de pessoas-chave.</p>
+        </div>
+        <div class="card anim d4">
+          <div class="card-ico"><svg width="26" height="26" viewBox="0 0 24 24" fill="none"><circle cx="11" cy="11" r="7" stroke="currentColor" stroke-width="1.8"/><path d="M16 16l4 4" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg></div>
+          <h3>Enxerga a carteira</h3>
+          <p>Visão de quais clientes precisam de revisão, reajuste ou atualização de contrato a cada ciclo.</p>
+        </div>
+      </div>
+
+      <div class="foot"><span class="brand">kontiva<span class="k-dot">.</span>ai</span><span class="num">08 / 16</span></div>
+    </div>
+  </section>
+
+  <!-- ============ 09 — TRABALHA COM VOCÊ (MÉTRICAS) ============ -->
+  <section data-label="Trabalha com você">
+    <div class="slide dark">
+      <div class="head">
+        <div class="eyebrow anim" style="color:var(--ciano);"><span class="dot"></span> Produtividade</div>
+        <h2 class="title anim d1" style="color:var(--claro-escuro); max-width:1300px;">A Kontiva trabalha <span class="serif" style="color:var(--ciano);">com você</span> — não no seu lugar</h2>
+        <p class="lead anim d2" style="max-width:1300px;">O trabalho repetitivo de digitar, conferir e recalcular sai da sua mesa. Você deixa de executar a tarefa e passa a orquestrar a IA e decidir as exceções — um papel mais estratégico e mais valioso.</p>
+      </div>
+
+      <div style="display:grid; grid-template-columns:repeat(4,1fr); gap:24px; margin-top:56px;">
+        <div class="card-dark anim d2">
+          <div class="stat-num" style="font-size:76px;">5,4h</div>
+          <div class="stat-label" style="margin-top:16px;">por semana economizadas por profissional com IA</div>
+        </div>
+        <div class="card-dark anim d3">
+          <div class="stat-num" style="font-size:76px;">86%</div>
+          <div class="stat-label" style="margin-top:16px;">dizem que a IA reduziu a carga mental do dia a dia</div>
+        </div>
+        <div class="card-dark anim d4">
+          <div class="stat-num" style="font-size:76px;">−7,5</div>
+          <div class="stat-label" style="margin-top:16px;">dias de redução no ciclo de fechamento mensal</div>
+        </div>
+        <div class="card-dark anim d5">
+          <div class="stat-num" style="font-size:76px;">81%</div>
+          <div class="stat-label" style="margin-top:16px;">relatam ganho de produtividade com IA</div>
+        </div>
+      </div>
+
+      <p class="anim d5" style="margin-top:40px; font-size:22px; color:rgba(234,246,255,0.85); max-width:1300px;">De digitador a orquestrador: a IA assume a tarefa repetitiva; a pessoa ganha tempo para análise, atendimento e trabalho consultivo.</p>
+
+      <div class="foot"><span class="note" style="color:rgba(234,246,255,0.5);">Produtividade: Intuit QuickBooks Accountant Technology Survey 2025 (n=700). Ganhos variam por escritório.</span><span class="num" style="font-family:var(--font-mono);">09 / 16</span></div>
+    </div>
+  </section>
+
+  <!-- ============ 10 — BAIXO RISCO DE ADOÇÃO ============ -->
+  <section data-label="Baixo risco de adoção">
+    <div class="slide">
+      <div class="head">
+        <div class="eyebrow anim"><span class="dot"></span> Baixo risco de adoção</div>
+        <h2 class="title anim d1">Complementa o que você já usa — e <span class="serif">respeita</span> seus dados</h2>
+      </div>
+
+      <div style="display:grid; grid-template-columns:1fr 1fr; gap:40px; margin-top:52px; align-items:stretch;">
+        <div class="card anim d1" style="background:var(--cinza-claro); border:none; display:flex; flex-direction:column;">
+          <h3 style="font-size:30px;">Sem trocar de sistema</h3>
+          <p style="font-size:21px;">Você continua emitindo onde já emite. A Kontiva entra antes, garantindo que o valor certo — explicado e aprovado — chegue ao seu sistema.</p>
+          <div style="display:flex; flex-wrap:wrap; gap:14px; margin-top:30px;">
+            <span class="chip light">Asaas</span>
+            <span class="chip light">Nibo</span>
+            <span class="chip light">Conta Azul</span>
+            <span class="chip light">Omie</span>
+          </div>
+          <p style="margin-top:auto; padding-top:28px; font-family:var(--font-mono); font-size:17px; color:var(--cinza-texto);">Sem migração. Sem trocar de ERP.</p>
+        </div>
+
+        <div class="card-dark anim d2" style="display:flex; flex-direction:column;">
+          <h3>Seus dados sob controle</h3>
+          <ul class="ticks" style="margin-top:22px;">
+            <li><span class="tk"><svg width="15" height="15" viewBox="0 0 24 24" fill="none"><path d="M5 13l4 4L19 7" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/></svg></span>NDA e DPA desde o início</li>
+            <li><span class="tk"><svg width="15" height="15" viewBox="0 0 24 24" fill="none"><path d="M5 13l4 4L19 7" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/></svg></span>Conformidade com a LGPD</li>
+            <li><span class="tk"><svg width="15" height="15" viewBox="0 0 24 24" fill="none"><path d="M5 13l4 4L19 7" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/></svg></span>Isolamento dos dados por escritório</li>
+            <li><span class="tk"><svg width="15" height="15" viewBox="0 0 24 24" fill="none"><path d="M5 13l4 4L19 7" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/></svg></span>Opção de mascarar dados que identificam o cliente</li>
+            <li><span class="tk"><svg width="15" height="15" viewBox="0 0 24 24" fill="none"><path d="M5 13l4 4L19 7" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/></svg></span>Política clara de exclusão de dados</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="foot"><span class="brand">kontiva<span class="k-dot">.</span>ai</span><span class="num">10 / 16</span></div>
+    </div>
+  </section>
+
+  <!-- ============ 11 — REFORMA TRIBUTÁRIA ============ -->
+  <section data-label="Reforma tributária">
+    <div class="slide gray">
+      <div class="head">
+        <div class="eyebrow anim"><span class="dot"></span> Em desenvolvimento · o timing certo</div>
+        <h2 class="title anim d1">Reforma Tributária e simulação de <span class="serif">créditos</span></h2>
+        <p class="lead anim d2" style="max-width:1360px;">Desde jan/2026 todo mundo já emite nota com IBS e CBS em alíquota-teste. A cobrança cheia, o split payment e o novo modelo de créditos estão chegando — e vão exigir simulação e controle que a planilha não dá conta.</p>
+      </div>
+
+      <!-- Timeline -->
+      <div class="anim d2" style="display:grid; grid-template-columns:repeat(4,1fr); gap:0; margin-top:52px; position:relative;">
+        <div class="tl">
+          <div class="tl-dot"></div><div class="tl-year">2026</div>
+          <div class="tl-txt">Fase de teste: IBS+CBS a 1% na nota</div>
+        </div>
+        <div class="tl">
+          <div class="tl-dot"></div><div class="tl-year">2027</div>
+          <div class="tl-txt">CBS cheia; PIS/Cofins extintos; split payment</div>
+        </div>
+        <div class="tl">
+          <div class="tl-dot"></div><div class="tl-year">2029–32</div>
+          <div class="tl-txt">Transição de ICMS/ISS para IBS</div>
+        </div>
+        <div class="tl">
+          <div class="tl-dot"></div><div class="tl-year">2033</div>
+          <div class="tl-txt">ICMS e ISS extintos</div>
+        </div>
+      </div>
+
+      <div class="anim d4" style="margin-top:48px; display:flex; gap:40px; align-items:flex-start; flex-wrap:wrap;">
+        <div style="font-family:var(--font-mono); font-size:16px; letter-spacing:0.12em; text-transform:uppercase; color:var(--cinza-texto); padding-top:6px; white-space:nowrap;">O que a Kontiva<br/>está construindo</div>
+        <ul class="ticks" style="flex:1; min-width:600px; display:grid; grid-template-columns:1fr 1fr; gap:16px 40px;">
+          <li><span class="tk"><svg width="15" height="15" viewBox="0 0 24 24" fill="none"><path d="M5 13l4 4L19 7" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/></svg></span>Simular o impacto da Reforma na carga tributária de cada cliente</li>
+          <li><span class="tk"><svg width="15" height="15" viewBox="0 0 24 24" fill="none"><path d="M5 13l4 4L19 7" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/></svg></span>Controlar e conciliar créditos de IBS/CBS ao longo da cadeia</li>
+          <li><span class="tk"><svg width="15" height="15" viewBox="0 0 24 24" fill="none"><path d="M5 13l4 4L19 7" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/></svg></span>Preparar o escritório para o split payment e o novo crédito financeiro</li>
+        </ul>
+      </div>
+
+      <div class="foot"><span class="note">Cronograma: Câmara dos Deputados e Agência Brasil (transição da Reforma, jan/2026). Funcionalidades em desenvolvimento.</span><span class="num" style="font-family:var(--font-mono);">11 / 16</span></div>
+    </div>
+  </section>
+
+  <!-- ============ 12 — AI ENABLEMENT ============ -->
+  <section data-label="AI Enablement">
+    <div class="slide dark">
+      <div class="head">
+        <div class="eyebrow anim" style="color:var(--ciano);"><span class="dot"></span> Além do faturamento</div>
+        <h2 class="title anim d1" style="color:var(--claro-escuro); max-width:1360px;">AI Enablement: colocar IA para <span class="serif" style="color:var(--ciano);">operar</span> o escritório</h2>
+        <p class="lead anim d2" style="max-width:1360px;">Depois que a Kontiva prova valor no faturamento, ela vira a porta para automatizar outros processos com segurança — no ritmo do seu escritório. Chamamos isso de AI Enablement.</p>
+      </div>
+
+      <div style="display:grid; grid-template-columns:repeat(3,1fr); gap:24px; margin-top:56px;">
+        <div class="card-dark anim d2">
+          <div class="card-ico"><svg width="26" height="26" viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="3" stroke="currentColor" stroke-width="1.8"/><path d="M12 2v3M12 19v3M2 12h3M19 12h3M5 5l2 2M17 17l2 2M19 5l-2 2M7 17l-2 2" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg></div>
+          <h3>O que é</h3>
+          <p>Implementar agentes de IA sobre os seus processos reais — não um chatbot genérico, mas fluxos que executam a atividade com regra, permissão e auditoria.</p>
+        </div>
+        <div class="card-dark anim d3">
+          <div class="card-ico"><svg width="26" height="26" viewBox="0 0 24 24" fill="none"><path d="M4 7h13M4 12h9M4 17h13" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/><path d="M17 4l3 3-3 3M20 14l-3 3 3 3" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+          <h3>O que muda</h3>
+          <p>Onboarding de clientes, fechamento mensal, coleta de documentos, obrigações e conhecimento interno deixam de depender de esforço manual repetido.</p>
+        </div>
+        <div class="card-dark anim d4">
+          <div class="card-ico"><svg width="26" height="26" viewBox="0 0 24 24" fill="none"><path d="M3 17l5-5 4 4 8-8" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/><path d="M15 8h5v5" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+          <h3>O ganho</h3>
+          <p>Mais capacidade sem contratar na mesma proporção, menos retrabalho, menos dependência de pessoas-chave e um escritório que escala com IA.</p>
+        </div>
+      </div>
+
+      <div class="foot"><span class="brand" style="color:rgba(234,246,255,0.5);">kontiva<span class="k-dot">.</span>ai</span><span class="num" style="font-family:var(--font-mono);">12 / 16</span></div>
+    </div>
+  </section>
+
+  <!-- ============ 13 — O PROBLEMA É GRANDE ============ -->
+  <section data-label="Problema grande e urgente">
+    <div class="slide cyan">
+      <div class="head">
+        <div class="eyebrow anim"><span class="dot"></span> Mercado</div>
+        <h2 class="title anim d1">O problema é grande, <span class="serif">medido</span> e urgente</h2>
+      </div>
+
+      <div style="display:grid; grid-template-columns:repeat(4,1fr); gap:24px; margin-top:60px;">
+        <div class="card anim d1" style="border:none;">
+          <div class="stat-num" style="font-size:72px; color:var(--azul-profundo);">+100<span style="font-size:34px; font-weight:600;"> mil</span></div>
+          <div style="margin-top:18px; font-size:20px; line-height:1.4; color:var(--cinza-escuro);">organizações contábeis no Brasil; 533 mil profissionais ativos (CFC)</div>
+        </div>
+        <div class="card anim d2" style="border:none;">
+          <div class="stat-num" style="font-size:72px; color:var(--azul-profundo);">1–5%</div>
+          <div style="margin-top:18px; font-size:20px; line-height:1.4; color:var(--cinza-escuro);">da receita vaza por falhas de cobrança e contrato (até 5–8% em serviços)</div>
+        </div>
+        <div class="card anim d3" style="border:none;">
+          <div class="stat-num" style="font-size:72px; color:var(--azul-profundo);">64%</div>
+          <div style="margin-top:18px; font-size:20px; line-height:1.4; color:var(--cinza-escuro);">dos escritórios vão investir ou ampliar IA no próximo ano</div>
+        </div>
+        <div class="card anim d4" style="border:none; background:var(--azul-profundo); color:var(--claro-escuro);">
+          <div class="stat-num" style="font-size:72px;">2026</div>
+          <div style="margin-top:18px; font-size:20px; line-height:1.4; color:rgba(234,246,255,0.82);">a Reforma já começou: IBS/CBS na nota, cobrança cheia a partir de 2027</div>
+        </div>
+      </div>
+
+      <div class="foot"><span class="note">Fontes: CFC (organizações e profissionais); Maxio/MGI (leakage); Intuit QuickBooks 2025 (adoção de IA); Câmara/Agência Brasil (Reforma).</span><span class="num" style="font-family:var(--font-mono);">13 / 16</span></div>
+    </div>
+  </section>
+
+  <!-- ============ 14 — COMO COMEÇAMOS ============ -->
+  <section data-label="Como começamos">
+    <div class="slide">
+      <div class="head">
+        <div class="eyebrow anim"><span class="dot"></span> Como começamos</div>
+        <h2 class="title anim d1">Um diagnóstico com os seus <span class="serif">próprios</span> números</h2>
+        <p class="lead anim d2">Não é um teste de software solto. É uma revisão de faturamento com começo, meio e fim — e um retrato de ROI no final.</p>
+      </div>
+
+      <div style="display:grid; grid-template-columns:repeat(3,1fr); gap:24px; margin-top:56px;">
+        <div class="card anim d2">
+          <div class="step-n">1</div>
+          <h3 style="margin-top:22px;">Você separa</h3>
+          <p>3 a 10 contratos representativos e relatórios recentes correspondentes.</p>
+        </div>
+        <div class="card anim d3">
+          <div class="step-n">2</div>
+          <h3 style="margin-top:22px;">A Kontiva analisa</h3>
+          <p>Extrai regras, cruza com os relatórios e monta os cálculos com explicação.</p>
+        </div>
+        <div class="card anim d4">
+          <div class="step-n">3</div>
+          <h3 style="margin-top:22px;">Você recebe o readout</h3>
+          <p>Uma reunião com o que foi encontrado, o valor em jogo e a recomendação.</p>
+        </div>
+      </div>
+
+      <p class="anim d4" style="margin-top:42px; font-size:22px; line-height:1.5; color:var(--cinza-escuro); max-width:1400px;">Duas colunas de valor: o que <strong>já escapou</strong> (uma vez) e o que se <strong>evita a cada ciclo</strong> se a checagem virar rotina. É a segunda que justifica seguir — não voltar a ficar cego para o vazamento mês a mês.</p>
+
+      <div class="foot"><span class="brand">kontiva<span class="k-dot">.</span>ai</span><span class="num">14 / 16</span></div>
+    </div>
+  </section>
+
+  <!-- ============ 15 — COMO VOCÊ CONTRATA ============ -->
+  <section data-label="Como você contrata">
+    <div class="slide gray">
+      <div class="head">
+        <div class="eyebrow anim"><span class="dot"></span> Como você contrata</div>
+        <h2 class="title anim d1">Modular — começa pequeno e <span class="serif">expande</span> por módulos</h2>
+      </div>
+
+      <div style="display:grid; grid-template-columns:repeat(3,1fr); gap:24px; margin-top:48px; align-items:stretch;">
+        <div class="card anim d1" style="display:flex; flex-direction:column;">
+          <div class="plan-name">Starter</div>
+          <div class="plan-sub">Comece pelo faturamento</div>
+          <ul class="ticks small" style="margin-top:24px;">
+            <li><span class="tk"><svg width="13" height="13" viewBox="0 0 24 24" fill="none"><path d="M5 13l4 4L19 7" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/></svg></span>Poucos clientes gerenciados</li>
+            <li><span class="tk"><svg width="13" height="13" viewBox="0 0 24 24" fill="none"><path d="M5 13l4 4L19 7" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/></svg></span>Registro de contratos e regras</li>
+            <li><span class="tk"><svg width="13" height="13" viewBox="0 0 24 24" fill="none"><path d="M5 13l4 4L19 7" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/></svg></span>Consultas e rascunhos</li>
+            <li><span class="tk"><svg width="13" height="13" viewBox="0 0 24 24" fill="none"><path d="M5 13l4 4L19 7" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/></svg></span>Via IA (BYOAI) ou telas Kontiva</li>
+          </ul>
+        </div>
+        <div class="card anim d2" style="display:flex; flex-direction:column; border:2px solid var(--ciano); box-shadow:0 30px 70px -30px color-mix(in oklab, var(--ciano) 50%, transparent);">
+          <div class="plan-name">Pro</div>
+          <div class="plan-sub">Fluxo completo de faturamento</div>
+          <ul class="ticks small" style="margin-top:24px;">
+            <li><span class="tk"><svg width="13" height="13" viewBox="0 0 24 24" fill="none"><path d="M5 13l4 4L19 7" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/></svg></span>Contrato → cobrança ponta a ponta</li>
+            <li><span class="tk"><svg width="13" height="13" viewBox="0 0 24 24" fill="none"><path d="M5 13l4 4L19 7" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/></svg></span>OCR e ingestão de documentos</li>
+            <li><span class="tk"><svg width="13" height="13" viewBox="0 0 24 24" fill="none"><path d="M5 13l4 4L19 7" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/></svg></span>Integração com sistema de cobrança</li>
+            <li><span class="tk"><svg width="13" height="13" viewBox="0 0 24 24" fill="none"><path d="M5 13l4 4L19 7" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/></svg></span>Aprovação e auditoria</li>
+          </ul>
+        </div>
+        <div class="card anim d3" style="display:flex; flex-direction:column;">
+          <div class="plan-name">Scale</div>
+          <div class="plan-sub">Alto volume e complexidade</div>
+          <ul class="ticks small" style="margin-top:24px;">
+            <li><span class="tk"><svg width="13" height="13" viewBox="0 0 24 24" fill="none"><path d="M5 13l4 4L19 7" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/></svg></span>Multiusuário e multi-agente</li>
+            <li><span class="tk"><svg width="13" height="13" viewBox="0 0 24 24" fill="none"><path d="M5 13l4 4L19 7" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/></svg></span>Regras e cálculos complexos</li>
+            <li><span class="tk"><svg width="13" height="13" viewBox="0 0 24 24" fill="none"><path d="M5 13l4 4L19 7" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/></svg></span>Simulação tributária (em dev)</li>
+            <li><span class="tk"><svg width="13" height="13" viewBox="0 0 24 24" fill="none"><path d="M5 13l4 4L19 7" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/></svg></span>Níveis de automação avançados</li>
+          </ul>
+        </div>
+      </div>
+
+      <p class="anim d4" style="margin-top:34px; font-size:20px; color:var(--cinza-escuro); max-width:1400px;"><strong>AI Enablement (add-on):</strong> implementação de novos agentes e processos além do faturamento — escopo definido por projeto.</p>
+
+      <div class="foot"><span class="note">Estrutura de planos ilustrativa; módulos e limites finais em definição.</span><span class="num" style="font-family:var(--font-mono);">15 / 16</span></div>
+    </div>
+  </section>
+
+  <!-- ============ 16 — CTA FINAL ============ -->
+  <section data-label="CTA final">
+    <div class="slide dark">
+      <div style="display:flex; align-items:center; justify-content:space-between;">
+        <div class="logo" style="font-size:28px;">Kontiva<span class="c">.ai</span></div>
+        <div class="eyebrow" style="color:var(--ciano);"><span class="dot"></span> Diagnóstico gratuito</div>
+      </div>
+
+      <div style="margin-top:auto; margin-bottom:auto; max-width:1400px;">
+        <h1 class="title anim" style="font-size:88px; color:var(--claro-escuro);">Comece sabendo <span class="serif" style="color:var(--ciano);">exatamente</span><br/>quanto está escapando</h1>
+        <p class="lead anim d1" style="margin-top:34px; font-size:29px; max-width:1120px;">Nos seus próprios contratos, sob NDA, com um retrato de ROI no final. Sem compromisso — a decisão vem depois, com os números na mesa.</p>
+
+        <div class="anim d2" style="margin-top:48px; display:flex; align-items:center; gap:22px; flex-wrap:wrap;">
+          <a href="https://wa.me/5551926343014?text=Ol%C3%A1%2C%20quero%20agendar%20o%20diagn%C3%B3stico%20gratuito%20da%20Kontiva.ai" target="_blank" rel="noreferrer" style="display:inline-flex; align-items:center; gap:14px; background:var(--ciano); color:var(--azul-profundo); font-family:var(--font-display); font-weight:600; font-size:24px; padding:20px 34px; border-radius:12px; text-decoration:none;">
+            <svg width="26" height="26" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M19.05 4.91A10 10 0 0 0 4.04 18.26L3 22l3.83-1.01A10 10 0 1 0 19.05 4.91zM12 20.15a8.14 8.14 0 0 1-4.15-1.13l-.3-.18-2.27.6.6-2.22-.19-.32A8.15 8.15 0 1 1 12 20.15zm4.46-6.1c-.24-.12-1.44-.71-1.66-.79-.22-.08-.38-.12-.54.12-.16.24-.62.79-.76.95-.14.16-.28.18-.52.06-.24-.12-1.02-.38-1.94-1.2-.72-.64-1.2-1.42-1.34-1.66-.14-.24-.02-.37.1-.49.1-.1.24-.28.36-.42.12-.14.16-.24.24-.4.08-.16.04-.3-.02-.42-.06-.12-.54-1.3-.74-1.78-.2-.48-.4-.42-.54-.42h-.46c-.16 0-.4.06-.62.3-.22.24-.84.82-.84 2 0 1.18.86 2.32.98 2.48.12.16 1.7 2.6 4.12 3.64.57.25 1.02.4 1.37.5.57.18 1.1.16 1.51.1.46-.07 1.44-.59 1.64-1.16.2-.57.2-1.06.14-1.16-.06-.1-.22-.16-.46-.28z" fill="currentColor"/></svg>
+            Agende seu diagnóstico
+          </a>
+          <span style="font-family:var(--font-mono); font-size:20px; color:rgba(234,246,255,0.66); letter-spacing:0.04em;">kontiva.ai</span>
+        </div>
+      </div>
+
+      <div class="foot"><span class="brand" style="color:rgba(234,246,255,0.5);">kontiva<span class="k-dot">.</span>ai</span><span class="num" style="font-family:var(--font-mono);">16 / 16</span></div>
+    </div>
+  </section>
+
+</deck-stage>
+
+<style>
+  /* Flow chain (slide 06) */
+  .flow-node { flex:1; text-align:center; padding:22px 8px; border-radius:14px; background:var(--cinza-claro); border:1px solid rgba(10,31,63,0.08); font-family:var(--font-display); font-weight:600; font-size:21px; color:var(--azul-profundo); display:flex; align-items:center; justify-content:center; }
+  .flow-node.accent { background:color-mix(in oklab, var(--ciano) 14%, white); border-color:color-mix(in oklab, var(--ciano) 45%, transparent); }
+  .flow-node.solid { background:var(--azul-profundo); color:var(--claro-escuro); border-color:var(--azul-profundo); }
+  .flow-arrow { display:flex; align-items:center; justify-content:center; padding:0 6px; color:var(--ciano); font-size:26px; font-weight:700; }
+
+  /* Timeline (slide 11) */
+  .tl { position:relative; padding:44px 24px 0 0; }
+  .tl::before { content:""; position:absolute; top:11px; left:0; right:0; height:2px; background:rgba(10,31,63,0.14); }
+  .tl:last-child::before { right:50%; }
+  .tl-dot { position:absolute; top:5px; left:0; width:16px; height:16px; border-radius:50%; background:var(--ciano); box-shadow:0 0 0 6px color-mix(in oklab, var(--ciano) 18%, transparent); }
+  .tl-year { font-family:var(--font-display); font-weight:700; font-size:30px; letter-spacing:-0.02em; color:var(--azul-profundo); }
+  .tl-txt { margin-top:12px; font-size:19px; line-height:1.4; color:var(--cinza-escuro); padding-right:20px; }
+
+  /* Step number (slide 14) */
+  .step-n { width:56px; height:56px; border-radius:14px; background:var(--azul-profundo); color:var(--ciano); font-family:var(--font-mono); font-weight:600; font-size:26px; display:inline-flex; align-items:center; justify-content:center; }
+
+  /* Plans (slide 15) */
+  .plan-name { font-family:var(--font-display); font-weight:700; font-size:34px; letter-spacing:-0.03em; color:var(--azul-profundo); }
+  .plan-sub { margin-top:6px; font-size:19px; color:var(--cinza-texto); }
+  ul.ticks.small li { grid-template-columns:26px 1fr; font-size:19px; gap:12px; }
+  ul.ticks.small .tk { width:24px; height:24px; }
+</style>
+
+<script src="deck-stage.js"></script>
+</body>
+</html>

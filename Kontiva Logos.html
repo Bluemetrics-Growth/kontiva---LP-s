@@ -1,0 +1,553 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>Kontiva.ai — Propostas de logo</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Space+Grotesk:wght@400;500;600;700&family=Sora:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  html, body { margin:0; padding:0; background:#f0eee9; }
+  *, *::before, *::after { box-sizing: border-box; }
+</style>
+<script src="https://unpkg.com/react@18.3.1/umd/react.development.js" integrity="sha384-hD6/rw4ppMLGNu3tX5cjIb+uRZ7UkRJ6BPkLpg4hAu/6onKUg4lLsHAs9EBPT82L" crossorigin="anonymous"></script>
+<script src="https://unpkg.com/react-dom@18.3.1/umd/react-dom.development.js" integrity="sha384-u6aeetuaXnQ38mYT8rp6sbXaQe3NL9t+IBXmnYxwkUI2Hw4bsp2Wvmx4yRQF1uAm" crossorigin="anonymous"></script>
+<script src="https://unpkg.com/@babel/standalone@7.29.0/babel.min.js" integrity="sha384-m08KidiNqLdpJqLq95G/LEi8Qvjl/xUYll3QILypMoQ65QorJ9Lvtp2RXYGBFj1y" crossorigin="anonymous"></script>
+</head>
+<body>
+<div id="app"></div>
+<script type="text/babel" data-presets="react">
+
+// DesignCanvas.jsx — Figma-ish design canvas wrapper
+// Warm gray grid bg + Sections + Artboards + PostIt notes.
+// No assets, no deps.
+
+const DC = {
+  bg: '#f0eee9',
+  grid: 'rgba(0,0,0,0.06)',
+  label: 'rgba(60,50,40,0.7)',
+  title: 'rgba(40,30,20,0.85)',
+  subtitle: 'rgba(60,50,40,0.6)',
+  postitBg: '#fef4a8',
+  postitText: '#5a4a2a',
+  font: '-apple-system, BlinkMacSystemFont, "Segoe UI", system-ui, sans-serif',
+};
+
+// ─────────────────────────────────────────────────────────────
+// Main canvas — transform-based pan/zoom viewport
+//
+// Input mapping (Figma-style):
+//   • trackpad pinch  → zoom   (ctrlKey wheel; Safari gesture* events)
+//   • trackpad scroll → pan    (two-finger)
+//   • mouse wheel     → zoom   (notched; distinguished from trackpad scroll)
+//   • middle-drag / primary-drag-on-bg → pan
+//
+// Transform state lives in a ref and is written straight to the DOM
+// (translate3d + will-change) so wheel ticks don't go through React —
+// keeps pans at 60fps on dense canvases.
+// ─────────────────────────────────────────────────────────────
+function DesignCanvas({ children, minScale = 0.1, maxScale = 8, style = {} }) {
+  const vpRef = React.useRef(null);
+  const worldRef = React.useRef(null);
+  const tf = React.useRef({ x: 0, y: 0, scale: 1 });
+
+  const apply = React.useCallback(() => {
+    const { x, y, scale } = tf.current;
+    const el = worldRef.current;
+    if (el) el.style.transform = `translate3d(${x}px, ${y}px, 0) scale(${scale})`;
+  }, []);
+
+  React.useEffect(() => {
+    const vp = vpRef.current;
+    if (!vp) return;
+
+    const zoomAt = (cx, cy, factor) => {
+      const r = vp.getBoundingClientRect();
+      const px = cx - r.left, py = cy - r.top;
+      const t = tf.current;
+      const next = Math.min(maxScale, Math.max(minScale, t.scale * factor));
+      const k = next / t.scale;
+      // keep the world point under the cursor fixed
+      t.x = px - (px - t.x) * k;
+      t.y = py - (py - t.y) * k;
+      t.scale = next;
+      apply();
+    };
+
+    // Mouse-wheel vs trackpad-scroll heuristic. A physical wheel sends
+    // line-mode deltas (Firefox) or large integer pixel deltas with no X
+    // component (Chrome/Safari, typically multiples of 100/120). Trackpad
+    // two-finger scroll sends small/fractional pixel deltas, often with
+    // non-zero deltaX. ctrlKey is set by the browser for trackpad pinch.
+    const isMouseWheel = (e) =>
+      e.deltaMode !== 0 ||
+      (e.deltaX === 0 && Number.isInteger(e.deltaY) && Math.abs(e.deltaY) >= 40);
+
+    const onWheel = (e) => {
+      e.preventDefault();
+      if (isGesturing) return; // Safari: gesture* owns the pinch — discard concurrent wheels
+      if (e.ctrlKey) {
+        // trackpad pinch (or explicit ctrl+wheel)
+        zoomAt(e.clientX, e.clientY, Math.exp(-e.deltaY * 0.01));
+      } else if (isMouseWheel(e)) {
+        // notched mouse wheel — fixed-ratio step per click
+        zoomAt(e.clientX, e.clientY, Math.exp(-Math.sign(e.deltaY) * 0.18));
+      } else {
+        // trackpad two-finger scroll — pan
+        tf.current.x -= e.deltaX;
+        tf.current.y -= e.deltaY;
+        apply();
+      }
+    };
+
+    // Safari sends native gesture* events for trackpad pinch with a smooth
+    // e.scale; preferring these over the ctrl+wheel fallback gives a much
+    // better feel there. No-ops on other browsers. Safari also fires
+    // ctrlKey wheel events during the same pinch — isGesturing makes
+    // onWheel drop those entirely so they neither zoom nor pan.
+    let gsBase = 1;
+    let isGesturing = false;
+    const onGestureStart = (e) => { e.preventDefault(); isGesturing = true; gsBase = tf.current.scale; };
+    const onGestureChange = (e) => {
+      e.preventDefault();
+      zoomAt(e.clientX, e.clientY, (gsBase * e.scale) / tf.current.scale);
+    };
+    const onGestureEnd = (e) => { e.preventDefault(); isGesturing = false; };
+
+    // Drag-pan: middle button anywhere, or primary button starting on the
+    // canvas background (not inside an artboard).
+    let drag = null;
+    const onPointerDown = (e) => {
+      const onBg = e.target === vp || e.target === worldRef.current;
+      if (!(e.button === 1 || (e.button === 0 && onBg))) return;
+      e.preventDefault();
+      vp.setPointerCapture(e.pointerId);
+      drag = { id: e.pointerId, lx: e.clientX, ly: e.clientY };
+      vp.style.cursor = 'grabbing';
+    };
+    const onPointerMove = (e) => {
+      if (!drag || e.pointerId !== drag.id) return;
+      tf.current.x += e.clientX - drag.lx;
+      tf.current.y += e.clientY - drag.ly;
+      drag.lx = e.clientX; drag.ly = e.clientY;
+      apply();
+    };
+    const onPointerUp = (e) => {
+      if (!drag || e.pointerId !== drag.id) return;
+      vp.releasePointerCapture(e.pointerId);
+      drag = null;
+      vp.style.cursor = '';
+    };
+
+    vp.addEventListener('wheel', onWheel, { passive: false });
+    vp.addEventListener('gesturestart', onGestureStart, { passive: false });
+    vp.addEventListener('gesturechange', onGestureChange, { passive: false });
+    vp.addEventListener('gestureend', onGestureEnd, { passive: false });
+    vp.addEventListener('pointerdown', onPointerDown);
+    vp.addEventListener('pointermove', onPointerMove);
+    vp.addEventListener('pointerup', onPointerUp);
+    vp.addEventListener('pointercancel', onPointerUp);
+    return () => {
+      vp.removeEventListener('wheel', onWheel);
+      vp.removeEventListener('gesturestart', onGestureStart);
+      vp.removeEventListener('gesturechange', onGestureChange);
+      vp.removeEventListener('gestureend', onGestureEnd);
+      vp.removeEventListener('pointerdown', onPointerDown);
+      vp.removeEventListener('pointermove', onPointerMove);
+      vp.removeEventListener('pointerup', onPointerUp);
+      vp.removeEventListener('pointercancel', onPointerUp);
+    };
+  }, [apply, minScale, maxScale]);
+
+  const gridSvg = `url("data:image/svg+xml,%3Csvg width='120' height='120' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M120 0H0v120' fill='none' stroke='${encodeURIComponent(DC.grid)}' stroke-width='1'/%3E%3C/svg%3E")`;
+  return (
+    <div
+      ref={vpRef}
+      className="design-canvas"
+      style={{
+        height: '100vh', width: '100vw',
+        background: DC.bg,
+        overflow: 'hidden',
+        overscrollBehavior: 'none',
+        touchAction: 'none',
+        position: 'relative',
+        fontFamily: DC.font,
+        boxSizing: 'border-box',
+        ...style,
+      }}
+    >
+      <div
+        ref={worldRef}
+        style={{
+          position: 'absolute', top: 0, left: 0,
+          transformOrigin: '0 0',
+          willChange: 'transform',
+          width: 'max-content', minWidth: '100%',
+          minHeight: '100%',
+          padding: '60px 0 80px',
+          backgroundImage: gridSvg,
+          backgroundSize: '120px 120px',
+        }}
+      >
+        {children}
+      </div>
+    </div>
+  );
+}
+
+// ─────────────────────────────────────────────────────────────
+// Section — title + subtitle + h-stack of artboards (no wrap)
+// ─────────────────────────────────────────────────────────────
+function DCSection({ title, subtitle, children, gap = 48 }) {
+  return (
+    <div style={{ marginBottom: 80, position: 'relative' }}>
+      <div style={{ padding: '0 60px 36px' }}>
+        <div style={{
+          fontSize: 22, fontWeight: 600, color: DC.title,
+          letterSpacing: -0.3, marginBottom: 4,
+        }}>{title}</div>
+        {subtitle && (
+          <div style={{
+            fontSize: 14, fontWeight: 400, color: DC.subtitle,
+          }}>{subtitle}</div>
+        )}
+      </div>
+      {/* h-stack — clips offscreen, never wraps */}
+      <div style={{
+        display: 'flex', gap, padding: '0 60px',
+        alignItems: 'flex-start', width: 'max-content',
+      }}>
+        {children}
+      </div>
+    </div>
+  );
+}
+
+// ─────────────────────────────────────────────────────────────
+// Artboard — labeled card
+// ─────────────────────────────────────────────────────────────
+function DCArtboard({ label, children, width, height, style = {} }) {
+  return (
+    <div style={{ position: 'relative', flexShrink: 0 }}>
+      {label && (
+        <div style={{
+          position: 'absolute', bottom: '100%', left: 0,
+          paddingBottom: 8,
+          fontSize: 12, fontWeight: 500, color: DC.label,
+          whiteSpace: 'nowrap',
+        }}>{label}</div>
+      )}
+      <div style={{
+        borderRadius: 2,
+        boxShadow: '0 1px 3px rgba(0,0,0,0.08), 0 4px 16px rgba(0,0,0,0.06)',
+        overflow: 'hidden',
+        width, height,
+        background: '#fff',
+        ...style,
+      }}>
+        {children}
+      </div>
+    </div>
+  );
+}
+
+// ─────────────────────────────────────────────────────────────
+// Post-it — absolute-positioned sticky note
+// ─────────────────────────────────────────────────────────────
+function DCPostIt({ children, top, left, right, bottom, rotate = -2, width = 180 }) {
+  return (
+    <div style={{
+      position: 'absolute', top, left, right, bottom, width,
+      background: DC.postitBg, padding: '14px 16px',
+      fontFamily: '"Comic Sans MS", "Marker Felt", "Segoe Print", cursive',
+      fontSize: 14, lineHeight: 1.4, color: DC.postitText,
+      boxShadow: '0 2px 8px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.08)',
+      transform: `rotate(${rotate}deg)`,
+      zIndex: 5,
+    }}>{children}</div>
+  );
+}
+
+Object.assign(window, { DesignCanvas, DCSection, DCArtboard, DCPostIt });
+
+
+</script>
+<script type="text/babel" data-presets="react">
+/* Kontiva.ai — Logo explorations */
+
+const C = {
+  azul:   '#0A1F3F',
+  ciano:  '#00D4FF',
+  cianoMid: '#00A8CC',
+  papel:  '#F7F5EE',
+  branco: '#FFFFFF',
+};
+
+// Shared wordmark renderer
+const Wordmark = ({ size = 40, color = C.azul, accent = C.ciano, family = "'Space Grotesk', sans-serif", weight = 700, tracking = '-0.04em', aiStyle = 'subscript' }) => (
+  <div style={{
+    display:'inline-flex', alignItems:'baseline',
+    fontFamily: family, fontWeight: weight,
+    fontSize: size, letterSpacing: tracking, color,
+    lineHeight: 1,
+  }}>
+    <span>kontiva</span>
+    {aiStyle === 'subscript' && (
+      <span style={{
+        fontSize: size * 0.32, color: accent, fontWeight: 500,
+        marginLeft: size * 0.08, transform:`translateY(${size*0.1}px)`,
+        letterSpacing: '0.02em',
+      }}>.ai</span>
+    )}
+    {aiStyle === 'dot-accent' && (
+      <>
+        <span style={{ color: accent }}>.</span>
+        <span style={{ fontSize: size * 0.4, fontWeight: 500, marginLeft: 2 }}>ai</span>
+      </>
+    )}
+    {aiStyle === 'tiny-mono' && (
+      <span style={{
+        fontFamily:"'JetBrains Mono', monospace", fontSize: size * 0.22,
+        color: accent, marginLeft: size * 0.1, letterSpacing:'0.06em',
+        alignSelf:'center', transform:`translateY(${size*0.15}px)`,
+      }}>.ai</span>
+    )}
+  </div>
+);
+
+// ─── 01. Aperture K — K built from a focusing mira/lens ──────────
+const LogoAperture = ({ size = 120, onDark = false }) => {
+  const fg = onDark ? C.branco : C.azul;
+  const ac = C.ciano;
+  return (
+    <svg viewBox="0 0 120 120" width={size} height={size} fill="none">
+      {/* outer ring */}
+      <circle cx="60" cy="60" r="52" stroke={fg} strokeWidth="3"/>
+      {/* K carved from aperture blades */}
+      <path d="M42 30 V90" stroke={fg} strokeWidth="10" strokeLinecap="square"/>
+      <path d="M42 60 L78 30" stroke={fg} strokeWidth="10" strokeLinecap="square"/>
+      <path d="M42 60 L78 90" stroke={fg} strokeWidth="10" strokeLinecap="square"/>
+      {/* ciano focus dot at the K vertex */}
+      <circle cx="42" cy="60" r="5" fill={ac}/>
+      <circle cx="42" cy="60" r="10" stroke={ac} strokeWidth="1.5" opacity="0.5"/>
+    </svg>
+  );
+};
+
+// ─── 02. Scan K — the K is half-drawn, being revealed by a scan line ──
+const LogoScan = ({ size = 120, onDark = false }) => {
+  const fg = onDark ? C.branco : C.azul;
+  const ac = C.ciano;
+  return (
+    <svg viewBox="0 0 120 120" width={size} height={size} fill="none">
+      {/* K built from strokes, left half dotted, right half solid */}
+      <line x1="30" y1="20" x2="30" y2="100" stroke={fg} strokeWidth="11" strokeLinecap="square"/>
+      <line x1="30" y1="60" x2="90" y2="20" stroke={fg} strokeWidth="11" strokeLinecap="square"/>
+      <line x1="30" y1="60" x2="90" y2="100" stroke={fg} strokeWidth="11" strokeLinecap="square"/>
+      {/* scan beam */}
+      <rect x="55" y="10" width="4" height="100" fill={ac}/>
+      <rect x="55" y="10" width="18" height="100" fill={`url(#scan-grad)`} opacity="0.6"/>
+      <defs>
+        <linearGradient id="scan-grad" x1="0" x2="1" y1="0" y2="0">
+          <stop offset="0" stopColor={ac} stopOpacity="0.8"/>
+          <stop offset="1" stopColor={ac} stopOpacity="0"/>
+        </linearGradient>
+      </defs>
+    </svg>
+  );
+};
+
+// ─── 03. Clause K — contract with highlighted clause forms the K arms ──
+const LogoClause = ({ size = 120, onDark = false }) => {
+  const fg = onDark ? C.branco : C.azul;
+  const ac = C.ciano;
+  return (
+    <svg viewBox="0 0 120 120" width={size} height={size} fill="none">
+      {/* document */}
+      <rect x="22" y="14" width="64" height="92" rx="4" stroke={fg} strokeWidth="3"/>
+      {/* page lines forming K structure */}
+      <rect x="32" y="28" width="38" height="3" fill={fg} opacity="0.25"/>
+      <rect x="32" y="38" width="28" height="3" fill={fg} opacity="0.25"/>
+      {/* highlighted clause = ciano block; 2 lines = K diagonals */}
+      <rect x="32" y="50" width="44" height="8" fill={ac}/>
+      <rect x="32" y="62" width="44" height="8" fill={ac}/>
+      <rect x="32" y="74" width="30" height="3" fill={fg} opacity="0.25"/>
+      <rect x="32" y="84" width="34" height="3" fill={fg} opacity="0.25"/>
+      <rect x="32" y="94" width="22" height="3" fill={fg} opacity="0.25"/>
+      {/* K monogram mark overlaid */}
+      <g transform="translate(78,10)">
+        <circle r="14" cx="14" cy="14" fill={ac}/>
+        <path d="M9 6 V22 M9 14 L19 6 M9 14 L19 22" stroke={C.azul} strokeWidth="2.4" strokeLinecap="square"/>
+      </g>
+    </svg>
+  );
+};
+
+// ─── 04. Radar K — concentric rings + K as the sweep target ─────────
+const LogoRadar = ({ size = 120, onDark = false }) => {
+  const fg = onDark ? C.branco : C.azul;
+  const ac = C.ciano;
+  return (
+    <svg viewBox="0 0 120 120" width={size} height={size} fill="none">
+      <circle cx="60" cy="60" r="50" stroke={fg} strokeWidth="1.5" opacity="0.3"/>
+      <circle cx="60" cy="60" r="34" stroke={fg} strokeWidth="1.5" opacity="0.5"/>
+      <circle cx="60" cy="60" r="18" stroke={fg} strokeWidth="1.5" opacity="0.8"/>
+      {/* sweep wedge */}
+      <path d="M60 60 L110 35 A55 55 0 0 0 100 20 Z" fill={ac} opacity="0.22"/>
+      {/* solid K centered */}
+      <g transform="translate(42, 36)">
+        <path d="M0 0 V48" stroke={fg} strokeWidth="7" strokeLinecap="square"/>
+        <path d="M0 24 L28 0" stroke={fg} strokeWidth="7" strokeLinecap="square"/>
+        <path d="M0 24 L28 48" stroke={fg} strokeWidth="7" strokeLinecap="square"/>
+        <circle cx="0" cy="24" r="4.5" fill={ac}/>
+      </g>
+    </svg>
+  );
+};
+
+// ─── 05. Geometric K — pure type, a single construction ────────────
+const LogoGeometric = ({ size = 120, onDark = false }) => {
+  const fg = onDark ? C.branco : C.azul;
+  const ac = C.ciano;
+  return (
+    <svg viewBox="0 0 120 120" width={size} height={size} fill="none">
+      {/* Chunky K with chamfered cuts */}
+      <path
+        d="M22 18 H42 V54 L74 18 H98 L64 56 L100 102 H76 L48 66 L42 72 V102 H22 Z"
+        fill={fg}
+      />
+      {/* ciano accent — tiny wedge where the diagonals meet */}
+      <path d="M42 56 L48 62 L42 68 Z" fill={ac}/>
+    </svg>
+  );
+};
+
+// ─── 06. Vision K — eye/pupil + K as iris structure ────────────────
+const LogoVision = ({ size = 120, onDark = false }) => {
+  const fg = onDark ? C.branco : C.azul;
+  const ac = C.ciano;
+  return (
+    <svg viewBox="0 0 120 120" width={size} height={size} fill="none">
+      {/* eye shape */}
+      <path d="M8 60 Q60 10 112 60 Q60 110 8 60 Z" stroke={fg} strokeWidth="3" fill="none"/>
+      {/* iris */}
+      <circle cx="60" cy="60" r="26" fill={fg}/>
+      {/* K inside iris */}
+      <g transform="translate(45, 44)">
+        <path d="M0 0 V32" stroke={C.papel} strokeWidth="5" strokeLinecap="square"/>
+        <path d="M0 16 L18 0" stroke={C.papel} strokeWidth="5" strokeLinecap="square"/>
+        <path d="M0 16 L18 32" stroke={C.papel} strokeWidth="5" strokeLinecap="square"/>
+      </g>
+      {/* ciano glint */}
+      <circle cx="72" cy="52" r="5" fill={ac}/>
+    </svg>
+  );
+};
+
+// ─── Artboard helpers ──────────────────────────────────────────────
+
+const Board = ({ children, onDark = false, pad = 32, w = 280, h = 200 }) => (
+  <div style={{
+    width: w, height: h, background: onDark ? C.azul : C.papel,
+    display:'flex', alignItems:'center', justifyContent:'center',
+    padding: pad,
+  }}>{children}</div>
+);
+
+const LockupBoard = ({ Logo, wordSize = 44, onDark = false, family, aiStyle = 'subscript', w = 360, h = 140 }) => (
+  <div style={{
+    width: w, height: h, background: onDark ? C.azul : C.papel,
+    display:'flex', alignItems:'center', justifyContent:'center', gap: 16,
+  }}>
+    <Logo size={64} onDark={onDark}/>
+    <Wordmark
+      size={wordSize}
+      family={family}
+      color={onDark ? C.branco : C.azul}
+      accent={C.ciano}
+      aiStyle={aiStyle}
+    />
+  </div>
+);
+
+const FaviconBoard = ({ Logo, onDark = false }) => (
+  <div style={{
+    width: 120, height: 120, background: onDark ? C.azul : C.papel,
+    display:'flex', alignItems:'center', justifyContent:'center',
+  }}>
+    <div style={{
+      width: 48, height: 48, background: onDark ? '#122A52' : C.branco,
+      borderRadius: 10, display:'flex', alignItems:'center', justifyContent:'center',
+      boxShadow: onDark ? 'inset 0 0 0 1px rgba(255,255,255,0.08)' : 'inset 0 0 0 1px rgba(10,31,63,0.08)',
+    }}>
+      <Logo size={32} onDark={onDark}/>
+    </div>
+  </div>
+);
+
+// ─── Option row — logo mark + lockups + favicon ────────────────────
+
+const Option = ({ n, title, blurb, Logo, family, aiStyle }) => (
+  <DCSection
+    title={`0${n} — ${title}`}
+    subtitle={blurb}
+  >
+    <DCArtboard label="Símbolo · claro" width={280} height={200}>
+      <Board><Logo size={120}/></Board>
+    </DCArtboard>
+    <DCArtboard label="Símbolo · escuro" width={280} height={200}>
+      <Board onDark><Logo size={120} onDark/></Board>
+    </DCArtboard>
+    <DCArtboard label="Lockup horizontal" width={360} height={140}>
+      <LockupBoard Logo={Logo} family={family} aiStyle={aiStyle}/>
+    </DCArtboard>
+    <DCArtboard label="Lockup escuro" width={360} height={140}>
+      <LockupBoard Logo={Logo} family={family} aiStyle={aiStyle} onDark/>
+    </DCArtboard>
+    <DCArtboard label="App icon" width={120} height={120}>
+      <FaviconBoard Logo={Logo}/>
+    </DCArtboard>
+    <DCArtboard label="App icon · escuro" width={120} height={120}>
+      <FaviconBoard Logo={Logo} onDark/>
+    </DCArtboard>
+  </DCSection>
+);
+
+// ─── Root app ──────────────────────────────────────────────────────
+
+const App = () => {
+  const options = [
+    { n:1, title:'Aperture', blurb:'K dentro de uma lente/mira. Precisão + foco. "Gestão sem ponto cego" literal.', Logo: LogoAperture, family:"'Space Grotesk', sans-serif", aiStyle:'subscript' },
+    { n:2, title:'Scan',     blurb:'K sendo varrido pelo feixe ciano. Radar + revelação em um gesto só.',         Logo: LogoScan,     family:"'Space Grotesk', sans-serif", aiStyle:'tiny-mono' },
+    { n:3, title:'Clause',   blurb:'Contrato com a cláusula destacada. K monograma acompanha o documento.',      Logo: LogoClause,   family:"'Inter', sans-serif",         aiStyle:'dot-accent' },
+    { n:4, title:'Radar',    blurb:'Anéis concêntricos + setor de varredura. K no centro, sólido.',             Logo: LogoRadar,    family:"'Space Grotesk', sans-serif", aiStyle:'subscript' },
+    { n:5, title:'Geometric',blurb:'Tipografia pura. K chanfrado, só uma faísca ciano onde as diagonais se encontram.', Logo: LogoGeometric, family:"'Space Grotesk', sans-serif", aiStyle:'subscript' },
+    { n:6, title:'Vision',   blurb:'Olho/íris com K dentro. Mais humano, mais "consultor que enxerga".',         Logo: LogoVision,   family:"'Sora', sans-serif",          aiStyle:'tiny-mono' },
+  ];
+
+  return (
+    <DesignCanvas>
+      <div style={{ padding:'0 60px 40px' }}>
+        <div style={{ fontSize: 28, fontWeight: 600, color:'rgba(40,30,20,0.9)', letterSpacing:-0.4 }}>
+          Kontiva.ai — Propostas de logo
+        </div>
+        <div style={{ fontSize: 14, color:'rgba(60,50,40,0.65)', marginTop: 6, maxWidth: 680 }}>
+          Seis direções. K geométrico como espinha dorsal, atravessado por conceitos diferentes —
+          mira, radar, contrato, olho, tipografia pura. Paleta: azul profundo + ciano elétrico.
+          .ai sempre em tom menor, nunca dominante.
+        </div>
+      </div>
+      {options.map(o => <Option key={o.n} {...o}/>)}
+      <DCPostIt top={40} right={60} rotate={3} width={220}>
+        Role lateralmente em cada linha para ver todas as aplicações. Me diga qual (ou quais) querem que eu desenvolva mais.
+      </DCPostIt>
+    </DesignCanvas>
+  );
+};
+
+ReactDOM.createRoot(document.getElementById('app')).render(<App/>);
+
+</script>
+</body>
+</html>

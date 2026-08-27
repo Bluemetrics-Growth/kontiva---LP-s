@@ -1,0 +1,250 @@
+{
+  "plugins": [
+    "react",
+    "import"
+  ],
+  "rules": {
+    "react/forbid-elements": [
+      "warn",
+      {
+        "forbid": []
+      }
+    ],
+    "no-restricted-imports": [
+      "warn",
+      {
+        "patterns": [
+          {
+            "group": [
+              "MVP/**",
+              "MVP/components/**",
+              "components/**",
+              "deck-stage.js",
+              "design-canvas.jsx",
+              "ds/cards/**",
+              "ds/core/**",
+              "ds/forms/**",
+              "ds/site/**",
+              "logo/**",
+              "v2/**"
+            ],
+            "message": "Import design-system components from 'index.js', not component internals."
+          }
+        ]
+      }
+    ],
+    "no-restricted-syntax": [
+      "warn",
+      {
+        "selector": "Literal[value=/#[0-9a-fA-F]{3,8}\\b/]",
+        "message": "Raw hex color — use a design-system color token via var()."
+      },
+      {
+        "selector": "Literal[value=/\\b\\d+px\\b/]",
+        "message": "Raw px value — use a design-system spacing token via var()."
+      },
+      {
+        "selector": "Literal[value=/font-family\\s*:\\s*(?!['\\\"]?(?:Inter|Instrument Serif|JetBrains Mono))/i]",
+        "message": "Font not provided by the design system. Available: Inter, Instrument Serif, JetBrains Mono."
+      },
+      {
+        "selector": "JSXOpeningElement[name.name='Badge'] > JSXAttribute > JSXIdentifier[name!=/^(?:kind|children|key|ref|className|style|children)$/]",
+        "message": "<Badge> doesn't accept that prop. Declared props: kind, children."
+      },
+      {
+        "selector": "JSXOpeningElement[name.name='Badge'] > JSXAttribute[name.name='kind'] > Literal[value!=/^(?:on|dev|neutral|antes|depois)$/]",
+        "message": "<Badge> kind must be one of 'on' | 'dev' | 'neutral' | 'antes' | 'depois'."
+      },
+      {
+        "selector": "JSXOpeningElement[name.name='Button'] > JSXAttribute > JSXIdentifier[name!=/^(?:variant|whatsapp|arrow|compact|href|children|key|ref|className|style|children)$/]",
+        "message": "<Button> doesn't accept that prop. Declared props: variant, whatsapp, arrow, compact, href, children."
+      },
+      {
+        "selector": "JSXOpeningElement[name.name='Button'] > JSXAttribute[name.name='variant'] > Literal[value!=/^(?:primary|ghost|dark)$/]",
+        "message": "<Button> variant must be one of 'primary' | 'ghost' | 'dark'."
+      },
+      {
+        "selector": "JSXOpeningElement[name.name='Card'] > JSXAttribute > JSXIdentifier[name!=/^(?:dark|hover|style|children|key|ref|className|style|children)$/]",
+        "message": "<Card> doesn't accept that prop. Declared props: dark, hover, style, children."
+      },
+      {
+        "selector": "JSXOpeningElement[name.name='Eyebrow'] > JSXAttribute > JSXIdentifier[name!=/^(?:light|children|key|ref|className|style|children)$/]",
+        "message": "<Eyebrow> doesn't accept that prop. Declared props: light, children."
+      },
+      {
+        "selector": "JSXOpeningElement[name.name='Field'] > JSXAttribute > JSXIdentifier[name!=/^(?:label|optional|type|as|options|id|placeholder|key|ref|className|style|children)$/]",
+        "message": "<Field> doesn't accept that prop. Declared props: label, optional, type, as, options, id, placeholder."
+      },
+      {
+        "selector": "JSXOpeningElement[name.name='Field'] > JSXAttribute[name.name='as'] > Literal[value!=/^(?:textarea|select)$/]",
+        "message": "<Field> as must be one of 'textarea' | 'select'."
+      },
+      {
+        "selector": "JSXOpeningElement[name.name='Footer'] > JSXAttribute > JSXIdentifier[name!=/^(?:logoSrc|tagline|columns|year|key|ref|className|style|children)$/]",
+        "message": "<Footer> doesn't accept that prop. Declared props: logoSrc, tagline, columns, year."
+      },
+      {
+        "selector": "JSXOpeningElement[name.name='LangToggle'] > JSXAttribute > JSXIdentifier[name!=/^(?:value|onChange|dark|key|ref|className|style|children)$/]",
+        "message": "<LangToggle> doesn't accept that prop. Declared props: value, onChange, dark."
+      },
+      {
+        "selector": "JSXOpeningElement[name.name='LangToggle'] > JSXAttribute[name.name='value'] > Literal[value!=/^(?:pt|en)$/]",
+        "message": "<LangToggle> value must be one of 'pt' | 'en'."
+      },
+      {
+        "selector": "JSXOpeningElement[name.name='Nav'] > JSXAttribute > JSXIdentifier[name!=/^(?:dark|links|lang|onLang|ctaHref|logoSrc|key|ref|className|style|children)$/]",
+        "message": "<Nav> doesn't accept that prop. Declared props: dark, links, lang, onLang, ctaHref, logoSrc."
+      },
+      {
+        "selector": "JSXOpeningElement[name.name='Nav'] > JSXAttribute[name.name='lang'] > Literal[value!=/^(?:pt|en)$/]",
+        "message": "<Nav> lang must be one of 'pt' | 'en'."
+      },
+      {
+        "selector": "JSXOpeningElement[name.name='RadarRow'] > JSXAttribute > JSXIdentifier[name!=/^(?:idx|name|amount|badge|flagged|key|ref|className|style|children)$/]",
+        "message": "<RadarRow> doesn't accept that prop. Declared props: idx, name, amount, badge, flagged."
+      }
+    ]
+  },
+  "overrides": [
+    {
+      "files": [
+        "**/index.js"
+      ],
+      "rules": {
+        "no-restricted-imports": "off"
+      }
+    }
+  ],
+  "x-omelette": {
+    "components": {
+      "Badge": {
+        "replaces": []
+      },
+      "Button": {
+        "replaces": []
+      },
+      "Card": {
+        "replaces": []
+      },
+      "Eyebrow": {
+        "replaces": []
+      },
+      "Field": {
+        "replaces": []
+      },
+      "Footer": {
+        "replaces": []
+      },
+      "LangToggle": {
+        "replaces": []
+      },
+      "Nav": {
+        "replaces": []
+      },
+      "RadarRow": {
+        "replaces": []
+      }
+    },
+    "tokens": [
+      "--accent",
+      "--accent-boost",
+      "--antes-err-fg",
+      "--antes-tag-bg",
+      "--antes-tag-fg",
+      "--azul-profundo",
+      "--azul-profundo-2",
+      "--border-on-dark",
+      "--border-on-light",
+      "--border-on-light-strong",
+      "--branco",
+      "--ciano",
+      "--ciano-suave",
+      "--cinza-claro",
+      "--cinza-escuro",
+      "--cinza-texto",
+      "--claro-escuro",
+      "--font-body",
+      "--font-display",
+      "--font-mono",
+      "--font-serif-italic",
+      "--fs-body",
+      "--fs-eyebrow",
+      "--fs-h1",
+      "--fs-h2",
+      "--fs-h3",
+      "--fs-lead",
+      "--r-lg",
+      "--r-md",
+      "--r-pill",
+      "--r-sm",
+      "--r-xl",
+      "--r-xs",
+      "--shadow-card",
+      "--shadow-dark",
+      "--shadow-glow",
+      "--shadow-glow-hover",
+      "--surface-alt",
+      "--surface-calm",
+      "--surface-dark",
+      "--surface-dark-2",
+      "--surface-page",
+      "--text-body",
+      "--text-on-dark",
+      "--text-primary",
+      "--text-secondary"
+    ],
+    "tokenKinds": {
+      "--azul-profundo": "color",
+      "--azul-profundo-2": "color",
+      "--ciano": "color",
+      "--ciano-suave": "color",
+      "--branco": "color",
+      "--cinza-claro": "color",
+      "--cinza-texto": "color",
+      "--cinza-escuro": "color",
+      "--claro-escuro": "color",
+      "--accent-boost": "other",
+      "--text-primary": "font",
+      "--text-body": "font",
+      "--text-secondary": "font",
+      "--text-on-dark": "font",
+      "--surface-page": "color",
+      "--surface-alt": "color",
+      "--surface-calm": "color",
+      "--surface-dark": "color",
+      "--surface-dark-2": "color",
+      "--accent": "color",
+      "--border-on-light": "color",
+      "--border-on-light-strong": "color",
+      "--border-on-dark": "color",
+      "--antes-err-fg": "color",
+      "--antes-tag-fg": "color",
+      "--antes-tag-bg": "color",
+      "--font-display": "font",
+      "--font-body": "font",
+      "--font-serif-italic": "font",
+      "--font-mono": "font",
+      "--fs-h1": "font",
+      "--fs-h2": "font",
+      "--fs-h3": "font",
+      "--fs-lead": "font",
+      "--fs-body": "spacing",
+      "--fs-eyebrow": "spacing",
+      "--r-xs": "spacing",
+      "--r-sm": "spacing",
+      "--r-md": "spacing",
+      "--r-lg": "spacing",
+      "--r-xl": "spacing",
+      "--r-pill": "spacing",
+      "--shadow-card": "shadow",
+      "--shadow-dark": "shadow",
+      "--shadow-glow": "shadow",
+      "--shadow-glow-hover": "shadow"
+    },
+    "fontFamilies": [
+      "Instrument Serif",
+      "Inter",
+      "JetBrains Mono"
+    ]
+  }
+}

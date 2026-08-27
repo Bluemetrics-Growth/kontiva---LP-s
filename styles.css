@@ -1,0 +1,7 @@
+/* Kontiva.ai — Design System entry. Apenas @imports; regras vivem nos arquivos importados. */
+@import "tokens/fonts.css";
+@import "tokens/colors.css";
+@import "tokens/typography.css";
+@import "tokens/effects.css";
+@import "css/landing.css";
+@import "css/components.css";
