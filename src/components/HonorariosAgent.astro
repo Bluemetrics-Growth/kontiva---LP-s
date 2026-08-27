@@ -1,0 +1,29 @@
+---
+// S6 Segundo agente (Honorarios), com qualificacao.
+import GestaoExcedentes from './app-frames/GestaoExcedentes.astro';
+import { CTA_PRIMARIO, CTA_ANCORA } from '../data/showcase';
+---
+<section class="bg-alt" aria-labelledby="hon-h">
+  <div class="shell">
+    <div class="hon-grid">
+      <div class="hon-copy reveal">
+        <div class="eyebrow"><span class="dot-cyan"></span> Segundo agente</div>
+        <h2 id="hon-h" style="margin-top:20px;">E tem um segundo agente que costuma se pagar sozinho.</h2>
+
+        <div class="qualify">
+          <p>Se os seus contratos tem variaveis, excedentes e reajustes, o Agente de Honorarios encontra o que fica sem cobrar: reajuste esquecido, funcionario a mais na folha, servico avulso que ninguem faturou. Se a sua cobranca e toda fixa e simples, tudo bem, esse aqui nao e para voce.</p>
+        </div>
+
+        <p>Ele consolida o mes, cruza contrato com o volume de servico prestado, calcula excedente e reajuste pelo indice do contrato, e explica cada cobranca com os limites contratados, os valores observados e a formula. A emissao so acontece pela interface, depois da sua revisao. Voce aprova antes de qualquer coisa sair.</p>
+
+        <p class="hon-close">Os dois agentes vem no mesmo Hub. O tributario puxa a fila, o de honorarios <span class="serif-accent">paga a conta</span>.</p>
+
+        <div class="hero-cta-row" style="margin-top:28px;">
+          <a href={CTA_ANCORA} class="btn btn-primary" data-cta="s6">{CTA_PRIMARIO}</a>
+        </div>
+      </div>
+
+      <div class="hon-frame reveal delay-1"><GestaoExcedentes /></div>
+    </div>
+  </div>
+</section>

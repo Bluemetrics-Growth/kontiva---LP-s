@@ -1,0 +1,34 @@
+---
+// S4 A regua de diferenciacao. "ERP simula, agente opera." Degrau 4 e a bandeira.
+const rows = [
+  { n: '1', step: 'Tirar duvida da reforma (chatbot)', who: 'Todos, de graca', pos: 'Nao competimos aqui. Util e generico.', flag: false },
+  { n: '2', step: 'Simular regime por cliente', who: 'Dominio e Alterdata, no ERP', pos: 'Nao abrimos conversa por aqui.', flag: false },
+  { n: '3', step: 'Simular a carteira inteira em massa, ranquear, white-label, multi-sistema', who: 'So o Kontiva', pos: 'Todos os seus clientes de uma vez, em qualquer sistema, com a sua marca.', flag: false },
+  { n: '4', step: 'Operar a rotina: creditos, adimplencia de fornecedor, caixa do split e pricing, continuo, com observabilidade e aprovacao', who: 'Vazio. Nossa bandeira.', pos: 'A pergunta que ninguem responde: quem vai rodar isso todo mes para os seus clientes?', flag: true },
+];
+---
+<section class="bg-dark" aria-labelledby="dif-h">
+  <div class="shell">
+    <div class="section-head reveal">
+      <div class="eyebrow"><span class="dot-cyan"></span> A regua</div>
+      <h2 id="dif-h">Onde a maioria para, o Kontiva comeca.</h2>
+      <p class="lead">Tirar duvida e simular um cliente por vez ja e gratis nos ERPs. Otimo, use o do seu ERP. O nosso degrau e outro.</p>
+    </div>
+
+    <div class="ladder reveal delay-1">
+      <div class="ladder-row head">
+        <div>Degrau</div><div>Quem esta la</div><div>Como o Kontiva se posiciona</div>
+      </div>
+      {rows.map((r) => (
+        <div class={`ladder-row ${r.flag ? 'flagged' : ''}`}>
+          <div class="ladder-step"><span class="n">{r.n}</span>{r.step}</div>
+          <div class="ladder-who">{r.who}</div>
+          <div class="ladder-pos">
+            {r.flag && <span class="ladder-flag">Nossa bandeira</span>}
+            {r.pos}
+          </div>
+        </div>
+      ))}
+    </div>
+  </div>
+</section>

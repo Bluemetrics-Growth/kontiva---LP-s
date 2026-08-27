@@ -1,0 +1,29 @@
+---
+// S10 FAQ enxuto. Ultima objecao.
+import Icon from './Icon.astro';
+const faqs = [
+  { q: 'O que o Agente Tributario faz hoje?', a: 'Responde duvidas da reforma com fonte e com os dados do cliente, simula regime e os cenarios de IBS e CBS ano a ano, e simula a carteira inteira de uma vez. Esta em fase de testes assistida: nossa equipe configura junto com voce.' },
+  { q: 'Isso nao e o que a Dominio e a Alterdata ja fazem de graca?', a: 'Simular um cliente por vez, sim, e e otimo. O Kontiva faz o degrau de cima: a carteira toda em massa, em qualquer sistema, com a sua marca, e a operacao continua de creditos, fornecedores e caixa. ERP simula. Agente opera.' },
+  { q: 'Preciso trocar de ERP?', a: 'Nao. O Kontiva le Dominio, Alterdata, Questor e planilhas. Voce nao troca nada.' },
+  { q: 'A IA vai cobrar do meu cliente sozinha?', a: 'Nao. A emissao de cobranca acontece so pela interface, depois da sua revisao. O agente propoe, voce autoriza, e fica registrado quem aprovou o que.' },
+  { q: 'Quanto custa o setup?', a: 'Nada. O setup assistido com uma amostra da sua carteira e sem custo. Voce decide depois de ver o resultado em reais.' },
+  { q: 'Meus dados ficam seguros?', a: 'Sim. Seus dados ficam isolados por escritorio, criptografados, e nao sao usados para treinar IA de terceiros. Voce pode exportar ou excluir tudo quando quiser.' },
+  { q: 'Posso operar pelo Claude ou ChatGPT?', a: 'Sim. Conecte sua IA ao servidor MCP do Kontiva e pergunte, instrua e ajuste sem sair do chat que voce ja usa.' },
+];
+---
+<section class="bg-page" aria-labelledby="faq-h">
+  <div class="shell">
+    <div class="section-head reveal" style="text-align:center; margin-left:auto; margin-right:auto;">
+      <div class="eyebrow" style="justify-content:center;"><span class="dot-cyan"></span> Perguntas frequentes</div>
+      <h2 id="faq-h" style="margin-top:18px;">Ainda tem duvida? A gente responde.</h2>
+    </div>
+    <div class="faq-list reveal delay-1">
+      {faqs.map((f) => (
+        <details class="faq-item">
+          <summary>{f.q} <Icon name="chevdown" size={20} class="chev" /></summary>
+          <div class="faq-a"><p>{f.a}</p></div>
+        </details>
+      ))}
+    </div>
+  </div>
+</section>

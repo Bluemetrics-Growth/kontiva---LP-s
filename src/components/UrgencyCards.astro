@@ -1,0 +1,50 @@
+---
+// S3 A urgencia (regra dos 3 elementos: fato, consequencia, caminho).
+import Icon from './Icon.astro';
+const cards = [
+  {
+    ico: 'cash',
+    eyebrow: 'Split payment',
+    fato: 'Em 2027, o split payment debita o imposto na hora da venda.',
+    consequencia: 'O caixa do seu cliente muda, e ninguem projetou isso ainda.',
+    caminho: 'O Kontiva projeta o fluxo de caixa pos-split por cliente, com relatorio de aviso pronto. Da para avisar antes.',
+  },
+  {
+    ico: 'truck',
+    eyebrow: 'Credito condicionado ao fornecedor',
+    fato: 'O credito do seu cliente passa a depender de o fornecedor dele ter pago o imposto.',
+    consequencia: 'Monitorar isso, cliente a cliente, todo mes, e impossivel na mao.',
+    caminho: 'O Kontiva acompanha os fornecedores e sinaliza quem gera credito e quem nao gera.',
+  },
+  {
+    ico: 'clock',
+    eyebrow: 'A janela',
+    fato: '32,7% das empresas nem comecaram a se adaptar. A simplificacao so chega em 2033.',
+    consequencia: 'Ate la sao dois sistemas convivendo, o periodo mais complexo da historia.',
+    caminho: 'O escritorio que montar a operacao agora atende mais clientes justo quando todos estarao perdidos.',
+  },
+];
+---
+<section class="bg-alt" aria-labelledby="urg-h">
+  <div class="shell">
+    <div class="section-head reveal">
+      <div class="eyebrow"><span class="dot-cyan"></span> A urgencia</div>
+      <h2 id="urg-h">A reforma nao e um calculo. E uma operacao nova que comeca em 2027 e nao acaba em 2033.</h2>
+    </div>
+
+    <div class="urgency-grid">
+      {cards.map((c, i) => (
+        <article class={`u-card reveal delay-${i + 1}`}>
+          <div class="u-eyebrow"><span class="u-ico"><Icon name={c.ico} size={16} /></span> {c.eyebrow}</div>
+          <div class="u-block"><div class="u-label fato">Fato</div><p>{c.fato}</p></div>
+          <div class="u-block"><div class="u-label consequencia">Consequencia</div><p>{c.consequencia}</p></div>
+          <div class="u-block"><div class="u-label caminho">Caminho</div><p>{c.caminho}</p></div>
+        </article>
+      ))}
+    </div>
+
+    <div class="u-close reveal">
+      <p>Mesma urgencia que o mercado prega. Com uma diferenca: aqui tem <span class="serif-accent">caminho</span>, e da tempo de comecar.</p>
+    </div>
+  </div>
+</section>

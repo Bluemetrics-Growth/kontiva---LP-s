@@ -1,0 +1,36 @@
+---
+// S1 Hero (Tributario). Headline A (B comentada para teste). Um CTA primario.
+import Icon from './Icon.astro';
+import VisaoFinanceira from './app-frames/VisaoFinanceira.astro';
+import { CTA_PRIMARIO, CTA_ANCORA } from '../data/showcase';
+---
+<section class="hero" id="topo" aria-labelledby="hero-h1">
+  <div class="shell hero-grid">
+    <div class="hero-copy">
+      <div class="eyebrow reveal"><span class="dot-cyan"></span> Reforma tributaria · operacao, nao so simulacao</div>
+
+      <h1 id="hero-h1" class="reveal delay-1">
+        Enquanto todo mundo simula a reforma, o Kontiva <span class="accent">opera</span> ela com voce.
+      </h1>
+      <!-- Headline B (teste): Em 2027 seus clientes vao te perguntar o que fazer. A resposta se constroi agora. -->
+
+      <p class="lead hero-sub reveal delay-2">
+        O agente de IA de gestao e operacao tributaria para escritorios contabeis. Responde qualquer duvida da reforma com fonte e com o contexto dos seus dados, simula a carteira inteira de uma vez, e opera a rotina que vem ai: creditos, fornecedores e caixa. Com observabilidade total e a sua aprovacao em cada passo.
+      </p>
+
+      <div class="hero-cta-row reveal delay-2">
+        <a href={CTA_ANCORA} class="btn btn-primary btn-lg" data-cta="hero">{CTA_PRIMARIO}</a>
+      </div>
+      <p class="hero-cta-note reveal delay-3">Sem custo e sem compromisso. Voce ve rodando na sua carteira antes de decidir.</p>
+
+      <div class="hero-seal reveal delay-3">
+        <div><span class="tick"><Icon name="check" size={12} /></span> Le Dominio, Alterdata, Questor e planilhas.</div>
+        <div><span class="tick"><Icon name="check" size={12} /></span> Voce aprova antes de qualquer coisa sair.</div>
+      </div>
+    </div>
+
+    <div class="hero-visual reveal delay-2">
+      <VisaoFinanceira />
+    </div>
+  </div>
+</section>

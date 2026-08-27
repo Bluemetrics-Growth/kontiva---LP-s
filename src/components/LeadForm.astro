@@ -1,0 +1,222 @@
+---
+// S9 CTA final + formulario. Conversao (metrica unica).
+import Icon from './Icon.astro';
+const setup = [
+  'Agende a demo. Nossa equipe configura com voce, sem custo.',
+  'Rodamos os agentes numa amostra controlada da sua carteira.',
+  'Voce ve o resultado em reais e decide. Sem compromisso.',
+];
+---
+<section class="final" id="agendar" aria-labelledby="final-h">
+  <div class="shell final-grid">
+    <div class="final-copy reveal">
+      <div class="eyebrow"><span class="dot-cyan"></span> Agende a demo</div>
+      <h2 id="final-h" style="margin-top:20px;">Veja o Kontiva operando na sua carteira. <span class="hl">Antes de pagar qualquer coisa.</span></h2>
+      <p class="final-sub">Nossa equipe configura os agentes com voce e roda numa amostra controlada dos seus clientes. Voce decide depois de ver o numero.</p>
+
+      <div class="setup-steps">
+        {setup.map((s, i) => (
+          <div class="setup-step"><span class="sn">{i + 1}</span><p>{s}</p></div>
+        ))}
+      </div>
+    </div>
+
+    <div class="form-card reveal delay-1" id="form-card">
+      <div class="form-body">
+        <h3>Agende a demo com os dados do seu escritorio</h3>
+        <p class="fc-sub">Cinco campos. Nossa equipe responde em ate 1 dia util.</p>
+
+        <form id="lead-form" novalidate action="" method="post">
+          <div class="f-field" data-field="nome">
+            <label for="lf-nome">Nome</label>
+            <input id="lf-nome" name="nome" type="text" placeholder="Seu nome" required autocomplete="name" aria-describedby="err-nome" />
+            <div class="f-error" id="err-nome">Preencha este campo para continuar.</div>
+          </div>
+
+          <div class="f-row">
+            <div class="f-field" data-field="whatsapp">
+              <label for="lf-whats">WhatsApp</label>
+              <input id="lf-whats" name="whatsapp" type="tel" inputmode="tel" placeholder="(00) 00000-0000" required autocomplete="tel" aria-describedby="err-whats" />
+              <div class="f-error" id="err-whats">Numero incompleto. Inclua o DDD.</div>
+            </div>
+            <div class="f-field" data-field="carteira">
+              <label for="lf-carteira">Clientes na carteira</label>
+              <input id="lf-carteira" name="carteira" type="number" min="1" step="1" placeholder="Ex: 180" required aria-describedby="err-carteira" />
+              <div class="f-error" id="err-carteira">Informe um numero maior que zero.</div>
+            </div>
+          </div>
+
+          <div class="f-field" data-field="email">
+            <label for="lf-email">E-mail do escritorio</label>
+            <input id="lf-email" name="email" type="email" placeholder="voce@seuescritorio.com.br" required autocomplete="email" aria-describedby="err-email" />
+            <div class="f-error" id="err-email">E-mail invalido. Confira e tente de novo.</div>
+          </div>
+
+          <div class="f-field" data-field="sistema">
+            <label for="lf-sistema">Sistema que voce usa <span class="opt">(ajuda a preparar a demo)</span></label>
+            <select id="lf-sistema" name="sistema">
+              <option value="">Selecione</option>
+              <option>Dominio</option>
+              <option>Alterdata</option>
+              <option>Questor</option>
+              <option>Planilhas</option>
+              <option>Outro</option>
+            </select>
+          </div>
+
+          <!-- honeypot anti-spam -->
+          <div class="f-honeypot" aria-hidden="true">
+            <label for="lf-empresa-site">Nao preencha este campo</label>
+            <input id="lf-empresa-site" name="empresa_site" type="text" tabindex="-1" autocomplete="off" />
+          </div>
+
+          <button type="submit" class="btn btn-primary btn-block btn-lg" id="lf-submit" data-cta="form">Agendar minha demo</button>
+
+          <p class="f-consent">Ao enviar, voce concorda em ser contatado pela nossa equipe. Seus dados ficam protegidos e voce pode pedir a exclusao quando quiser.</p>
+
+          <div class="form-sendfail" id="form-sendfail" role="alert">
+            Nao conseguimos enviar agora. Tente de novo, ou chame a gente no WhatsApp.
+            <a href="#" class="btn btn-dark btn-block" style="margin-top:10px;" id="sendfail-wa" target="_blank" rel="noreferrer" data-cta="whatsapp">Falar no WhatsApp</a>
+          </div>
+        </form>
+      </div>
+
+      <div class="form-success" id="form-success" role="status" aria-live="polite">
+        <span class="ok-ico"><Icon name="check" size={26} /></span>
+        <h3>Recebemos seu contato.</h3>
+        <p>Nossa equipe responde em ate 1 dia util para agendar a demo e combinar a amostra da sua carteira.</p>
+      </div>
+
+      <p class="form-honesty">Setup assistido em turmas limitadas pela nossa capacidade de onboarding.</p>
+    </div>
+  </div>
+</section>
+
+<script>
+  import { whatsappHref, WHATSAPP_NUM } from '../data/showcase';
+
+  // Endpoint do lead. Definir no deploy (HubSpot / serverless). Vazio = handoff via WhatsApp.
+  const LEAD_ENDPOINT = '';
+
+  const track = (name: string, data: Record<string, unknown> = {}) => {
+    const w = window as any;
+    w.dataLayer = w.dataLayer || [];
+    w.dataLayer.push({ event: name, ...data });
+  };
+
+  const form = document.getElementById('lead-form') as HTMLFormElement | null;
+  if (form) {
+    const card = document.getElementById('form-card')!;
+    const submitBtn = document.getElementById('lf-submit') as HTMLButtonElement;
+    const successEl = document.getElementById('form-success')!;
+    const failEl = document.getElementById('form-sendfail')!;
+    const failWa = document.getElementById('sendfail-wa') as HTMLAnchorElement;
+    let started = false;
+
+    // UTMs preservadas de qualquer origem
+    const params = new URLSearchParams(location.search);
+    const utms: Record<string, string> = {};
+    ['utm_source', 'utm_medium', 'utm_campaign', 'utm_content', 'utm_term'].forEach((k) => {
+      const v = params.get(k) || sessionStorage.getItem(k);
+      if (v) { utms[k] = v; sessionStorage.setItem(k, v); }
+    });
+
+    // Mascara de WhatsApp BR
+    const whats = document.getElementById('lf-whats') as HTMLInputElement;
+    whats.addEventListener('input', () => {
+      let d = whats.value.replace(/\D/g, '').slice(0, 11);
+      let out = d;
+      if (d.length > 2) out = `(${d.slice(0, 2)}) ${d.slice(2)}`;
+      if (d.length > 7) out = `(${d.slice(0, 2)}) ${d.slice(2, 7)}-${d.slice(7)}`;
+      whats.value = out;
+    });
+
+    form.addEventListener('focusin', () => {
+      if (!started) { started = true; track('form_start'); }
+    });
+
+    const setInvalid = (name: string, bad: boolean) => {
+      const f = form.querySelector(`[data-field="${name}"]`);
+      if (f) f.classList.toggle('invalid', bad);
+    };
+
+    const validate = () => {
+      const nome = (form.nome as HTMLInputElement).value.trim();
+      const email = (form.email as HTMLInputElement).value.trim();
+      const digits = whats.value.replace(/\D/g, '');
+      const carteira = parseInt((form.carteira as HTMLInputElement).value, 10);
+      const okNome = nome.length > 0;
+      const okEmail = /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
+      const okWhats = digits.length >= 10;
+      const okCarteira = Number.isFinite(carteira) && carteira > 0;
+      setInvalid('nome', !okNome);
+      setInvalid('email', !okEmail);
+      setInvalid('whatsapp', !okWhats);
+      setInvalid('carteira', !okCarteira);
+      return { ok: okNome && okEmail && okWhats && okCarteira };
+    };
+
+    const buildWa = (data: Record<string, string>) => {
+      const msg = `Ola, quero agendar a demo da Kontiva com os dados do meu escritorio.%0A%0ANome: ${data.nome || ''}%0AWhatsApp: ${data.whatsapp || ''}%0AE-mail: ${data.email || ''}%0AClientes na carteira: ${data.carteira || ''}%0ASistema: ${data.sistema || 'nao informado'}`;
+      return `https://wa.me/${WHATSAPP_NUM}?text=${msg}`;
+    };
+
+    const showSuccess = () => {
+      card.classList.add('sent');
+      successEl.classList.add('show');
+      successEl.scrollIntoView({ behavior: 'smooth', block: 'center' });
+      track('form_submit_success');
+    };
+
+    form.addEventListener('submit', async (e) => {
+      e.preventDefault();
+      failEl.classList.remove('show');
+
+      // honeypot: bot preencheu campo oculto
+      if ((form.empresa_site as HTMLInputElement).value) { showSuccess(); return; }
+
+      const { ok } = validate();
+      if (!ok) {
+        const firstBad = form.querySelector('.f-field.invalid input, .f-field.invalid select') as HTMLElement | null;
+        firstBad?.focus();
+        return;
+      }
+
+      const data: Record<string, string> = {
+        nome: (form.nome as HTMLInputElement).value.trim(),
+        whatsapp: whats.value.trim(),
+        email: (form.email as HTMLInputElement).value.trim(),
+        carteira: (form.carteira as HTMLInputElement).value.trim(),
+        sistema: (form.sistema as HTMLSelectElement).value,
+        ...utms,
+      };
+
+      submitBtn.classList.add('is-loading');
+      submitBtn.innerHTML = '<span class="spinner"></span> Enviando...';
+
+      try {
+        if (LEAD_ENDPOINT) {
+          const res = await fetch(LEAD_ENDPOINT, {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify(data),
+          });
+          if (!res.ok) throw new Error('bad status');
+          showSuccess();
+        } else {
+          // Sem endpoint: handoff pelo WhatsApp (fallback documentado).
+          window.open(buildWa(data), '_blank', 'noopener');
+          showSuccess();
+        }
+      } catch (err) {
+        submitBtn.classList.remove('is-loading');
+        submitBtn.textContent = 'Agendar minha demo';
+        failWa.href = buildWa(data);
+        failEl.classList.add('show');
+      }
+    });
+
+    // fallback do link de erro
+    failWa.href = whatsappHref;
+  }
+</script>

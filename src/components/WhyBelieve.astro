@@ -1,0 +1,27 @@
+---
+// S8 Por que acreditar (as 5 provas).
+const provas = [
+  { t: 'Setup de Teste sem custo', d: 'A gente configura os agentes com voce e roda numa amostra da sua carteira. Voce ve o resultado em reais antes de assinar.' },
+  { t: 'Observabilidade', d: 'Cada resposta e cada calculo mostram a fonte e a memoria de calculo, com a aliquota vigente lida do sistema. O antidoto ao medo de IA que inventa.' },
+  { t: 'Aprovacao humana em tudo que executa', d: 'O contador manda, o agente prepara. Nada financeiro e emitido sem a sua revisao, e fica registrado quem aprovou o que.' },
+  { t: 'Multi-sistema', d: 'Le Dominio, Alterdata, Questor e planilhas. Voce nao troca nada.' },
+  { t: 'Engenharia BlueMetrics', d: '10+ anos de IA aplicada, 200+ projetos, AWS Advanced Partner. Agente de verdade, nao script com LLM.' },
+];
+---
+<section class="bg-calm" aria-labelledby="why-h">
+  <div class="shell">
+    <div class="section-head reveal">
+      <div class="eyebrow"><span class="dot-cyan"></span> Por que acreditar</div>
+      <h2 id="why-h">Cinco motivos para confiar antes de pagar.</h2>
+    </div>
+    <div class="believe-grid">
+      {provas.map((p, i) => (
+        <article class={`believe-card reveal delay-${(i % 4) + 1}`}>
+          <div class="b-num">{String(i + 1).padStart(2, '0')}</div>
+          <h3>{p.t}</h3>
+          <p>{p.d}</p>
+        </article>
+      ))}
+    </div>
+  </div>
+</section>
