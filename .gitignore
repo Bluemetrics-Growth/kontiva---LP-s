@@ -21,3 +21,8 @@ yarn-error.log*
 # os
 .DS_Store
 Thumbs.db
+
+# impeccable design toolkit (installed via npx impeccable install; local tooling, nao source)
+.claude/skills/impeccable/
+.claude/settings.local.json
+.impeccable/
