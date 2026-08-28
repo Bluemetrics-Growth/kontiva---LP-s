@@ -1,0 +1,1415 @@
+<!-- @dsCard group="Website" viewport="1440x900" subtitle="Landing Empresas - reforma tributaria, caixa, creditos e repricing" name="Landing Empresas" --><!doctype html>
+<html lang="pt-BR" data-lang="pt">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Kontiva.ai · Copiloto fiscal e financeiro para a reforma tributária</title>
+  <meta name="description" content="O Kontiva projeta o seu caixa com o split payment, protege os seus créditos de IBS/CBS monitorando os fornecedores e sustenta o repricing dos contratos. Copiloto fiscal e financeiro para empresas na reforma tributária." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Instrument+Serif:ital@0;1&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet" />
+  <style>
+    /* Kontiva.ai · Landing Empresas · mesmo design system da Landing v3 */
+    :root {
+      --azul-profundo: #0A1F3F;
+      --azul-profundo-2: #122A52;
+      --ciano: #00D4FF;
+      --ciano-suave: #E0F9FF;
+      --branco: #FFFFFF;
+      --cinza-claro: #F2F4F7;
+      --cinza-texto: #6B7280;
+      --cinza-escuro: #374151;
+      --amarelo: #FFC53D;
+      --accent-boost: 1.05;
+      --font-display: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+      --font-body: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+      --font-serif-italic: 'Instrument Serif', Georgia, serif;
+    }
+
+    * { box-sizing: border-box; }
+
+    html, body {
+      margin: 0; padding: 0;
+      background: var(--branco);
+      color: var(--azul-profundo);
+      font-family: var(--font-body);
+      font-feature-settings: "ss01", "cv11";
+      -webkit-font-smoothing: antialiased;
+      text-rendering: optimizeLegibility;
+    }
+
+    a { color: inherit; text-decoration: none; }
+
+    .shell { max-width: 1240px; margin: 0 auto; padding: 0 32px; }
+
+    /* Nav */
+    .nav {
+      position: sticky; top: 0; z-index: 50;
+      background: rgba(255,255,255,0.82);
+      backdrop-filter: saturate(1.2) blur(14px);
+      -webkit-backdrop-filter: saturate(1.2) blur(14px);
+      border-bottom: 1px solid rgba(10,31,63,0.06);
+      transition: background .4s ease, border-color .4s ease;
+    }
+    .nav.nav-dark { background: rgba(10,31,63,0.94); border-bottom-color: rgba(255,255,255,0.08); }
+    .nav.nav-dark .nav-links { color: rgba(234,246,255,0.72); }
+    .nav.nav-dark .nav-links a:hover { color: #FFFFFF; }
+    .nav.nav-dark .brand-lockup .k { color: #EAF6FF; }
+    .nav.nav-dark .lang-toggle { background: transparent; border-color: rgba(255,255,255,0.22); }
+    .nav.nav-dark .lang-toggle button { color: rgba(234,246,255,0.6); }
+    .nav.nav-dark .lang-toggle button.on { background: var(--ciano); color: var(--azul-profundo); }
+    .nav-inner { display: flex; align-items: center; justify-content: space-between; height: 72px; }
+    .brand-lockup { display: flex; align-items: baseline; gap: 0; font-weight: 700; letter-spacing: -0.02em; font-size: 22px; }
+    .brand-lockup .k { color: var(--azul-profundo); }
+    .brand-lockup .ai { color: var(--ciano); }
+    .brand-lockup .dot { color: var(--ciano); margin: 0 1px; }
+    .brand-img { height: 24px; width: auto; display: block; }
+    .nav .brand-img-light { display: none; }
+    .nav.nav-dark .brand-img-light { display: block; }
+    .nav.nav-dark .brand-img-color { display: none; }
+    footer .brand-img { height: 22px; }
+    .nav-left { display: flex; align-items: center; gap: 56px; min-width: 0; }
+    .nav-right { display: flex; gap: 24px; align-items: center; }
+    .nav-links { display: flex; gap: 24px; align-items: center; color: var(--cinza-escuro); font-size: 13px; font-weight: 500; }
+    .nav-links a { transition: color .2s; }
+    .nav-links a:hover { color: var(--azul-profundo); }
+    @media (max-width: 960px) { .nav-links { display: none; } }
+    @media (max-width: 560px) { .nav .btn-primary { display: none; } }
+
+    /* Lang toggle */
+    .lang-toggle { display: inline-flex; align-items: center; gap: 2px; border: 1px solid rgba(10,31,63,0.12); border-radius: 99px; padding: 3px; background: var(--branco); }
+    .lang-toggle button { border: none; background: transparent; cursor: pointer; font-family: inherit; font-size: 11px; font-weight: 700; letter-spacing: 0.06em; padding: 5px 10px; border-radius: 99px; color: var(--cinza-texto); transition: background .2s, color .2s; }
+    .lang-toggle button.on { background: var(--azul-profundo); color: var(--branco); }
+
+    /* Buttons */
+    .btn { display: inline-flex; align-items: center; justify-content: center; gap: 10px; padding: 14px 22px; font-weight: 600; font-size: 15px; letter-spacing: -0.01em; border-radius: 10px; border: 1px solid transparent; cursor: pointer; transition: transform .15s ease, box-shadow .2s ease, background .2s; white-space: nowrap; font-family: inherit; }
+    .btn-primary { background: var(--ciano); color: var(--azul-profundo); box-shadow: 0 1px 0 rgba(0,0,0,0.04), 0 10px 30px -10px color-mix(in oklab, var(--ciano) calc(70% * var(--accent-boost)), transparent); }
+    .btn-primary:hover { transform: translateY(-1px); box-shadow: 0 1px 0 rgba(0,0,0,0.04), 0 18px 40px -12px color-mix(in oklab, var(--ciano) calc(80% * var(--accent-boost)), transparent); }
+    .btn-ghost { background: transparent; color: var(--azul-profundo); border-color: rgba(10,31,63,0.14); }
+    .btn-ghost:hover { background: var(--cinza-claro); }
+    .btn-dark { background: var(--azul-profundo); color: var(--branco); }
+    .btn-dark:hover { background: var(--azul-profundo-2); }
+    .btn .whats { width: 18px; height: 18px; display: inline-block; flex-shrink: 0; }
+
+    /* Sections */
+    section { padding: 120px 0; position: relative; }
+    @media (max-width: 720px) { section { padding: 80px 0; } }
+
+    .eyebrow { display: inline-flex; align-items: center; gap: 10px; font-size: 12px; font-weight: 600; letter-spacing: 0.12em; text-transform: uppercase; color: var(--cinza-texto); }
+    .eyebrow .dot-cyan { width: 6px; height: 6px; border-radius: 50%; background: var(--ciano); box-shadow: 0 0 0 4px color-mix(in oklab, var(--ciano) 18%, transparent); }
+
+    h1, h2, h3, h4 { font-family: var(--font-display); letter-spacing: -0.03em; margin: 0; color: var(--azul-profundo); font-weight: 700; text-wrap: balance; }
+    h1 { font-size: clamp(40px, 6.2vw, 82px); line-height: 0.98; letter-spacing: -0.04em; }
+    h2 { font-size: clamp(36px, 4.4vw, 64px); line-height: 1.02; }
+    h3 { font-size: clamp(22px, 2.2vw, 28px); line-height: 1.2; }
+    p.lead { font-size: clamp(18px, 1.6vw, 22px); line-height: 1.5; color: var(--cinza-escuro); text-wrap: pretty; }
+    p { color: var(--cinza-escuro); line-height: 1.55; }
+    .serif-accent { font-family: var(--font-serif-italic); font-style: italic; font-weight: 400; letter-spacing: -0.01em; }
+
+    /* Hero */
+    .hero { padding: 96px 0 88px; position: relative; overflow: hidden; background: linear-gradient(180deg, #E3F0FB 0%, #F4F9FE 55%, var(--branco) 100%); }
+    .hero .hero-grid { position: relative; }
+    .hero-grid { display: grid; grid-template-columns: 1.05fr 0.95fr; gap: 72px; align-items: center; }
+    @media (max-width: 960px) { .hero-grid { grid-template-columns: 1fr; gap: 56px; } }
+    .hero h1 .ai-dot { color: var(--ciano); }
+    .hero-sub { margin: 28px 0 40px; max-width: 560px; }
+    .hero-cta-row { display: flex; flex-wrap: wrap; gap: 14px; align-items: center; }
+    .hero-meta { display: flex; gap: 28px; margin-top: 48px; color: var(--cinza-texto); font-size: 13px; letter-spacing: -0.005em; flex-wrap: wrap; }
+    .hero-meta div { display: flex; align-items: center; gap: 8px; }
+    .hero-meta .tick { width: 14px; height: 14px; border-radius: 50%; background: color-mix(in oklab, var(--ciano) 20%, white); display: inline-flex; align-items: center; justify-content: center; color: var(--azul-profundo); flex-shrink: 0; }
+
+    /* Radar card */
+    .radar-card { position: relative; background: var(--azul-profundo); border-radius: 20px; padding: 22px; color: #EAF6FF; overflow: hidden; box-shadow: 0 30px 80px -30px rgba(10,31,63,0.4), 0 0 0 1px rgba(10,31,63,0.08); width: 100%; max-width: 500px; justify-self: end; }
+    .radar-card::before { content: ""; position: absolute; inset: 0; background: radial-gradient(600px circle at 85% 15%, color-mix(in oklab, var(--ciano) calc(18% * var(--accent-boost)), transparent), transparent 60%), linear-gradient(180deg, transparent 0%, rgba(0,212,255,0.04) 100%); pointer-events: none; }
+    .radar-card::after { content: ""; position: absolute; inset: 80px 0 0 0; background: linear-gradient(180deg, transparent 0%, color-mix(in oklab, var(--ciano) calc(22% * var(--accent-boost)), transparent) 48%, color-mix(in oklab, var(--ciano) calc(40% * var(--accent-boost)), transparent) 50%, transparent 100%); filter: blur(0.5px); animation: scan 3.6s cubic-bezier(.7,0,.3,1) infinite; pointer-events: none; }
+    @keyframes scan { 0% { transform: translateY(-80%); opacity: 0; } 20%, 80% { opacity: 1; } 100% { transform: translateY(80%); opacity: 0; } }
+    .radar-head { display: flex; justify-content: space-between; align-items: center; font-size: 12px; color: rgba(224,249,255,0.6); letter-spacing: 0.06em; text-transform: uppercase; margin-bottom: 20px; position: relative; z-index: 1; }
+    .radar-head .live { display: inline-flex; align-items: center; gap: 6px; color: var(--ciano); }
+    .radar-head .live::before { content: ""; width: 6px; height: 6px; border-radius: 50%; background: var(--ciano); animation: pulse 1.6s ease-out infinite; }
+    @keyframes pulse { 0% { box-shadow: 0 0 0 0 rgba(0,212,255,0.5); } 100% { box-shadow: 0 0 0 10px rgba(0,212,255,0); } }
+    .radar-list { position: relative; z-index: 1; display: flex; flex-direction: column; gap: 10px; }
+    .radar-row { display: grid; grid-template-columns: 34px 1fr auto auto; gap: 12px; align-items: center; padding: 11px 14px; background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.06); border-radius: 10px; font-size: 13px; transition: border-color .4s, background .4s, transform .4s; }
+    @media (max-width: 420px) { .radar-row { grid-template-columns: 1fr auto; } .radar-row .idx, .radar-row .amount { display: none; } }
+    .radar-row .idx { font-family: 'JetBrains Mono', ui-monospace, monospace; font-size: 11px; color: rgba(224,249,255,0.5); letter-spacing: 0.04em; }
+    .radar-row .name { color: #EAF6FF; font-weight: 500; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+    .radar-row .amount { font-family: 'JetBrains Mono', ui-monospace, monospace; font-size: 13px; color: rgba(224,249,255,0.75); }
+    .radar-row .badge { padding: 3px 8px; border-radius: 99px; font-size: 10px; letter-spacing: 0.04em; text-transform: uppercase; border: 1px solid rgba(255,255,255,0.1); color: rgba(224,249,255,0.7); white-space: nowrap; }
+    .radar-row.flagged { border-color: color-mix(in oklab, var(--ciano) calc(55% * var(--accent-boost)), transparent); background: color-mix(in oklab, var(--ciano) calc(8% * var(--accent-boost)), transparent); }
+    .radar-row.flagged .badge { background: var(--amarelo); color: var(--azul-profundo); border-color: var(--amarelo); font-weight: 700; }
+    .radar-row.flagged .amount { color: var(--ciano); font-weight: 600; }
+    .radar-summary { margin-top: 20px; padding: 16px 18px; border-top: 1px dashed rgba(255,255,255,0.1); display: flex; justify-content: space-between; align-items: baseline; position: relative; z-index: 1; }
+    .radar-summary .label { font-size: 11px; letter-spacing: 0.1em; text-transform: uppercase; color: rgba(224,249,255,0.55); }
+    .radar-summary .value { font-size: 24px; font-weight: 700; color: var(--ciano); letter-spacing: -0.02em; }
+    .radar-summary .value .cents { font-size: 18px; opacity: 0.6; }
+
+    /* Reveal */
+    .reveal { opacity: 0; transform: translateY(24px); transition: opacity .8s ease, transform .8s cubic-bezier(.2,.7,.1,1); }
+    .reveal.in { opacity: 1; transform: none; }
+    .reveal.delay-1 { transition-delay: .08s; }
+    .reveal.delay-2 { transition-delay: .16s; }
+    .reveal.delay-3 { transition-delay: .24s; }
+    .reveal.delay-4 { transition-delay: .32s; }
+
+    /* Problem */
+    .problem { background: var(--cinza-claro); }
+    .section-head { max-width: 820px; margin: 0 0 64px; }
+    .split { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; }
+    @media (max-width: 820px) { .split { grid-template-columns: 1fr; } }
+    .panel { border-radius: 20px; padding: 28px; min-height: 420px; position: relative; overflow: hidden; }
+    .panel-head { display: flex; align-items: center; justify-content: space-between; margin-bottom: 22px; }
+    .panel-tag { font-size: 11px; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase; padding: 5px 10px; border-radius: 99px; }
+    .panel-title { font-weight: 600; font-size: 15px; color: var(--cinza-escuro); }
+    .panel.before { background: var(--branco); border: 1px solid rgba(10,31,63,0.08); }
+    .panel.before .panel-tag { background: #FFF1EC; color: #A3401A; }
+    .panel.after { background: var(--azul-profundo); color: #EAF6FF; }
+    .panel.after .panel-tag { background: var(--ciano); color: var(--azul-profundo); }
+    .panel.after .panel-title { color: rgba(234,246,255,0.7); }
+    .panel-col { display: flex; flex-direction: column; align-items: flex-start; }
+    .panel-col .panel { width: 100%; flex: 1; }
+    .panel-flag { display: inline-block; font-size: 13px; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; padding: 8px 18px; border-radius: 99px; margin-bottom: 16px; }
+    .panel-flag.before-flag { background: #E8401C; color: #FFFFFF; }
+    .panel-flag.after-flag { background: var(--ciano); color: var(--azul-profundo); }
+
+    /* Sheet */
+    .sheet { font-family: 'JetBrains Mono', ui-monospace, monospace; font-size: 12px; border: 1px solid rgba(10,31,63,0.08); border-radius: 10px; overflow: hidden; }
+    .sheet-row { display: grid; grid-template-columns: 40px 1.6fr 1fr 1fr; }
+    .sheet-row > div { padding: 10px 12px; border-bottom: 1px solid rgba(10,31,63,0.06); color: var(--cinza-escuro); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+    .sheet-row.head > div { background: #F9FAFC; color: var(--cinza-texto); font-weight: 600; font-size: 11px; letter-spacing: 0.04em; text-transform: uppercase; }
+    .sheet-row > div:first-child { background: #F9FAFC; color: var(--cinza-texto); text-align: center; font-size: 11px; }
+    .sheet-row .err { color: #C23A1F; }
+    .sheet-row .faded { color: #B5BAC3; }
+    .sheet-row .blank { color: #D0D5DD; }
+    .sheet-caption { margin-top: 18px; display: flex; gap: 10px; flex-wrap: wrap; font-size: 12px; color: var(--cinza-texto); }
+    .sheet-caption span { padding: 4px 10px; background: #FFF1EC; color: #A3401A; border-radius: 99px; font-weight: 600; }
+    .sheet-caption span.muted { background: #F2F4F7; color: var(--cinza-texto); }
+
+    /* K-stack / k-card */
+    .k-stack { display: flex; flex-direction: column; gap: 14px; }
+    .k-card { background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.08); border-radius: 12px; padding: 16px 18px; display: flex; justify-content: space-between; align-items: center; gap: 16px; }
+    .k-card .k-left { display: flex; gap: 14px; align-items: center; }
+    .k-card .k-ico { width: 36px; height: 36px; border-radius: 10px; background: color-mix(in oklab, var(--ciano) calc(22% * var(--accent-boost)), transparent); color: var(--ciano); display: inline-flex; align-items: center; justify-content: center; flex-shrink: 0; }
+    .k-card .k-title { font-size: 14px; font-weight: 600; color: #EAF6FF; }
+    .k-card .k-sub { font-size: 12px; color: rgba(234,246,255,0.55); }
+    .k-card .k-val { font-size: 16px; font-weight: 700; color: var(--ciano); font-family: 'JetBrains Mono', monospace; white-space: nowrap; }
+    .k-card.k-total { background: color-mix(in oklab, var(--ciano) calc(14% * var(--accent-boost)), transparent); border-color: color-mix(in oklab, var(--ciano) 40%, transparent); }
+    .k-card.k-total .k-label { font-size: 11px; letter-spacing: 0.1em; text-transform: uppercase; color: rgba(234,246,255,0.7); }
+    .k-card.k-total .k-val { font-size: 22px; }
+
+    /* Flow */
+    .flow { background: var(--branco); }
+    .flow-list { display: flex; flex-direction: column; }
+    .flow-step { display: grid; grid-template-columns: 80px 1fr 400px; gap: 48px; padding: 72px 0; align-items: center; border-top: 1px solid rgba(10,31,63,0.08); }
+    .flow-step:last-child { border-bottom: 1px solid rgba(10,31,63,0.08); }
+    @media (max-width: 960px) { .flow-step { grid-template-columns: 1fr; gap: 24px; padding: 48px 0; } .flow-illus { max-width: 480px; } }
+    .flow-num { font-family: 'JetBrains Mono', ui-monospace, monospace; font-size: 13px; letter-spacing: 0.12em; color: var(--ciano); font-weight: 600; align-self: start; padding-top: 6px; }
+    .flow-body h3 { margin-bottom: 16px; font-size: clamp(28px, 3vw, 40px); letter-spacing: -0.03em; }
+    .flow-body p { font-size: 16px; max-width: 58ch; margin: 0; }
+    .flow-chips { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 18px; }
+    .flow-chip { font-family: 'JetBrains Mono', ui-monospace, monospace; font-size: 11px; padding: 5px 11px; border-radius: 99px; border: 1px solid rgba(10,31,63,0.12); color: var(--cinza-escuro); background: var(--branco); }
+    .flow-illus { height: 320px; border-radius: 16px; background: var(--azul-profundo); position: relative; overflow: hidden; }
+
+    /* Flow illustrations */
+    .fi-texture { position: absolute; inset: 0; background: repeating-linear-gradient(135deg, transparent 0 12px, rgba(0,212,255,0.05) 12px 13px); }
+    .fi-doc { position: absolute; left: 28px; top: 50%; transform: translateY(-50%); width: 92px; height: 132px; overflow: hidden; border-radius: 10px; background: linear-gradient(180deg, rgba(255,255,255,0.09), rgba(255,255,255,0.02)); border: 1px solid rgba(0,212,255,0.3); display: flex; flex-direction: column; gap: 8px; padding: 16px 12px; box-shadow: 0 0 30px rgba(0,212,255,0.15); }
+    .fi-doc .l1 { height: 3px; background: rgba(255,255,255,0.2); border-radius: 2px; width: 80%; }
+    .fi-doc .l2 { height: 3px; background: rgba(255,255,255,0.12); border-radius: 2px; width: 60%; }
+    .fi-doc .l3 { height: 3px; background: rgba(255,255,255,0.12); border-radius: 2px; width: 70%; }
+    .fi-doc .tag { margin-top: auto; font-family: 'JetBrains Mono', monospace; font-size: 9px; color: var(--ciano); letter-spacing: 0.1em; }
+    .fi-arrow { position: absolute; left: 136px; top: 50%; transform: translateY(-50%); color: var(--ciano); font-size: 18px; opacity: 0.8; animation: arrowNudge 1.5s ease-in-out infinite; }
+    @keyframes arrowNudge { 0%, 100% { transform: translateY(-50%) translateX(0); opacity: 0.55; } 50% { transform: translateY(-50%) translateX(5px); opacity: 1; } }
+    .fi-doc .scanline { position: absolute; left: 6px; right: 6px; top: 8%; height: 22px; border-radius: 4px; background: linear-gradient(180deg, transparent, rgba(0,212,255,0.28), transparent); animation: docscan 2.6s ease-in-out infinite; pointer-events: none; }
+    @keyframes docscan { 0%, 100% { top: 6%; } 50% { top: 72%; } }
+    @keyframes fieldIn { from { opacity: 0; transform: translateX(16px); } to { opacity: 1; transform: none; } }
+    .flow-step.in .fi-fields .fi-field { animation: fieldIn .55s cubic-bezier(.2,.7,.1,1) both; }
+    .flow-step.in .fi-fields .fi-field:nth-child(1) { animation-delay: .25s; }
+    .flow-step.in .fi-fields .fi-field:nth-child(2) { animation-delay: .4s; }
+    .flow-step.in .fi-fields .fi-field:nth-child(3) { animation-delay: .55s; }
+    .flow-step.in .fi-fields .fi-field:nth-child(4) { animation-delay: .7s; }
+    .flow-step.in .fi-fields .fi-field:nth-child(5) { animation-delay: .85s; }
+    .fi-fields { position: absolute; left: 160px; right: 24px; top: 50%; transform: translateY(-50%); display: flex; flex-direction: column; gap: 7px; }
+    .fi-field { display: flex; gap: 10px; align-items: baseline; font-family: 'JetBrains Mono', monospace; font-size: 10px; padding: 6px 10px; border-radius: 6px; background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.07); }
+    .fi-field .key { color: var(--ciano); letter-spacing: 0.08em; text-transform: uppercase; flex-shrink: 0; }
+    .fi-field .val { color: rgba(234,246,255,0.75); overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+    .fi-glow { position: absolute; inset: 0; background: radial-gradient(300px circle at 50% 50%, rgba(0,212,255,0.1), transparent 65%); }
+    .fi-erp-links { position: absolute; inset: 0; width: 100%; height: 100%; }
+    .fi-erp-links path { stroke: rgba(0,212,255,0.45); stroke-width: 1.5; fill: none; stroke-dasharray: 4 7; animation: dashmove 1.4s linear infinite; }
+    @keyframes dashmove { to { stroke-dashoffset: -22; } }
+    .fi-report { position: absolute; width: 110px; padding: 10px 11px 9px; border-radius: 9px; background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.12); display: flex; flex-direction: column; gap: 5px; }
+    .fi-report .rl { height: 3px; border-radius: 2px; background: rgba(255,255,255,0.18); }
+    .fi-report .rl.short { width: 62%; }
+    .fi-report .rlabel { font-family: 'JetBrains Mono', monospace; font-size: 8.5px; letter-spacing: 0.06em; text-transform: uppercase; color: var(--ciano); margin-top: 3px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+    .fi-app-icon { position: absolute; left: 50%; top: 50%; transform: translate(-50%,-50%); width: 64px; height: 64px; border-radius: 15px; box-shadow: 0 0 48px rgba(0,212,255,0.45), 0 0 0 1px rgba(0,212,255,0.35); }
+    .fi-app-icon svg { display: block; width: 64px; height: 64px; border-radius: 15px; }
+    .fi-erp-note { position: absolute; bottom: 12px; left: 0; right: 0; text-align: center; font-size: 9px; letter-spacing: 0.12em; text-transform: uppercase; color: rgba(234,246,255,0.45); font-family: 'JetBrains Mono', monospace; }
+    .fi-invoice { position: absolute; left: 50%; top: 50%; transform: translate(-50%,-50%); width: min(320px, 84%); background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.1); border-radius: 12px; padding: 16px 18px; font-family: 'JetBrains Mono', monospace; font-size: 11px; }
+    .fi-invoice .inv-title { font-size: 9px; letter-spacing: 0.12em; text-transform: uppercase; color: rgba(234,246,255,0.5); margin-bottom: 10px; }
+    .fi-invoice .inv-line { display: flex; justify-content: space-between; gap: 12px; padding: 6px 0; border-bottom: 1px dashed rgba(255,255,255,0.08); color: rgba(234,246,255,0.75); }
+    .fi-invoice .inv-line.hl { color: var(--ciano); }
+    .fi-invoice .inv-line .desc { overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+    .fi-invoice .inv-line .amt { flex-shrink: 0; }
+    .fi-invoice .inv-total { display: flex; justify-content: space-between; padding-top: 10px; font-weight: 700; color: #EAF6FF; }
+    .fi-invoice .inv-total .amt { color: var(--ciano); }
+    .fi-paid-glow { position: absolute; inset: 0; background: radial-gradient(360px circle at 50% 100%, rgba(0,212,255,0.14), transparent 60%); }
+    .fi-paid { position: absolute; left: 50%; top: 50%; transform: translate(-50%,-50%); display: flex; flex-direction: column; align-items: center; gap: 14px; width: 100%; }
+    .fi-paid .circle { width: 56px; height: 56px; border-radius: 50%; background: color-mix(in oklab, var(--ciano) 22%, transparent); border: 1px solid var(--ciano); display: flex; align-items: center; justify-content: center; color: var(--ciano); box-shadow: 0 0 40px rgba(0,212,255,0.3); }
+    .fi-paid .label { font-family: 'JetBrains Mono', monospace; font-size: 12px; color: var(--ciano); letter-spacing: 0.12em; text-transform: uppercase; }
+    .fi-paid .sub { font-size: 11px; color: rgba(234,246,255,0.55); font-family: 'JetBrains Mono', monospace; }
+
+    /* Chat section */
+    .chat-section { background: var(--azul-profundo); color: #EAF6FF; overflow: hidden; }
+    .chat-section::before { content: ""; position: absolute; inset: 0; background: radial-gradient(700px circle at 85% 20%, color-mix(in oklab, var(--ciano) calc(12% * var(--accent-boost)), transparent), transparent 55%); pointer-events: none; }
+    .chat-section .shell { position: relative; }
+    .chat-section h2 { color: var(--branco); }
+    .chat-section .eyebrow { color: rgba(234,246,255,0.5); }
+    .chat-section p.lead { color: rgba(234,246,255,0.75); }
+    .chat-grid { display: grid; grid-template-columns: 1fr 1.05fr; gap: 72px; align-items: center; }
+    @media (max-width: 960px) { .chat-grid { grid-template-columns: 1fr; gap: 48px; } }
+    .chat-window { background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.08); border-radius: 18px; padding: 20px 22px; display: flex; flex-direction: column; gap: 11px; box-shadow: 0 30px 80px -30px rgba(0,0,0,0.5); width: 100%; max-width: 520px; justify-self: end; }
+    .chat-window .chat-head { display: flex; justify-content: space-between; align-items: center; font-size: 11px; letter-spacing: 0.1em; text-transform: uppercase; color: rgba(224,249,255,0.5); padding-bottom: 14px; margin-bottom: 4px; border-bottom: 1px solid rgba(255,255,255,0.07); }
+    .chat-window .chat-head .status { color: var(--ciano); }
+    .bubble { max-width: 88%; padding: 11px 14px; border-radius: 14px; font-size: 13.5px; line-height: 1.5; }
+    .bubble.user { align-self: flex-end; background: var(--ciano); color: var(--azul-profundo); border-radius: 14px 14px 3px 14px; font-weight: 500; }
+    .bubble.bot { align-self: flex-start; background: rgba(255,255,255,0.07); border: 1px solid rgba(255,255,255,0.06); border-radius: 14px 14px 14px 3px; color: rgba(234,246,255,0.88); }
+    .bubble.bot b { color: var(--ciano); font-weight: 600; }
+    .mcp-card { margin-top: 28px; border: 1px dashed color-mix(in oklab, var(--ciano) 40%, transparent); background: color-mix(in oklab, var(--ciano) calc(5% * var(--accent-boost)), transparent); border-radius: 16px; padding: 20px 22px; display: flex; flex-direction: column; gap: 14px; align-items: flex-start; }
+    .ai-logos { display: flex; gap: 10px; }
+    .ai-logo { width: 38px; height: 38px; border-radius: 50%; background: rgba(255,255,255,0.06); border: 1px solid rgba(255,255,255,0.14); display: inline-flex; align-items: center; justify-content: center; }
+    .mcp-card .t { font-size: 14px; font-weight: 600; color: #EAF6FF; margin-bottom: 4px; }
+    .mcp-card .s { font-size: 13px; color: rgba(234,246,255,0.65); line-height: 1.5; }
+
+    /* Agents */
+    .agents { background: var(--branco); }
+    .agents-grid { display: grid; grid-template-columns: 1fr 1.05fr; gap: 72px; align-items: center; }
+    @media (max-width: 960px) { .agents-grid { grid-template-columns: 1fr; gap: 48px; } }
+    .agent-points { display: flex; flex-direction: column; gap: 22px; margin-top: 36px; }
+    .agent-point { display: flex; gap: 14px; align-items: flex-start; }
+    .agent-point .k-ico-light { width: 36px; height: 36px; border-radius: 10px; flex-shrink: 0; background: color-mix(in oklab, var(--ciano) 16%, white); color: var(--azul-profundo); display: inline-flex; align-items: center; justify-content: center; }
+    .agent-point .t { font-weight: 600; font-size: 15px; color: var(--azul-profundo); margin-bottom: 3px; }
+    .agent-point .s { font-size: 14px; color: var(--cinza-escuro); line-height: 1.5; }
+    .agent-feed { background: var(--azul-profundo); border-radius: 20px; padding: 22px; display: flex; flex-direction: column; gap: 10px; box-shadow: 0 30px 80px -30px rgba(10,31,63,0.4); position: relative; overflow: hidden; }
+    .agent-feed::before { content: ""; position: absolute; inset: 0; background: radial-gradient(500px circle at 90% 0%, color-mix(in oklab, var(--ciano) calc(14% * var(--accent-boost)), transparent), transparent 60%); pointer-events: none; }
+    .agent-feed .feed-head { display: flex; justify-content: space-between; align-items: center; font-size: 11px; letter-spacing: 0.1em; text-transform: uppercase; color: rgba(224,249,255,0.5); padding-bottom: 14px; margin-bottom: 2px; border-bottom: 1px solid rgba(255,255,255,0.07); position: relative; z-index: 1; }
+    .agent-feed .feed-head .live { display: inline-flex; align-items: center; gap: 6px; color: var(--ciano); }
+    .agent-feed .feed-head .live::before { content: ""; width: 6px; height: 6px; border-radius: 50%; background: var(--ciano); animation: pulse 1.6s ease-out infinite; }
+    .agent-note { background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.07); border-radius: 12px; padding: 12px 14px; position: relative; z-index: 1; }
+    .agent-note .row1 { display: flex; justify-content: space-between; align-items: center; gap: 12px; margin-bottom: 6px; }
+    .agent-note .who { font-size: 12.5px; font-weight: 600; color: #EAF6FF; }
+    .agent-note .ch { font-family: 'JetBrains Mono', ui-monospace, monospace; font-size: 9px; letter-spacing: 0.08em; text-transform: uppercase; padding: 3px 9px; border-radius: 99px; border: 1px solid color-mix(in oklab, var(--ciano) 40%, transparent); color: var(--ciano); }
+    .agent-note .body { font-size: 12.5px; color: rgba(234,246,255,0.75); line-height: 1.5; }
+    .agent-note .actions { display: flex; gap: 8px; margin-top: 11px; }
+    .agent-note .actions span { font-size: 11px; font-weight: 700; padding: 6px 13px; border-radius: 8px; cursor: default; }
+    .agent-note .actions .a1 { background: var(--ciano); color: var(--azul-profundo); }
+    .agent-note .actions .a2 { border: 1px solid rgba(255,255,255,0.2); color: rgba(234,246,255,0.8); }
+
+    /* Results */
+    .results { background: var(--azul-profundo); color: #EAF6FF; overflow: hidden; }
+    .results .res-bg { position: absolute; inset: 0; background: url('uploads/father-kid-playing-with-ball.jpg') center / cover no-repeat; }
+    .results .res-overlay { position: absolute; inset: 0; background: linear-gradient(180deg, rgba(10,31,63,0.66) 0%, rgba(10,31,63,0.42) 45%, rgba(10,31,63,0.78) 100%); }
+    .results .shell { position: relative; }
+    .results h2 { color: #FFFFFF; }
+    .results .eyebrow { color: rgba(234,246,255,0.75); }
+    .res-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 40px; }
+    @media (max-width: 880px) { .res-grid { grid-template-columns: 1fr; gap: 32px; } }
+    .res-item { border-top: 2px solid var(--ciano); padding-top: 22px; }
+    .res-item h3 { font-size: clamp(22px, 2vw, 26px); margin-bottom: 12px; color: #FFFFFF; }
+    .res-item p { font-size: 15px; margin: 0; color: rgba(234,246,255,0.85); }
+
+    /* Calculator */
+    .calc { background: var(--ciano-suave); }
+    .calc-wrap { display: grid; grid-template-columns: 1.1fr 1fr; gap: 64px; align-items: center; }
+    @media (max-width: 880px) { .calc-wrap { grid-template-columns: 1fr; gap: 40px; } }
+    .calc-note { margin-top: 28px; font-size: 13px; color: var(--cinza-texto); max-width: 460px; }
+    .calc-card { background: var(--branco); border-radius: 22px; padding: 32px; box-shadow: 0 20px 60px -20px rgba(10,31,63,0.15); border: 1px solid rgba(10,31,63,0.04); }
+    .calc-field { margin-bottom: 22px; }
+    .calc-field label { display: flex; justify-content: space-between; align-items: baseline; font-size: 13px; font-weight: 600; color: var(--cinza-escuro); margin-bottom: 10px; gap: 12px; }
+    .calc-field label .v { font-family: 'JetBrains Mono', monospace; font-size: 14px; color: var(--azul-profundo); background: var(--cinza-claro); padding: 3px 10px; border-radius: 6px; white-space: nowrap; }
+    .calc-field input[type=range] { -webkit-appearance: none; appearance: none; width: 100%; background: transparent; margin: 0; }
+    .calc-field input[type=range]::-webkit-slider-runnable-track { height: 4px; background: linear-gradient(to right, var(--ciano) var(--fill, 0%), #E5E7EB var(--fill, 0%)); border-radius: 2px; }
+    .calc-field input[type=range]::-moz-range-track { height: 4px; background: #E5E7EB; border-radius: 2px; }
+    .calc-field input[type=range]::-webkit-slider-thumb { -webkit-appearance: none; appearance: none; width: 20px; height: 20px; margin-top: -8px; border-radius: 50%; background: var(--azul-profundo); border: 3px solid var(--ciano); cursor: pointer; box-shadow: 0 2px 6px rgba(0,0,0,0.15); }
+    .calc-field input[type=range]::-moz-range-thumb { width: 20px; height: 20px; border-radius: 50%; background: var(--azul-profundo); border: 3px solid var(--ciano); cursor: pointer; }
+    .calc-fixed-note { font-size: 12px; color: var(--cinza-texto); margin: 2px 0 0; line-height: 1.5; }
+    .calc-result { margin-top: 28px; padding: 24px; background: var(--azul-profundo); color: #EAF6FF; border-radius: 16px; position: relative; overflow: hidden; }
+    .calc-result::before { content: ""; position: absolute; inset: 0; background: radial-gradient(300px circle at 100% 0%, color-mix(in oklab, var(--ciano) calc(18% * var(--accent-boost)), transparent), transparent 60%); }
+    .calc-result .l1 { font-size: 13px; color: rgba(234,246,255,0.65); letter-spacing: 0.04em; position: relative; }
+    .calc-result .l2 { font-size: clamp(38px, 5vw, 56px); font-weight: 700; color: var(--ciano); letter-spacing: -0.03em; position: relative; font-variant-numeric: tabular-nums; margin-top: 4px; }
+    .calc-result .l3 { font-size: 13px; color: rgba(234,246,255,0.65); margin-top: 6px; position: relative; }
+    .calc-result .l4 { font-size: 13.5px; color: rgba(234,246,255,0.75); position: relative; margin-top: 14px; padding-top: 14px; border-top: 1px dashed rgba(255,255,255,0.16); line-height: 1.5; }
+    .calc-result .l4 .plus { color: var(--ciano); font-weight: 700; font-variant-numeric: tabular-nums; }
+
+    /* Pricing */
+    .pricing { background: var(--cinza-claro); }
+    .plans { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; align-items: stretch; }
+    @media (max-width: 880px) { .plans { grid-template-columns: 1fr; } }
+    .plan { background: var(--branco); border: 1px solid rgba(10,31,63,0.08); border-radius: 20px; padding: 36px 32px; display: flex; flex-direction: column; position: relative; }
+    .plan.featured { background: var(--azul-profundo); color: #EAF6FF; border-color: var(--azul-profundo); box-shadow: 0 30px 70px -30px rgba(10,31,63,0.5); }
+    .plan-tag { position: absolute; top: -12px; left: 32px; background: var(--ciano); color: var(--azul-profundo); font-size: 10px; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; padding: 5px 12px; border-radius: 99px; }
+    .plan-name { font-family: 'JetBrains Mono', ui-monospace, monospace; font-size: 12px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--cinza-texto); margin-bottom: 18px; }
+    .plan.featured .plan-name { color: var(--ciano); }
+    .plan-price { font-size: 44px; font-weight: 700; letter-spacing: -0.03em; line-height: 1; }
+    .plan-price .per-month { font-size: 15px; font-weight: 500; color: var(--cinza-texto); letter-spacing: 0; }
+    .plan.featured .plan-price .per-month { color: rgba(234,246,255,0.6); }
+    .plan-variable { font-family: 'JetBrains Mono', ui-monospace, monospace; font-size: 13px; margin-top: 12px; color: var(--cinza-escuro); }
+    .plan.featured .plan-variable { color: rgba(234,246,255,0.8); }
+    .plan-variable b { color: var(--azul-profundo); }
+    .plan.featured .plan-variable b { color: var(--ciano); }
+    .plan-limit { margin-top: 22px; padding-top: 22px; border-top: 1px dashed rgba(10,31,63,0.12); font-size: 14px; font-weight: 600; color: var(--azul-profundo); display: flex; align-items: center; gap: 8px; }
+    .plan.featured .plan-limit { border-top-color: rgba(255,255,255,0.15); color: #EAF6FF; }
+    .plan-limit .tick { width: 16px; height: 16px; border-radius: 50%; flex-shrink: 0; background: color-mix(in oklab, var(--ciano) 25%, white); display: inline-flex; align-items: center; justify-content: center; color: var(--azul-profundo); }
+    .plan .btn { margin-top: 28px; }
+    .plans-note { margin-top: 32px; font-size: 14px; color: var(--cinza-texto); max-width: 640px; }
+
+    /* FAQ */
+    .faq { background: var(--branco); }
+    .faq .section-head { margin-bottom: 48px; }
+    .faq-list { max-width: 860px; display: flex; flex-direction: column; border-top: 1px solid rgba(10,31,63,0.1); }
+    .faq-item { border-bottom: 1px solid rgba(10,31,63,0.1); }
+    .faq-item summary { list-style: none; cursor: pointer; display: flex; justify-content: space-between; align-items: center; gap: 24px; padding: 24px 0; font-weight: 600; font-size: 17px; letter-spacing: -0.01em; color: var(--azul-profundo); transition: color .2s; }
+    .faq-item summary::-webkit-details-marker { display: none; }
+    .faq-item summary:hover { color: var(--azul-profundo-2); }
+    .faq-item .faq-chev { flex-shrink: 0; width: 28px; height: 28px; border-radius: 50%; border: 1px solid rgba(10,31,63,0.14); display: inline-flex; align-items: center; justify-content: center; color: var(--cinza-texto); transition: transform .25s ease, background .2s, color .2s, border-color .2s; }
+    .faq-item[open] .faq-chev { transform: rotate(180deg); background: var(--ciano); border-color: var(--ciano); color: var(--azul-profundo); }
+    .faq-item .faq-a { margin: 0; padding: 0 56px 26px 0; font-size: 15px; color: var(--cinza-escuro); max-width: 72ch; }
+
+    /* Final CTA */
+    .final-cta { background: var(--azul-profundo); color: #EAF6FF; position: relative; overflow: hidden; }
+    .final-cta::before { content: ""; position: absolute; inset: 0; background: radial-gradient(700px circle at 20% 30%, color-mix(in oklab, var(--ciano) calc(14% * var(--accent-boost)), transparent), transparent 55%), radial-gradient(500px circle at 90% 80%, color-mix(in oklab, var(--ciano) calc(10% * var(--accent-boost)), transparent), transparent 60%); pointer-events: none; }
+    .final-cta .shell { position: relative; }
+    .final-cta h2 { color: var(--branco); }
+    .final-cta h2 .hl { color: var(--ciano); }
+    .final-cta .eyebrow { color: rgba(234,246,255,0.5); }
+    .final-cta .sub { color: rgba(234,246,255,0.7); max-width: 560px; margin: 24px 0 32px; font-size: 18px; line-height: 1.55; }
+    .cta-grid { display: grid; grid-template-columns: 1.05fr 0.95fr; gap: 72px; align-items: center; }
+    @media (max-width: 960px) { .cta-grid { grid-template-columns: 1fr; gap: 48px; } }
+    .cta-btn-row { display: flex; gap: 14px; flex-wrap: wrap; }
+    .cta-btn-row .btn-primary { padding: 16px 26px; font-size: 16px; }
+    .cta-steps { display: flex; flex-direction: column; gap: 14px; margin: 0 0 36px; padding: 0; list-style: none; }
+    .cta-steps li { display: flex; gap: 14px; align-items: baseline; color: rgba(234,246,255,0.8); font-size: 15px; line-height: 1.5; }
+    .cta-steps .n { font-family: 'JetBrains Mono', ui-monospace, monospace; font-size: 11px; color: var(--ciano); flex-shrink: 0; letter-spacing: 0.08em; }
+    .form-card { background: var(--branco); border-radius: 22px; padding: 32px; color: var(--azul-profundo); box-shadow: 0 30px 80px -30px rgba(0,0,0,0.5); }
+    .form-card h3 { font-size: 20px; margin-bottom: 6px; }
+    .form-card .form-sub { font-size: 13px; color: var(--cinza-texto); margin: 0 0 24px; }
+    .f-row { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
+    @media (max-width: 520px) { .f-row { grid-template-columns: 1fr; } }
+    .f-field { margin-bottom: 16px; }
+    .f-field label { display: block; font-size: 12px; font-weight: 600; color: var(--cinza-escuro); margin-bottom: 7px; }
+    .f-field input, .f-field textarea, .f-field select { width: 100%; padding: 12px 14px; border: 1px solid rgba(10,31,63,0.14); border-radius: 10px; font-family: inherit; font-size: 14px; color: var(--azul-profundo); background: var(--branco); transition: border-color .2s, box-shadow .2s; }
+    .f-field input:focus, .f-field textarea:focus, .f-field select:focus { outline: none; border-color: var(--ciano); box-shadow: 0 0 0 3px color-mix(in oklab, var(--ciano) 20%, transparent); }
+    .f-field textarea { resize: vertical; min-height: 84px; }
+    .form-error { display: none; margin: 0 0 14px; padding: 10px 14px; border-radius: 10px; background: #FFF1EC; color: #A3401A; font-size: 13px; }
+    .form-error.show { display: block; }
+    .form-success { padding: 24px; border-radius: 14px; background: color-mix(in oklab, var(--ciano) 12%, white); border: 1px solid color-mix(in oklab, var(--ciano) 40%, transparent); text-align: center; }
+    .form-success .t { font-weight: 700; font-size: 16px; margin-bottom: 6px; }
+    .form-success .s { font-size: 13px; color: var(--cinza-escuro); }
+
+    /* Footer */
+    footer { background: var(--azul-profundo); color: rgba(234,246,255,0.6); font-size: 14px; padding: 80px 0 0; border-top: 1px solid rgba(255,255,255,0.06); }
+    .footer-grid { display: grid; grid-template-columns: 1.5fr 1fr 1fr 1fr; gap: 48px; padding-bottom: 64px; }
+    @media (max-width: 880px) { .footer-grid { grid-template-columns: 1fr 1fr; } }
+    @media (max-width: 560px) { .footer-grid { grid-template-columns: 1fr; } }
+    .footer-brand { display: flex; flex-direction: column; align-items: flex-start; gap: 20px; }
+    footer .brand-lockup { color: #EAF6FF; font-size: 20px; }
+    footer .brand-lockup .k { color: #EAF6FF; }
+    .footer-tagline { margin: 0; max-width: 320px; font-size: 14px; line-height: 1.6; color: rgba(234,246,255,0.6); }
+    .social-row { display: flex; gap: 10px; }
+    .social-row a { width: 38px; height: 38px; border-radius: 50%; border: 1px solid rgba(255,255,255,0.14); display: inline-flex; align-items: center; justify-content: center; color: rgba(234,246,255,0.75); transition: border-color .2s, color .2s, background .2s; }
+    .social-row a:hover { border-color: var(--ciano); color: var(--ciano); background: rgba(0,212,255,0.06); }
+    .footer-col { display: flex; flex-direction: column; gap: 12px; }
+    .footer-col h5 { margin: 0 0 6px; font-family: 'JetBrains Mono', ui-monospace, monospace; font-size: 11px; font-weight: 600; letter-spacing: 0.14em; text-transform: uppercase; color: var(--ciano); }
+    .footer-col a { color: rgba(234,246,255,0.7); font-size: 14px; transition: color .2s; }
+    .footer-col a:hover { color: #EAF6FF; }
+    .footer-legal { border-top: 1px solid rgba(255,255,255,0.08); padding: 22px 0 28px; display: flex; justify-content: space-between; align-items: center; gap: 16px; flex-wrap: wrap; font-size: 12.5px; color: rgba(234,246,255,0.45); }
+    .footer-bm { color: rgba(234,246,255,0.75); font-weight: 500; transition: color .2s; }
+    a.footer-bm:hover { color: var(--ciano); }
+    .footer-legal-links { display: flex; gap: 8px; align-items: center; }
+    .footer-legal-links a { color: rgba(234,246,255,0.55); transition: color .2s; }
+    .footer-legal-links a:hover { color: #EAF6FF; }
+
+    @media (prefers-reduced-motion: reduce) {
+      .reveal { opacity: 1; transform: none; transition: none; }
+      .radar-card::after { animation: none; opacity: 0; }
+      .radar-head .live::before, .agent-feed .feed-head .live::before { animation: none; }
+      .fi-doc .scanline, .fi-erp-links path, .fi-arrow { animation: none; }
+      .flow-step.in .fi-fields .fi-field { animation: none; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- ============ NAV ============ -->
+<nav class="nav nav-dark">
+  <div class="shell nav-inner">
+    <div class="nav-left">
+      <a href="#" aria-label="Kontiva.ai">
+        <img class="brand-img brand-img-light" src="assets/kontiva-logo-light.png" alt="Kontiva.ai" />
+        <img class="brand-img brand-img-color" src="assets/kontiva-logo-color.png" alt="Kontiva.ai" />
+      </a>
+      <div class="nav-links">
+        <a href="#como-funciona" data-pt="Como funciona" data-en="How it works">Como funciona</a>
+        <a href="#chat" data-pt="Chat &amp; MCP" data-en="Chat &amp; MCP">Chat &amp; MCP</a>
+        <a href="#calculadora" data-pt="Calculadora" data-en="Calculator">Calculadora</a>
+        <a href="#planos" data-pt="Planos" data-en="Pricing">Planos</a>
+        <a href="#faq">FAQ</a>
+      </div>
+    </div>
+    <div class="nav-right">
+      <div class="lang-toggle">
+        <button type="button" data-lang="pt" class="on">PT</button>
+        <button type="button" data-lang="en">EN</button>
+      </div>
+      <a href="https://wa.me/5551926343014?text=Ol%C3%A1%2C%20gostaria%20de%20conhecer%20a%20Kontiva.ai"
+         data-pt-href="https://wa.me/5551926343014?text=Ol%C3%A1%2C%20gostaria%20de%20conhecer%20a%20Kontiva.ai"
+         data-en-href="https://wa.me/5551926343014?text=Hi%2C%20I%20would%20like%20to%20learn%20more%20about%20Kontiva.ai"
+         target="_blank" rel="noreferrer" class="btn btn-primary" style="padding: 10px 18px; font-size: 14px;">
+        <svg class="whats" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M19.05 4.91A10 10 0 0 0 4.04 18.26L3 22l3.83-1.01A10 10 0 1 0 19.05 4.91zM12 20.15a8.14 8.14 0 0 1-4.15-1.13l-.3-.18-2.27.6.6-2.22-.19-.32A8.15 8.15 0 1 1 12 20.15zm4.46-6.1c-.24-.12-1.44-.71-1.66-.79-.22-.08-.38-.12-.54.12-.16.24-.62.79-.76.95-.14.16-.28.18-.52.06-.24-.12-1.02-.38-1.94-1.2-.72-.64-1.2-1.42-1.34-1.66-.14-.24-.02-.37.1-.49.1-.1.24-.28.36-.42.12-.14.16-.24.24-.4.08-.16.04-.3-.02-.42-.06-.12-.54-1.3-.74-1.78-.2-.48-.4-.42-.54-.42h-.46c-.16 0-.4.06-.62.3-.22.24-.84.82-.84 2 0 1.18.86 2.32.98 2.48.12.16 1.7 2.6 4.12 3.64.57.25 1.02.4 1.37.5.57.18 1.1.16 1.51.1.46-.07 1.44-.59 1.64-1.16.2-.57.2-1.06.14-1.16-.06-.1-.22-.16-.46-.28z" fill="currentColor"/></svg>
+        <span data-pt="Falar no WhatsApp" data-en="Chat on WhatsApp">Falar no WhatsApp</span>
+      </a>
+    </div>
+  </div>
+</nav>
+
+<!-- ============ HERO ============ -->
+<section class="hero" id="hero">
+  <div class="shell hero-grid">
+    <div>
+      <div class="eyebrow reveal">
+        <span class="dot-cyan"></span>
+        <span data-pt="Reforma tributária · copiloto fiscal e financeiro para empresas" data-en="Tax reform · a fiscal and financial copilot for companies">Reforma tributária · copiloto fiscal e financeiro para empresas</span>
+      </div>
+      <h1 class="reveal delay-1" style="margin-top: 24px;"
+          data-pt="A reforma não é um cálculo. É uma &lt;span class=&quot;serif-accent&quot;&gt;operação&lt;/span&gt;."
+          data-en="The reform isn't a calculation. It's an &lt;span class=&quot;serif-accent&quot;&gt;operation&lt;/span&gt;.">A reforma não é um cálculo. É uma <span class="serif-accent">operação</span>.</h1>
+      <p class="lead hero-sub reveal delay-2"
+         data-pt="O Kontiva projeta o seu caixa com o split payment, protege os seus créditos monitorando a adimplência dos fornecedores, opera os dois sistemas na transição e sustenta o repricing com número. O seu time fiscal e financeiro aprova cada passo."
+         data-en="Kontiva projects your cash under split payment, protects your credits by monitoring supplier compliance, runs both tax systems through the transition and backs your repricing with numbers. Your tax and finance team approves every step.">O Kontiva projeta o seu caixa com o split payment, protege os seus créditos monitorando a adimplência dos fornecedores, opera os dois sistemas na transição e sustenta o repricing com número. O seu time fiscal e financeiro aprova cada passo.</p>
+      <div class="hero-cta-row reveal delay-3">
+        <a href="https://wa.me/5551926343014?text=Ol%C3%A1%2C%20quero%20conhecer%20o%20Kontiva%20para%20a%20minha%20empresa"
+           data-pt-href="https://wa.me/5551926343014?text=Ol%C3%A1%2C%20quero%20conhecer%20o%20Kontiva%20para%20a%20minha%20empresa"
+           data-en-href="https://wa.me/5551926343014?text=Hi%2C%20I%20want%20to%20learn%20more%20about%20Kontiva%20for%20my%20company"
+           target="_blank" rel="noreferrer" class="btn btn-primary">
+          <svg class="whats" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M19.05 4.91A10 10 0 0 0 4.04 18.26L3 22l3.83-1.01A10 10 0 1 0 19.05 4.91zM12 20.15a8.14 8.14 0 0 1-4.15-1.13l-.3-.18-2.27.6.6-2.22-.19-.32A8.15 8.15 0 1 1 12 20.15zm4.46-6.1c-.24-.12-1.44-.71-1.66-.79-.22-.08-.38-.12-.54.12-.16.24-.62.79-.76.95-.14.16-.28.18-.52.06-.24-.12-1.02-.38-1.94-1.2-.72-.64-1.2-1.42-1.34-1.66-.14-.24-.02-.37.1-.49.1-.1.24-.28.36-.42.12-.14.16-.24.24-.4.08-.16.04-.3-.02-.42-.06-.12-.54-1.3-.74-1.78-.2-.48-.4-.42-.54-.42h-.46c-.16 0-.4.06-.62.3-.22.24-.84.82-.84 2 0 1.18.86 2.32.98 2.48.12.16 1.7 2.6 4.12 3.64.57.25 1.02.4 1.37.5.57.18 1.1.16 1.51.1.46-.07 1.44-.59 1.64-1.16.2-.57.2-1.06.14-1.16-.06-.1-.22-.16-.46-.28z" fill="currentColor"/></svg>
+          <span data-pt="Falar no WhatsApp" data-en="Chat on WhatsApp">Falar no WhatsApp</span>
+        </a>
+        <a href="#calculadora" class="btn btn-ghost">
+          <span data-pt="Ver quanto a reforma custa" data-en="See what the reform costs">Ver quanto a reforma custa</span>
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M5 12h14M13 5l7 7-7 7" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </a>
+      </div>
+      <div class="hero-meta reveal delay-4">
+        <div>
+          <span class="tick"><svg width="10" height="10" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M5 12l5 5L20 7" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+          <span data-pt="Conecta ao seu ERP, sem trocar de sistema" data-en="Connects to your ERP, no system switch">Conecta ao seu ERP, sem trocar de sistema</span>
+        </div>
+        <div>
+          <span class="tick"><svg width="10" height="10" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M5 12l5 5L20 7" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+          <span data-pt="O seu time aprova antes de cada passo" data-en="Your team approves before every step">O seu time aprova antes de cada passo</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="radar-card reveal delay-2">
+      <div class="radar-head">
+        <span data-pt="Créditos IBS/CBS · Junho/2026" data-en="IBS/CBS credits · June 2026">Créditos IBS/CBS · Junho/2026</span>
+        <span class="live" data-pt="Monitorando fornecedores" data-en="Monitoring suppliers">Monitorando fornecedores</span>
+      </div>
+      <div class="radar-list">
+        <div class="radar-row">
+          <span class="idx">#001</span><span class="name">Metalúrgica Aço Norte</span><span class="amount">R$ 82.400,00</span>
+          <span class="badge" data-pt="Crédito confirmado" data-en="Credit confirmed">Crédito confirmado</span>
+        </div>
+        <div class="radar-row flagged">
+          <span class="idx">#002</span><span class="name">Distribuidora Vale Log</span><span class="amount">R$ 41.900,00</span>
+          <span class="badge" data-pt="Débito do fornecedor em aberto" data-en="Supplier debit still open">Débito do fornecedor em aberto</span>
+        </div>
+        <div class="radar-row flagged">
+          <span class="idx">#003</span><span class="name">Insumos Química BR</span><span class="amount">R$ 28.300,00</span>
+          <span class="badge" data-pt="Pendência fiscal" data-en="Tax irregularity">Pendência fiscal</span>
+        </div>
+        <div class="radar-row">
+          <span class="idx">#004</span><span class="name">Transportes Aurora S.A.</span><span class="amount">R$ 12.600,00</span>
+          <span class="badge" data-pt="Crédito confirmado" data-en="Credit confirmed">Crédito confirmado</span>
+        </div>
+        <div class="radar-row flagged">
+          <span class="idx">#005</span><span class="name">Embalagens Prisma</span><span class="amount">R$ 33.750,00</span>
+          <span class="badge" data-pt="CND vencida" data-en="Clearance expired">CND vencida</span>
+        </div>
+        <div class="radar-row">
+          <span class="idx">#006</span><span class="name">Energia Sul S.A.</span><span class="amount">R$ 54.200,00</span>
+          <span class="badge" data-pt="Crédito confirmado" data-en="Credit confirmed">Crédito confirmado</span>
+        </div>
+        <div class="radar-row">
+          <span class="idx">#007</span><span class="name">Serviços Táticos ME</span><span class="amount">R$ 7.480,00</span>
+          <span class="badge" data-pt="Aguardando NF" data-en="Awaiting invoice">Aguardando NF</span>
+        </div>
+      </div>
+      <div class="radar-summary">
+        <div><div class="label" data-pt="Crédito em risco de glosa neste ciclo" data-en="Credit at risk this cycle">Crédito em risco de glosa neste ciclo</div></div>
+        <div class="value">R$ 103.950<span class="cents">,00</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ PROBLEM ============ -->
+<section class="problem" id="problema">
+  <div class="shell">
+    <div class="section-head reveal">
+      <div class="eyebrow"><span class="dot-cyan"></span><span data-pt="O ponto cego" data-en="The blind spot">O ponto cego</span></div>
+      <h2 style="margin-top: 20px;" data-pt="Planilha não segura uma reforma." data-en="A spreadsheet can't hold a reform.">Planilha não segura uma reforma.</h2>
+      <p class="lead" style="margin-top: 20px;"
+         data-pt="A apuração vive numa planilha e a regularidade dos fornecedores, ninguém acompanha. Com o split payment o imposto sai do caixa na hora da venda, e o seu crédito só nasce quando o fornecedor recolhe o dele. Quem controla no braço perde de 15% a 20% dos créditos. Monitorar centenas de fornecedores na mão é inviável. O Kontiva acompanha, projeta e avisa."
+         data-en="Tax calculation lives in a spreadsheet and supplier compliance goes unwatched. Under split payment the tax leaves your cash the moment of the sale, and your credit only exists once your supplier pays theirs. Manage it by hand and you lose 15% to 20% of your credits. Tracking hundreds of suppliers manually isn't viable. Kontiva watches, projects and warns.">A apuração vive numa planilha e a regularidade dos fornecedores, ninguém acompanha. Com o split payment o imposto sai do caixa na hora da venda, e o seu crédito só nasce quando o fornecedor recolhe o dele. Quem controla no braço perde de 15% a 20% dos créditos. Monitorar centenas de fornecedores na mão é inviável. O Kontiva acompanha, projeta e avisa.</p>
+    </div>
+    <div class="split">
+      <!-- Antes -->
+      <div class="panel-col reveal delay-1">
+        <div class="panel-flag before-flag" data-pt="Antes" data-en="Before">Antes</div>
+        <div class="panel before">
+        <div class="panel-head">
+          <div class="panel-title" data-pt="apuracao_creditos_2026.xlsx" data-en="tax_credits_2026.xlsx">apuracao_creditos_2026.xlsx</div>
+        </div>
+        <div class="sheet">
+          <div class="sheet-row head">
+            <div></div>
+            <div data-pt="Fornecedor" data-en="Supplier">Fornecedor</div>
+            <div data-pt="Crédito IBS/CBS" data-en="IBS/CBS credit">Crédito IBS/CBS</div>
+            <div data-pt="Situação fiscal" data-en="Tax status">Situação fiscal</div>
+          </div>
+          <div class="sheet-row"><div>1</div><div>Distribuidora Vale Log</div><div>41.900,00</div><div class="err">?</div></div>
+          <div class="sheet-row"><div>2</div><div>Insumos Química BR</div><div>28.300,00</div><div class="err">irregular</div></div>
+          <div class="sheet-row"><div>3</div><div>Metalúrgica Aço Norte</div><div>82.400,00</div><div>regular</div></div>
+          <div class="sheet-row"><div>4</div><div>Embalagens Prisma</div><div>33.750,00</div><div class="err">sem CND</div></div>
+          <div class="sheet-row"><div>5</div><div class="faded">Energia Sul S.A.</div><div class="faded">54.200,00</div><div class="faded">regular</div></div>
+          <div class="sheet-row"><div>6</div><div class="blank">&nbsp;</div><div class="blank">&nbsp;</div><div class="blank">&nbsp;</div></div>
+        </div>
+        <div class="sheet-caption">
+          <span data-pt="3 fornecedores sem checagem" data-en="3 suppliers unchecked">3 fornecedores sem checagem</span>
+          <span data-pt="2 créditos em risco de glosa" data-en="2 credits at risk">2 créditos em risco de glosa</span>
+          <span class="muted" data-pt="última edição: há 39 dias" data-en="last edited: 39 days ago">última edição: há 39 dias</span>
+        </div>
+        </div>
+      </div>
+      <!-- Depois -->
+      <div class="panel-col reveal delay-2">
+        <div class="panel-flag after-flag" data-pt="Depois" data-en="After">Depois</div>
+        <div class="panel after">
+        <div class="panel-head">
+          <div class="panel-title" data-pt="Kontiva · Créditos e caixa" data-en="Kontiva · Credits and cash">Kontiva · Créditos e caixa</div>
+        </div>
+        <div class="k-stack">
+          <div class="k-card">
+            <div class="k-left">
+              <div class="k-ico"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" aria-hidden="true"><circle cx="12" cy="12" r="9" stroke="currentColor" stroke-width="1.6"/><circle cx="12" cy="12" r="5" stroke="currentColor" stroke-width="1.6"/><path d="M12 12 L19 6" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg></div>
+              <div>
+                <div class="k-title">Metalúrgica Aço Norte</div>
+                <div class="k-sub" data-pt="Crédito de IBS/CBS confirmado e conciliado" data-en="IBS/CBS credit confirmed and reconciled">Crédito de IBS/CBS confirmado e conciliado</div>
+              </div>
+            </div>
+            <div class="k-val">R$ 82.400</div>
+          </div>
+          <div class="k-card">
+            <div class="k-left">
+              <div class="k-ico"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M12 3l7 4v5c0 4.4-3 8-7 9-4-1-7-4.6-7-9V7z" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/><path d="M9.3 12l1.9 1.9 3.5-3.6" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+              <div>
+                <div class="k-title">Distribuidora Vale Log</div>
+                <div class="k-sub" data-pt="Débito do fornecedor em aberto: crédito segurado antes da glosa" data-en="Supplier debit open: credit held before it's disallowed">Débito do fornecedor em aberto: crédito segurado antes da glosa</div>
+              </div>
+            </div>
+            <div class="k-val">R$ 41.900</div>
+          </div>
+          <div class="k-card">
+            <div class="k-left">
+              <div class="k-ico"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M4 19V5m0 14h16M8 15l3-4 3 2 4-6" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+              <div>
+                <div class="k-title" data-pt="Caixa · Split payment" data-en="Cash · Split payment">Caixa · Split payment</div>
+                <div class="k-sub" data-pt="Saída do imposto projetada, sem susto no fluxo do ciclo" data-en="Tax outflow projected, no surprise in the cycle">Saída do imposto projetada, sem susto no fluxo do ciclo</div>
+              </div>
+            </div>
+            <div class="k-val" data-pt="+40 dias" data-en="+40 days">+40 dias</div>
+          </div>
+          <div class="k-card k-total">
+            <div class="k-left"><div class="k-label" data-pt="Crédito protegido neste ciclo" data-en="Credit protected this cycle">Crédito protegido neste ciclo</div></div>
+            <div class="k-val">R$ 103.950,00</div>
+          </div>
+        </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ FLOW ============ -->
+<section class="flow" id="como-funciona">
+  <div class="shell">
+    <div class="section-head reveal">
+      <div class="eyebrow"><span class="dot-cyan"></span><span data-pt="Como funciona" data-en="How it works">Como funciona</span></div>
+      <h2 style="margin-top: 20px;"
+          data-pt="Do dado fiscal&lt;br /&gt;&lt;span style=&quot;color: var(--cinza-texto)&quot;&gt;à decisão aprovada.&lt;/span&gt;"
+          data-en="From tax data&lt;br /&gt;&lt;span style=&quot;color: var(--cinza-texto)&quot;&gt;to an approved decision.&lt;/span&gt;">Do dado fiscal<br /><span style="color: var(--cinza-texto)">à decisão aprovada.</span></h2>
+    </div>
+    <div class="flow-list">
+
+      <!-- Step 01 -->
+      <div class="flow-step reveal">
+        <div class="flow-num" data-pt="PASSO 01" data-en="STEP 01">PASSO 01</div>
+        <div class="flow-body">
+          <h3 data-pt="Conecte suas notas e contratos" data-en="Connect your invoices and contracts">Conecte suas notas e contratos</h3>
+          <p data-pt="XML, PDF, ERP, planilha. A IA lê as suas notas de entrada e saída, os seus contratos e a sua base de fornecedores. Tudo vira dado estruturado: créditos, débitos, alíquotas de IBS e CBS, prazos e cláusulas de preço, consultável a qualquer momento."
+             data-en="XML, PDF, ERP, spreadsheet. The AI reads your inbound and outbound invoices, your contracts and your supplier base. Everything becomes structured data: credits, debits, IBS and CBS rates, deadlines and pricing clauses, queryable anytime.">XML, PDF, ERP, planilha. A IA lê as suas notas de entrada e saída, os seus contratos e a sua base de fornecedores. Tudo vira dado estruturado: créditos, débitos, alíquotas de IBS e CBS, prazos e cláusulas de preço, consultável a qualquer momento.</p>
+          <div class="flow-chips">
+            <span class="flow-chip">XML</span>
+            <span class="flow-chip">PDF</span>
+            <span class="flow-chip">ERP</span>
+            <span class="flow-chip" data-pt="planilha" data-en="spreadsheet">planilha</span>
+          </div>
+        </div>
+        <div class="flow-illus">
+          <div class="fi-texture"></div>
+          <div class="fi-doc">
+            <div class="scanline"></div>
+            <div class="l1"></div><div class="l2"></div><div class="l3"></div><div class="l2"></div><div class="l3"></div>
+            <div class="tag">XML·NF·PDF</div>
+          </div>
+          <div class="fi-arrow">→</div>
+          <div class="fi-fields">
+            <div class="fi-field"><span class="key" data-pt="fornecedor" data-en="supplier">fornecedor</span><span class="val">Distribuidora Vale Log</span></div>
+            <div class="fi-field"><span class="key" data-pt="crédito" data-en="credit">crédito</span><span class="val" data-pt="IBS/CBS R$ 41.900,00" data-en="IBS/CBS R$ 41,900.00">IBS/CBS R$ 41.900,00</span></div>
+            <div class="fi-field"><span class="key" data-pt="situação" data-en="status">situação</span><span class="val" data-pt="débito do fornecedor em aberto" data-en="supplier debit open">débito do fornecedor em aberto</span></div>
+            <div class="fi-field"><span class="key" data-pt="contrato" data-en="contract">contrato</span><span class="val" data-pt="preço por dentro · vence 2027" data-en="tax-inclusive price · ends 2027">preço por dentro · vence 2027</span></div>
+            <div class="fi-field"><span class="key" data-pt="alíquota" data-en="rate">alíquota</span><span class="val" data-pt="IBS/CBS teste 2026" data-en="IBS/CBS 2026 test">IBS/CBS teste 2026</span></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Step 02 -->
+      <div class="flow-step reveal">
+        <div class="flow-num" data-pt="PASSO 02" data-en="STEP 02">PASSO 02</div>
+        <div class="flow-body">
+          <h3 data-pt="Conecte o ERP, sem trocar de sistema" data-en="Connect your ERP, no system switch">Conecte o ERP, sem trocar de sistema</h3>
+          <p data-pt="O Kontiva se conecta ao seu ERP e ao seu financeiro para ler a operação real: fornecedores, contratos, canais e faturamento por período. É isso que define o seu caixa, os seus créditos e o seu risco na transição. Sem integração? Envie os relatórios em qualquer formato, que a gente processa."
+             data-en="Kontiva connects to your ERP and finance system to read the real operation: suppliers, contracts, channels and revenue by period. That's what defines your cash, your credits and your transition risk. No integration? Send the reports in any format and we'll process them.">O Kontiva se conecta ao seu ERP e ao seu financeiro para ler a operação real: fornecedores, contratos, canais e faturamento por período. É isso que define o seu caixa, os seus créditos e o seu risco na transição. Sem integração? Envie os relatórios em qualquer formato, que a gente processa.</p>
+          <div class="flow-chips">
+            <span class="flow-chip">Totvs</span>
+            <span class="flow-chip">SAP</span>
+            <span class="flow-chip">Oracle</span>
+            <span class="flow-chip">Senior</span>
+          </div>
+        </div>
+        <div class="flow-illus">
+          <div class="fi-glow"></div>
+          <svg class="fi-erp-links" viewBox="0 0 400 320" preserveAspectRatio="none" aria-hidden="true">
+            <path d="M105 72 C 145 104, 165 130, 196 152"></path>
+            <path d="M295 66 C 260 98, 238 126, 206 150"></path>
+            <path d="M108 250 C 146 222, 164 196, 196 170"></path>
+            <path d="M292 246 C 258 220, 238 194, 206 168"></path>
+          </svg>
+          <div class="fi-report" style="left: 7%; top: 9%;">
+            <div class="rl"></div><div class="rl short"></div>
+            <div class="rlabel" data-pt="Fornec. · 214" data-en="Suppliers · 214">Fornec. · 214</div>
+          </div>
+          <div class="fi-report" style="right: 7%; top: 7%;">
+            <div class="rl"></div><div class="rl short"></div>
+            <div class="rlabel" data-pt="Contratos · 38" data-en="Contracts · 38">Contratos · 38</div>
+          </div>
+          <div class="fi-report" style="left: 8%; bottom: 13%;">
+            <div class="rl"></div><div class="rl short"></div>
+            <div class="rlabel" data-pt="Fat. · R$ 6,4 mi" data-en="Rev. · R$ 6.4M">Fat. · R$ 6,4 mi</div>
+          </div>
+          <div class="fi-report" style="right: 7%; bottom: 14%;">
+            <div class="rl"></div><div class="rl short"></div>
+            <div class="rlabel" data-pt="Canais · 5" data-en="Channels · 5">Canais · 5</div>
+          </div>
+          <div class="fi-app-icon" aria-label="Kontiva">
+            <svg viewBox="0 0 64 64" aria-hidden="true"><rect width="64" height="64" rx="14" fill="#0A1F3F"></rect><text x="16" y="46" font-family="Inter, -apple-system, sans-serif" font-size="40" font-weight="700" fill="#EAF6FF">K</text><circle cx="48" cy="44" r="6" fill="#00D4FF"></circle></svg>
+          </div>
+          <div class="fi-erp-note" data-pt="ou envie os relatórios, a gente processa" data-en="or send the reports, we'll process them">ou envie os relatórios, a gente processa</div>
+        </div>
+      </div>
+
+      <!-- Step 03 -->
+      <div class="flow-step reveal">
+        <div class="flow-num" data-pt="PASSO 03" data-en="STEP 03">PASSO 03</div>
+        <div class="flow-body">
+          <h3 data-pt="Caixa projetado, créditos protegidos, preço sustentado" data-en="Cash projected, credits protected, price sustained">Caixa projetado, créditos protegidos, preço sustentado</h3>
+          <p data-pt="O Kontiva projeta a saída do imposto com o split payment, monitora a adimplência de cada fornecedor e dá um score de risco de glosa, e simula o repricing dos contratos que atravessam 2027. Cada número vem com a fonte na lei. O seu time revisa antes de qualquer decisão."
+             data-en="Kontiva projects the tax outflow under split payment, monitors each supplier's compliance and assigns a disallowance-risk score, and simulates repricing for contracts that cross into 2027. Every number cites the law. Your team reviews before any decision.">O Kontiva projeta a saída do imposto com o split payment, monitora a adimplência de cada fornecedor e dá um score de risco de glosa, e simula o repricing dos contratos que atravessam 2027. Cada número vem com a fonte na lei. O seu time revisa antes de qualquer decisão.</p>
+          <div class="flow-chips">
+            <span class="flow-chip" data-pt="caixa" data-en="cash">caixa</span>
+            <span class="flow-chip" data-pt="créditos" data-en="credits">créditos</span>
+            <span class="flow-chip">repricing</span>
+            <span class="flow-chip">CND</span>
+          </div>
+        </div>
+        <div class="flow-illus">
+          <div class="fi-invoice">
+            <div class="inv-title" data-pt="Ciclo · Julho/2026" data-en="Cycle · July 2026">Ciclo · Julho/2026</div>
+            <div class="inv-line"><span class="desc" data-pt="Imposto debitado no split" data-en="Tax debited at split">Imposto debitado no split</span><span class="amt">R$ 137.000,00</span></div>
+            <div class="inv-line hl"><span class="desc" data-pt="Crédito IBS/CBS confirmado" data-en="IBS/CBS credit confirmed">Crédito IBS/CBS confirmado</span><span class="amt">R$ 82.400,00</span></div>
+            <div class="inv-line hl"><span class="desc" data-pt="Crédito em risco de glosa" data-en="Credit at risk">Crédito em risco de glosa</span><span class="amt">R$ 103.950,00</span></div>
+            <div class="inv-line hl"><span class="desc" data-pt="Repricing sugerido" data-en="Suggested repricing">Repricing sugerido</span><span class="amt">+8,4%</span></div>
+            <div class="inv-total"><span data-pt="Capital de giro sugerido" data-en="Suggested working capital">Capital de giro sugerido</span><span class="amt">R$ 118.000,00</span></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Step 04 -->
+      <div class="flow-step reveal">
+        <div class="flow-num" data-pt="PASSO 04" data-en="STEP 04">PASSO 04</div>
+        <div class="flow-body">
+          <h3 data-pt="Rotina que roda todo mês. Até 2033 e além." data-en="A routine that runs every month. To 2033 and beyond.">Rotina que roda todo mês. Até 2033 e além.</h3>
+          <p data-pt="Não é um projeto com data de fim. A cada ciclo o Kontiva refaz a projeção de caixa, reconcilia os créditos, atualiza o risco dos fornecedores e mantém os dois sistemas em ordem na transição. O seu time opera no controle, sem caçar planilha."
+             data-en="It isn't a project with an end date. Every cycle Kontiva redoes the cash projection, reconciles credits, updates supplier risk and keeps both systems in order through the transition. Your team stays in control, no spreadsheet hunting.">Não é um projeto com data de fim. A cada ciclo o Kontiva refaz a projeção de caixa, reconcilia os créditos, atualiza o risco dos fornecedores e mantém os dois sistemas em ordem na transição. O seu time opera no controle, sem caçar planilha.</p>
+        </div>
+        <div class="flow-illus">
+          <div class="fi-paid-glow"></div>
+          <div class="fi-paid">
+            <div class="circle"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M5 12l5 5L20 7" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+            <div class="label" data-pt="Ciclo conciliado" data-en="Cycle reconciled">Ciclo conciliado</div>
+            <div class="sub" data-pt="créditos + caixa + fornecedores · jul/2026" data-en="credits + cash + suppliers · Jul 2026">créditos + caixa + fornecedores · jul/2026</div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ============ CHAT SECTION ============ -->
+<section class="chat-section" id="chat">
+  <div class="shell chat-grid">
+    <div>
+      <div class="eyebrow reveal"><span class="dot-cyan"></span><span data-pt="Chat &amp; MCP" data-en="Chat &amp; MCP">Chat &amp; MCP</span></div>
+      <h2 class="reveal delay-1" style="margin-top: 20px;"
+          data-pt="Tudo isso,&lt;br /&gt;também por chat."
+          data-en="All of it,&lt;br /&gt;by chat too.">Tudo isso,<br />também por chat.</h2>
+      <p class="lead reveal delay-2" style="margin-top: 24px; max-width: 480px;"
+         data-pt="Qualquer coisa que a interface faz, o chat também faz. Pergunte sobre créditos, caixa e fornecedores, dê instruções, simule um cenário, em português, como você falaria com alguém do time fiscal."
+         data-en="Anything the interface does, the chat does too. Ask about credits, cash and suppliers, give instructions, simulate a scenario, in plain language, like you'd talk to someone on your tax team.">Qualquer coisa que a interface faz, o chat também faz. Pergunte sobre créditos, caixa e fornecedores, dê instruções, simule um cenário, em português, como você falaria com alguém do time fiscal.</p>
+      <div class="mcp-card reveal delay-3">
+        <div class="ai-logos" aria-hidden="true">
+          <span class="ai-logo" title="Claude"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="#D97757" stroke-width="2.4" stroke-linecap="round"><path d="M12 2.6v4.2M12 17.2v4.2M2.6 12h4.2M17.2 12h4.2M5.4 5.4l3 3M15.6 15.6l3 3M18.6 5.4l-3 3M8.4 15.6l-3 3"></path></svg></span>
+          <span class="ai-logo" title="ChatGPT"><svg width="19" height="19" viewBox="0 0 24 24" fill="#EAF6FF"><path d="M22.2819 9.8211a5.9847 5.9847 0 0 0-.5157-4.9108 6.0462 6.0462 0 0 0-6.5098-2.9A6.0651 6.0651 0 0 0 4.9807 4.1818a5.9847 5.9847 0 0 0-3.9977 2.9 6.0462 6.0462 0 0 0 .7427 7.0966 5.98 5.98 0 0 0 .511 4.9107 6.051 6.051 0 0 0 6.5146 2.9001A5.9847 5.9847 0 0 0 13.2599 24a6.0557 6.0557 0 0 0 5.7718-4.2058 5.9894 5.9894 0 0 0 3.9977-2.9001 6.0557 6.0557 0 0 0-.7475-7.073zm-9.022 12.6081a4.4755 4.4755 0 0 1-2.8764-1.0408l.1419-.0804 4.7783-2.7582a.7948.7948 0 0 0 .3927-.6813v-6.7369l2.02 1.1686a.071.071 0 0 1 .038.052v5.5826a4.504 4.504 0 0 1-4.4945 4.4944zm-9.6607-4.1254a4.4708 4.4708 0 0 1-.5346-3.0137l.142.0852 4.783 2.7582a.7712.7712 0 0 0 .7806 0l5.8428-3.3685v2.3324a.0804.0804 0 0 1-.0332.0615L9.74 19.9502a4.4992 4.4992 0 0 1-6.1408-1.6464zM2.3408 7.8956a4.485 4.485 0 0 1 2.3655-1.9728V11.6a.7664.7664 0 0 0 .3879.6765l5.8144 3.3543-2.0201 1.1685a.0757.0757 0 0 1-.071 0l-4.8303-2.7865A4.504 4.504 0 0 1 2.3408 7.872zm16.5963 3.8558L13.1038 8.364 15.1192 7.2a.0757.0757 0 0 1 .071 0l4.8303 2.7913a4.4944 4.4944 0 0 1-.6765 8.1042v-5.6772a.79.79 0 0 0-.407-.667zm2.0107-3.0231l-.142-.0852-4.7735-2.7818a.7759.7759 0 0 0-.7854 0L9.409 9.2297V6.8974a.0662.0662 0 0 1 .0284-.0615l4.8303-2.7866a4.4992 4.4992 0 0 1 6.6802 4.66zM8.3065 12.863l-2.02-1.1638a.0804.0804 0 0 1-.038-.0567V6.0742a4.4992 4.4992 0 0 1 7.3757-3.4537l-.142.0805L8.704 5.459a.7948.7948 0 0 0-.3927.6813zm1.0976-2.3654l2.602-1.4998 2.6069 1.4998v2.9994l-2.5974 1.4997-2.6067-1.4997Z"></path></svg></span>
+          <span class="ai-logo" title="Gemini"><svg width="18" height="18" viewBox="0 0 24 24" fill="#6B9BFF"><path d="M12 24A14.3 14.3 0 0 0 0 12 14.3 14.3 0 0 0 12 0a14.3 14.3 0 0 0 12 12 14.3 14.3 0 0 0-12 12z"></path></svg></span>
+        </div>
+        <div>
+          <div class="t" data-pt="Prefere o seu chat de IA?" data-en="Prefer your own AI chat?">Prefere o seu chat de IA?</div>
+          <div class="s" data-pt="Conecte o Claude, o ChatGPT ou o Gemini ao servidor MCP da Kontiva e opere tudo sem sair da sua IA preferida." data-en="Connect Claude, ChatGPT or Gemini to Kontiva's MCP server and run everything without leaving your favorite AI.">Conecte o Claude, o ChatGPT ou o Gemini ao servidor MCP da Kontiva e opere tudo sem sair da sua IA preferida.</div>
+        </div>
+      </div>
+    </div>
+    <div class="chat-window reveal delay-2">
+      <div class="chat-head">
+        <span>Kontiva · Chat</span>
+        <span class="status" data-pt="conectado" data-en="connected">conectado</span>
+      </div>
+      <div class="bubble user" data-pt="Quanto de crédito de IBS/CBS está em risco neste mês?" data-en="How much IBS/CBS credit is at risk this month?">Quanto de crédito de IBS/CBS está em risco neste mês?</div>
+      <div class="bubble bot"
+           data-pt="&lt;b&gt;R$ 103.950&lt;/b&gt; em créditos dependem de 3 fornecedores com pendência. 2 estão com CND vencida. Quer que eu avise o financeiro e segure a glosa?"
+           data-en="&lt;b&gt;R$ 103,950&lt;/b&gt; in credits depend on 3 suppliers with issues. 2 have expired clearance. Want me to alert finance and hold the disallowance?"><b>R$ 103.950</b> em créditos dependem de 3 fornecedores com pendência. 2 estão com CND vencida. Quer que eu avise o financeiro e segure a glosa?</div>
+      <div class="bubble user"
+           data-pt="Como fica o meu caixa em julho com o split payment?"
+           data-en="What does my July cash look like under split payment?">Como fica o meu caixa em julho com o split payment?</div>
+      <div class="bubble bot"
+           data-pt="O imposto de &lt;b&gt;R$ 137.000&lt;/b&gt; sai na liquidação das vendas, cerca de 40 dias antes do seu ciclo atual. Projetei o fluxo: você precisa de &lt;b&gt;R$ 118.000&lt;/b&gt; de capital de giro extra na primeira quinzena."
+           data-en="The &lt;b&gt;R$ 137,000&lt;/b&gt; tax leaves at sale settlement, about 40 days earlier than your current cycle. I projected the flow: you need &lt;b&gt;R$ 118,000&lt;/b&gt; in extra working capital in the first half of the month.">O imposto de <b>R$ 137.000</b> sai na liquidação das vendas, cerca de 40 dias antes do seu ciclo atual. Projetei o fluxo: você precisa de <b>R$ 118.000</b> de capital de giro extra na primeira quinzena.</div>
+      <div class="bubble user"
+           data-pt="Simula o repricing do contrato da Distribuidora Vale Log para 2027."
+           data-en="Simulate repricing for the Distribuidora Vale Log contract for 2027.">Simula o repricing do contrato da Distribuidora Vale Log para 2027.</div>
+      <div class="bubble bot"
+           data-pt="Feito. Mantendo a margem líquida atual, o preço precisa subir &lt;b&gt;8,4%&lt;/b&gt; com o IVA por fora. Gerei a minuta de aditivo para o jurídico revisar."
+           data-en="Done. To keep your current net margin, the price needs to rise &lt;b&gt;8.4%&lt;/b&gt; with the tax charged on top. I drafted the amendment for legal to review.">Feito. Mantendo a margem líquida atual, o preço precisa subir <b>8,4%</b> com o IVA por fora. Gerei a minuta de aditivo para o jurídico revisar.</div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ AGENTS ============ -->
+<section class="agents" id="agentes">
+  <div class="shell agents-grid">
+    <div>
+      <div class="eyebrow reveal"><span class="dot-cyan"></span><span data-pt="Agentes de IA" data-en="AI agents">Agentes de IA</span></div>
+      <h2 class="reveal delay-1" style="margin-top: 20px;"
+          data-pt="Agentes de olho na operação,&lt;br /&gt;24 horas por dia."
+          data-en="Agents watching your operation,&lt;br /&gt;around the clock.">Agentes de olho na operação,<br />24 horas por dia.</h2>
+      <p class="lead reveal delay-2" style="margin-top: 24px; max-width: 500px;"
+         data-pt="Crie agentes de IA dentro do Kontiva que varrem a sua operação fiscal e financeira sem parar: monitoram a adimplência dos fornecedores, avisam sobre prazos da reforma, projetam o caixa e pedem a sua aprovação no que você definir."
+         data-en="Create AI agents inside Kontiva that continuously sweep your tax and finance operation: they monitor supplier compliance, flag reform deadlines, project cash and ask for your approval on whatever you define.">Crie agentes de IA dentro do Kontiva que varrem a sua operação fiscal e financeira sem parar: monitoram a adimplência dos fornecedores, avisam sobre prazos da reforma, projetam o caixa e pedem a sua aprovação no que você definir.</p>
+      <div class="agent-points reveal delay-3">
+        <div class="agent-point">
+          <div class="k-ico-light"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M21 11.6a8.4 8.4 0 0 1-8.5 8.3 9 9 0 0 1-2.6-.4L4.5 21l1.2-3.6a8.1 8.1 0 0 1-1.7-5A8.4 8.4 0 0 1 12.5 4 8.4 8.4 0 0 1 21 11.6z" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"></path><path d="M8.8 10.2h7M8.8 13.2h4.6" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"></path></svg></div>
+          <div>
+            <div class="t" data-pt="Avisos onde você trabalha" data-en="Alerts where you work">Avisos onde você trabalha</div>
+            <div class="s" data-pt="Créditos em risco, prazos da reforma, caixa apertado no ciclo, direto no e-mail, Slack ou Teams." data-en="Credits at risk, reform deadlines, tight cash in the cycle, straight to email, Slack or Teams.">Créditos em risco, prazos da reforma, caixa apertado no ciclo, direto no e-mail, Slack ou Teams.</div>
+          </div>
+        </div>
+        <div class="agent-point">
+          <div class="k-ico-light"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" aria-hidden="true"><circle cx="12" cy="8" r="3.6" stroke="currentColor" stroke-width="1.7"></circle><path d="M4.8 20a7.2 7.2 0 0 1 14.4 0" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"></path></svg></div>
+          <div>
+            <div class="t" data-pt="Aprovação a um clique" data-en="One-click approvals">Aprovação a um clique</div>
+            <div class="s" data-pt="O agente pergunta antes de agir quando você quiser: segurar um crédito, ajustar uma projeção, cobrar a CND de um fornecedor." data-en="The agent asks before acting whenever you want: hold a credit, adjust a projection, request a supplier's clearance.">O agente pergunta antes de agir quando você quiser: segurar um crédito, ajustar uma projeção, cobrar a CND de um fornecedor.</div>
+          </div>
+        </div>
+        <div class="agent-point">
+          <div class="k-ico-light"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M6 3h8l4 4v14H6z" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/><path d="M9 13h6M9 16h6M9 10h3" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg></div>
+          <div>
+            <div class="t" data-pt="Relatórios automáticos" data-en="Automatic reports">Relatórios automáticos</div>
+            <div class="s" data-pt="Resumos periódicos de créditos, caixa e exposição na transição, para o seu time e para a diretoria." data-en="Periodic summaries of credits, cash and transition exposure, for your team and the board.">Resumos periódicos de créditos, caixa e exposição na transição, para o seu time e para a diretoria.</div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="agent-feed reveal delay-2">
+      <div class="feed-head">
+        <span data-pt="Atividade dos agentes" data-en="Agent activity">Atividade dos agentes</span>
+        <span class="live" data-pt="Hoje" data-en="Today">Hoje</span>
+      </div>
+      <!-- Note 1 -->
+      <div class="agent-note">
+        <div class="row1">
+          <span class="who" data-pt="Agente · Créditos" data-en="Agent · Credits">Agente · Créditos</span>
+          <span class="ch">Slack</span>
+        </div>
+        <div class="body" data-pt="Distribuidora Vale Log está com débito de IBS em aberto. Segurar o crédito de R$ 41.900 até regularizar?" data-en="Distribuidora Vale Log has an open IBS debit. Hold the R$ 41,900 credit until it clears?">Distribuidora Vale Log está com débito de IBS em aberto. Segurar o crédito de R$ 41.900 até regularizar?</div>
+        <div class="actions">
+          <span class="a1" data-pt="Aprovar" data-en="Approve">Aprovar</span>
+          <span class="a2" data-pt="Revisar" data-en="Review">Revisar</span>
+        </div>
+      </div>
+      <!-- Note 2 -->
+      <div class="agent-note">
+        <div class="row1">
+          <span class="who" data-pt="Agente · Caixa" data-en="Agent · Cash">Agente · Caixa</span>
+          <span class="ch" data-pt="E-mail" data-en="Email">E-mail</span>
+        </div>
+        <div class="body" data-pt="Projeção de julho atualizada: o split payment antecipa R$ 137.000. Capital de giro sugerido calculado." data-en="July projection updated: split payment advances R$ 137,000. Suggested working capital calculated.">Projeção de julho atualizada: o split payment antecipa R$ 137.000. Capital de giro sugerido calculado.</div>
+      </div>
+      <!-- Note 3 -->
+      <div class="agent-note">
+        <div class="row1">
+          <span class="who" data-pt="Agente · Fornecedores" data-en="Agent · Suppliers">Agente · Fornecedores</span>
+          <span class="ch">Teams</span>
+        </div>
+        <div class="body" data-pt="Varredura concluída: 3 de 214 fornecedores com CND vencida neste mês." data-en="Sweep complete: 3 of 214 suppliers with expired clearance this month.">Varredura concluída: 3 de 214 fornecedores com CND vencida neste mês.</div>
+        <div class="actions">
+          <span class="a1" data-pt="Ver detalhes" data-en="View details">Ver detalhes</span>
+        </div>
+      </div>
+      <!-- Note 4 -->
+      <div class="agent-note">
+        <div class="row1">
+          <span class="who" data-pt="Agente · Reforma" data-en="Agent · Reform">Agente · Reforma</span>
+          <span class="ch" data-pt="E-mail" data-en="Email">E-mail</span>
+        </div>
+        <div class="body" data-pt="Faltam 90 dias para a CBS plena. 12 contratos atravessam 2027 sem repricing." data-en="90 days to full CBS. 12 contracts cross into 2027 without repricing.">Faltam 90 dias para a CBS plena. 12 contratos atravessam 2027 sem repricing.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ RESULTS ============ -->
+<section class="results" id="resultados">
+  <div class="res-bg" aria-hidden="true"></div>
+  <div class="res-overlay" aria-hidden="true"></div>
+  <div class="shell">
+    <div class="section-head reveal">
+      <div class="eyebrow"><span class="dot-cyan"></span><span data-pt="Resultados" data-en="Outcomes">Resultados</span></div>
+      <h2 style="margin-top: 20px;" data-pt="O que muda na sua operação" data-en="What changes in your operation">O que muda na sua operação</h2>
+    </div>
+    <div class="res-grid">
+        <div class="res-item reveal delay-1">
+          <h3 data-pt="Caixa sem susto" data-en="Cash with no surprises">Caixa sem susto</h3>
+          <p data-pt="A saída do imposto com o split payment entra na sua projeção antes de acontecer. Nada de descobrir o buraco no caixa só no fim do mês." data-en="The tax outflow under split payment enters your projection before it happens. No discovering the cash gap only at month-end.">A saída do imposto com o split payment entra na sua projeção antes de acontecer. Nada de descobrir o buraco no caixa só no fim do mês.</p>
+        </div>
+        <div class="res-item reveal delay-2">
+          <h3 data-pt="Nenhum crédito na mesa" data-en="No credit left behind">Nenhum crédito na mesa</h3>
+          <p data-pt="Cada crédito de IBS e CBS é conciliado contra a adimplência do fornecedor. Os 15% a 20% que se perdem no braço voltam para o seu bolso." data-en="Every IBS and CBS credit is reconciled against supplier compliance. The 15% to 20% lost by hand comes back to you.">Cada crédito de IBS e CBS é conciliado contra a adimplência do fornecedor. Os 15% a 20% que se perdem no braço voltam para o seu bolso.</p>
+        </div>
+        <div class="res-item reveal delay-3">
+          <h3 data-pt="Margem e contratos protegidos" data-en="Margin and contracts protected">Margem e contratos protegidos</h3>
+          <p data-pt="O repricing sai com número e fonte, contrato a contrato. Você atravessa a transição sem comprimir a própria margem." data-en="Repricing comes out with numbers and sources, contract by contract. You cross the transition without squeezing your own margin.">O repricing sai com número e fonte, contrato a contrato. Você atravessa a transição sem comprimir a própria margem.</p>
+        </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ CALCULATOR ============ -->
+<section class="calc" id="calculadora">
+  <div class="shell calc-wrap">
+    <div>
+      <div class="eyebrow reveal"><span class="dot-cyan"></span><span data-pt="Calculadora" data-en="Calculator">Calculadora</span></div>
+      <h2 class="reveal delay-1" style="margin-top: 20px;"
+          data-pt="Quanto a reforma&lt;br /&gt;custa no seu caixa?"
+          data-en="How much does the reform&lt;br /&gt;cost your cash?">Quanto a reforma<br />custa no seu caixa?</h2>
+      <p class="lead reveal delay-2" style="margin-top: 24px; max-width: 480px;"
+         data-pt="Ajuste os números da sua empresa. Não é chute: usamos as premissas de mercado do split payment e da perda média de créditos."
+         data-en="Adjust your company's numbers. It's not a guess: we use the market assumptions for split payment and average credit loss.">Ajuste os números da sua empresa. Não é chute: usamos as premissas de mercado do split payment e da perda média de créditos.</p>
+      <p class="calc-note reveal delay-3"
+         data-pt="Estimativa baseada no imposto antecipado pelo split payment (cerca de um mês de carga sai do caixa antes) e em 15% dos créditos perdidos por gestão manual. O valor real costuma ser maior. Fontes: Deloitte, EY, estimativas de mercado."
+         data-en="Estimate based on the tax advanced by split payment (about one month of tax leaves your cash earlier) and 15% of credits lost to manual management. The real number is usually higher. Sources: Deloitte, EY, market estimates.">Estimativa baseada no imposto antecipado pelo split payment (cerca de um mês de carga sai do caixa antes) e em 15% dos créditos perdidos por gestão manual. O valor real costuma ser maior. Fontes: Deloitte, EY, estimativas de mercado.</p>
+    </div>
+    <div class="calc-card reveal delay-2">
+      <div class="calc-field">
+        <label for="calc-faturamento">
+          <span data-pt="Faturamento mensal" data-en="Monthly revenue">Faturamento mensal</span>
+          <span class="v" id="calc-faturamento-v">R$&nbsp;500 mil</span>
+        </label>
+        <input type="range" id="calc-faturamento" min="200000" max="5000000" step="50000" value="500000" style="--fill: 6.25%" />
+      </div>
+      <div class="calc-field">
+        <label for="calc-carga">
+          <span data-pt="Carga tributária estimada" data-en="Estimated tax rate">Carga tributária estimada</span>
+          <span class="v" id="calc-carga-v">26%</span>
+        </label>
+        <input type="range" id="calc-carga" min="8" max="33" step="1" value="26" style="--fill: 72%" />
+      </div>
+      <div class="calc-field calc-fixed">
+        <label>
+          <span data-pt="Float tributário perdido" data-en="Tax float lost">Float tributário perdido</span>
+          <span class="v" data-pt="~40 dias" data-en="~40 days">~40 dias</span>
+        </label>
+        <p class="calc-fixed-note"
+           data-pt="Com o split payment, o imposto sai do caixa na liquidação da venda. A empresa perde em média 40 dias de float."
+           data-en="Under split payment, the tax leaves your cash at sale settlement. Companies lose about 40 days of float on average.">Com o split payment, o imposto sai do caixa na liquidação da venda. A empresa perde em média 40 dias de float.</p>
+      </div>
+      <div class="calc-result">
+        <div class="l1" data-pt="Caixa que deixa de girar" data-en="Cash that stops circulating">Caixa que deixa de girar</div>
+        <div class="l2" id="calc-caixa">R$&nbsp;130.000</div>
+        <div class="l3"><span data-pt="capital de giro imobilizado, a cada ciclo" data-en="working capital tied up, every cycle">capital de giro imobilizado, a cada ciclo</span></div>
+        <div class="l4">
+          <span class="plus">+ <span id="calc-credito">R$&nbsp;117.000</span></span>
+          <span data-pt=" em créditos em risco por ano" data-en=" in credits at risk per year"> em créditos em risco por ano</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ PRICING ============ -->
+<section class="pricing" id="planos">
+  <div class="shell">
+    <div class="section-head reveal">
+      <div class="eyebrow"><span class="dot-cyan"></span><span data-pt="Planos" data-en="Pricing">Planos</span></div>
+      <h2 style="margin-top: 20px;"
+          data-pt="Simples: uma assinatura&lt;br /&gt;&lt;span style=&quot;color: var(--cinza-texto)&quot;&gt;por faixa de faturamento.&lt;/span&gt;"
+          data-en="Simple: one subscription&lt;br /&gt;&lt;span style=&quot;color: var(--cinza-texto)&quot;&gt;by revenue band.&lt;/span&gt;">Simples: uma assinatura<br /><span style="color: var(--cinza-texto)">por faixa de faturamento.</span></h2>
+    </div>
+    <div class="plans">
+      <!-- Essencial -->
+      <div class="plan reveal delay-1">
+        <div class="plan-name">Essencial</div>
+        <div class="plan-price">R$ 990<span class="per-month" data-pt="&nbsp;/mês" data-en="&nbsp;/mo">&nbsp;/mês</span></div>
+        <div class="plan-variable"><b data-pt="Usuários ilimitados" data-en="Unlimited users">Usuários ilimitados</b> <span data-pt="· sem cobrar por assento" data-en="· no per-seat fee">· sem cobrar por assento</span></div>
+        <div class="plan-limit">
+          <span class="tick"><svg width="10" height="10" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M5 12l5 5L20 7" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+          <span data-pt="Faturamento até R$ 50 mi/ano" data-en="Revenue up to R$ 50M/yr">Faturamento até R$ 50 mi/ano</span>
+        </div>
+        <a href="https://wa.me/5551926343014?text=Ol%C3%A1%2C%20tenho%20interesse%20no%20plano%20Essencial%20do%20Kontiva%20para%20empresas"
+           data-pt-href="https://wa.me/5551926343014?text=Ol%C3%A1%2C%20tenho%20interesse%20no%20plano%20Essencial%20do%20Kontiva%20para%20empresas"
+           data-en-href="https://wa.me/5551926343014?text=Hi%2C%20I'm%20interested%20in%20Kontiva's%20Essencial%20plan%20for%20companies"
+           target="_blank" rel="noreferrer" class="btn btn-ghost">
+          <span data-pt="Começar com Essencial" data-en="Start with Essencial">Começar com Essencial</span>
+        </a>
+      </div>
+      <!-- Profissional (featured) -->
+      <div class="plan featured reveal delay-2">
+        <div class="plan-tag" data-pt="Mais popular" data-en="Most popular">Mais popular</div>
+        <div class="plan-name">Profissional</div>
+        <div class="plan-price">R$ 2.490<span class="per-month" data-pt="&nbsp;/mês" data-en="&nbsp;/mo">&nbsp;/mês</span></div>
+        <div class="plan-variable"><b data-pt="Usuários ilimitados" data-en="Unlimited users">Usuários ilimitados</b> <span data-pt="· sem cobrar por assento" data-en="· no per-seat fee">· sem cobrar por assento</span></div>
+        <div class="plan-limit">
+          <span class="tick"><svg width="10" height="10" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M5 12l5 5L20 7" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+          <span data-pt="Faturamento de R$ 50 a 150 mi/ano" data-en="Revenue R$ 50 to 150M/yr">Faturamento de R$ 50 a 150 mi/ano</span>
+        </div>
+        <a href="https://wa.me/5551926343014?text=Ol%C3%A1%2C%20tenho%20interesse%20no%20plano%20Profissional%20do%20Kontiva%20para%20empresas"
+           data-pt-href="https://wa.me/5551926343014?text=Ol%C3%A1%2C%20tenho%20interesse%20no%20plano%20Profissional%20do%20Kontiva%20para%20empresas"
+           data-en-href="https://wa.me/5551926343014?text=Hi%2C%20I'm%20interested%20in%20Kontiva's%20Profissional%20plan%20for%20companies"
+           target="_blank" rel="noreferrer" class="btn btn-primary">
+          <span data-pt="Começar com Profissional" data-en="Start with Profissional">Começar com Profissional</span>
+        </a>
+      </div>
+      <!-- Enterprise -->
+      <div class="plan reveal delay-3">
+        <div class="plan-name">Enterprise</div>
+        <div class="plan-price">R$ 4.990<span class="per-month" data-pt="&nbsp;/mês" data-en="&nbsp;/mo">&nbsp;/mês</span></div>
+        <div class="plan-variable"><b data-pt="Onboarding dedicado" data-en="Dedicated onboarding">Onboarding dedicado</b> <span data-pt="· usuários ilimitados" data-en="· unlimited users">· usuários ilimitados</span></div>
+        <div class="plan-limit">
+          <span class="tick"><svg width="10" height="10" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M5 12l5 5L20 7" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+          <span data-pt="Faturamento acima de R$ 150 mi/ano" data-en="Revenue above R$ 150M/yr">Faturamento acima de R$ 150 mi/ano</span>
+        </div>
+        <a href="https://wa.me/5551926343014?text=Ol%C3%A1%2C%20tenho%20interesse%20no%20plano%20Enterprise%20do%20Kontiva%20para%20empresas"
+           data-pt-href="https://wa.me/5551926343014?text=Ol%C3%A1%2C%20tenho%20interesse%20no%20plano%20Enterprise%20do%20Kontiva%20para%20empresas"
+           data-en-href="https://wa.me/5551926343014?text=Hi%2C%20I'm%20interested%20in%20Kontiva's%20Enterprise%20plan%20for%20companies"
+           target="_blank" rel="noreferrer" class="btn btn-ghost">
+          <span data-pt="Falar com o time" data-en="Talk to the team">Falar com o time</span>
+        </a>
+      </div>
+    </div>
+    <p class="plans-note reveal delay-3"
+       data-pt="Todos os planos incluem o Agente Tributário: projeção de caixa com split payment, monitor de créditos e fornecedores, simulação de repricing, chat e servidor MCP. Preço travado por 12 meses. Novos agentes do hub entram na mesma assinatura."
+       data-en="Every plan includes the Tax Agent: split-payment cash projection, credit and supplier monitor, repricing simulation, chat and MCP server. Price locked for 12 months. New hub agents join the same subscription.">Todos os planos incluem o Agente Tributário: projeção de caixa com split payment, monitor de créditos e fornecedores, simulação de repricing, chat e servidor MCP. Preço travado por 12 meses. Novos agentes do hub entram na mesma assinatura.</p>
+  </div>
+</section>
+
+<!-- ============ FAQ ============ -->
+<section class="faq" id="faq">
+  <div class="shell">
+    <div class="section-head reveal">
+      <div class="eyebrow"><span class="dot-cyan"></span>FAQ</div>
+      <h2 style="margin-top: 20px;" data-pt="Perguntas frequentes" data-en="Frequently asked questions">Perguntas frequentes</h2>
+    </div>
+    <div class="faq-list reveal delay-1">
+
+      <details class="faq-item">
+        <summary>
+          <span data-pt="Preciso trocar de ERP?" data-en="Do I need to switch ERP?">Preciso trocar de ERP?</span>
+          <span class="faq-chev"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M6 9l6 6 6-6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+        </summary>
+        <p class="faq-a" data-pt="Não. O Kontiva se conecta ao seu ERP e ao seu financeiro (Totvs, SAP, Oracle, Senior e outros) sem trocar nada. Sem integração, você envia os relatórios em qualquer formato e a gente processa." data-en="No. Kontiva connects to your ERP and finance system (Totvs, SAP, Oracle, Senior and others) with no switch at all. Without integration, you send the reports in any format and we process them.">Não. O Kontiva se conecta ao seu ERP e ao seu financeiro (Totvs, SAP, Oracle, Senior e outros) sem trocar nada. Sem integração, você envia os relatórios em qualquer formato e a gente processa.</p>
+      </details>
+
+      <details class="faq-item">
+        <summary>
+          <span data-pt="Como o Kontiva protege meus créditos de IBS/CBS?" data-en="How does Kontiva protect my IBS/CBS credits?">Como o Kontiva protege meus créditos de IBS/CBS?</span>
+          <span class="faq-chev"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M6 9l6 6 6-6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+        </summary>
+        <p class="faq-a" data-pt="Ele monitora a adimplência de cada fornecedor e cruza com os seus créditos. No IBS/CBS, o crédito só nasce quando o débito do fornecedor é extinto. Quando isso não acontece, o crédito entra em risco de glosa: o Kontiva avisa antes, dá um score de risco e segura a conciliação até regularizar." data-en="It monitors each supplier's compliance and cross-checks it against your credits. Under IBS/CBS, the credit only exists once the supplier's debit is settled. When that doesn't happen, the credit is at risk of being disallowed: Kontiva warns you first, assigns a risk score and holds the reconciliation until it clears.">Ele monitora a adimplência de cada fornecedor e cruza com os seus créditos. No IBS/CBS, o crédito só nasce quando o débito do fornecedor é extinto. Quando isso não acontece, o crédito entra em risco de glosa: o Kontiva avisa antes, dá um score de risco e segura a conciliação até regularizar.</p>
+      </details>
+
+      <details class="faq-item">
+        <summary>
+          <span data-pt="O que o Kontiva faz pelo meu caixa com o split payment?" data-en="What does Kontiva do for my cash under split payment?">O que o Kontiva faz pelo meu caixa com o split payment?</span>
+          <span class="faq-chev"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M6 9l6 6 6-6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+        </summary>
+        <p class="faq-a" data-pt="Projeta a saída do imposto na liquidação de cada venda, cerca de 40 dias antes do seu ciclo atual, e calcula o capital de giro que você vai precisar. Você planeja o caixa com antecedência, sem descobrir o buraco no fim do mês." data-en="It projects the tax outflow at each sale's settlement, about 40 days earlier than your current cycle, and calculates the working capital you'll need. You plan cash ahead of time, without discovering the gap at month-end.">Projeta a saída do imposto na liquidação de cada venda, cerca de 40 dias antes do seu ciclo atual, e calcula o capital de giro que você vai precisar. Você planeja o caixa com antecedência, sem descobrir o buraco no fim do mês.</p>
+      </details>
+
+      <details class="faq-item">
+        <summary>
+          <span data-pt="E os dois sistemas na transição?" data-en="What about the two systems during the transition?">E os dois sistemas na transição?</span>
+          <span class="faq-chev"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M6 9l6 6 6-6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+        </summary>
+        <p class="faq-a" data-pt="Entre 2027 e 2032 convivem o modelo antigo e o IBS/CBS. O Kontiva opera os dois em paralelo, concilia crédito e débito de cada regime e mantém tudo numa visão só, sem duplicar trabalho do seu time." data-en="Between 2027 and 2032 the old model and IBS/CBS coexist. Kontiva runs both in parallel, reconciles credit and debit for each regime and keeps everything in a single view, without doubling your team's work.">Entre 2027 e 2032 convivem o modelo antigo e o IBS/CBS. O Kontiva opera os dois em paralelo, concilia crédito e débito de cada regime e mantém tudo numa visão só, sem duplicar trabalho do seu time.</p>
+      </details>
+
+      <details class="faq-item">
+        <summary>
+          <span data-pt="Quem decide? A IA cobra ou paga sozinha?" data-en="Who decides? Does the AI charge or pay on its own?">Quem decide? A IA cobra ou paga sozinha?</span>
+          <span class="faq-chev"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M6 9l6 6 6-6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+        </summary>
+        <p class="faq-a" data-pt="Nunca. O agente propõe e o seu time fiscal e financeiro aprova cada passo. Você define o que roda automático e o que passa por aprovação, do crédito segurado ao repricing sugerido." data-en="Never. The agent proposes and your tax and finance team approves every step. You define what runs automatically and what requires approval, from a held credit to a suggested repricing.">Nunca. O agente propõe e o seu time fiscal e financeiro aprova cada passo. Você define o que roda automático e o que passa por aprovação, do crédito segurado ao repricing sugerido.</p>
+      </details>
+
+      <details class="faq-item">
+        <summary>
+          <span data-pt="Consigo operar pelo Claude ou ChatGPT?" data-en="Can I run it from Claude or ChatGPT?">Consigo operar pelo Claude ou ChatGPT?</span>
+          <span class="faq-chev"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M6 9l6 6 6-6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+        </summary>
+        <p class="faq-a" data-pt="Sim. Conecte a sua IA preferida ao servidor MCP do Kontiva e pergunte, instrua e simule cenários sem sair do chat que você já usa." data-en="Yes. Connect your favorite AI to Kontiva's MCP server and ask, instruct and simulate scenarios without leaving the chat you already use.">Sim. Conecte a sua IA preferida ao servidor MCP do Kontiva e pergunte, instrua e simule cenários sem sair do chat que você já usa.</p>
+      </details>
+
+      <details class="faq-item">
+        <summary>
+          <span data-pt="Meus dados ficam seguros?" data-en="Is my data secure?">Meus dados ficam seguros?</span>
+          <span class="faq-chev"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M6 9l6 6 6-6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+        </summary>
+        <p class="faq-a" data-pt="Sim. Os seus dados ficam isolados por empresa, criptografados e não são usados para treinar IA de terceiros. Você pode exportar ou excluir tudo quando quiser." data-en="Yes. Your data is isolated per company, encrypted, and never used to train third-party AI. You can export or delete everything whenever you want.">Sim. Os seus dados ficam isolados por empresa, criptografados e não são usados para treinar IA de terceiros. Você pode exportar ou excluir tudo quando quiser.</p>
+      </details>
+
+      <details class="faq-item">
+        <summary>
+          <span data-pt="Como funciona o diagnóstico gratuito?" data-en="How does the free diagnostic work?">Como funciona o diagnóstico gratuito?</span>
+          <span class="faq-chev"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M6 9l6 6 6-6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+        </summary>
+        <p class="faq-a" data-pt="Você envia uma amostra de dados reais (notas, base de fornecedores e alguns contratos) e o Kontiva devolve um raio-X: caixa projetado com o split, créditos em risco e contratos que precisam de repricing. Sem custo e sem compromisso." data-en="You send a sample of real data (invoices, supplier base and a few contracts) and Kontiva returns an X-ray: cash projected under the split, credits at risk and contracts that need repricing. Free, no strings attached.">Você envia uma amostra de dados reais (notas, base de fornecedores e alguns contratos) e o Kontiva devolve um raio-X: caixa projetado com o split, créditos em risco e contratos que precisam de repricing. Sem custo e sem compromisso.</p>
+      </details>
+
+    </div>
+  </div>
+</section>
+
+<!-- ============ FINAL CTA ============ -->
+<section class="final-cta" id="avaliacao">
+  <div class="shell cta-grid">
+    <div>
+      <div class="eyebrow reveal"><span class="dot-cyan"></span><span data-pt="Diagnóstico gratuito" data-en="Free diagnostic">Diagnóstico gratuito</span></div>
+      <h2 class="reveal delay-1" style="margin-top: 20px;"
+          data-pt="Quanto a reforma&lt;br /&gt;já custa no seu caixa?&lt;br /&gt;&lt;span class=&quot;hl&quot;&gt;A gente calcula.&lt;/span&gt;"
+          data-en="How much is the reform&lt;br /&gt;already costing your cash?&lt;br /&gt;&lt;span class=&quot;hl&quot;&gt;We'll do the math.&lt;/span&gt;">Quanto a reforma<br />já custa no seu caixa?<br /><span class="hl">A gente calcula.</span></h2>
+      <p class="sub reveal delay-2"
+         data-pt="Fazemos um diagnóstico sem custo da sua operação e devolvemos um raio-X do caixa, dos créditos e dos contratos na reforma."
+         data-en="We run a free diagnostic of your operation and send back an X-ray of your cash, your credits and your contracts under the reform.">Fazemos um diagnóstico sem custo da sua operação e devolvemos um raio-X do caixa, dos créditos e dos contratos na reforma.</p>
+      <ol class="cta-steps reveal delay-2">
+        <li><span class="n">01</span> <span data-pt="Envie uma amostra de notas de entrada e saída" data-en="Send a sample of inbound and outbound invoices">Envie uma amostra de notas de entrada e saída</span></li>
+        <li><span class="n">02</span> <span data-pt="Junte a sua base de fornecedores" data-en="Gather your supplier base">Junte a sua base de fornecedores</span></li>
+        <li><span class="n">03</span> <span data-pt="Inclua alguns contratos que atravessam 2027" data-en="Include a few contracts that cross into 2027">Inclua alguns contratos que atravessam 2027</span></li>
+        <li><span class="n">04</span> <span data-pt="Receba o raio-X de caixa, créditos e repricing" data-en="Get the X-ray of cash, credits and repricing">Receba o raio-X de caixa, créditos e repricing</span></li>
+      </ol>
+      <div class="cta-btn-row reveal delay-3">
+        <a href="https://wa.me/5551926343014?text=Ol%C3%A1%2C%20quero%20o%20diagn%C3%B3stico%20gratuito%20da%20minha%20empresa"
+           data-pt-href="https://wa.me/5551926343014?text=Ol%C3%A1%2C%20quero%20o%20diagn%C3%B3stico%20gratuito%20da%20minha%20empresa"
+           data-en-href="https://wa.me/5551926343014?text=Hi%2C%20I%20want%20the%20free%20diagnostic%20for%20my%20company"
+           target="_blank" rel="noreferrer" class="btn btn-primary">
+          <svg class="whats" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M19.05 4.91A10 10 0 0 0 4.04 18.26L3 22l3.83-1.01A10 10 0 1 0 19.05 4.91zM12 20.15a8.14 8.14 0 0 1-4.15-1.13l-.3-.18-2.27.6.6-2.22-.19-.32A8.15 8.15 0 1 1 12 20.15zm4.46-6.1c-.24-.12-1.44-.71-1.66-.79-.22-.08-.38-.12-.54.12-.16.24-.62.79-.76.95-.14.16-.28.18-.52.06-.24-.12-1.02-.38-1.94-1.2-.72-.64-1.2-1.42-1.34-1.66-.14-.24-.02-.37.1-.49.1-.1.24-.28.36-.42.12-.14.16-.24.24-.4.08-.16.04-.3-.02-.42-.06-.12-.54-1.3-.74-1.78-.2-.48-.4-.42-.54-.42h-.46c-.16 0-.4.06-.62.3-.22.24-.84.82-.84 2 0 1.18.86 2.32.98 2.48.12.16 1.7 2.6 4.12 3.64.57.25 1.02.4 1.37.5.57.18 1.1.16 1.51.1.46-.07 1.44-.59 1.64-1.16.2-.57.2-1.06.14-1.16-.06-.1-.22-.16-.46-.28z" fill="currentColor"/></svg>
+          <span data-pt="Chamar no WhatsApp" data-en="Chat on WhatsApp">Chamar no WhatsApp</span>
+        </a>
+      </div>
+    </div>
+    <div class="reveal delay-2">
+      <div class="form-card" id="form-card">
+        <h3 data-pt="Peça o seu diagnóstico gratuito" data-en="Request your free diagnostic">Peça o seu diagnóstico gratuito</h3>
+        <p class="form-sub"
+           data-pt="Sem custo, sem compromisso. A gente te mostra quanto a reforma já custa no seu caixa."
+           data-en="Free, no strings attached. We'll show you how much the reform already costs your cash.">Sem custo, sem compromisso. A gente te mostra quanto a reforma já custa no seu caixa.</p>
+        <form id="lead-form" novalidate="">
+          <p class="form-error" id="form-error"
+             data-pt-msg="Não conseguimos enviar agora. Tente de novo em instantes, ou chame no WhatsApp."
+             data-en-msg="We couldn't send it right now. Try again in a moment, or reach us on WhatsApp."></p>
+          <div class="f-row">
+            <div class="f-field">
+              <label for="f-nome" data-pt="Nome" data-en="Name">Nome</label>
+              <input id="f-nome" name="firstname" type="text" required="" placeholder="Seu nome" data-pt-placeholder="Seu nome" data-en-placeholder="Your name" />
+            </div>
+            <div class="f-field">
+              <label for="f-whats">WhatsApp</label>
+              <input id="f-whats" name="whatsapp" type="tel" required="" placeholder="(11) 99999-9999" data-pt-placeholder="(11) 99999-9999" data-en-placeholder="+55 (11) 99999-9999" />
+            </div>
+          </div>
+          <div class="f-row">
+            <div class="f-field">
+              <label for="f-email" data-pt="E-mail" data-en="Email">E-mail</label>
+              <input id="f-email" name="email" type="email" required="" placeholder="voce@suaempresa.com.br" data-pt-placeholder="voce@suaempresa.com.br" data-en-placeholder="you@yourcompany.com" />
+            </div>
+            <div class="f-field">
+              <label for="f-faturamento" data-pt="Faturamento anual (R$ mi)" data-en="Annual revenue (R$ M)">Faturamento anual (R$ mi)</label>
+              <input id="f-faturamento" name="revenue" type="number" min="1" placeholder="60" data-pt-placeholder="60" data-en-placeholder="60" />
+            </div>
+          </div>
+          <div class="f-field">
+            <label for="f-msg" data-pt="Mensagem (opcional)" data-en="Message (optional)">Mensagem (opcional)</label>
+            <textarea id="f-msg" name="message" placeholder="Conte um pouco sobre a sua operação" data-pt-placeholder="Conte um pouco sobre a sua operação" data-en-placeholder="Tell us a bit about your operation"></textarea>
+          </div>
+          <button type="submit" class="btn btn-dark" style="width: 100%;" id="lead-submit">
+            <span data-pt="Pedir diagnóstico gratuito" data-en="Request free diagnostic">Pedir diagnóstico gratuito</span>
+          </button>
+        </form>
+        <div class="form-success" id="form-success" style="display: none;">
+          <div class="t" data-pt="Recebemos o seu contato ✓" data-en="We got your message ✓">Recebemos o seu contato ✓</div>
+          <div class="s" data-pt="A nossa equipe responde em até 1 dia útil com as instruções para enviar a amostra de dados do diagnóstico." data-en="Our team replies within 1 business day with instructions for sending the data sample for your diagnostic.">A nossa equipe responde em até 1 dia útil com as instruções para enviar a amostra de dados do diagnóstico.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ FOOTER ============ -->
+<footer>
+  <div class="shell">
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <img class="brand-img" src="assets/kontiva-logo-light.png" alt="Kontiva.ai" />
+        <p class="footer-tagline"
+           data-pt="Copiloto fiscal e financeiro com IA para atravessar a reforma tributária: caixa, créditos e preço sob controle, do dado à decisão."
+           data-en="AI fiscal and financial copilot to navigate Brazil's tax reform: cash, credits and pricing under control, from data to decision.">Copiloto fiscal e financeiro com IA para atravessar a reforma tributária: caixa, créditos e preço sob controle, do dado à decisão.</p>
+        <a href="https://wa.me/5551926343014?text=Ol%C3%A1%2C%20vim%20pelo%20site%20da%20Kontiva.ai"
+           data-pt-href="https://wa.me/5551926343014?text=Ol%C3%A1%2C%20vim%20pelo%20site%20da%20Kontiva.ai"
+           data-en-href="https://wa.me/5551926343014?text=Hi%2C%20I%20came%20from%20the%20Kontiva.ai%20website"
+           target="_blank" rel="noreferrer" class="btn btn-primary" style="padding: 11px 18px; font-size: 14px; align-self: flex-start;">
+          <svg class="whats" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M19.05 4.91A10 10 0 0 0 4.04 18.26L3 22l3.83-1.01A10 10 0 1 0 19.05 4.91zM12 20.15a8.14 8.14 0 0 1-4.15-1.13l-.3-.18-2.27.6.6-2.22-.19-.32A8.15 8.15 0 1 1 12 20.15zm4.46-6.1c-.24-.12-1.44-.71-1.66-.79-.22-.08-.38-.12-.54.12-.16.24-.62.79-.76.95-.14.16-.28.18-.52.06-.24-.12-1.02-.38-1.94-1.2-.72-.64-1.2-1.42-1.34-1.66-.14-.24-.02-.37.1-.49.1-.1.24-.28.36-.42.12-.14.16-.24.24-.4.08-.16.04-.3-.02-.42-.06-.12-.54-1.3-.74-1.78-.2-.48-.4-.42-.54-.42h-.46c-.16 0-.4.06-.62.3-.22.24-.84.82-.84 2 0 1.18.86 2.32.98 2.48.12.16 1.7 2.6 4.12 3.64.57.25 1.02.4 1.37.5.57.18 1.1.16 1.51.1.46-.07 1.44-.59 1.64-1.16.2-.57.2-1.06.14-1.16-.06-.1-.22-.16-.46-.28z" fill="currentColor"/></svg>
+          <span data-pt="Chame agora no WhatsApp" data-en="Chat with us on WhatsApp">Chame agora no WhatsApp</span>
+        </a>
+        <div class="social-row">
+          <a href="https://www.linkedin.com/company/bluemetrics/" target="_blank" rel="noreferrer" aria-label="LinkedIn">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M4.98 3.5C4.98 4.88 3.87 6 2.5 6S0 4.88 0 3.5 1.12 1 2.5 1s2.48 1.12 2.48 2.5zM.5 8h4V23h-4V8zm7.5 0h3.8v2.05h.05c.53-1 1.83-2.05 3.77-2.05 4.03 0 4.78 2.65 4.78 6.1V23h-4v-7.9c0-1.88-.04-4.3-2.62-4.3-2.63 0-3.03 2.05-3.03 4.17V23H8V8z"/></svg>
+          </a>
+          <a href="https://www.instagram.com/bluemetrics.ai/" target="_blank" rel="noreferrer" aria-label="Instagram">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" aria-hidden="true"><rect x="2.5" y="2.5" width="19" height="19" rx="5" stroke="currentColor" stroke-width="1.8"/><circle cx="12" cy="12" r="4.2" stroke="currentColor" stroke-width="1.8"/><circle cx="17.4" cy="6.6" r="1.3" fill="currentColor"/></svg>
+          </a>
+          <a href="https://www.youtube.com/@bluemetrics" target="_blank" rel="noreferrer" aria-label="YouTube">
+            <svg width="17" height="17" viewBox="0 0 24 24" fill="none" aria-hidden="true"><rect x="2" y="5" width="20" height="14" rx="4" stroke="currentColor" stroke-width="1.8"/><path d="M10 9.5v5l4.5-2.5L10 9.5z" fill="currentColor"/></svg>
+          </a>
+        </div>
+      </div>
+      <div class="footer-col">
+        <h5 data-pt="Produto" data-en="Product">Produto</h5>
+        <a href="#como-funciona" data-pt="Como funciona" data-en="How it works">Como funciona</a>
+        <a href="#chat" data-pt="Chat &amp; MCP" data-en="Chat &amp; MCP">Chat &amp; MCP</a>
+        <a href="#agentes" data-pt="Agentes de IA" data-en="AI agents">Agentes de IA</a>
+        <a href="#calculadora" data-pt="Calculadora" data-en="Calculator">Calculadora</a>
+        <a href="#planos" data-pt="Planos" data-en="Pricing">Planos</a>
+      </div>
+      <div class="footer-col">
+        <h5 data-pt="Empresa" data-en="Company">Empresa</h5>
+        <a href="#faq">FAQ</a>
+        <a href="#avaliacao" data-pt="Diagnóstico gratuito" data-en="Free diagnostic">Diagnóstico gratuito</a>
+      </div>
+      <div class="footer-col">
+        <h5 data-pt="Contato" data-en="Contact">Contato</h5>
+        <a href="https://wa.me/5551926343014?text=Ol%C3%A1%2C%20vim%20pelo%20site%20da%20Kontiva.ai"
+           data-pt-href="https://wa.me/5551926343014?text=Ol%C3%A1%2C%20vim%20pelo%20site%20da%20Kontiva.ai"
+           data-en-href="https://wa.me/5551926343014?text=Hi%2C%20I%20came%20from%20the%20Kontiva.ai%20website"
+           target="_blank" rel="noreferrer">WhatsApp</a>
+      </div>
+    </div>
+    <div class="footer-legal">
+      <div data-pt="© 2026 Kontiva.ai · Todos os direitos reservados." data-en="© 2026 Kontiva.ai · All rights reserved.">© 2026 Kontiva.ai · Todos os direitos reservados.</div>
+      <a class="footer-bm" href="https://www.bluemetrics.ai" target="_blank" rel="noreferrer" data-pt="Kontiva é uma empresa BlueMetrics." data-en="Kontiva is a BlueMetrics company.">Kontiva é uma empresa BlueMetrics.</a>
+      <div class="footer-legal-links">
+        <a href="#" data-pt="Política de Privacidade" data-en="Privacy Policy">Política de Privacidade</a>
+        <span aria-hidden="true">·</span>
+        <a href="#" data-pt="Termos de Uso" data-en="Terms of Use">Termos de Uso</a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<!-- ============ SCRIPTS ============ -->
+
+<!-- Idioma PT/EN -->
+<script>
+  (function () {
+    var LANG_KEY = 'kontiva_lang';
+    var browserLang = (navigator.language || 'pt').toLowerCase().indexOf('pt') === 0 ? 'pt' : 'en';
+    var stored;
+    try { stored = localStorage.getItem(LANG_KEY) || browserLang; } catch (e) { stored = browserLang; }
+
+    function applyLang(lang) {
+      document.documentElement.lang = lang === 'en' ? 'en' : 'pt-BR';
+      document.documentElement.setAttribute('data-lang', lang);
+      try { localStorage.setItem(LANG_KEY, lang); } catch (e) {}
+      document.querySelectorAll('[data-pt]').forEach(function (el) {
+        el.innerHTML = lang === 'en' ? el.dataset.en : el.dataset.pt;
+      });
+      document.querySelectorAll('[data-pt-placeholder]').forEach(function (el) {
+        el.placeholder = lang === 'en' ? el.dataset.enPlaceholder : el.dataset.ptPlaceholder;
+      });
+      document.querySelectorAll('[data-pt-href]').forEach(function (el) {
+        el.href = lang === 'en' ? el.dataset.enHref : el.dataset.ptHref;
+      });
+      document.querySelectorAll('.lang-toggle button').forEach(function (btn) {
+        btn.classList.toggle('on', btn.dataset.lang === lang);
+      });
+    }
+
+    document.querySelectorAll('.lang-toggle button').forEach(function (btn) {
+      btn.addEventListener('click', function () { applyLang(btn.dataset.lang); });
+    });
+
+    applyLang(stored);
+  })();
+</script>
+
+<!-- Reveal on scroll -->
+<script>
+  (function () {
+    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+    var items = document.querySelectorAll('.reveal');
+    if (!('IntersectionObserver' in window)) {
+      items.forEach(function (el) { el.classList.add('in'); });
+      return;
+    }
+    function makeObserver(threshold) {
+      return new IntersectionObserver(function (entries, observer) {
+        entries.forEach(function (e) {
+          if (e.isIntersecting) { e.target.classList.add('in'); observer.unobserve(e.target); }
+        });
+      }, { threshold: threshold });
+    }
+    var obs = makeObserver(0.12);
+    var obsStep = makeObserver(0.4);
+    items.forEach(function (el) {
+      (el.classList.contains('flow-step') ? obsStep : obs).observe(el);
+    });
+  })();
+</script>
+
+<!-- Nav: escura no topo, branca ao rolar -->
+<script>
+  (function () {
+    var nav = document.querySelector('.nav');
+    if (!nav) return;
+    function onScroll() { nav.classList.toggle('nav-dark', window.scrollY <= 40); }
+    onScroll();
+    window.addEventListener('scroll', onScroll, { passive: true });
+  })();
+</script>
+
+<!-- Calculator -->
+<script>
+  (function () {
+    var faturamento = document.getElementById('calc-faturamento');
+    var carga = document.getElementById('calc-carga');
+    if (!faturamento || !carga) return;
+    // creditos em risco: ~50% do imposto e virem creditaveis, 15% perdidos por gestao manual (EY)
+    var FRACAO_CREDITAVEL = 0.5;
+    var PERDA_CREDITO = 0.15;
+
+    function brl(n) {
+      return n.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL', maximumFractionDigits: 0 });
+    }
+    function fill(input) {
+      var min = +input.min, max = +input.max, val = +input.value;
+      input.style.setProperty('--fill', ((val - min) / (max - min) * 100).toFixed(1) + '%');
+    }
+    function faixaFaturamento(v) {
+      if (v >= 1000000) return 'R$ ' + (v / 1000000).toLocaleString('pt-BR', { maximumFractionDigits: 1 }) + ' mi';
+      return 'R$ ' + Math.round(v / 1000) + ' mil';
+    }
+    function update() {
+      var f = +faturamento.value, cg = +carga.value / 100;
+      fill(faturamento); fill(carga);
+      document.getElementById('calc-faturamento-v').textContent = faixaFaturamento(f);
+      document.getElementById('calc-carga-v').textContent = carga.value + '%';
+      var caixaParado = Math.round(f * cg);
+      var creditoAno = Math.round(f * cg * 12 * FRACAO_CREDITAVEL * PERDA_CREDITO);
+      document.getElementById('calc-caixa').textContent = brl(caixaParado);
+      document.getElementById('calc-credito').textContent = brl(creditoAno);
+    }
+    faturamento.addEventListener('input', update);
+    carga.addEventListener('input', update);
+    update();
+  })();
+</script>
+
+<!-- FAQ accordion -->
+<script>
+  (function () {
+    var items = document.querySelectorAll('.faq-item');
+    items.forEach(function (d) {
+      d.addEventListener('toggle', function () {
+        if (!d.open) return;
+        items.forEach(function (other) {
+          if (other !== d) other.removeAttribute('open');
+        });
+      });
+    });
+  })();
+</script>
+
+<!-- Form: simula sucesso no preview de design -->
+<script>
+  (function () {
+    var form = document.getElementById('lead-form');
+    if (!form) return;
+    var errorEl = document.getElementById('form-error');
+    var submitBtn = document.getElementById('lead-submit');
+
+    form.addEventListener('submit', function (e) {
+      e.preventDefault();
+      errorEl.classList.remove('show');
+      if (!form.reportValidity()) return;
+
+      submitBtn.disabled = true;
+      submitBtn.style.opacity = '0.6';
+
+      // Em design preview, simula sucesso após 800 ms
+      setTimeout(function () {
+        form.style.display = 'none';
+        document.getElementById('form-success').style.display = 'block';
+        submitBtn.disabled = false;
+        submitBtn.style.opacity = '';
+      }, 800);
+    });
+  })();
+</script>
+
+</body>
+</html>
