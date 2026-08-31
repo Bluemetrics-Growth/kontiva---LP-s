@@ -1,0 +1,87 @@
+---
+// S5 O que o agente faz, passo a passo, com telas recriadas.
+import Icon from './Icon.astro';
+import SimulacaoCarteira from './app-frames/SimulacaoCarteira.astro';
+import Fornecedores from './app-frames/Fornecedores.astro';
+import FluxoCaixaSplit from './app-frames/FluxoCaixaSplit.astro';
+import { showcase, CTA_PRIMARIO, CTA_ANCORA, disclaimerTributario } from '../data/showcase';
+---
+<section class="bg-page" aria-labelledby="how-h">
+  <div class="shell">
+    <div class="section-head reveal">
+      <div class="eyebrow"><span class="dot-cyan"></span> O que o agente faz</div>
+      <h2 id="how-h">Do "não sei por onde começar" à carteira sob controle.</h2>
+    </div>
+
+    <div class="steps">
+      <!-- Passo 01 -->
+      <div class="step reveal">
+        <div class="step-copy">
+          <div class="step-num">Passo 01</div>
+          <h3>Pergunte, com fonte e contexto dos seus dados</h3>
+          <p>Qualquer dúvida da reforma, respondida com a fonte oficial e com o contexto do cliente. Cada resposta mostra de onde veio o número, com a alíquota vigente lida do sistema, não estimada de cabeça. Observabilidade é isso: você vê a trilha, não confia no escuro.</p>
+        </div>
+        <div class="step-frame">
+          <div class="chat-mock" aria-hidden="true">
+            <div class="chat-head">
+              <div class="t"><span class="k"><Icon name="radar" size={15} /></span> Resposta com memória de cálculo</div>
+              <span class="live">Observabilidade</span>
+            </div>
+            <div class="chat-body">
+              <div class="bubble q">Qual a alíquota de IBS vigente para este serviço em 2027?</div>
+              <div class="bubble a">
+                Para NBS deste serviço, IBS em 2027 é de <b>0,10%</b> e CBS de <b>0,90%</b>, no cronograma da LC 214/2025.
+                <span class="src">fonte: alíquota vigente lida do sistema · NBS classificada · UF do fornecedor</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Passo 02 -->
+      <div class="step reveal">
+        <div class="step-copy">
+          <div class="step-num">Passo 02</div>
+          <h3>Simule a carteira inteira, entre regimes e ao longo dos anos</h3>
+          <p>O ERP simula um cliente por vez. O Kontiva simula os seus clientes todos, ranqueados por impacto. E vai além do "qual regime é mais barato": mostra também como a carga evolui na transição, de 2026 a 2033, o cenário que o cliente mais quer ver.</p>
+        </div>
+        <div class="step-frame"><div class="viewfinder"><SimulacaoCarteira /></div></div>
+      </div>
+
+      <!-- Passo 03 -->
+      <div class="step reveal">
+        <div class="step-copy">
+          <div class="step-num">Passo 03</div>
+          <h3>Monitore créditos e fornecedores</h3>
+          <p>O crédito novo depende do fornecedor. O Kontiva acompanha regime, local e CNAE de quem vende para o seu cliente, e sinaliza quem gera crédito de IBS/CBS e quem não gera. No interestadual, ainda cuida do DIFAL.</p>
+        </div>
+        <div class="step-frame"><div class="viewfinder"><Fornecedores /></div></div>
+      </div>
+
+      <!-- Passo 04 -->
+      <div class="step reveal">
+        <div class="step-copy">
+          <div class="step-num">Passo 04</div>
+          <h3>Projete o caixa do split payment</h3>
+          <p>O imposto sai do caixa na venda em 2027. O Kontiva projeta o buraco de caixa mês a mês, com relatório de aviso pronto para o seu cliente.</p>
+        </div>
+        <div class="step-frame"><div class="viewfinder"><FluxoCaixaSplit /></div></div>
+      </div>
+    </div>
+
+    <div class="s5-bonus reveal">
+      <span class="b-ico"><Icon name="bolt" size={20} /></span>
+      <div class="b-txt">
+        <strong>Bônus de operação · Ações de IA</strong>
+        <p>E o que precisa de atenção agora chega numa fila priorizada: o Kontiva mostra as pendências do mês, você trata com um clique.</p>
+      </div>
+    </div>
+
+    <div class="section-cta reveal">
+      <p>Quer ver isso na sua carteira?</p>
+      <a href={CTA_ANCORA} class="btn btn-primary btn-lg" data-cta="s5">{CTA_PRIMARIO}</a>
+    </div>
+
+    <p class="disclaimer center">{disclaimerTributario} Números ilustrativos de um escritório-exemplo ({showcase.carteiraTotal} CNPJs, competência {showcase.competencia}).</p>
+  </div>
+</section>

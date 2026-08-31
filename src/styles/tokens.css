@@ -1,0 +1,94 @@
+/* Sistema visual Kontiva.ai. Fonte da verdade: DESIGN.md.
+   Tokens copiados de tokens/colors.css, typography.css, effects.css. */
+
+:root {
+  /* Cores base (DESIGN.md secao 2) */
+  --azul-profundo: #0A1F3F;
+  --azul-profundo-2: #122A52;
+  --ciano: #00D4FF;
+  --ciano-suave: #E0F9FF;
+  --branco: #FFFFFF;
+  --cinza-claro: #F2F4F7;
+  --cinza-texto: #6B7280;
+  --cinza-escuro: #374151;
+  --claro-escuro: #EAF6FF; /* texto claro sobre fundo escuro, nunca branco puro */
+  --accent-boost: 1.05;
+
+  /* Semanticos */
+  --text-primary: var(--azul-profundo);
+  --text-body: var(--cinza-escuro);
+  --text-secondary: var(--cinza-texto);
+  --text-on-dark: var(--claro-escuro);
+  --surface-page: var(--branco);
+  --surface-alt: var(--cinza-claro);
+  --surface-calm: var(--ciano-suave);
+  --surface-dark: var(--azul-profundo);
+  --surface-dark-2: var(--azul-profundo-2);
+  --accent: var(--ciano);
+  --border-on-light: rgba(10,31,63,0.08);
+  --border-on-light-strong: rgba(10,31,63,0.14);
+  --border-on-dark: rgba(255,255,255,0.08);
+
+  /* Positivo / alerta (usados com parcimonia, como no produto) */
+  --positivo: #16A34A;
+  --alerta: #DC2626;
+
+  /* Faixa "recurso em fase de testes" */
+  --aviso-bg: #FBF3D6;
+  --aviso-fg: #7A5B00;
+
+  /* Mock "antes" (planilha legada), nao e UI Kontiva */
+  --antes-err-fg: #C23A1F;
+  --antes-tag-fg: #A3401A;
+  --antes-tag-bg: #FFF1EC;
+
+  /* Tipografia */
+  --font-display: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+  --font-body: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+  --font-serif-italic: 'Instrument Serif', Georgia, serif;
+  --font-mono: 'JetBrains Mono', ui-monospace, monospace;
+
+  --fs-h1: clamp(40px, 6.4vw, 84px);
+  --fs-h2: clamp(32px, 4.4vw, 60px);
+  --fs-h3: clamp(21px, 2.2vw, 28px);
+  --fs-lead: clamp(17px, 1.6vw, 22px);
+  --fs-body: 16px;
+  --fs-eyebrow: 12px;
+
+  /* Radii (DESIGN.md secao 5) */
+  --r-xs: 6px;
+  --r-sm: 10px;
+  --r-md: 12px;
+  --r-lg: 16px;
+  --r-xl: 20px;
+  --r-pill: 99px;
+
+  /* Sombras, sempre tingidas de azul, nunca preto puro */
+  --shadow-card: 0 20px 60px -20px rgba(10,31,63,0.15);
+  --shadow-dark: 0 30px 80px -30px rgba(10,31,63,0.4), 0 0 0 1px rgba(10,31,63,0.08);
+  --shadow-glow: 0 1px 0 rgba(0,0,0,0.04), 0 10px 30px -10px color-mix(in oklab, var(--ciano) calc(70% * var(--accent-boost)), transparent);
+  --shadow-glow-hover: 0 1px 0 rgba(0,0,0,0.04), 0 18px 40px -12px color-mix(in oklab, var(--ciano) calc(80% * var(--accent-boost)), transparent);
+
+  /* Layout */
+  --shell: 1240px;
+  --space-section: 120px;
+}
+
+.serif-accent {
+  font-family: var(--font-serif-italic);
+  font-style: italic;
+  font-weight: 400;
+  letter-spacing: -0.01em;
+}
+
+/* Atmosfera / instrumento (redesign frontend-design, dentro do DS) */
+:root {
+  --grid-on-dark: rgba(255,255,255,0.05);
+  --grid-on-light: rgba(10,31,63,0.045);
+  --scan-cyan: color-mix(in oklab, var(--ciano) 55%, transparent);
+  --hairline-dark: rgba(255,255,255,0.10);
+  --hairline-light: rgba(10,31,63,0.10);
+  --grid-size: 44px;
+  /* ruido sutil para profundidade (grain) */
+  --grain: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='140' height='140'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+}

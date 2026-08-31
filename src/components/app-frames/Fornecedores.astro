@@ -1,0 +1,45 @@
+---
+// Tela Fornecedores "Quem vende para o seu cliente" (Screenshot 10). Passo 03 (S5).
+import AppFrame from './AppFrame.astro';
+import Icon from '../Icon.astro';
+import { showcase } from '../../data/showcase';
+
+const rows = [
+  { nome: 'Aço Norte Insumos Industriais Ltda.', cnpj: '18.221.334/0001-70', regime: 'Lucro Real', local: 'SP · São Paulo', cnae: '4663000', ramo: 'Comércio atacadista de materiais', credito: 'gera' },
+  { nome: 'Transportes Vale Verde EIRELI', cnpj: '22.910.556/0001-08', regime: 'Regime não informado', local: 'RS · Caxias do Sul', cnae: '4930202', ramo: 'Transporte rodoviário de carga', credito: 'sem' },
+  { nome: 'Cimentos Horizonte Distribuidora', cnpj: '31.556.221/0001-44', regime: 'Simples Nacional', local: 'MG · Contagem', cnae: '4679604', ramo: 'Comércio de materiais de construção', credito: 'presumido' },
+  { nome: 'Locadora Andaimes Sul Ltda.', cnpj: '09.774.812/0001-90', regime: 'Regime não informado', local: 'PR · Curitiba', cnae: '7732201', ramo: 'Aluguel de máquinas e equipamentos', credito: 'sem' },
+];
+const badge = { gera: { c: 'cyan', t: 'Gera crédito' }, presumido: { c: 'gold', t: 'Crédito presumido' }, sem: { c: 'neutral', t: 'Sem crédito' } } as const;
+---
+<AppFrame active="fornecedores" crumb={['Fornecedores', 'Todos']}>
+  <div style="display:flex; align-items:flex-start; justify-content:space-between; gap:16px; flex-wrap:wrap;">
+    <div>
+      <div class="af-eyebrow"><span class="d"></span> Reforma tributária</div>
+      <h2 class="af-h" style="margin-top:12px;">Quem vende para o <span class="it">seu cliente</span>.</h2>
+    </div>
+    <span class="af-action"><Icon name="plus" size={15} /> Novo fornecedor</span>
+  </div>
+
+  <div class="af-cards c4" style="margin:20px 0 16px;">
+    <div class="af-stat"><div class="num">{showcase.fornecedoresTotal}</div><div class="lbl">Ativos</div></div>
+    <div class="af-stat"><div class="num">12</div><div class="lbl">Sem regime</div></div>
+    <div class="af-stat accent-border"><div class="num" style="color:var(--alerta);">{showcase.fornecedoresSemCredito}</div><div class="lbl">Sem crédito de IBS/CBS</div></div>
+    <div class="af-stat"><div class="num">5</div><div class="lbl">Crédito presumido</div></div>
+  </div>
+
+  <div class="af-table">
+    <div class="af-thead" style="grid-template-columns: 2fr 1.1fr 1.5fr 1.1fr;">
+      <span>Fornecedor</span><span>Regime / local</span><span>Ramo (CNAE)</span><span>Crédito IBS/CBS</span>
+    </div>
+    {rows.map((r) => (
+      <div class={`af-trow ${r.credito === 'sem' ? 'flag' : ''}`} style="grid-template-columns: 2fr 1.1fr 1.5fr 1.1fr;">
+        <div class="af-name">{r.nome}<small>{r.cnpj}</small></div>
+        <div class="af-mut">{r.regime}<small>{r.local}</small></div>
+        <div class="af-mut" style="font-size:12.5px;">{r.ramo}<small>{r.cnae}</small></div>
+        <div><span class={`af-badge ${badge[r.credito].c}`}>{badge[r.credito].t}</span></div>
+      </div>
+    ))}
+  </div>
+  <p class="disclaimer">DIFAL calculado no interestadual. Transferência intragrupo não é fato gerador.</p>
+</AppFrame>

@@ -1,0 +1,24 @@
+---
+// S2 Barra de prova. So o que e real e autorizado. Sem logos de clientes.
+const items = [
+  { num: '10+', txt: 'anos de IA aplicada' },
+  { num: '200+', txt: 'projetos entregues' },
+  { num: null, txt: 'AWS Advanced Partner' },
+  { num: null, txt: 'Domínio · Alterdata · Questor · planilhas' },
+  { num: null, txt: 'Aprovação humana em tudo que executa' },
+];
+---
+<section class="proof" aria-label="Provas de engenharia">
+  <div class="shell">
+    <p class="proof-title reveal">Engenharia de IA de verdade, não script com LLM.</p>
+    <div class="proof-row reveal delay-1">
+      {items.map((it) => (
+        <span class="proof-item">
+          <span class="dot"></span>
+          {it.num && <span class="num">{it.num}</span>}
+          {it.txt}
+        </span>
+      ))}
+    </div>
+  </div>
+</section>

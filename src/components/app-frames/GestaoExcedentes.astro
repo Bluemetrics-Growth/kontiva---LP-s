@@ -1,0 +1,59 @@
+---
+// Tela Cobranca / Valores a cobrar "Gestao de excedentes" (Screenshot 11). Agente de Honorarios (S6).
+import AppFrame from './AppFrame.astro';
+import Icon from '../Icon.astro';
+import { showcase } from '../../data/showcase';
+
+const rows = [
+  { nome: 'Construtora Horizonte Ltda.', cnpj: '10.001.001/0001-01', calc: 12, emit: 9, atencao: 2 },
+  { nome: 'Brasa Sul Indústria de Alimentos Ltda.', cnpj: '10.002.002/0001-02', calc: 13, emit: 11, atencao: 1 },
+  { nome: 'Vértice Distribuidora Atacadista Ltda.', cnpj: '10.004.004/0001-04', calc: 12, emit: 12, atencao: 0 },
+  { nome: 'Clínica Horizonte Saúde Ltda.', cnpj: '10.003.003/0001-03', calc: 12, emit: 10, atencao: 1 },
+];
+---
+<AppFrame active="cobranca" crumb={['Cobrança', 'Valores a cobrar']}>
+  <div class="af-tabs">
+    <span class="af-tab on">Valores a cobrar</span>
+    <span class="af-tab">Resumo</span>
+    <span class="af-tab">Cobranças emitidas</span>
+    <span class="af-tab">Faturamento</span>
+  </div>
+
+  <div style="display:flex; align-items:flex-start; justify-content:space-between; gap:16px; flex-wrap:wrap;">
+    <div>
+      <div class="af-eyebrow"><span class="d"></span> Valores a cobrar</div>
+      <h2 class="af-h" style="margin-top:12px;">Gestão de <span class="it">excedentes</span>.</h2>
+    </div>
+    <span class="af-action"><Icon name="bolt" size={15} /> Calcular todas as cobranças</span>
+  </div>
+
+  <div class="af-cards c4" style="margin:20px 0 16px;">
+    <div class="af-stat"><div class="num">{showcase.carteiraTotal}</div><div class="lbl">Clientes com valores</div></div>
+    <div class="af-stat"><div class="num">4</div><div class="lbl">Requerem sua revisão</div></div>
+    <div class="af-stat"><div class="num" style="font-size:26px;">R$ 3.245</div><div class="lbl">Recuperado neste ciclo</div></div>
+    <div class="af-stat accent-border"><div class="num alert" style="font-size:26px;">{showcase.excedentesIdentificados}</div><div class="lbl">Excedentes e reajustes no período</div></div>
+  </div>
+
+  <div class="af-table">
+    <div class="af-thead" style="grid-template-columns: 2.2fr 0.9fr 0.9fr 1fr 44px;">
+      <span>Cliente</span><span>Calculadas</span><span>Emitidas</span><span>Requer atenção</span><span></span>
+    </div>
+    {rows.map((r) => (
+      <div class={`af-trow ${r.atencao > 0 ? 'flag' : ''}`} style="grid-template-columns: 2.2fr 0.9fr 0.9fr 1fr 44px;">
+        <div style="display:flex; align-items:center; gap:12px; min-width:0;">
+          <span class="af-avatar"><Icon name="users" size={15} /></span>
+          <div class="af-name" style="min-width:0; overflow:hidden; text-overflow:ellipsis;">{r.nome}<small>{r.cnpj}</small></div>
+        </div>
+        <div class="af-mut"><b style="color:var(--azul-profundo);">{r.calc}</b><small>calculadas</small></div>
+        <div class="af-mut"><b style="color:var(--azul-profundo);">{r.emit}</b><small>emitidas</small></div>
+        <div class="af-mut">
+          {r.atencao > 0
+            ? <span class="af-badge cyan">{r.atencao} requer atenção</span>
+            : <span class="af-badge neutral">Em dia</span>}
+        </div>
+        <div><span class="af-eye"><Icon name="eye" size={15} /></span></div>
+      </div>
+    ))}
+  </div>
+  <p class="disclaimer">A emissão de boleto ou PIX acontece só pela interface, após a sua revisão. Fica registrado quem aprovou o quê.</p>
+</AppFrame>

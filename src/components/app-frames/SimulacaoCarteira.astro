@@ -1,0 +1,58 @@
+---
+// Tela de simulacao: carteira ranqueada por impacto + dois eixos (entre regimes / ao longo dos anos).
+// Referencia: Resultado da simulacao (Screenshot 17) + lista da carteira (Screenshot 5). Passo 02 (S5).
+import AppFrame from './AppFrame.astro';
+import Icon from '../Icon.astro';
+import { showcase, avisoFaseTestes } from '../../data/showcase';
+
+const rank = [
+  { nome: 'Construtora Horizonte Ltda.', regime: 'Presumido', impacto: 'Alto', melhor: 'Lucro Real', delta: 'R$ 63.960/ano', flag: true },
+  { nome: 'Brasa Sul Indústria de Alimentos Ltda.', regime: 'Real', impacto: 'Alto', melhor: 'Lucro Real', delta: 'R$ 41.220/ano', flag: true },
+  { nome: 'Vértice Distribuidora Atacadista Ltda.', regime: 'Presumido', impacto: 'Médio', melhor: 'Presumido', delta: 'R$ 18.400/ano', flag: false },
+  { nome: 'Clínica Horizonte Saúde Ltda.', regime: 'Simples', impacto: 'Baixo', melhor: 'Simples', delta: 'R$ 4.900/ano', flag: false },
+];
+---
+<AppFrame active="simulacoes" crumb={['Simulações', 'Carteira', 'Reforma tributária']}>
+  <div class="af-warn">
+    <span class="tag">Recurso em fase de testes</span>
+    <span class="msg">{avisoFaseTestes}</span>
+  </div>
+
+  <div class="af-eyebrow"><span class="d"></span> Simulação em massa · IBS/CBS/ICMS/ISS</div>
+  <h2 class="af-h" style="margin-top:12px;">Carteira <span class="it">inteira</span>, ranqueada.</h2>
+
+  <div class="af-rankhead" style="margin-top:16px;">
+    <div class="af-tabs" style="margin-bottom:0;">
+      <span class="af-tab on">Entre regimes</span>
+      <span class="af-tab">Ao longo dos anos</span>
+    </div>
+    <div class="af-yearaxis">
+      <span class="af-year on">2026</span>
+      <span class="af-year">2029</span>
+      <span class="af-year">2033</span>
+    </div>
+  </div>
+
+  <div class="af-cards c3" style="margin:14px 0 16px;">
+    <div class="af-stat"><div class="num">{showcase.carteiraTotal}</div><div class="lbl">Clientes simulados</div></div>
+    <div class="af-stat accent-border"><div class="num" style="color:color-mix(in oklab, var(--ciano) 72%, var(--azul-profundo));">{showcase.impactoAlto}</div><div class="lbl">Impacto alto na reforma</div></div>
+    <div class="af-stat"><div class="num">{showcase.economiaAnualDestaque}</div><div class="lbl">Economia estimada, top 1</div></div>
+  </div>
+
+  <div class="af-table">
+    <div class="af-thead" style="grid-template-columns: 1.8fr 0.9fr 0.8fr 1fr 1fr;">
+      <span>Cliente</span><span>Regime atual</span><span>Impacto</span><span>Cenário recomendado</span><span>Economia estimada</span>
+    </div>
+    {rank.map((r) => (
+      <div class={`af-trow ${r.flag ? 'flag' : ''}`} style="grid-template-columns: 1.8fr 0.9fr 0.8fr 1fr 1fr;">
+        <div class="af-name">{r.nome}<small>Simulação 2026</small></div>
+        <div class="af-mut">{r.regime}</div>
+        <div>
+          <span class={`af-badge ${r.flag ? 'cyan' : 'neutral'}`}>{r.impacto}</span>
+        </div>
+        <div class="af-mut">{r.melhor}</div>
+        <div style="font-family:var(--font-mono); font-weight:600; color:var(--azul-profundo);">{r.delta}</div>
+      </div>
+    ))}
+  </div>
+</AppFrame>

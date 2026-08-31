@@ -1,0 +1,9 @@
+---
+// Botao flutuante de WhatsApp (secundario). Mensagem pre-preenchida.
+import Icon from './Icon.astro';
+import { whatsappHref } from '../data/showcase';
+---
+<a class="wa-float" href={whatsappHref} target="_blank" rel="noreferrer" aria-label="Falar no WhatsApp" data-cta="whatsapp">
+  <Icon name="whatsapp" size={20} class="ico" />
+  <span class="lbl">Falar no WhatsApp</span>
+</a>

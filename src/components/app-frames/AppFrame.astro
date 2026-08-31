@@ -1,0 +1,73 @@
+---
+// Chrome do app Kontiva recriado em HTML (nao e print). Fiel aos screenshots.
+// O chrome e puramente visual: aria-hidden. A mensagem de cada passo vive no texto da secao.
+import Icon from '../Icon.astro';
+import { seloExemplo } from '../../data/showcase';
+
+interface Props {
+  active: string; // chave do item ativo
+  crumb: string[]; // trilha, ultimo item = atual
+}
+const { active, crumb } = Astro.props as Props;
+
+const nav = [
+  { key: 'inicio', label: 'Início', icon: 'home' },
+  { key: 'clientes', label: 'Clientes', icon: 'users' },
+  { key: 'contratos', label: 'Contratos', icon: 'contract', sub: true },
+  { key: 'relatorios', label: 'Relatórios', icon: 'report', sub: true },
+  { key: 'simulacoes', label: 'Simulações Tributárias', icon: 'sim', sub: true },
+  { key: 'documentos', label: 'Documentos', icon: 'folder' },
+  { key: 'fornecedores', label: 'Fornecedores', icon: 'truck' },
+  { key: 'cobranca', label: 'Cobrança', icon: 'billing' },
+  { key: 'inteligencia', label: 'Inteligência', icon: 'brain' },
+  { key: 'guias', label: 'Guias', icon: 'guide' },
+  { key: 'configuracoes', label: 'Configurações', icon: 'settings' },
+];
+---
+<div class="af-wrap" aria-hidden="true"><div class="appframe">
+  <aside class="af-side">
+    <div class="af-brand">
+      <span class="lock">Kontiva<span class="ai">.ai</span></span>
+      <span class="af-collapse"><Icon name="chevleft" size={14} /></span>
+    </div>
+    <div class="af-navlabel">Navegação</div>
+    <nav class="af-nav">
+      {nav.map((n) => (
+        <a href="#" class={`${n.sub ? 'sub' : ''} ${active === n.key ? 'active' : ''}`.trim()}>
+          <Icon name={n.icon} size={n.sub ? 15 : 17} class="ni" />
+          <span>{n.label}</span>
+        </a>
+      ))}
+    </nav>
+    <div class="af-foot">
+      <div class="af-feedback"><Icon name="edit" size={15} /><span>Enviar feedback</span></div>
+      <div class="af-user">
+        <span class="av">D</span>
+        <span class="em">diego.rodrigues@bluem...</span>
+        <Icon name="chevleft" size={13} />
+      </div>
+    </div>
+  </aside>
+
+  <div class="af-main">
+    <div class="af-top">
+      <div class="af-crumb">
+        {crumb.map((c, i) => (
+          <>
+            {i > 0 && <span class="sep">/</span>}
+            <span class={i === crumb.length - 1 ? 'cur' : ''}>{c}</span>
+          </>
+        ))}
+      </div>
+      <div class="af-topright">
+        <span class="af-ask"><Icon name="ask" size={15} /> Perguntar ao Claude</span>
+        <span class="af-lang"><span class="on">PT</span> | EN</span>
+      </div>
+    </div>
+    <div class="af-body">
+      <slot />
+    </div>
+  </div>
+
+  <span class="af-seal">{seloExemplo}</span>
+</div></div>
