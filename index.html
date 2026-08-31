@@ -1,15 +1,15 @@
-<!-- @dsCard group="Website" viewport="1440x900" subtitle="Landing Empresas - reforma tributaria, caixa, creditos e repricing" name="Landing Empresas" --><!doctype html>
+<!-- @dsCard group="Website" viewport="1440x900" subtitle="Landing oficial — hero radar, calculadora, planos, FAQ" name="Landing" --><!doctype html>
 <html lang="pt-BR" data-lang="pt">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Kontiva.ai · Copiloto fiscal e financeiro para a reforma tributária</title>
-  <meta name="description" content="O Kontiva projeta o seu caixa com o split payment, protege os seus créditos de IBS/CBS monitorando os fornecedores e sustenta o repricing dos contratos. Copiloto fiscal e financeiro para empresas na reforma tributária." />
+  <title>Kontiva.ai — Cobrança de honorários contábeis com IA</title>
+  <meta name="description" content="A Kontiva lê os contratos do seu escritório de contabilidade, calcula reajustes e excedentes, emite os boletos e concilia os pagamentos. Recupere os 2%+ que ficam sem cobrar." />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Instrument+Serif:ital@0;1&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet" />
   <style>
-    /* Kontiva.ai · Landing Empresas · mesmo design system da Landing v3 */
+    /* Kontiva.ai — Landing page v3 — espelho fiel do global.css implementado */
     :root {
       --azul-profundo: #0A1F3F;
       --azul-profundo-2: #122A52;
@@ -314,49 +314,6 @@
     .res-item h3 { font-size: clamp(22px, 2vw, 26px); margin-bottom: 12px; color: #FFFFFF; }
     .res-item p { font-size: 15px; margin: 0; color: rgba(234,246,255,0.85); }
 
-    /* Positioning / o degrau */
-    .positioning { background: var(--azul-profundo); color: #EAF6FF; overflow: hidden; }
-    .positioning::before { content: ""; position: absolute; inset: 0; background: radial-gradient(680px circle at 78% 12%, color-mix(in oklab, var(--ciano) calc(12% * var(--accent-boost)), transparent), transparent 55%); pointer-events: none; }
-    .positioning .shell { position: relative; }
-    .positioning h2 { color: #FFFFFF; }
-    .positioning .eyebrow { color: rgba(234,246,255,0.55); }
-    .positioning p.lead { color: rgba(234,246,255,0.78); }
-
-    .pos-steps { display: grid; grid-template-columns: 1fr auto 1.12fr; gap: 20px; align-items: end; }
-    @media (max-width: 860px) { .pos-steps { grid-template-columns: 1fr; gap: 12px; align-items: stretch; } }
-
-    .pos-tier { border-radius: 20px; padding: 28px 26px; display: flex; flex-direction: column; align-items: flex-start; }
-    .pos-floor { background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.09); }
-    .pos-kontiva { position: relative; background: linear-gradient(180deg, color-mix(in oklab, var(--ciano) 10%, transparent), rgba(255,255,255,0.02)); border: 1px solid color-mix(in oklab, var(--ciano) 42%, transparent); box-shadow: 0 30px 80px -34px rgba(0,212,255,0.45); }
-
-    .pos-flag { display: inline-flex; align-items: center; gap: 8px; font-size: 11px; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; padding: 6px 12px; border-radius: 99px; margin-bottom: 18px; }
-    .pos-floor .pos-flag { background: rgba(255,255,255,0.08); color: rgba(234,246,255,0.65); }
-    .pos-kontiva .pos-flag { background: var(--ciano); color: var(--azul-profundo); }
-
-    .pos-tier h3 { font-size: clamp(21px, 2vw, 27px); letter-spacing: -0.02em; margin: 0 0 6px; }
-    .pos-floor h3 { color: rgba(234,246,255,0.82); }
-    .pos-kontiva h3 { color: #FFFFFF; }
-    .pos-tsub { font-size: 13px; margin: 0 0 22px; line-height: 1.5; }
-    .pos-floor .pos-tsub { color: rgba(234,246,255,0.48); }
-    .pos-kontiva .pos-tsub { color: rgba(234,246,255,0.68); }
-
-    .pos-list { list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; gap: 15px; width: 100%; }
-    .pos-item { display: flex; gap: 12px; align-items: flex-start; }
-    .pos-ico { flex-shrink: 0; width: 22px; height: 22px; border-radius: 6px; display: inline-flex; align-items: center; justify-content: center; margin-top: 1px; }
-    .pos-floor .pos-ico { background: rgba(255,255,255,0.05); color: rgba(234,246,255,0.4); }
-    .pos-kontiva .pos-ico { background: color-mix(in oklab, var(--ciano) 20%, transparent); color: var(--ciano); }
-    .pos-item .it-t { font-size: 15px; line-height: 1.4; color: #EAF6FF; font-weight: 600; }
-    .pos-floor .pos-item .it-t { color: rgba(234,246,255,0.72); font-weight: 500; }
-    .pos-item .it-s { display: block; font-size: 12.5px; color: rgba(234,246,255,0.6); line-height: 1.5; margin-top: 3px; font-weight: 400; }
-
-    .pos-note { margin-top: 20px; padding-top: 16px; border-top: 1px dashed rgba(255,255,255,0.1); font-size: 13px; color: rgba(234,246,255,0.5); line-height: 1.5; width: 100%; }
-    .pos-foot { margin-top: 22px; padding-top: 16px; border-top: 1px solid color-mix(in oklab, var(--ciano) 25%, transparent); font-family: 'JetBrains Mono', ui-monospace, monospace; font-size: 12px; letter-spacing: 0.03em; color: var(--ciano); width: 100%; }
-
-    .pos-jump { align-self: center; display: flex; flex-direction: column; align-items: center; gap: 10px; padding: 0 4px; }
-    .pos-jump-badge { width: 44px; height: 44px; border-radius: 50%; background: color-mix(in oklab, var(--ciano) 16%, transparent); border: 1px solid color-mix(in oklab, var(--ciano) 45%, transparent); color: var(--ciano); display: inline-flex; align-items: center; justify-content: center; box-shadow: 0 0 30px rgba(0,212,255,0.25); }
-    .pos-jump-label { font-family: 'JetBrains Mono', ui-monospace, monospace; font-size: 10px; letter-spacing: 0.16em; text-transform: uppercase; color: rgba(234,246,255,0.6); }
-    @media (max-width: 860px) { .pos-jump { flex-direction: row; padding: 4px 0; } .pos-jump-badge { transform: rotate(90deg); } }
-
     /* Calculator */
     .calc { background: var(--ciano-suave); }
     .calc-wrap { display: grid; grid-template-columns: 1.1fr 1fr; gap: 64px; align-items: center; }
@@ -517,160 +474,77 @@
     <div>
       <div class="eyebrow reveal">
         <span class="dot-cyan"></span>
-        <span data-pt="Reforma tributária · copiloto fiscal e financeiro para empresas" data-en="Tax reform · a fiscal and financial copilot for companies">Reforma tributária · copiloto fiscal e financeiro para empresas</span>
+        <span data-pt="Contratos e cobrança com IA para escritórios de contabilidade" data-en="AI-powered contracts &amp; billing for accounting firms">Contratos e cobrança com IA para escritórios de contabilidade</span>
       </div>
       <h1 class="reveal delay-1" style="margin-top: 24px;"
-          data-pt="A reforma não é um cálculo. É uma &lt;span class=&quot;serif-accent&quot;&gt;operação&lt;/span&gt;."
-          data-en="The reform isn't a calculation. It's an &lt;span class=&quot;serif-accent&quot;&gt;operation&lt;/span&gt;.">A reforma não é um cálculo. É uma <span class="serif-accent">operação</span>.</h1>
+          data-pt="Pare de deixar honorários na mesa."
+          data-en="Stop leaving fees on the table.">Pare de deixar honorários na mesa.</h1>
       <p class="lead hero-sub reveal delay-2"
-         data-pt="O Kontiva projeta o seu caixa com o split payment, protege os seus créditos monitorando a adimplência dos fornecedores, opera os dois sistemas na transição e sustenta o repricing com número. O seu time fiscal e financeiro aprova cada passo."
-         data-en="Kontiva projects your cash under split payment, protects your credits by monitoring supplier compliance, runs both tax systems through the transition and backs your repricing with numbers. Your tax and finance team approves every step.">O Kontiva projeta o seu caixa com o split payment, protege os seus créditos monitorando a adimplência dos fornecedores, opera os dois sistemas na transição e sustenta o repricing com número. O seu time fiscal e financeiro aprova cada passo.</p>
+         data-pt="O Kontiva lê seus contratos, calcula fixo, excedentes e reajustes, emite os boletos e concilia os pagamentos. Tudo automático — e você no controle do que aprova."
+         data-en="Kontiva reads your contracts, calculates fixed fees, overages and index adjustments, issues the invoices and reconciles payments. Fully automated — with you in control of what gets approved.">O Kontiva lê seus contratos, calcula fixo, excedentes e reajustes, emite os boletos e concilia os pagamentos. Tudo automático — e você no controle do que aprova.</p>
       <div class="hero-cta-row reveal delay-3">
-        <a href="https://wa.me/5551926343014?text=Ol%C3%A1%2C%20quero%20conhecer%20o%20Kontiva%20para%20a%20minha%20empresa"
-           data-pt-href="https://wa.me/5551926343014?text=Ol%C3%A1%2C%20quero%20conhecer%20o%20Kontiva%20para%20a%20minha%20empresa"
-           data-en-href="https://wa.me/5551926343014?text=Hi%2C%20I%20want%20to%20learn%20more%20about%20Kontiva%20for%20my%20company"
+        <a href="https://wa.me/5551926343014?text=Ol%C3%A1%2C%20quero%20conhecer%20a%20Kontiva.ai"
+           data-pt-href="https://wa.me/5551926343014?text=Ol%C3%A1%2C%20quero%20conhecer%20a%20Kontiva.ai"
+           data-en-href="https://wa.me/5551926343014?text=Hi%2C%20I%20want%20to%20learn%20more%20about%20Kontiva.ai"
            target="_blank" rel="noreferrer" class="btn btn-primary">
           <svg class="whats" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M19.05 4.91A10 10 0 0 0 4.04 18.26L3 22l3.83-1.01A10 10 0 1 0 19.05 4.91zM12 20.15a8.14 8.14 0 0 1-4.15-1.13l-.3-.18-2.27.6.6-2.22-.19-.32A8.15 8.15 0 1 1 12 20.15zm4.46-6.1c-.24-.12-1.44-.71-1.66-.79-.22-.08-.38-.12-.54.12-.16.24-.62.79-.76.95-.14.16-.28.18-.52.06-.24-.12-1.02-.38-1.94-1.2-.72-.64-1.2-1.42-1.34-1.66-.14-.24-.02-.37.1-.49.1-.1.24-.28.36-.42.12-.14.16-.24.24-.4.08-.16.04-.3-.02-.42-.06-.12-.54-1.3-.74-1.78-.2-.48-.4-.42-.54-.42h-.46c-.16 0-.4.06-.62.3-.22.24-.84.82-.84 2 0 1.18.86 2.32.98 2.48.12.16 1.7 2.6 4.12 3.64.57.25 1.02.4 1.37.5.57.18 1.1.16 1.51.1.46-.07 1.44-.59 1.64-1.16.2-.57.2-1.06.14-1.16-.06-.1-.22-.16-.46-.28z" fill="currentColor"/></svg>
           <span data-pt="Falar no WhatsApp" data-en="Chat on WhatsApp">Falar no WhatsApp</span>
         </a>
         <a href="#calculadora" class="btn btn-ghost">
-          <span data-pt="Ver quanto a reforma custa" data-en="See what the reform costs">Ver quanto a reforma custa</span>
+          <span data-pt="Ver quanto você perde" data-en="See what you are losing">Ver quanto você perde</span>
           <svg width="14" height="14" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M5 12h14M13 5l7 7-7 7" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg>
         </a>
       </div>
       <div class="hero-meta reveal delay-4">
         <div>
           <span class="tick"><svg width="10" height="10" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M5 12l5 5L20 7" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
-          <span data-pt="Conecta ao seu ERP, sem trocar de sistema" data-en="Connects to your ERP, no system switch">Conecta ao seu ERP, sem trocar de sistema</span>
+          <span data-pt="Conecta ao seu ERP e à sua plataforma de cobrança" data-en="Connects to your ERP and billing platform">Conecta ao seu ERP e à sua plataforma de cobrança</span>
         </div>
         <div>
           <span class="tick"><svg width="10" height="10" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M5 12l5 5L20 7" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
-          <span data-pt="O seu time aprova antes de cada passo" data-en="Your team approves before every step">O seu time aprova antes de cada passo</span>
+          <span data-pt="Você aprova antes de cobrar" data-en="You approve before anything is billed">Você aprova antes de cobrar</span>
         </div>
       </div>
     </div>
 
     <div class="radar-card reveal delay-2">
       <div class="radar-head">
-        <span data-pt="Créditos IBS/CBS · Junho/2026" data-en="IBS/CBS credits · June 2026">Créditos IBS/CBS · Junho/2026</span>
-        <span class="live" data-pt="Monitorando fornecedores" data-en="Monitoring suppliers">Monitorando fornecedores</span>
+        <span data-pt="Cobranças · Junho/2026" data-en="Billing run · June 2026">Cobranças · Junho/2026</span>
+        <span class="live" data-pt="Geração automática" data-en="Auto-generating">Geração automática</span>
       </div>
       <div class="radar-list">
         <div class="radar-row">
-          <span class="idx">#001</span><span class="name">Metalúrgica Aço Norte</span><span class="amount">R$ 82.400,00</span>
-          <span class="badge" data-pt="Crédito confirmado" data-en="Credit confirmed">Crédito confirmado</span>
+          <span class="idx">#001</span><span class="name">Padaria São Jorge ME</span><span class="amount">R$ 1.240,00</span>
+          <span class="badge" data-pt="Boleto pago" data-en="Invoice paid">Boleto pago</span>
         </div>
         <div class="radar-row flagged">
-          <span class="idx">#002</span><span class="name">Distribuidora Vale Log</span><span class="amount">R$ 41.900,00</span>
-          <span class="badge" data-pt="Débito do fornecedor em aberto" data-en="Supplier debit still open">Débito do fornecedor em aberto</span>
+          <span class="idx">#002</span><span class="name">Construtora Horizonte Ltda.</span><span class="amount">R$ 4.018,00</span>
+          <span class="badge" data-pt="Reajuste INPC +5,2%" data-en="INPC adjustment +5.2%">Reajuste INPC +5,2%</span>
         </div>
         <div class="radar-row flagged">
-          <span class="idx">#003</span><span class="name">Insumos Química BR</span><span class="amount">R$ 28.300,00</span>
-          <span class="badge" data-pt="Pendência fiscal" data-en="Tax irregularity">Pendência fiscal</span>
+          <span class="idx">#003</span><span class="name">Clínica Vitta Serviços</span><span class="amount">R$ 2.450,00</span>
+          <span class="badge" data-pt="+2 funcionários" data-en="+2 employees">+2 funcionários</span>
         </div>
         <div class="radar-row">
-          <span class="idx">#004</span><span class="name">Transportes Aurora S.A.</span><span class="amount">R$ 12.600,00</span>
-          <span class="badge" data-pt="Crédito confirmado" data-en="Credit confirmed">Crédito confirmado</span>
+          <span class="idx">#004</span><span class="name">Mercado Bom Preço</span><span class="amount">R$ 980,00</span>
+          <span class="badge" data-pt="Boleto pago" data-en="Invoice paid">Boleto pago</span>
         </div>
         <div class="radar-row flagged">
-          <span class="idx">#005</span><span class="name">Embalagens Prisma</span><span class="amount">R$ 33.750,00</span>
-          <span class="badge" data-pt="CND vencida" data-en="Clearance expired">CND vencida</span>
+          <span class="idx">#005</span><span class="name">Studio M Arquitetura</span><span class="amount">R$ 2.140,00</span>
+          <span class="badge" data-pt="+ IRPF dos sócios" data-en="+ partners' tax returns">+ IRPF dos sócios</span>
         </div>
         <div class="radar-row">
-          <span class="idx">#006</span><span class="name">Energia Sul S.A.</span><span class="amount">R$ 54.200,00</span>
-          <span class="badge" data-pt="Crédito confirmado" data-en="Credit confirmed">Crédito confirmado</span>
+          <span class="idx">#006</span><span class="name">Transportes Aurora S.A.</span><span class="amount">R$ 4.500,00</span>
+          <span class="badge" data-pt="Boleto enviado" data-en="Invoice sent">Boleto enviado</span>
         </div>
         <div class="radar-row">
-          <span class="idx">#007</span><span class="name">Serviços Táticos ME</span><span class="amount">R$ 7.480,00</span>
-          <span class="badge" data-pt="Aguardando NF" data-en="Awaiting invoice">Aguardando NF</span>
+          <span class="idx">#007</span><span class="name">Restaurante Pátio 22</span><span class="amount">R$ 757,00</span>
+          <span class="badge" data-pt="Aguardando aprovação" data-en="Awaiting approval">Aguardando aprovação</span>
         </div>
       </div>
       <div class="radar-summary">
-        <div><div class="label" data-pt="Crédito em risco de glosa neste ciclo" data-en="Credit at risk this cycle">Crédito em risco de glosa neste ciclo</div></div>
-        <div class="value">R$ 103.950<span class="cents">,00</span></div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- ============ POSITIONING ============ -->
-<section class="positioning" id="posicionamento">
-  <div class="shell">
-    <div class="section-head reveal">
-      <div class="eyebrow"><span class="dot-cyan"></span><span data-pt="Posicionamento" data-en="Positioning">Posicionamento</span></div>
-      <h2 style="margin-top: 20px;"
-          data-pt="Onde a maioria para,&lt;br /&gt;o Kontiva &lt;span class=&quot;serif-accent&quot;&gt;começa&lt;/span&gt;."
-          data-en="Where most stop,&lt;br /&gt;Kontiva &lt;span class=&quot;serif-accent&quot;&gt;begins&lt;/span&gt;.">Onde a maioria para,<br />o Kontiva <span class="serif-accent">começa</span>.</h2>
-      <p class="lead" style="margin-top: 20px;"
-         data-pt="Calcular a reforma e tirar uma dúvida avulsa já vem de graça no seu ERP. Use, ajuda. Só que isso é uma foto do imposto, tirada uma vez. A reforma chega ao seu caixa como operação: todo mês, com centenas de fornecedores e contratos em jogo. É nesse degrau que o Kontiva começa."
-         data-en="Calculating the reform and answering a one-off question already comes free in your ERP. Use it, it helps. But that's a snapshot of the tax, taken once. The reform reaches your cash as an operation: every month, with hundreds of suppliers and contracts in play. That's the step where Kontiva begins.">Calcular a reforma e tirar uma dúvida avulsa já vem de graça no seu ERP. Use, ajuda. Só que isso é uma foto do imposto, tirada uma vez. A reforma chega ao seu caixa como operação: todo mês, com centenas de fornecedores e contratos em jogo. É nesse degrau que o Kontiva começa.</p>
-    </div>
-
-    <div class="pos-steps">
-      <!-- Floor: what's already free -->
-      <div class="pos-tier pos-floor reveal delay-1">
-        <div class="pos-flag" data-pt="Já vem no seu ERP" data-en="Already in your ERP">Já vem no seu ERP</div>
-        <h3 data-pt="Calcular e tirar dúvida" data-en="Calculate and ask">Calcular e tirar dúvida</h3>
-        <p class="pos-tsub" data-pt="O que quase todo mundo já entrega, de graça." data-en="What almost everyone already offers, for free.">O que quase todo mundo já entrega, de graça.</p>
-        <ul class="pos-list">
-          <li class="pos-item">
-            <span class="pos-ico"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M6 12h12" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"/></svg></span>
-            <span class="it-t" data-pt="Simula um cenário da reforma." data-en="Simulates one reform scenario.">Simula um cenário da reforma.</span>
-          </li>
-          <li class="pos-item">
-            <span class="pos-ico"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M6 12h12" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"/></svg></span>
-            <span class="it-t" data-pt="Responde uma pergunta por vez." data-en="Answers one question at a time.">Responde uma pergunta por vez.</span>
-          </li>
-          <li class="pos-item">
-            <span class="pos-ico"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M6 12h12" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"/></svg></span>
-            <span class="it-t" data-pt="Mostra o imposto de hoje, uma vez." data-en="Shows today's tax, once.">Mostra o imposto de hoje, uma vez.</span>
-          </li>
-        </ul>
-        <div class="pos-note" data-pt="Ótimo. Use o do seu ERP. É o piso, não o destino." data-en="Great. Use your ERP's. It's the floor, not the destination.">Ótimo. Use o do seu ERP. É o piso, não o destino.</div>
-      </div>
-
-      <!-- The step -->
-      <div class="pos-jump reveal delay-2" aria-hidden="true">
-        <div class="pos-jump-badge"><svg width="22" height="22" viewBox="0 0 24 24" fill="none"><path d="M12 20V5M6 11l6-6 6 6" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
-        <span class="pos-jump-label" data-pt="o degrau" data-en="the step">o degrau</span>
-      </div>
-
-      <!-- Kontiva: the operation -->
-      <div class="pos-tier pos-kontiva reveal delay-2">
-        <div class="pos-flag" data-pt="O degrau do Kontiva" data-en="Kontiva's step up">O degrau do Kontiva</div>
-        <h3 data-pt="A reforma virando operação" data-en="The reform, run as an operation">A reforma virando operação</h3>
-        <p class="pos-tsub" data-pt="Todo mês, no automático, com o seu time no controle." data-en="Every month, on autopilot, with your team in control.">Todo mês, no automático, com o seu time no controle.</p>
-        <ul class="pos-list">
-          <li class="pos-item">
-            <span class="pos-ico"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M5 12l5 5L20 7" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
-            <span>
-              <span class="it-t" data-pt="Caixa projetado antes de apertar." data-en="Cash projected before it tightens.">Caixa projetado antes de apertar.</span>
-              <span class="it-s" data-pt="O split payment entra na projeção antes de sair do seu caixa. Sem susto no fim do mês." data-en="Split payment enters the projection before it leaves your cash. No month-end surprise.">O split payment entra na projeção antes de sair do seu caixa. Sem susto no fim do mês.</span>
-            </span>
-          </li>
-          <li class="pos-item">
-            <span class="pos-ico"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M5 12l5 5L20 7" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
-            <span>
-              <span class="it-t" data-pt="Crédito que não vira glosa." data-en="Credit that never gets disallowed.">Crédito que não vira glosa.</span>
-              <span class="it-s" data-pt="Cada crédito de IBS e CBS conciliado com a adimplência de centenas de fornecedores, sem checar um por vez." data-en="Every IBS and CBS credit reconciled against hundreds of suppliers' compliance, without checking one by one.">Cada crédito de IBS e CBS conciliado com a adimplência de centenas de fornecedores, sem checar um por vez.</span>
-            </span>
-          </li>
-          <li class="pos-item">
-            <span class="pos-ico"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M5 12l5 5L20 7" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
-            <span>
-              <span class="it-t" data-pt="Preço defendido com a lei na mão." data-en="Price defended with the law in hand.">Preço defendido com a lei na mão.</span>
-              <span class="it-s" data-pt="Repricing contrato a contrato, com número e fonte para sustentar a sua margem na transição." data-en="Repricing contract by contract, with numbers and sources to hold your margin through the transition.">Repricing contrato a contrato, com número e fonte para sustentar a sua margem na transição.</span>
-            </span>
-          </li>
-          <li class="pos-item">
-            <span class="pos-ico"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M5 12l5 5L20 7" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
-            <span>
-              <span class="it-t" data-pt="Roda sozinho até 2033." data-en="Runs on its own to 2033.">Roda sozinho até 2033.</span>
-              <span class="it-s" data-pt="A cada ciclo o Kontiva refaz tudo e pede a aprovação do seu time. Não é um cálculo para refazer na mão." data-en="Every cycle Kontiva redoes it all and asks your team to approve. Not a calculation to redo by hand.">A cada ciclo o Kontiva refaz tudo e pede a aprovação do seu time. Não é um cálculo para refazer na mão.</span>
-            </span>
-          </li>
-        </ul>
-        <div class="pos-foot" data-pt="Não é uma foto. É a operação em movimento." data-en="Not a snapshot. The operation in motion.">Não é uma foto. É a operação em movimento.</div>
+        <div><div class="label" data-pt="Excedentes + reajustes neste ciclo" data-en="Overages + adjustments this cycle">Excedentes + reajustes neste ciclo</div></div>
+        <div class="value">+R$ 3.245<span class="cents">,00</span></div>
       </div>
     </div>
   </div>
@@ -681,10 +555,10 @@
   <div class="shell">
     <div class="section-head reveal">
       <div class="eyebrow"><span class="dot-cyan"></span><span data-pt="O ponto cego" data-en="The blind spot">O ponto cego</span></div>
-      <h2 style="margin-top: 20px;" data-pt="Planilha não segura uma reforma." data-en="A spreadsheet can't hold a reform.">Planilha não segura uma reforma.</h2>
+      <h2 style="margin-top: 20px;" data-pt="Planilha não é sistema." data-en="A spreadsheet is not a system.">Planilha não é sistema.</h2>
       <p class="lead" style="margin-top: 20px;"
-         data-pt="A apuração vive numa planilha e a regularidade dos fornecedores, ninguém acompanha. Com o split payment o imposto sai do caixa na hora da venda, e o seu crédito só nasce quando o fornecedor recolhe o dele. Quem controla no braço perde de 15% a 20% dos créditos. Monitorar centenas de fornecedores na mão é inviável. O Kontiva acompanha, projeta e avisa."
-         data-en="Tax calculation lives in a spreadsheet and supplier compliance goes unwatched. Under split payment the tax leaves your cash the moment of the sale, and your credit only exists once your supplier pays theirs. Manage it by hand and you lose 15% to 20% of your credits. Tracking hundreds of suppliers manually isn't viable. Kontiva watches, projects and warns.">A apuração vive numa planilha e a regularidade dos fornecedores, ninguém acompanha. Com o split payment o imposto sai do caixa na hora da venda, e o seu crédito só nasce quando o fornecedor recolhe o dele. Quem controla no braço perde de 15% a 20% dos créditos. Monitorar centenas de fornecedores na mão é inviável. O Kontiva acompanha, projeta e avisa.</p>
+         data-pt="O controle de contratos vive numa aba de Excel. Reajuste de janeiro, funcionário a mais na folha, serviço avulso de março — quem lembra de cobrar tudo? É aí que 2% ou mais da sua receita ficam na mesa. A Kontiva lembra — e cobra."
+         data-en="Contract control lives in an Excel tab. January's adjustment, an extra employee on payroll, a one-off service in March — who remembers to bill it all? That's how 2% or more of your revenue is left on the table. Kontiva remembers — and bills it.">O controle de contratos vive numa aba de Excel. Reajuste de janeiro, funcionário a mais na folha, serviço avulso de março — quem lembra de cobrar tudo? É aí que 2% ou mais da sua receita ficam na mesa. A Kontiva lembra — e cobra.</p>
     </div>
     <div class="split">
       <!-- Antes -->
@@ -692,26 +566,26 @@
         <div class="panel-flag before-flag" data-pt="Antes" data-en="Before">Antes</div>
         <div class="panel before">
         <div class="panel-head">
-          <div class="panel-title" data-pt="apuracao_creditos_2026.xlsx" data-en="tax_credits_2026.xlsx">apuracao_creditos_2026.xlsx</div>
+          <div class="panel-title" data-pt="contratos_2026.xlsx" data-en="contracts_2026.xlsx">contratos_2026.xlsx</div>
         </div>
         <div class="sheet">
           <div class="sheet-row head">
             <div></div>
-            <div data-pt="Fornecedor" data-en="Supplier">Fornecedor</div>
-            <div data-pt="Crédito IBS/CBS" data-en="IBS/CBS credit">Crédito IBS/CBS</div>
-            <div data-pt="Situação fiscal" data-en="Tax status">Situação fiscal</div>
+            <div data-pt="Cliente" data-en="Client">Cliente</div>
+            <div data-pt="Mensalidade" data-en="Monthly fee">Mensalidade</div>
+            <div data-pt="Último reajuste" data-en="Last adjustment">Último reajuste</div>
           </div>
-          <div class="sheet-row"><div>1</div><div>Distribuidora Vale Log</div><div>41.900,00</div><div class="err">?</div></div>
-          <div class="sheet-row"><div>2</div><div>Insumos Química BR</div><div>28.300,00</div><div class="err">irregular</div></div>
-          <div class="sheet-row"><div>3</div><div>Metalúrgica Aço Norte</div><div>82.400,00</div><div>regular</div></div>
-          <div class="sheet-row"><div>4</div><div>Embalagens Prisma</div><div>33.750,00</div><div class="err">sem CND</div></div>
-          <div class="sheet-row"><div>5</div><div class="faded">Energia Sul S.A.</div><div class="faded">54.200,00</div><div class="faded">regular</div></div>
+          <div class="sheet-row"><div>1</div><div>Construtora Horizonte</div><div>3.820,00</div><div class="err">?</div></div>
+          <div class="sheet-row"><div>2</div><div>Studio M Arquitetura</div><div>1.640,00</div><div class="err">nov/2024</div></div>
+          <div class="sheet-row"><div>3</div><div>Padaria São Jorge</div><div>1.240,00</div><div>jan/2026</div></div>
+          <div class="sheet-row"><div>4</div><div>Restaurante Pátio 22</div><div>720,00</div><div class="err">—</div></div>
+          <div class="sheet-row"><div>5</div><div class="faded">Mercado Bom Preço</div><div class="faded">980,00</div><div class="faded">jan/2026</div></div>
           <div class="sheet-row"><div>6</div><div class="blank">&nbsp;</div><div class="blank">&nbsp;</div><div class="blank">&nbsp;</div></div>
         </div>
         <div class="sheet-caption">
-          <span data-pt="3 fornecedores sem checagem" data-en="3 suppliers unchecked">3 fornecedores sem checagem</span>
-          <span data-pt="2 créditos em risco de glosa" data-en="2 credits at risk">2 créditos em risco de glosa</span>
-          <span class="muted" data-pt="última edição: há 39 dias" data-en="last edited: 39 days ago">última edição: há 39 dias</span>
+          <span data-pt="3 campos em branco" data-en="3 blank fields">3 campos em branco</span>
+          <span data-pt="2 reajustes vencidos" data-en="2 overdue adjustments">2 reajustes vencidos</span>
+          <span class="muted" data-pt="última edição: há 47 dias" data-en="last edited: 47 days ago">última edição: há 47 dias</span>
         </div>
         </div>
       </div>
@@ -720,42 +594,42 @@
         <div class="panel-flag after-flag" data-pt="Depois" data-en="After">Depois</div>
         <div class="panel after">
         <div class="panel-head">
-          <div class="panel-title" data-pt="Kontiva · Créditos e caixa" data-en="Kontiva · Credits and cash">Kontiva · Créditos e caixa</div>
+          <div class="panel-title" data-pt="Kontiva · Painel de contratos" data-en="Kontiva · Contracts dashboard">Kontiva · Painel de contratos</div>
         </div>
         <div class="k-stack">
           <div class="k-card">
             <div class="k-left">
               <div class="k-ico"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" aria-hidden="true"><circle cx="12" cy="12" r="9" stroke="currentColor" stroke-width="1.6"/><circle cx="12" cy="12" r="5" stroke="currentColor" stroke-width="1.6"/><path d="M12 12 L19 6" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg></div>
               <div>
-                <div class="k-title">Metalúrgica Aço Norte</div>
-                <div class="k-sub" data-pt="Crédito de IBS/CBS confirmado e conciliado" data-en="IBS/CBS credit confirmed and reconciled">Crédito de IBS/CBS confirmado e conciliado</div>
+                <div class="k-title">Construtora Horizonte</div>
+                <div class="k-sub" data-pt="Reajuste IPCA aplicado na renovação de jan/26" data-en="IPCA adjustment applied on the Jan/26 renewal">Reajuste IPCA aplicado na renovação de jan/26</div>
               </div>
             </div>
-            <div class="k-val">R$ 82.400</div>
+            <div class="k-val">+R$ 318</div>
           </div>
           <div class="k-card">
             <div class="k-left">
-              <div class="k-ico"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M12 3l7 4v5c0 4.4-3 8-7 9-4-1-7-4.6-7-9V7z" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/><path d="M9.3 12l1.9 1.9 3.5-3.6" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+              <div class="k-ico"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M6 3h8l4 4v14H6z" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/><path d="M9 13h6M9 16h6M9 10h3" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg></div>
               <div>
-                <div class="k-title">Distribuidora Vale Log</div>
-                <div class="k-sub" data-pt="Débito do fornecedor em aberto: crédito segurado antes da glosa" data-en="Supplier debit open: credit held before it's disallowed">Débito do fornecedor em aberto: crédito segurado antes da glosa</div>
+                <div class="k-title">Studio M Arquitetura</div>
+                <div class="k-sub" data-pt="Serviço avulso de dez/25 incluído na fatura" data-en="Dec/25 one-off service added to the invoice">Serviço avulso de dez/25 incluído na fatura</div>
               </div>
             </div>
-            <div class="k-val">R$ 41.900</div>
+            <div class="k-val">+R$ 1.240</div>
           </div>
           <div class="k-card">
             <div class="k-left">
-              <div class="k-ico"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M4 19V5m0 14h16M8 15l3-4 3 2 4-6" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+              <div class="k-ico"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M13 3 4 14h7l-1 7 9-11h-7z" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/></svg></div>
               <div>
-                <div class="k-title" data-pt="Caixa · Split payment" data-en="Cash · Split payment">Caixa · Split payment</div>
-                <div class="k-sub" data-pt="Saída do imposto projetada, sem susto no fluxo do ciclo" data-en="Tax outflow projected, no surprise in the cycle">Saída do imposto projetada, sem susto no fluxo do ciclo</div>
+                <div class="k-title">Restaurante Pátio 22</div>
+                <div class="k-sub" data-pt="+3 funcionários na folha detectados via ERP" data-en="+3 payroll employees detected via ERP">+3 funcionários na folha detectados via ERP</div>
               </div>
             </div>
-            <div class="k-val" data-pt="+40 dias" data-en="+40 days">+40 dias</div>
+            <div class="k-val">+R$ 86</div>
           </div>
           <div class="k-card k-total">
-            <div class="k-left"><div class="k-label" data-pt="Crédito protegido neste ciclo" data-en="Credit protected this cycle">Crédito protegido neste ciclo</div></div>
-            <div class="k-val">R$ 103.950,00</div>
+            <div class="k-left"><div class="k-label" data-pt="Recuperado neste ciclo" data-en="Recovered this cycle">Recuperado neste ciclo</div></div>
+            <div class="k-val">R$ 3.245,00</div>
           </div>
         </div>
         </div>
@@ -770,8 +644,8 @@
     <div class="section-head reveal">
       <div class="eyebrow"><span class="dot-cyan"></span><span data-pt="Como funciona" data-en="How it works">Como funciona</span></div>
       <h2 style="margin-top: 20px;"
-          data-pt="Do dado fiscal&lt;br /&gt;&lt;span style=&quot;color: var(--cinza-texto)&quot;&gt;à decisão aprovada.&lt;/span&gt;"
-          data-en="From tax data&lt;br /&gt;&lt;span style=&quot;color: var(--cinza-texto)&quot;&gt;to an approved decision.&lt;/span&gt;">Do dado fiscal<br /><span style="color: var(--cinza-texto)">à decisão aprovada.</span></h2>
+          data-pt="Do contrato&lt;br /&gt;&lt;span style=&quot;color: var(--cinza-texto)&quot;&gt;ao boleto pago.&lt;/span&gt;"
+          data-en="From contract&lt;br /&gt;&lt;span style=&quot;color: var(--cinza-texto)&quot;&gt;to paid invoice.&lt;/span&gt;">Do contrato<br /><span style="color: var(--cinza-texto)">ao boleto pago.</span></h2>
     </div>
     <div class="flow-list">
 
@@ -779,14 +653,13 @@
       <div class="flow-step reveal">
         <div class="flow-num" data-pt="PASSO 01" data-en="STEP 01">PASSO 01</div>
         <div class="flow-body">
-          <h3 data-pt="Conecte suas notas e contratos" data-en="Connect your invoices and contracts">Conecte suas notas e contratos</h3>
-          <p data-pt="XML, PDF, ERP, planilha. A IA lê as suas notas de entrada e saída, os seus contratos e a sua base de fornecedores. Tudo vira dado estruturado: créditos, débitos, alíquotas de IBS e CBS, prazos e cláusulas de preço, consultável a qualquer momento."
-             data-en="XML, PDF, ERP, spreadsheet. The AI reads your inbound and outbound invoices, your contracts and your supplier base. Everything becomes structured data: credits, debits, IBS and CBS rates, deadlines and pricing clauses, queryable anytime.">XML, PDF, ERP, planilha. A IA lê as suas notas de entrada e saída, os seus contratos e a sua base de fornecedores. Tudo vira dado estruturado: créditos, débitos, alíquotas de IBS e CBS, prazos e cláusulas de preço, consultável a qualquer momento.</p>
+          <h3 data-pt="Envie seus contratos" data-en="Send us your contracts">Envie seus contratos</h3>
+          <p data-pt="PDF, DOC, foto — qualquer formato. A IA extrai partes, objeto, valores fixos, variáveis e excedentes, datas de renovação e índices de reajuste. Tudo vira dado estruturado, consultável a qualquer momento."
+             data-en="PDF, DOC, photo — any format. The AI extracts parties, scope, fixed and variable fees, overage rules, renewal dates and adjustment indexes. Everything becomes structured data you can query anytime.">PDF, DOC, foto — qualquer formato. A IA extrai partes, objeto, valores fixos, variáveis e excedentes, datas de renovação e índices de reajuste. Tudo vira dado estruturado, consultável a qualquer momento.</p>
           <div class="flow-chips">
-            <span class="flow-chip">XML</span>
-            <span class="flow-chip">PDF</span>
-            <span class="flow-chip">ERP</span>
-            <span class="flow-chip" data-pt="planilha" data-en="spreadsheet">planilha</span>
+            <span class="flow-chip" data-pt="PDF" data-en="PDF">PDF</span>
+            <span class="flow-chip" data-pt="DOC" data-en="DOC">DOC</span>
+            <span class="flow-chip" data-pt="imagem" data-en="image">imagem</span>
           </div>
         </div>
         <div class="flow-illus">
@@ -794,15 +667,15 @@
           <div class="fi-doc">
             <div class="scanline"></div>
             <div class="l1"></div><div class="l2"></div><div class="l3"></div><div class="l2"></div><div class="l3"></div>
-            <div class="tag">XML·NF·PDF</div>
+            <div class="tag">PDF·DOC·IMG</div>
           </div>
           <div class="fi-arrow">→</div>
           <div class="fi-fields">
-            <div class="fi-field"><span class="key" data-pt="fornecedor" data-en="supplier">fornecedor</span><span class="val">Distribuidora Vale Log</span></div>
-            <div class="fi-field"><span class="key" data-pt="crédito" data-en="credit">crédito</span><span class="val" data-pt="IBS/CBS R$ 41.900,00" data-en="IBS/CBS R$ 41,900.00">IBS/CBS R$ 41.900,00</span></div>
-            <div class="fi-field"><span class="key" data-pt="situação" data-en="status">situação</span><span class="val" data-pt="débito do fornecedor em aberto" data-en="supplier debit open">débito do fornecedor em aberto</span></div>
-            <div class="fi-field"><span class="key" data-pt="contrato" data-en="contract">contrato</span><span class="val" data-pt="preço por dentro · vence 2027" data-en="tax-inclusive price · ends 2027">preço por dentro · vence 2027</span></div>
-            <div class="fi-field"><span class="key" data-pt="alíquota" data-en="rate">alíquota</span><span class="val" data-pt="IBS/CBS teste 2026" data-en="IBS/CBS 2026 test">IBS/CBS teste 2026</span></div>
+            <div class="fi-field"><span class="key" data-pt="partes" data-en="parties">partes</span><span class="val" data-pt="Construtora Horizonte × Escritório" data-en="Construtora Horizonte × Firm">Construtora Horizonte × Escritório</span></div>
+            <div class="fi-field"><span class="key" data-pt="valor fixo" data-en="fixed fee">valor fixo</span><span class="val" data-pt="R$ 3.820,00 / mês" data-en="R$ 3,820.00 / mo">R$ 3.820,00 / mês</span></div>
+            <div class="fi-field"><span class="key" data-pt="excedente" data-en="overage">excedente</span><span class="val" data-pt="R$ 38 por funcionário &gt; 20" data-en="R$ 38 per employee &gt; 20">R$ 38 por funcionário &gt; 20</span></div>
+            <div class="fi-field"><span class="key" data-pt="renovação" data-en="renewal">renovação</span><span class="val" data-pt="12 meses · auto" data-en="12 months · auto">12 meses · auto</span></div>
+            <div class="fi-field"><span class="key" data-pt="reajuste" data-en="adjustment">reajuste</span><span class="val" data-pt="INPC na renovação" data-en="INPC on renewal">INPC na renovação</span></div>
           </div>
         </div>
       </div>
@@ -811,14 +684,14 @@
       <div class="flow-step reveal">
         <div class="flow-num" data-pt="PASSO 02" data-en="STEP 02">PASSO 02</div>
         <div class="flow-body">
-          <h3 data-pt="Conecte o ERP, sem trocar de sistema" data-en="Connect your ERP, no system switch">Conecte o ERP, sem trocar de sistema</h3>
-          <p data-pt="O Kontiva se conecta ao seu ERP e ao seu financeiro para ler a operação real: fornecedores, contratos, canais e faturamento por período. É isso que define o seu caixa, os seus créditos e o seu risco na transição. Sem integração? Envie os relatórios em qualquer formato, que a gente processa."
-             data-en="Kontiva connects to your ERP and finance system to read the real operation: suppliers, contracts, channels and revenue by period. That's what defines your cash, your credits and your transition risk. No integration? Send the reports in any format and we'll process them.">O Kontiva se conecta ao seu ERP e ao seu financeiro para ler a operação real: fornecedores, contratos, canais e faturamento por período. É isso que define o seu caixa, os seus créditos e o seu risco na transição. Sem integração? Envie os relatórios em qualquer formato, que a gente processa.</p>
+          <h3 data-pt="Conecte o ERP — ou envie relatórios" data-en="Connect your ERP — or send reports">Conecte o ERP — ou envie relatórios</h3>
+          <p data-pt="A Kontiva extrai do seu sistema o volume de serviços prestados em cada período: funcionários na folha, filiais, faturamento, regime fiscal, serviços avulsos. É isso que define o excedente de cada contrato. Sem integração? Envie os relatórios em qualquer formato, que a gente processa."
+             data-en="Kontiva pulls from your system the volume of services delivered in each period: payroll headcount, branches, revenue, tax regime, one-off services. That's what defines each contract's overages. No integration? Send the reports in any format and we'll process them.">A Kontiva extrai do seu sistema o volume de serviços prestados em cada período: funcionários na folha, filiais, faturamento, regime fiscal, serviços avulsos. É isso que define o excedente de cada contrato. Sem integração? Envie os relatórios em qualquer formato, que a gente processa.</p>
           <div class="flow-chips">
+            <span class="flow-chip">Domínio</span>
+            <span class="flow-chip">Thomson Reuters</span>
             <span class="flow-chip">Totvs</span>
             <span class="flow-chip">SAP</span>
-            <span class="flow-chip">Oracle</span>
-            <span class="flow-chip">Senior</span>
           </div>
         </div>
         <div class="flow-illus">
@@ -831,24 +704,24 @@
           </svg>
           <div class="fi-report" style="left: 7%; top: 9%;">
             <div class="rl"></div><div class="rl short"></div>
-            <div class="rlabel" data-pt="Fornec. · 214" data-en="Suppliers · 214">Fornec. · 214</div>
+            <div class="rlabel" data-pt="Folha · 23 func." data-en="Payroll · 23 empl.">Folha · 23 func.</div>
           </div>
           <div class="fi-report" style="right: 7%; top: 7%;">
             <div class="rl"></div><div class="rl short"></div>
-            <div class="rlabel" data-pt="Contratos · 38" data-en="Contracts · 38">Contratos · 38</div>
+            <div class="rlabel" data-pt="Filiais · 3" data-en="Branches · 3">Filiais · 3</div>
           </div>
           <div class="fi-report" style="left: 8%; bottom: 13%;">
             <div class="rl"></div><div class="rl short"></div>
-            <div class="rlabel" data-pt="Fat. · R$ 6,4 mi" data-en="Rev. · R$ 6.4M">Fat. · R$ 6,4 mi</div>
+            <div class="rlabel" data-pt="Fat. · R$ 412 mil" data-en="Rev. · R$ 412k">Fat. · R$ 412 mil</div>
           </div>
           <div class="fi-report" style="right: 7%; bottom: 14%;">
             <div class="rl"></div><div class="rl short"></div>
-            <div class="rlabel" data-pt="Canais · 5" data-en="Channels · 5">Canais · 5</div>
+            <div class="rlabel" data-pt="Avulsos · 4" data-en="One-offs · 4">Avulsos · 4</div>
           </div>
           <div class="fi-app-icon" aria-label="Kontiva">
             <svg viewBox="0 0 64 64" aria-hidden="true"><rect width="64" height="64" rx="14" fill="#0A1F3F"></rect><text x="16" y="46" font-family="Inter, -apple-system, sans-serif" font-size="40" font-weight="700" fill="#EAF6FF">K</text><circle cx="48" cy="44" r="6" fill="#00D4FF"></circle></svg>
           </div>
-          <div class="fi-erp-note" data-pt="ou envie os relatórios, a gente processa" data-en="or send the reports, we'll process them">ou envie os relatórios, a gente processa</div>
+          <div class="fi-erp-note" data-pt="ou envie os relatórios — a gente processa" data-en="or send the reports — we'll process them">ou envie os relatórios — a gente processa</div>
         </div>
       </div>
 
@@ -856,24 +729,24 @@
       <div class="flow-step reveal">
         <div class="flow-num" data-pt="PASSO 03" data-en="STEP 03">PASSO 03</div>
         <div class="flow-body">
-          <h3 data-pt="Caixa projetado, créditos protegidos, preço sustentado" data-en="Cash projected, credits protected, price sustained">Caixa projetado, créditos protegidos, preço sustentado</h3>
-          <p data-pt="O Kontiva projeta a saída do imposto com o split payment, monitora a adimplência de cada fornecedor e dá um score de risco de glosa, e simula o repricing dos contratos que atravessam 2027. Cada número vem com a fonte na lei. O seu time revisa antes de qualquer decisão."
-             data-en="Kontiva projects the tax outflow under split payment, monitors each supplier's compliance and assigns a disallowance-risk score, and simulates repricing for contracts that cross into 2027. Every number cites the law. Your team reviews before any decision.">O Kontiva projeta a saída do imposto com o split payment, monitora a adimplência de cada fornecedor e dá um score de risco de glosa, e simula o repricing dos contratos que atravessam 2027. Cada número vem com a fonte na lei. O seu time revisa antes de qualquer decisão.</p>
+          <h3 data-pt="Cobrança calculada, detalhada, enviada" data-en="Billing calculated, itemized, delivered">Cobrança calculada, detalhada, enviada</h3>
+          <p data-pt="Fixo + excedentes + reajuste pelo índice do contrato (INPC, IGP-M), aplicado automaticamente na renovação. A fatura sai detalhada linha a linha — seu cliente vê exatamente o que está pagando. Você revisa antes e ajusta o que quiser: um desconto negociado, um valor diferente do calculado."
+             data-en="Fixed fee + overages + the contract's index adjustment (INPC, IGP-M), applied automatically on renewal. Invoices go out itemized line by line — your client sees exactly what they're paying for. You review first and adjust anything: a negotiated discount, a different amount.">Fixo + excedentes + reajuste pelo índice do contrato (INPC, IGP-M), aplicado automaticamente na renovação. A fatura sai detalhada linha a linha — seu cliente vê exatamente o que está pagando. Você revisa antes e ajusta o que quiser: um desconto negociado, um valor diferente do calculado.</p>
           <div class="flow-chips">
-            <span class="flow-chip" data-pt="caixa" data-en="cash">caixa</span>
-            <span class="flow-chip" data-pt="créditos" data-en="credits">créditos</span>
-            <span class="flow-chip">repricing</span>
-            <span class="flow-chip">CND</span>
+            <span class="flow-chip">Nibo</span>
+            <span class="flow-chip">Asaas</span>
+            <span class="flow-chip">Stripe</span>
+            <span class="flow-chip" data-pt="CNAB400 → qualquer banco" data-en="CNAB400 → any bank">CNAB400 → qualquer banco</span>
           </div>
         </div>
         <div class="flow-illus">
           <div class="fi-invoice">
-            <div class="inv-title" data-pt="Ciclo · Julho/2026" data-en="Cycle · July 2026">Ciclo · Julho/2026</div>
-            <div class="inv-line"><span class="desc" data-pt="Imposto debitado no split" data-en="Tax debited at split">Imposto debitado no split</span><span class="amt">R$ 137.000,00</span></div>
-            <div class="inv-line hl"><span class="desc" data-pt="Crédito IBS/CBS confirmado" data-en="IBS/CBS credit confirmed">Crédito IBS/CBS confirmado</span><span class="amt">R$ 82.400,00</span></div>
-            <div class="inv-line hl"><span class="desc" data-pt="Crédito em risco de glosa" data-en="Credit at risk">Crédito em risco de glosa</span><span class="amt">R$ 103.950,00</span></div>
-            <div class="inv-line hl"><span class="desc" data-pt="Repricing sugerido" data-en="Suggested repricing">Repricing sugerido</span><span class="amt">+8,4%</span></div>
-            <div class="inv-total"><span data-pt="Capital de giro sugerido" data-en="Suggested working capital">Capital de giro sugerido</span><span class="amt">R$ 118.000,00</span></div>
+            <div class="inv-title" data-pt="Fatura · Construtora Horizonte" data-en="Invoice · Construtora Horizonte">Fatura · Construtora Horizonte</div>
+            <div class="inv-line"><span class="desc" data-pt="Honorários (contrato)" data-en="Retainer (contract)">Honorários (contrato)</span><span class="amt">R$ 3.820,00</span></div>
+            <div class="inv-line hl"><span class="desc" data-pt="Reajuste INPC +5,2%" data-en="INPC adjustment +5.2%">Reajuste INPC +5,2%</span><span class="amt">R$ 198,00</span></div>
+            <div class="inv-line hl"><span class="desc" data-pt="+3 funcionários × R$ 38" data-en="+3 employees × R$ 38">+3 funcionários × R$ 38</span><span class="amt">R$ 114,00</span></div>
+            <div class="inv-line hl"><span class="desc" data-pt="Alteração contratual" data-en="Contract amendment">Alteração contratual</span><span class="amt">R$ 350,00</span></div>
+            <div class="inv-total"><span data-pt="Total" data-en="Total">Total</span><span class="amt">R$ 4.482,00</span></div>
           </div>
         </div>
       </div>
@@ -882,16 +755,16 @@
       <div class="flow-step reveal">
         <div class="flow-num" data-pt="PASSO 04" data-en="STEP 04">PASSO 04</div>
         <div class="flow-body">
-          <h3 data-pt="Rotina que roda todo mês. Até 2033 e além." data-en="A routine that runs every month. To 2033 and beyond.">Rotina que roda todo mês. Até 2033 e além.</h3>
-          <p data-pt="Não é um projeto com data de fim. A cada ciclo o Kontiva refaz a projeção de caixa, reconcilia os créditos, atualiza o risco dos fornecedores e mantém os dois sistemas em ordem na transição. O seu time opera no controle, sem caçar planilha."
-             data-en="It isn't a project with an end date. Every cycle Kontiva redoes the cash projection, reconciles credits, updates supplier risk and keeps both systems in order through the transition. Your team stays in control, no spreadsheet hunting.">Não é um projeto com data de fim. A cada ciclo o Kontiva refaz a projeção de caixa, reconcilia os créditos, atualiza o risco dos fornecedores e mantém os dois sistemas em ordem na transição. O seu time opera no controle, sem caçar planilha.</p>
+          <h3 data-pt="Pagamento identificado. Ciclo fechado." data-en="Payment identified. Loop closed.">Pagamento identificado. Ciclo fechado.</h3>
+          <p data-pt="O cliente pagou, a Kontiva reconhece e registra. Sem caçar comprovante, sem bater extrato na mão. O próximo ciclo já começa sozinho."
+             data-en="Your client pays, Kontiva recognizes and records it. No chasing receipts, no manual bank reconciliation. The next cycle starts on its own.">O cliente pagou, a Kontiva reconhece e registra. Sem caçar comprovante, sem bater extrato na mão. O próximo ciclo já começa sozinho.</p>
         </div>
         <div class="flow-illus">
           <div class="fi-paid-glow"></div>
           <div class="fi-paid">
             <div class="circle"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M5 12l5 5L20 7" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
-            <div class="label" data-pt="Ciclo conciliado" data-en="Cycle reconciled">Ciclo conciliado</div>
-            <div class="sub" data-pt="créditos + caixa + fornecedores · jul/2026" data-en="credits + cash + suppliers · Jul 2026">créditos + caixa + fornecedores · jul/2026</div>
+            <div class="label" data-pt="Pagamento conciliado" data-en="Payment reconciled">Pagamento conciliado</div>
+            <div class="sub" data-pt="boleto #8841 · R$ 4.482,00 · 12/jun" data-en="invoice #8841 · R$ 4,482.00 · Jun 12">boleto #8841 · R$ 4.482,00 · 12/jun</div>
           </div>
         </div>
       </div>
@@ -909,8 +782,8 @@
           data-pt="Tudo isso,&lt;br /&gt;também por chat."
           data-en="All of it,&lt;br /&gt;by chat too.">Tudo isso,<br />também por chat.</h2>
       <p class="lead reveal delay-2" style="margin-top: 24px; max-width: 480px;"
-         data-pt="Qualquer coisa que a interface faz, o chat também faz. Pergunte sobre créditos, caixa e fornecedores, dê instruções, simule um cenário, em português, como você falaria com alguém do time fiscal."
-         data-en="Anything the interface does, the chat does too. Ask about credits, cash and suppliers, give instructions, simulate a scenario, in plain language, like you'd talk to someone on your tax team.">Qualquer coisa que a interface faz, o chat também faz. Pergunte sobre créditos, caixa e fornecedores, dê instruções, simule um cenário, em português, como você falaria com alguém do time fiscal.</p>
+         data-pt="Qualquer coisa que a interface faz, o chat também faz. Pergunte sobre a carteira, dê instruções, ajuste cobranças — em português, como você falaria com alguém da equipe."
+         data-en="Anything the interface does, the chat does too. Ask about your portfolio, give instructions, adjust invoices — in plain language, like you'd talk to someone on your team.">Qualquer coisa que a interface faz, o chat também faz. Pergunte sobre a carteira, dê instruções, ajuste cobranças — em português, como você falaria com alguém da equipe.</p>
       <div class="mcp-card reveal delay-3">
         <div class="ai-logos" aria-hidden="true">
           <span class="ai-logo" title="Claude"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="#D97757" stroke-width="2.4" stroke-linecap="round"><path d="M12 2.6v4.2M12 17.2v4.2M2.6 12h4.2M17.2 12h4.2M5.4 5.4l3 3M15.6 15.6l3 3M18.6 5.4l-3 3M8.4 15.6l-3 3"></path></svg></span>
@@ -928,22 +801,22 @@
         <span>Kontiva · Chat</span>
         <span class="status" data-pt="conectado" data-en="connected">conectado</span>
       </div>
-      <div class="bubble user" data-pt="Quanto de crédito de IBS/CBS está em risco neste mês?" data-en="How much IBS/CBS credit is at risk this month?">Quanto de crédito de IBS/CBS está em risco neste mês?</div>
+      <div class="bubble user" data-pt="Quantos contratos vencem no mês que vem?" data-en="How many contracts expire next month?">Quantos contratos vencem no mês que vem?</div>
       <div class="bubble bot"
-           data-pt="&lt;b&gt;R$ 103.950&lt;/b&gt; em créditos dependem de 3 fornecedores com pendência. 2 estão com CND vencida. Quer que eu avise o financeiro e segure a glosa?"
-           data-en="&lt;b&gt;R$ 103,950&lt;/b&gt; in credits depend on 3 suppliers with issues. 2 have expired clearance. Want me to alert finance and hold the disallowance?"><b>R$ 103.950</b> em créditos dependem de 3 fornecedores com pendência. 2 estão com CND vencida. Quer que eu avise o financeiro e segure a glosa?</div>
+           data-pt="&lt;b&gt;7 contratos&lt;/b&gt; vencem em julho. 5 renovam automaticamente com reajuste INPC; 2 estão marcados para renegociação. Quer a lista?"
+           data-en="&lt;b&gt;7 contracts&lt;/b&gt; expire in July. 5 renew automatically with INPC adjustment; 2 are flagged for renegotiation. Want the list?"><b>7 contratos</b> vencem em julho. 5 renovam automaticamente com reajuste INPC; 2 estão marcados para renegociação. Quer a lista?</div>
       <div class="bubble user"
-           data-pt="Como fica o meu caixa em julho com o split payment?"
-           data-en="What does my July cash look like under split payment?">Como fica o meu caixa em julho com o split payment?</div>
+           data-pt="Dê R$ 500 de desconto na próxima fatura da Clínica Vitta — a multa foi nossa responsabilidade."
+           data-en="Give Clínica Vitta a R$ 500 discount on the next invoice — the fine was our responsibility.">Dê R$ 500 de desconto na próxima fatura da Clínica Vitta — a multa foi nossa responsabilidade.</div>
       <div class="bubble bot"
-           data-pt="O imposto de &lt;b&gt;R$ 137.000&lt;/b&gt; sai na liquidação das vendas, cerca de 40 dias antes do seu ciclo atual. Projetei o fluxo: você precisa de &lt;b&gt;R$ 118.000&lt;/b&gt; de capital de giro extra na primeira quinzena."
-           data-en="The &lt;b&gt;R$ 137,000&lt;/b&gt; tax leaves at sale settlement, about 40 days earlier than your current cycle. I projected the flow: you need &lt;b&gt;R$ 118,000&lt;/b&gt; in extra working capital in the first half of the month.">O imposto de <b>R$ 137.000</b> sai na liquidação das vendas, cerca de 40 dias antes do seu ciclo atual. Projetei o fluxo: você precisa de <b>R$ 118.000</b> de capital de giro extra na primeira quinzena.</div>
+           data-pt="Feito. &lt;b&gt;Desconto de R$ 500&lt;/b&gt; aplicado à fatura de julho da Clínica Vitta, com a justificativa registrada no histórico."
+           data-en="Done. &lt;b&gt;R$ 500 discount&lt;/b&gt; applied to Clínica Vitta's July invoice, with the justification logged in the history.">Feito. <b>Desconto de R$ 500</b> aplicado à fatura de julho da Clínica Vitta, com a justificativa registrada no histórico.</div>
       <div class="bubble user"
-           data-pt="Simula o repricing do contrato da Distribuidora Vale Log para 2027."
-           data-en="Simulate repricing for the Distribuidora Vale Log contract for 2027.">Simula o repricing do contrato da Distribuidora Vale Log para 2027.</div>
+           data-pt="Quanto cobrei no mês passado de fixo e de adicionais?"
+           data-en="How much did I bill last month, fixed vs. extras?">Quanto cobrei no mês passado de fixo e de adicionais?</div>
       <div class="bubble bot"
-           data-pt="Feito. Mantendo a margem líquida atual, o preço precisa subir &lt;b&gt;8,4%&lt;/b&gt; com o IVA por fora. Gerei a minuta de aditivo para o jurídico revisar."
-           data-en="Done. To keep your current net margin, the price needs to rise &lt;b&gt;8.4%&lt;/b&gt; with the tax charged on top. I drafted the amendment for legal to review.">Feito. Mantendo a margem líquida atual, o preço precisa subir <b>8,4%</b> com o IVA por fora. Gerei a minuta de aditivo para o jurídico revisar.</div>
+           data-pt="Em maio: &lt;b&gt;R$ 86.420&lt;/b&gt; de honorários fixos e &lt;b&gt;R$ 7.310&lt;/b&gt; em excedentes e reajustes — 7,8% da receita veio de adicionais."
+           data-en="In May: &lt;b&gt;R$ 86,420&lt;/b&gt; in fixed retainers and &lt;b&gt;R$ 7,310&lt;/b&gt; in overages and adjustments — 7.8% of revenue came from extras.">Em maio: <b>R$ 86.420</b> de honorários fixos e <b>R$ 7.310</b> em excedentes e reajustes — 7,8% da receita veio de adicionais.</div>
     </div>
   </div>
 </section>
@@ -954,31 +827,31 @@
     <div>
       <div class="eyebrow reveal"><span class="dot-cyan"></span><span data-pt="Agentes de IA" data-en="AI agents">Agentes de IA</span></div>
       <h2 class="reveal delay-1" style="margin-top: 20px;"
-          data-pt="Agentes de olho na operação,&lt;br /&gt;24 horas por dia."
-          data-en="Agents watching your operation,&lt;br /&gt;around the clock.">Agentes de olho na operação,<br />24 horas por dia.</h2>
+          data-pt="Agentes de olho na carteira,&lt;br /&gt;24 horas por dia."
+          data-en="Agents watching your portfolio,&lt;br /&gt;around the clock.">Agentes de olho na carteira,<br />24 horas por dia.</h2>
       <p class="lead reveal delay-2" style="margin-top: 24px; max-width: 500px;"
-         data-pt="Crie agentes de IA dentro do Kontiva que varrem a sua operação fiscal e financeira sem parar: monitoram a adimplência dos fornecedores, avisam sobre prazos da reforma, projetam o caixa e pedem a sua aprovação no que você definir."
-         data-en="Create AI agents inside Kontiva that continuously sweep your tax and finance operation: they monitor supplier compliance, flag reform deadlines, project cash and ask for your approval on whatever you define.">Crie agentes de IA dentro do Kontiva que varrem a sua operação fiscal e financeira sem parar: monitoram a adimplência dos fornecedores, avisam sobre prazos da reforma, projetam o caixa e pedem a sua aprovação no que você definir.</p>
+         data-pt="Crie agentes de IA dentro da Kontiva que varrem sua carteira continuamente e cuidam do dia a dia: avisam sobre renovações, disparam cobranças, rodam auditorias — e pedem sua aprovação no que você definir."
+         data-en="Create AI agents inside Kontiva that continuously sweep your portfolio and handle the day-to-day: they flag renewals, dispatch billing, run audits — and ask for your approval on whatever you define.">Crie agentes de IA dentro da Kontiva que varrem sua carteira continuamente e cuidam do dia a dia: avisam sobre renovações, disparam cobranças, rodam auditorias — e pedem sua aprovação no que você definir.</p>
       <div class="agent-points reveal delay-3">
         <div class="agent-point">
           <div class="k-ico-light"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M21 11.6a8.4 8.4 0 0 1-8.5 8.3 9 9 0 0 1-2.6-.4L4.5 21l1.2-3.6a8.1 8.1 0 0 1-1.7-5A8.4 8.4 0 0 1 12.5 4 8.4 8.4 0 0 1 21 11.6z" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"></path><path d="M8.8 10.2h7M8.8 13.2h4.6" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"></path></svg></div>
           <div>
             <div class="t" data-pt="Avisos onde você trabalha" data-en="Alerts where you work">Avisos onde você trabalha</div>
-            <div class="s" data-pt="Créditos em risco, prazos da reforma, caixa apertado no ciclo, direto no e-mail, Slack ou Teams." data-en="Credits at risk, reform deadlines, tight cash in the cycle, straight to email, Slack or Teams.">Créditos em risco, prazos da reforma, caixa apertado no ciclo, direto no e-mail, Slack ou Teams.</div>
+            <div class="s" data-pt="Renovações chegando, cobranças enviadas, divergências encontradas — direto no e-mail, Slack ou Teams." data-en="Upcoming renewals, invoices sent, discrepancies found — straight to email, Slack or Teams.">Renovações chegando, cobranças enviadas, divergências encontradas — direto no e-mail, Slack ou Teams.</div>
           </div>
         </div>
         <div class="agent-point">
           <div class="k-ico-light"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" aria-hidden="true"><circle cx="12" cy="8" r="3.6" stroke="currentColor" stroke-width="1.7"></circle><path d="M4.8 20a7.2 7.2 0 0 1 14.4 0" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"></path></svg></div>
           <div>
             <div class="t" data-pt="Aprovação a um clique" data-en="One-click approvals">Aprovação a um clique</div>
-            <div class="s" data-pt="O agente pergunta antes de agir quando você quiser: segurar um crédito, ajustar uma projeção, cobrar a CND de um fornecedor." data-en="The agent asks before acting whenever you want: hold a credit, adjust a projection, request a supplier's clearance.">O agente pergunta antes de agir quando você quiser: segurar um crédito, ajustar uma projeção, cobrar a CND de um fornecedor.</div>
+            <div class="s" data-pt="O agente pergunta antes de agir quando você quiser: aprovar reajuste, confirmar cobrança, autorizar desconto." data-en="The agent asks before acting whenever you want: approve an adjustment, confirm a charge, authorize a discount.">O agente pergunta antes de agir quando você quiser: aprovar reajuste, confirmar cobrança, autorizar desconto.</div>
           </div>
         </div>
         <div class="agent-point">
           <div class="k-ico-light"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M6 3h8l4 4v14H6z" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/><path d="M9 13h6M9 16h6M9 10h3" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg></div>
           <div>
             <div class="t" data-pt="Relatórios automáticos" data-en="Automatic reports">Relatórios automáticos</div>
-            <div class="s" data-pt="Resumos periódicos de créditos, caixa e exposição na transição, para o seu time e para a diretoria." data-en="Periodic summaries of credits, cash and transition exposure, for your team and the board.">Resumos periódicos de créditos, caixa e exposição na transição, para o seu time e para a diretoria.</div>
+            <div class="s" data-pt="Resumos periódicos da carteira para você — e relatórios de serviços prestados para os seus clientes." data-en="Periodic portfolio summaries for you — and service reports for your clients.">Resumos periódicos da carteira para você — e relatórios de serviços prestados para os seus clientes.</div>
           </div>
         </div>
       </div>
@@ -991,10 +864,10 @@
       <!-- Note 1 -->
       <div class="agent-note">
         <div class="row1">
-          <span class="who" data-pt="Agente · Créditos" data-en="Agent · Credits">Agente · Créditos</span>
+          <span class="who" data-pt="Agente · Renovações" data-en="Agent · Renewals">Agente · Renovações</span>
           <span class="ch">Slack</span>
         </div>
-        <div class="body" data-pt="Distribuidora Vale Log está com débito de IBS em aberto. Segurar o crédito de R$ 41.900 até regularizar?" data-en="Distribuidora Vale Log has an open IBS debit. Hold the R$ 41,900 credit until it clears?">Distribuidora Vale Log está com débito de IBS em aberto. Segurar o crédito de R$ 41.900 até regularizar?</div>
+        <div class="body" data-pt="Contrato da Padaria São Jorge renova em 15 dias. Aplicar reajuste INPC +4,8%?" data-en="Padaria São Jorge's contract renews in 15 days. Apply INPC adjustment +4.8%?">Contrato da Padaria São Jorge renova em 15 dias. Aplicar reajuste INPC +4,8%?</div>
         <div class="actions">
           <span class="a1" data-pt="Aprovar" data-en="Approve">Aprovar</span>
           <span class="a2" data-pt="Revisar" data-en="Review">Revisar</span>
@@ -1003,18 +876,18 @@
       <!-- Note 2 -->
       <div class="agent-note">
         <div class="row1">
-          <span class="who" data-pt="Agente · Caixa" data-en="Agent · Cash">Agente · Caixa</span>
+          <span class="who" data-pt="Agente · Cobranças" data-en="Agent · Billing">Agente · Cobranças</span>
           <span class="ch" data-pt="E-mail" data-en="Email">E-mail</span>
         </div>
-        <div class="body" data-pt="Projeção de julho atualizada: o split payment antecipa R$ 137.000. Capital de giro sugerido calculado." data-en="July projection updated: split payment advances R$ 137,000. Suggested working capital calculated.">Projeção de julho atualizada: o split payment antecipa R$ 137.000. Capital de giro sugerido calculado.</div>
+        <div class="body" data-pt="42 boletos de junho gerados e enviados ao Asaas. 38 já pagos." data-en="42 June invoices generated and sent to Asaas. 38 already paid.">42 boletos de junho gerados e enviados ao Asaas. 38 já pagos.</div>
       </div>
       <!-- Note 3 -->
       <div class="agent-note">
         <div class="row1">
-          <span class="who" data-pt="Agente · Fornecedores" data-en="Agent · Suppliers">Agente · Fornecedores</span>
+          <span class="who" data-pt="Agente · Auditoria" data-en="Agent · Audit">Agente · Auditoria</span>
           <span class="ch">Teams</span>
         </div>
-        <div class="body" data-pt="Varredura concluída: 3 de 214 fornecedores com CND vencida neste mês." data-en="Sweep complete: 3 of 214 suppliers with expired clearance this month.">Varredura concluída: 3 de 214 fornecedores com CND vencida neste mês.</div>
+        <div class="body" data-pt="Varredura concluída: 2 contratos com excedente não cobrado em maio." data-en="Sweep complete: 2 contracts with unbilled overages in May.">Varredura concluída: 2 contratos com excedente não cobrado em maio.</div>
         <div class="actions">
           <span class="a1" data-pt="Ver detalhes" data-en="View details">Ver detalhes</span>
         </div>
@@ -1022,10 +895,10 @@
       <!-- Note 4 -->
       <div class="agent-note">
         <div class="row1">
-          <span class="who" data-pt="Agente · Reforma" data-en="Agent · Reform">Agente · Reforma</span>
+          <span class="who" data-pt="Agente · Relatórios" data-en="Agent · Reports">Agente · Relatórios</span>
           <span class="ch" data-pt="E-mail" data-en="Email">E-mail</span>
         </div>
-        <div class="body" data-pt="Faltam 90 dias para a CBS plena. 12 contratos atravessam 2027 sem repricing." data-en="90 days to full CBS. 12 contracts cross into 2027 without repricing.">Faltam 90 dias para a CBS plena. 12 contratos atravessam 2027 sem repricing.</div>
+        <div class="body" data-pt="Relatório mensal da carteira enviado para você e para 12 clientes." data-en="Monthly portfolio report sent to you and 12 clients.">Relatório mensal da carteira enviado para você e para 12 clientes.</div>
       </div>
     </div>
   </div>
@@ -1038,20 +911,20 @@
   <div class="shell">
     <div class="section-head reveal">
       <div class="eyebrow"><span class="dot-cyan"></span><span data-pt="Resultados" data-en="Outcomes">Resultados</span></div>
-      <h2 style="margin-top: 20px;" data-pt="O que muda na sua operação" data-en="What changes in your operation">O que muda na sua operação</h2>
+      <h2 style="margin-top: 20px;" data-pt="O que muda no fim do mês" data-en="What changes at month-end">O que muda no fim do mês</h2>
     </div>
     <div class="res-grid">
         <div class="res-item reveal delay-1">
-          <h3 data-pt="Caixa sem susto" data-en="Cash with no surprises">Caixa sem susto</h3>
-          <p data-pt="A saída do imposto com o split payment entra na sua projeção antes de acontecer. Nada de descobrir o buraco no caixa só no fim do mês." data-en="The tax outflow under split payment enters your projection before it happens. No discovering the cash gap only at month-end.">A saída do imposto com o split payment entra na sua projeção antes de acontecer. Nada de descobrir o buraco no caixa só no fim do mês.</p>
+          <h3 data-pt="Centenas de horas de volta" data-en="Hundreds of hours back">Centenas de horas de volta</h3>
+          <p data-pt="Conferir contrato, calcular excedente, emitir boleto, bater pagamento — tudo isso deixa de ser trabalho manual da sua equipe." data-en="Checking contracts, calculating overages, issuing invoices, matching payments — none of it is your team's manual work anymore.">Conferir contrato, calcular excedente, emitir boleto, bater pagamento — tudo isso deixa de ser trabalho manual da sua equipe.</p>
         </div>
         <div class="res-item reveal delay-2">
-          <h3 data-pt="Nenhum crédito na mesa" data-en="No credit left behind">Nenhum crédito na mesa</h3>
-          <p data-pt="Cada crédito de IBS e CBS é conciliado contra a adimplência do fornecedor. Os 15% a 20% que se perdem no braço voltam para o seu bolso." data-en="Every IBS and CBS credit is reconciled against supplier compliance. The 15% to 20% lost by hand comes back to you.">Cada crédito de IBS e CBS é conciliado contra a adimplência do fornecedor. Os 15% a 20% que se perdem no braço voltam para o seu bolso.</p>
+          <h3 data-pt="Zero dinheiro na mesa" data-en="Zero money on the table">Zero dinheiro na mesa</h3>
+          <p data-pt="Nenhum reajuste esquecido, nenhum serviço avulso sem fatura, nenhum excedente que passa batido. Se está no contrato, é cobrado." data-en="No forgotten adjustment, no unbilled one-off service, no overage slipping through. If it's in the contract, it gets billed.">Nenhum reajuste esquecido, nenhum serviço avulso sem fatura, nenhum excedente que passa batido. Se está no contrato, é cobrado.</p>
         </div>
         <div class="res-item reveal delay-3">
-          <h3 data-pt="Margem e contratos protegidos" data-en="Margin and contracts protected">Margem e contratos protegidos</h3>
-          <p data-pt="O repricing sai com número e fonte, contrato a contrato. Você atravessa a transição sem comprimir a própria margem." data-en="Repricing comes out with numbers and sources, contract by contract. You cross the transition without squeezing your own margin.">O repricing sai com número e fonte, contrato a contrato. Você atravessa a transição sem comprimir a própria margem.</p>
+          <h3 data-pt="Fatura certa, transparência total" data-en="Accurate invoices, full transparency">Fatura certa, transparência total</h3>
+          <p data-pt="A fatura sai detalhada linha a linha. Seu cliente vê exatamente o que paga — e o seu escritório ganha em profissionalismo." data-en="Invoices go out itemized line by line. Your clients see exactly what they pay for — and your firm looks sharper for it.">A fatura sai detalhada linha a linha. Seu cliente vê exatamente o que paga — e o seu escritório ganha em profissionalismo.</p>
         </div>
     </div>
   </div>
@@ -1063,46 +936,46 @@
     <div>
       <div class="eyebrow reveal"><span class="dot-cyan"></span><span data-pt="Calculadora" data-en="Calculator">Calculadora</span></div>
       <h2 class="reveal delay-1" style="margin-top: 20px;"
-          data-pt="Quanto a reforma&lt;br /&gt;custa no seu caixa?"
-          data-en="How much does the reform&lt;br /&gt;cost your cash?">Quanto a reforma<br />custa no seu caixa?</h2>
+          data-pt="Quanto seu escritório&lt;br /&gt;está deixando na mesa?"
+          data-en="How much is your firm&lt;br /&gt;leaving on the table?">Quanto seu escritório<br />está deixando na mesa?</h2>
       <p class="lead reveal delay-2" style="margin-top: 24px; max-width: 480px;"
-         data-pt="Ajuste os números da sua empresa. Não é chute: usamos as premissas de mercado do split payment e da perda média de créditos."
-         data-en="Adjust your company's numbers. It's not a guess: we use the market assumptions for split payment and average credit loss.">Ajuste os números da sua empresa. Não é chute: usamos as premissas de mercado do split payment e da perda média de créditos.</p>
+         data-pt="Ajuste os valores do seu escritório. Não é chute — usamos um piso conservador para o que tipicamente fica sem cobrar."
+         data-en="Adjust the numbers for your firm. It's not a guess — we use a conservative floor for what typically goes unbilled.">Ajuste os valores do seu escritório. Não é chute — usamos um piso conservador para o que tipicamente fica sem cobrar.</p>
       <p class="calc-note reveal delay-3"
-         data-pt="Estimativa baseada no imposto antecipado pelo split payment (cerca de um mês de carga sai do caixa antes) e em 15% dos créditos perdidos por gestão manual. O valor real costuma ser maior. Fontes: Deloitte, EY, estimativas de mercado."
-         data-en="Estimate based on the tax advanced by split payment (about one month of tax leaves your cash earlier) and 15% of credits lost to manual management. The real number is usually higher. Sources: Deloitte, EY, market estimates.">Estimativa baseada no imposto antecipado pelo split payment (cerca de um mês de carga sai do caixa antes) e em 15% dos créditos perdidos por gestão manual. O valor real costuma ser maior. Fontes: Deloitte, EY, estimativas de mercado.</p>
+         data-pt="Estimativa baseada em reajustes não aplicados, serviços extras não faturados e contratos vencidos. O valor real costuma ser maior. Economia de horas: 1,5 h/mês por cliente, a R$ 40/h de custo de analista contábil."
+         data-en="Estimate based on unapplied adjustments, unbilled extra services and expired contracts. The real number is usually higher. Hour savings assume 1.5 h/month per client at a R$ 40/h accounting analyst cost.">Estimativa baseada em reajustes não aplicados, serviços extras não faturados e contratos vencidos. O valor real costuma ser maior. Economia de horas: 1,5 h/mês por cliente, a R$ 40/h de custo de analista contábil.</p>
     </div>
     <div class="calc-card reveal delay-2">
       <div class="calc-field">
-        <label for="calc-faturamento">
-          <span data-pt="Faturamento mensal" data-en="Monthly revenue">Faturamento mensal</span>
-          <span class="v" id="calc-faturamento-v">R$&nbsp;500 mil</span>
+        <label for="calc-clientes">
+          <span data-pt="Clientes ativos na carteira" data-en="Active clients in your portfolio">Clientes ativos na carteira</span>
+          <span class="v" id="calc-clientes-v">180</span>
         </label>
-        <input type="range" id="calc-faturamento" min="200000" max="5000000" step="50000" value="500000" style="--fill: 6.25%" />
+        <input type="range" id="calc-clientes" min="100" max="600" step="10" value="180" style="--fill: 16%" />
       </div>
       <div class="calc-field">
-        <label for="calc-carga">
-          <span data-pt="Carga tributária estimada" data-en="Estimated tax rate">Carga tributária estimada</span>
-          <span class="v" id="calc-carga-v">26%</span>
+        <label for="calc-ticket">
+          <span data-pt="Ticket médio mensal" data-en="Average monthly fee">Ticket médio mensal</span>
+          <span class="v" id="calc-ticket-v">R$&nbsp;850</span>
         </label>
-        <input type="range" id="calc-carga" min="8" max="33" step="1" value="26" style="--fill: 72%" />
+        <input type="range" id="calc-ticket" min="300" max="3000" step="50" value="850" style="--fill: 20.4%" />
       </div>
       <div class="calc-field calc-fixed">
         <label>
-          <span data-pt="Float tributário perdido" data-en="Tax float lost">Float tributário perdido</span>
-          <span class="v" data-pt="~40 dias" data-en="~40 days">~40 dias</span>
+          <span data-pt="Receita potencialmente perdida" data-en="Revenue potentially lost">Receita potencialmente perdida</span>
+          <span class="v">2%</span>
         </label>
         <p class="calc-fixed-note"
-           data-pt="Com o split payment, o imposto sai do caixa na liquidação da venda. A empresa perde em média 40 dias de float."
-           data-en="Under split payment, the tax leaves your cash at sale settlement. Companies lose about 40 days of float on average.">Com o split payment, o imposto sai do caixa na liquidação da venda. A empresa perde em média 40 dias de float.</p>
+           data-pt="Fixamos em 2% — um piso conservador. O vazamento real costuma ser maior."
+           data-en="Fixed at 2% — a conservative floor. The real leak is usually bigger.">Fixamos em 2% — um piso conservador. O vazamento real costuma ser maior.</p>
       </div>
       <div class="calc-result">
-        <div class="l1" data-pt="Caixa que deixa de girar" data-en="Cash that stops circulating">Caixa que deixa de girar</div>
-        <div class="l2" id="calc-caixa">R$&nbsp;130.000</div>
-        <div class="l3"><span data-pt="capital de giro imobilizado, a cada ciclo" data-en="working capital tied up, every cycle">capital de giro imobilizado, a cada ciclo</span></div>
+        <div class="l1" data-pt="Estimativa mensal" data-en="Monthly estimate">Estimativa mensal</div>
+        <div class="l2" id="calc-mes">R$&nbsp;3.060</div>
+        <div class="l3">≈ <span id="calc-ano">R$&nbsp;36.720</span> <span data-pt="por ano" data-en="per year">por ano</span></div>
         <div class="l4">
-          <span class="plus">+ <span id="calc-credito">R$&nbsp;117.000</span></span>
-          <span data-pt=" em créditos em risco por ano" data-en=" in credits at risk per year"> em créditos em risco por ano</span>
+          <span class="plus">+ <span id="calc-econ">R$&nbsp;10.800</span></span>
+          <span data-pt=" em economia de horas da sua equipe" data-en=" in team hours saved"> em economia de horas da sua equipe</span>
         </div>
       </div>
     </div>
@@ -1115,63 +988,63 @@
     <div class="section-head reveal">
       <div class="eyebrow"><span class="dot-cyan"></span><span data-pt="Planos" data-en="Pricing">Planos</span></div>
       <h2 style="margin-top: 20px;"
-          data-pt="Simples: uma assinatura&lt;br /&gt;&lt;span style=&quot;color: var(--cinza-texto)&quot;&gt;por faixa de faturamento.&lt;/span&gt;"
-          data-en="Simple: one subscription&lt;br /&gt;&lt;span style=&quot;color: var(--cinza-texto)&quot;&gt;by revenue band.&lt;/span&gt;">Simples: uma assinatura<br /><span style="color: var(--cinza-texto)">por faixa de faturamento.</span></h2>
+          data-pt="Simples: um fixo&lt;br /&gt;&lt;span style=&quot;color: var(--cinza-texto)&quot;&gt;+ um valor por cliente.&lt;/span&gt;"
+          data-en="Simple: a base fee&lt;br /&gt;&lt;span style=&quot;color: var(--cinza-texto)&quot;&gt;+ a per-client rate.&lt;/span&gt;">Simples: um fixo<br /><span style="color: var(--cinza-texto)">+ um valor por cliente.</span></h2>
     </div>
     <div class="plans">
-      <!-- Essencial -->
+      <!-- Starter -->
       <div class="plan reveal delay-1">
-        <div class="plan-name">Essencial</div>
-        <div class="plan-price">R$ 990<span class="per-month" data-pt="&nbsp;/mês" data-en="&nbsp;/mo">&nbsp;/mês</span></div>
-        <div class="plan-variable"><b data-pt="Usuários ilimitados" data-en="Unlimited users">Usuários ilimitados</b> <span data-pt="· sem cobrar por assento" data-en="· no per-seat fee">· sem cobrar por assento</span></div>
+        <div class="plan-name">Starter</div>
+        <div class="plan-price">R$ 99<span class="per-month" data-pt="&nbsp;/mês" data-en="&nbsp;/mo">&nbsp;/mês</span></div>
+        <div class="plan-variable">+ <b>R$ 10</b> <span data-pt="por cliente gerenciado" data-en="per managed client">por cliente gerenciado</span></div>
         <div class="plan-limit">
           <span class="tick"><svg width="10" height="10" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M5 12l5 5L20 7" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
-          <span data-pt="Faturamento até R$ 50 mi/ano" data-en="Revenue up to R$ 50M/yr">Faturamento até R$ 50 mi/ano</span>
+          <span data-pt="Até 10 clientes" data-en="Up to 10 clients">Até 10 clientes</span>
         </div>
-        <a href="https://wa.me/5551926343014?text=Ol%C3%A1%2C%20tenho%20interesse%20no%20plano%20Essencial%20do%20Kontiva%20para%20empresas"
-           data-pt-href="https://wa.me/5551926343014?text=Ol%C3%A1%2C%20tenho%20interesse%20no%20plano%20Essencial%20do%20Kontiva%20para%20empresas"
-           data-en-href="https://wa.me/5551926343014?text=Hi%2C%20I'm%20interested%20in%20Kontiva's%20Essencial%20plan%20for%20companies"
+        <a href="https://wa.me/5551926343014?text=Ol%C3%A1%2C%20tenho%20interesse%20no%20plano%20Starter%20da%20Kontiva.ai"
+           data-pt-href="https://wa.me/5551926343014?text=Ol%C3%A1%2C%20tenho%20interesse%20no%20plano%20Starter%20da%20Kontiva.ai"
+           data-en-href="https://wa.me/5551926343014?text=Hi%2C%20I'm%20interested%20in%20Kontiva.ai's%20Starter%20plan"
            target="_blank" rel="noreferrer" class="btn btn-ghost">
-          <span data-pt="Começar com Essencial" data-en="Start with Essencial">Começar com Essencial</span>
+          <span data-pt="Começar com Starter" data-en="Start with Starter">Começar com Starter</span>
         </a>
       </div>
-      <!-- Profissional (featured) -->
+      <!-- Pro (featured) -->
       <div class="plan featured reveal delay-2">
         <div class="plan-tag" data-pt="Mais popular" data-en="Most popular">Mais popular</div>
-        <div class="plan-name">Profissional</div>
-        <div class="plan-price">R$ 2.490<span class="per-month" data-pt="&nbsp;/mês" data-en="&nbsp;/mo">&nbsp;/mês</span></div>
-        <div class="plan-variable"><b data-pt="Usuários ilimitados" data-en="Unlimited users">Usuários ilimitados</b> <span data-pt="· sem cobrar por assento" data-en="· no per-seat fee">· sem cobrar por assento</span></div>
+        <div class="plan-name">Pro</div>
+        <div class="plan-price">R$ 499<span class="per-month" data-pt="&nbsp;/mês" data-en="&nbsp;/mo">&nbsp;/mês</span></div>
+        <div class="plan-variable">+ <b>R$ 8</b> <span data-pt="por cliente gerenciado" data-en="per managed client">por cliente gerenciado</span></div>
         <div class="plan-limit">
           <span class="tick"><svg width="10" height="10" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M5 12l5 5L20 7" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
-          <span data-pt="Faturamento de R$ 50 a 150 mi/ano" data-en="Revenue R$ 50 to 150M/yr">Faturamento de R$ 50 a 150 mi/ano</span>
+          <span data-pt="Até 100 clientes" data-en="Up to 100 clients">Até 100 clientes</span>
         </div>
-        <a href="https://wa.me/5551926343014?text=Ol%C3%A1%2C%20tenho%20interesse%20no%20plano%20Profissional%20do%20Kontiva%20para%20empresas"
-           data-pt-href="https://wa.me/5551926343014?text=Ol%C3%A1%2C%20tenho%20interesse%20no%20plano%20Profissional%20do%20Kontiva%20para%20empresas"
-           data-en-href="https://wa.me/5551926343014?text=Hi%2C%20I'm%20interested%20in%20Kontiva's%20Profissional%20plan%20for%20companies"
+        <a href="https://wa.me/5551926343014?text=Ol%C3%A1%2C%20tenho%20interesse%20no%20plano%20Pro%20da%20Kontiva.ai"
+           data-pt-href="https://wa.me/5551926343014?text=Ol%C3%A1%2C%20tenho%20interesse%20no%20plano%20Pro%20da%20Kontiva.ai"
+           data-en-href="https://wa.me/5551926343014?text=Hi%2C%20I'm%20interested%20in%20Kontiva.ai's%20Pro%20plan"
            target="_blank" rel="noreferrer" class="btn btn-primary">
-          <span data-pt="Começar com Profissional" data-en="Start with Profissional">Começar com Profissional</span>
+          <span data-pt="Começar com Pro" data-en="Start with Pro">Começar com Pro</span>
         </a>
       </div>
-      <!-- Enterprise -->
+      <!-- Max -->
       <div class="plan reveal delay-3">
-        <div class="plan-name">Enterprise</div>
-        <div class="plan-price">R$ 4.990<span class="per-month" data-pt="&nbsp;/mês" data-en="&nbsp;/mo">&nbsp;/mês</span></div>
-        <div class="plan-variable"><b data-pt="Onboarding dedicado" data-en="Dedicated onboarding">Onboarding dedicado</b> <span data-pt="· usuários ilimitados" data-en="· unlimited users">· usuários ilimitados</span></div>
+        <div class="plan-name">Max</div>
+        <div class="plan-price">R$ 999<span class="per-month" data-pt="&nbsp;/mês" data-en="&nbsp;/mo">&nbsp;/mês</span></div>
+        <div class="plan-variable">+ <b>R$ 6</b> <span data-pt="por cliente gerenciado" data-en="per managed client">por cliente gerenciado</span></div>
         <div class="plan-limit">
           <span class="tick"><svg width="10" height="10" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M5 12l5 5L20 7" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
-          <span data-pt="Faturamento acima de R$ 150 mi/ano" data-en="Revenue above R$ 150M/yr">Faturamento acima de R$ 150 mi/ano</span>
+          <span data-pt="Clientes ilimitados" data-en="Unlimited clients">Clientes ilimitados</span>
         </div>
-        <a href="https://wa.me/5551926343014?text=Ol%C3%A1%2C%20tenho%20interesse%20no%20plano%20Enterprise%20do%20Kontiva%20para%20empresas"
-           data-pt-href="https://wa.me/5551926343014?text=Ol%C3%A1%2C%20tenho%20interesse%20no%20plano%20Enterprise%20do%20Kontiva%20para%20empresas"
-           data-en-href="https://wa.me/5551926343014?text=Hi%2C%20I'm%20interested%20in%20Kontiva's%20Enterprise%20plan%20for%20companies"
+        <a href="https://wa.me/5551926343014?text=Ol%C3%A1%2C%20tenho%20interesse%20no%20plano%20Max%20da%20Kontiva.ai"
+           data-pt-href="https://wa.me/5551926343014?text=Ol%C3%A1%2C%20tenho%20interesse%20no%20plano%20Max%20da%20Kontiva.ai"
+           data-en-href="https://wa.me/5551926343014?text=Hi%2C%20I'm%20interested%20in%20Kontiva.ai's%20Max%20plan"
            target="_blank" rel="noreferrer" class="btn btn-ghost">
-          <span data-pt="Falar com o time" data-en="Talk to the team">Falar com o time</span>
+          <span data-pt="Começar com Max" data-en="Start with Max">Começar com Max</span>
         </a>
       </div>
     </div>
     <p class="plans-note reveal delay-3"
-       data-pt="Todos os planos incluem o Agente Tributário: projeção de caixa com split payment, monitor de créditos e fornecedores, simulação de repricing, chat e servidor MCP. Preço travado por 12 meses. Novos agentes do hub entram na mesma assinatura."
-       data-en="Every plan includes the Tax Agent: split-payment cash projection, credit and supplier monitor, repricing simulation, chat and MCP server. Price locked for 12 months. New hub agents join the same subscription.">Todos os planos incluem o Agente Tributário: projeção de caixa com split payment, monitor de créditos e fornecedores, simulação de repricing, chat e servidor MCP. Preço travado por 12 meses. Novos agentes do hub entram na mesma assinatura.</p>
+       data-pt="Todos os planos incluem tudo: leitura de contratos, integração com ERP, cálculo de excedentes e reajustes, emissão e conciliação de cobranças, chat e servidor MCP. A diferença é só o tamanho da carteira."
+       data-en="Every plan includes everything: contract reading, ERP integration, overage and adjustment calculation, invoicing and reconciliation, chat and MCP server. The only difference is portfolio size.">Todos os planos incluem tudo: leitura de contratos, integração com ERP, cálculo de excedentes e reajustes, emissão e conciliação de cobranças, chat e servidor MCP. A diferença é só o tamanho da carteira.</p>
   </div>
 </section>
 
@@ -1186,66 +1059,66 @@
 
       <details class="faq-item">
         <summary>
-          <span data-pt="Preciso trocar de ERP?" data-en="Do I need to switch ERP?">Preciso trocar de ERP?</span>
+          <span data-pt="Em que formato envio meus contratos?" data-en="What format should my contracts be in?">Em que formato envio meus contratos?</span>
           <span class="faq-chev"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M6 9l6 6 6-6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
         </summary>
-        <p class="faq-a" data-pt="Não. O Kontiva se conecta ao seu ERP e ao seu financeiro (Totvs, SAP, Oracle, Senior e outros) sem trocar nada. Sem integração, você envia os relatórios em qualquer formato e a gente processa." data-en="No. Kontiva connects to your ERP and finance system (Totvs, SAP, Oracle, Senior and others) with no switch at all. Without integration, you send the reports in any format and we process them.">Não. O Kontiva se conecta ao seu ERP e ao seu financeiro (Totvs, SAP, Oracle, Senior e outros) sem trocar nada. Sem integração, você envia os relatórios em qualquer formato e a gente processa.</p>
+        <p class="faq-a" data-pt="Qualquer um: PDF, DOC, imagem — até foto de contrato assinado em papel. A IA extrai partes, objeto, valores fixos e variáveis, excedentes, datas de renovação e índices de reajuste. Tudo vira dado estruturado, consultável a qualquer momento." data-en="Any format: PDF, DOC, image — even a photo of a paper contract. The AI extracts parties, scope, fixed and variable fees, overage rules, renewal dates and adjustment indexes. Everything becomes structured, queryable data.">Qualquer um: PDF, DOC, imagem — até foto de contrato assinado em papel. A IA extrai partes, objeto, valores fixos e variáveis, excedentes, datas de renovação e índices de reajuste. Tudo vira dado estruturado, consultável a qualquer momento.</p>
       </details>
 
       <details class="faq-item">
         <summary>
-          <span data-pt="Como o Kontiva protege meus créditos de IBS/CBS?" data-en="How does Kontiva protect my IBS/CBS credits?">Como o Kontiva protege meus créditos de IBS/CBS?</span>
+          <span data-pt="Preciso integrar com meu ERP?" data-en="Do I need to integrate with my ERP?">Preciso integrar com meu ERP?</span>
           <span class="faq-chev"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M6 9l6 6 6-6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
         </summary>
-        <p class="faq-a" data-pt="Ele monitora a adimplência de cada fornecedor e cruza com os seus créditos. No IBS/CBS, o crédito só nasce quando o débito do fornecedor é extinto. Quando isso não acontece, o crédito entra em risco de glosa: o Kontiva avisa antes, dá um score de risco e segura a conciliação até regularizar." data-en="It monitors each supplier's compliance and cross-checks it against your credits. Under IBS/CBS, the credit only exists once the supplier's debit is settled. When that doesn't happen, the credit is at risk of being disallowed: Kontiva warns you first, assigns a risk score and holds the reconciliation until it clears.">Ele monitora a adimplência de cada fornecedor e cruza com os seus créditos. No IBS/CBS, o crédito só nasce quando o débito do fornecedor é extinto. Quando isso não acontece, o crédito entra em risco de glosa: o Kontiva avisa antes, dá um score de risco e segura a conciliação até regularizar.</p>
+        <p class="faq-a" data-pt="Não. A integração (Domínio, Thomson Reuters, Totvs, SAP e outros) automatiza a leitura do volume de serviços prestados, mas você também pode simplesmente enviar os relatórios em qualquer formato, que a Kontiva processa." data-en="No. The integration (Domínio, Thomson Reuters, Totvs, SAP and others) automates reading the volume of services delivered, but you can also simply send the reports in any format and Kontiva will process them.">Não. A integração (Domínio, Thomson Reuters, Totvs, SAP e outros) automatiza a leitura do volume de serviços prestados, mas você também pode simplesmente enviar os relatórios em qualquer formato, que a Kontiva processa.</p>
       </details>
 
       <details class="faq-item">
         <summary>
-          <span data-pt="O que o Kontiva faz pelo meu caixa com o split payment?" data-en="What does Kontiva do for my cash under split payment?">O que o Kontiva faz pelo meu caixa com o split payment?</span>
+          <span data-pt="Posso revisar as cobranças antes de enviar?" data-en="Can I review invoices before they go out?">Posso revisar as cobranças antes de enviar?</span>
           <span class="faq-chev"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M6 9l6 6 6-6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
         </summary>
-        <p class="faq-a" data-pt="Projeta a saída do imposto na liquidação de cada venda, cerca de 40 dias antes do seu ciclo atual, e calcula o capital de giro que você vai precisar. Você planeja o caixa com antecedência, sem descobrir o buraco no fim do mês." data-en="It projects the tax outflow at each sale's settlement, about 40 days earlier than your current cycle, and calculates the working capital you'll need. You plan cash ahead of time, without discovering the gap at month-end.">Projeta a saída do imposto na liquidação de cada venda, cerca de 40 dias antes do seu ciclo atual, e calcula o capital de giro que você vai precisar. Você planeja o caixa com antecedência, sem descobrir o buraco no fim do mês.</p>
+        <p class="faq-a" data-pt="Sim. Você define o que sai automático e o que passa por aprovação. Negociou um desconto ou um valor diferente do calculado? Ajusta na hora — pela interface ou pelo chat." data-en="Yes. You decide what goes out automatically and what requires approval. Negotiated a discount or a different amount? Adjust it on the spot — through the interface or the chat.">Sim. Você define o que sai automático e o que passa por aprovação. Negociou um desconto ou um valor diferente do calculado? Ajusta na hora — pela interface ou pelo chat.</p>
       </details>
 
       <details class="faq-item">
         <summary>
-          <span data-pt="E os dois sistemas na transição?" data-en="What about the two systems during the transition?">E os dois sistemas na transição?</span>
+          <span data-pt="Como os boletos são emitidos e conciliados?" data-en="How are invoices issued and reconciled?">Como os boletos são emitidos e conciliados?</span>
           <span class="faq-chev"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M6 9l6 6 6-6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
         </summary>
-        <p class="faq-a" data-pt="Entre 2027 e 2032 convivem o modelo antigo e o IBS/CBS. O Kontiva opera os dois em paralelo, concilia crédito e débito de cada regime e mantém tudo numa visão só, sem duplicar trabalho do seu time." data-en="Between 2027 and 2032 the old model and IBS/CBS coexist. Kontiva runs both in parallel, reconciles credit and debit for each regime and keeps everything in a single view, without doubling your team's work.">Entre 2027 e 2032 convivem o modelo antigo e o IBS/CBS. O Kontiva opera os dois em paralelo, concilia crédito e débito de cada regime e mantém tudo numa visão só, sem duplicar trabalho do seu time.</p>
+        <p class="faq-a" data-pt="A Kontiva envia as cobranças para a sua plataforma (Nibo, Asaas, Stripe e outras) ou gera arquivo CNAB400 para qualquer banco. Quando o cliente paga, o pagamento é identificado e registrado automaticamente." data-en="Kontiva sends charges to your billing platform (Nibo, Asaas, Stripe and others) or generates a CNAB400 file for any bank. When your client pays, the payment is identified and recorded automatically.">A Kontiva envia as cobranças para a sua plataforma (Nibo, Asaas, Stripe e outras) ou gera arquivo CNAB400 para qualquer banco. Quando o cliente paga, o pagamento é identificado e registrado automaticamente.</p>
       </details>
 
       <details class="faq-item">
         <summary>
-          <span data-pt="Quem decide? A IA cobra ou paga sozinha?" data-en="Who decides? Does the AI charge or pay on its own?">Quem decide? A IA cobra ou paga sozinha?</span>
+          <span data-pt="E os reajustes de contrato?" data-en="What about contract adjustments?">E os reajustes de contrato?</span>
           <span class="faq-chev"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M6 9l6 6 6-6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
         </summary>
-        <p class="faq-a" data-pt="Nunca. O agente propõe e o seu time fiscal e financeiro aprova cada passo. Você define o que roda automático e o que passa por aprovação, do crédito segurado ao repricing sugerido." data-en="Never. The agent proposes and your tax and finance team approves every step. You define what runs automatically and what requires approval, from a held credit to a suggested repricing.">Nunca. O agente propõe e o seu time fiscal e financeiro aprova cada passo. Você define o que roda automático e o que passa por aprovação, do crédito segurado ao repricing sugerido.</p>
+        <p class="faq-a" data-pt="Se o contrato renova com reajuste por índice (INPC, IGP-M etc.), o novo valor é calculado e incluído na cobrança automaticamente — com o reajuste detalhado na fatura, para total transparência com o seu cliente." data-en="If the contract renews with an index adjustment (INPC, IGP-M, etc.), the new amount is calculated and included in the billing automatically — with the adjustment itemized on the invoice, for full transparency with your client.">Se o contrato renova com reajuste por índice (INPC, IGP-M etc.), o novo valor é calculado e incluído na cobrança automaticamente — com o reajuste detalhado na fatura, para total transparência com o seu cliente.</p>
       </details>
 
       <details class="faq-item">
         <summary>
-          <span data-pt="Consigo operar pelo Claude ou ChatGPT?" data-en="Can I run it from Claude or ChatGPT?">Consigo operar pelo Claude ou ChatGPT?</span>
+          <span data-pt="Posso operar a Kontiva pelo Claude ou ChatGPT?" data-en="Can I run Kontiva from Claude or ChatGPT?">Posso operar a Kontiva pelo Claude ou ChatGPT?</span>
           <span class="faq-chev"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M6 9l6 6 6-6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
         </summary>
-        <p class="faq-a" data-pt="Sim. Conecte a sua IA preferida ao servidor MCP do Kontiva e pergunte, instrua e simule cenários sem sair do chat que você já usa." data-en="Yes. Connect your favorite AI to Kontiva's MCP server and ask, instruct and simulate scenarios without leaving the chat you already use.">Sim. Conecte a sua IA preferida ao servidor MCP do Kontiva e pergunte, instrua e simule cenários sem sair do chat que você já usa.</p>
+        <p class="faq-a" data-pt="Sim. Conecte sua IA preferida ao servidor MCP da Kontiva e pergunte, instrua e ajuste cobranças sem sair do chat que você já usa." data-en="Yes. Connect your favorite AI to Kontiva's MCP server and ask questions, give instructions and adjust invoices without leaving the chat you already use.">Sim. Conecte sua IA preferida ao servidor MCP da Kontiva e pergunte, instrua e ajuste cobranças sem sair do chat que você já usa.</p>
       </details>
 
       <details class="faq-item">
         <summary>
-          <span data-pt="Meus dados ficam seguros?" data-en="Is my data secure?">Meus dados ficam seguros?</span>
+          <span data-pt="Meus contratos e dados ficam seguros?" data-en="Are my contracts and data secure?">Meus contratos e dados ficam seguros?</span>
           <span class="faq-chev"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M6 9l6 6 6-6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
         </summary>
-        <p class="faq-a" data-pt="Sim. Os seus dados ficam isolados por empresa, criptografados e não são usados para treinar IA de terceiros. Você pode exportar ou excluir tudo quando quiser." data-en="Yes. Your data is isolated per company, encrypted, and never used to train third-party AI. You can export or delete everything whenever you want.">Sim. Os seus dados ficam isolados por empresa, criptografados e não são usados para treinar IA de terceiros. Você pode exportar ou excluir tudo quando quiser.</p>
+        <p class="faq-a" data-pt="Sim. Seus contratos e dados ficam isolados por escritório, criptografados e não são usados para treinar IA de terceiros. Você pode exportar ou excluir tudo quando quiser." data-en="Yes. Your contracts and data are isolated per firm, encrypted, and never used to train third-party AI. You can export or delete everything whenever you want.">Sim. Seus contratos e dados ficam isolados por escritório, criptografados e não são usados para treinar IA de terceiros. Você pode exportar ou excluir tudo quando quiser.</p>
       </details>
 
       <details class="faq-item">
         <summary>
-          <span data-pt="Como funciona o diagnóstico gratuito?" data-en="How does the free diagnostic work?">Como funciona o diagnóstico gratuito?</span>
+          <span data-pt="Como funciona a avaliação gratuita?" data-en="How does the free assessment work?">Como funciona a avaliação gratuita?</span>
           <span class="faq-chev"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M6 9l6 6 6-6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
         </summary>
-        <p class="faq-a" data-pt="Você envia uma amostra de dados reais (notas, base de fornecedores e alguns contratos) e o Kontiva devolve um raio-X: caixa projetado com o split, créditos em risco e contratos que precisam de repricing. Sem custo e sem compromisso." data-en="You send a sample of real data (invoices, supplier base and a few contracts) and Kontiva returns an X-ray: cash projected under the split, credits at risk and contracts that need repricing. Free, no strings attached.">Você envia uma amostra de dados reais (notas, base de fornecedores e alguns contratos) e o Kontiva devolve um raio-X: caixa projetado com o split, créditos em risco e contratos que precisam de repricing. Sem custo e sem compromisso.</p>
+        <p class="faq-a" data-pt="Você envia 5 contratos e os relatórios de execução do período, conta quanto cobrou de cada cliente — e devolvemos o cálculo do que deixou de ser cobrado. Sem custo e sem compromisso." data-en="Send us 5 contracts and the period's service reports, tell us what you billed each client — and we'll send back the math on what went unbilled. Free, no strings attached.">Você envia 5 contratos e os relatórios de execução do período, conta quanto cobrou de cada cliente — e devolvemos o cálculo do que deixou de ser cobrado. Sem custo e sem compromisso.</p>
       </details>
 
     </div>
@@ -1256,23 +1129,23 @@
 <section class="final-cta" id="avaliacao">
   <div class="shell cta-grid">
     <div>
-      <div class="eyebrow reveal"><span class="dot-cyan"></span><span data-pt="Diagnóstico gratuito" data-en="Free diagnostic">Diagnóstico gratuito</span></div>
+      <div class="eyebrow reveal"><span class="dot-cyan"></span><span data-pt="Avaliação gratuita" data-en="Free assessment">Avaliação gratuita</span></div>
       <h2 class="reveal delay-1" style="margin-top: 20px;"
-          data-pt="Quanto a reforma&lt;br /&gt;já custa no seu caixa?&lt;br /&gt;&lt;span class=&quot;hl&quot;&gt;A gente calcula.&lt;/span&gt;"
-          data-en="How much is the reform&lt;br /&gt;already costing your cash?&lt;br /&gt;&lt;span class=&quot;hl&quot;&gt;We'll do the math.&lt;/span&gt;">Quanto a reforma<br />já custa no seu caixa?<br /><span class="hl">A gente calcula.</span></h2>
+          data-pt="Quanto você&lt;br /&gt;deixou de cobrar?&lt;br /&gt;&lt;span class=&quot;hl&quot;&gt;A gente calcula.&lt;/span&gt;"
+          data-en="How much did you&lt;br /&gt;leave unbilled?&lt;br /&gt;&lt;span class=&quot;hl&quot;&gt;We'll do the math.&lt;/span&gt;">Quanto você<br />deixou de cobrar?<br /><span class="hl">A gente calcula.</span></h2>
       <p class="sub reveal delay-2"
-         data-pt="Fazemos um diagnóstico sem custo da sua operação e devolvemos um raio-X do caixa, dos créditos e dos contratos na reforma."
-         data-en="We run a free diagnostic of your operation and send back an X-ray of your cash, your credits and your contracts under the reform.">Fazemos um diagnóstico sem custo da sua operação e devolvemos um raio-X do caixa, dos créditos e dos contratos na reforma.</p>
+         data-pt="Fazemos uma avaliação sem custo da sua carteira — e devolvemos um raio-X do que ficou na mesa."
+         data-en="We'll run a free assessment of your portfolio — and send back an X-ray of what was left on the table.">Fazemos uma avaliação sem custo da sua carteira — e devolvemos um raio-X do que ficou na mesa.</p>
       <ol class="cta-steps reveal delay-2">
-        <li><span class="n">01</span> <span data-pt="Envie uma amostra de notas de entrada e saída" data-en="Send a sample of inbound and outbound invoices">Envie uma amostra de notas de entrada e saída</span></li>
-        <li><span class="n">02</span> <span data-pt="Junte a sua base de fornecedores" data-en="Gather your supplier base">Junte a sua base de fornecedores</span></li>
-        <li><span class="n">03</span> <span data-pt="Inclua alguns contratos que atravessam 2027" data-en="Include a few contracts that cross into 2027">Inclua alguns contratos que atravessam 2027</span></li>
-        <li><span class="n">04</span> <span data-pt="Receba o raio-X de caixa, créditos e repricing" data-en="Get the X-ray of cash, credits and repricing">Receba o raio-X de caixa, créditos e repricing</span></li>
+        <li><span class="n">01</span> <span data-pt="Envie 5 contratos de clientes" data-en="Send 5 client contracts">Envie 5 contratos de clientes</span></li>
+        <li><span class="n">02</span> <span data-pt="Junte os relatórios de execução do período" data-en="Gather the period's service reports">Junte os relatórios de execução do período</span></li>
+        <li><span class="n">03</span> <span data-pt="Diga quanto cobrou de cada um" data-en="Tell us what you billed each one">Diga quanto cobrou de cada um</span></li>
+        <li><span class="n">04</span> <span data-pt="Receba o cálculo do que deixou de cobrar" data-en="Get the math on what went unbilled">Receba o cálculo do que deixou de cobrar</span></li>
       </ol>
       <div class="cta-btn-row reveal delay-3">
-        <a href="https://wa.me/5551926343014?text=Ol%C3%A1%2C%20quero%20o%20diagn%C3%B3stico%20gratuito%20da%20minha%20empresa"
-           data-pt-href="https://wa.me/5551926343014?text=Ol%C3%A1%2C%20quero%20o%20diagn%C3%B3stico%20gratuito%20da%20minha%20empresa"
-           data-en-href="https://wa.me/5551926343014?text=Hi%2C%20I%20want%20the%20free%20diagnostic%20for%20my%20company"
+        <a href="https://wa.me/5551926343014?text=Ol%C3%A1%2C%20quero%20a%20avalia%C3%A7%C3%A3o%20gratuita%20da%20minha%20carteira"
+           data-pt-href="https://wa.me/5551926343014?text=Ol%C3%A1%2C%20quero%20a%20avalia%C3%A7%C3%A3o%20gratuita%20da%20minha%20carteira"
+           data-en-href="https://wa.me/5551926343014?text=Hi%2C%20I%20want%20the%20free%20assessment%20of%20my%20portfolio"
            target="_blank" rel="noreferrer" class="btn btn-primary">
           <svg class="whats" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M19.05 4.91A10 10 0 0 0 4.04 18.26L3 22l3.83-1.01A10 10 0 1 0 19.05 4.91zM12 20.15a8.14 8.14 0 0 1-4.15-1.13l-.3-.18-2.27.6.6-2.22-.19-.32A8.15 8.15 0 1 1 12 20.15zm4.46-6.1c-.24-.12-1.44-.71-1.66-.79-.22-.08-.38-.12-.54.12-.16.24-.62.79-.76.95-.14.16-.28.18-.52.06-.24-.12-1.02-.38-1.94-1.2-.72-.64-1.2-1.42-1.34-1.66-.14-.24-.02-.37.1-.49.1-.1.24-.28.36-.42.12-.14.16-.24.24-.4.08-.16.04-.3-.02-.42-.06-.12-.54-1.3-.74-1.78-.2-.48-.4-.42-.54-.42h-.46c-.16 0-.4.06-.62.3-.22.24-.84.82-.84 2 0 1.18.86 2.32.98 2.48.12.16 1.7 2.6 4.12 3.64.57.25 1.02.4 1.37.5.57.18 1.1.16 1.51.1.46-.07 1.44-.59 1.64-1.16.2-.57.2-1.06.14-1.16-.06-.1-.22-.16-.46-.28z" fill="currentColor"/></svg>
           <span data-pt="Chamar no WhatsApp" data-en="Chat on WhatsApp">Chamar no WhatsApp</span>
@@ -1281,14 +1154,14 @@
     </div>
     <div class="reveal delay-2">
       <div class="form-card" id="form-card">
-        <h3 data-pt="Peça o seu diagnóstico gratuito" data-en="Request your free diagnostic">Peça o seu diagnóstico gratuito</h3>
+        <h3 data-pt="Peça sua avaliação gratuita" data-en="Request your free assessment">Peça sua avaliação gratuita</h3>
         <p class="form-sub"
-           data-pt="Sem custo, sem compromisso. A gente te mostra quanto a reforma já custa no seu caixa."
-           data-en="Free, no strings attached. We'll show you how much the reform already costs your cash.">Sem custo, sem compromisso. A gente te mostra quanto a reforma já custa no seu caixa.</p>
+           data-pt="Sem custo, sem compromisso. A gente te diz quanto você deixou de cobrar."
+           data-en="Free, no strings attached. We'll tell you how much went unbilled.">Sem custo, sem compromisso. A gente te diz quanto você deixou de cobrar.</p>
         <form id="lead-form" novalidate="">
           <p class="form-error" id="form-error"
-             data-pt-msg="Não conseguimos enviar agora. Tente de novo em instantes, ou chame no WhatsApp."
-             data-en-msg="We couldn't send it right now. Try again in a moment, or reach us on WhatsApp."></p>
+             data-pt-msg="Não conseguimos enviar agora. Tente de novo em instantes — ou chame no WhatsApp."
+             data-en-msg="We couldn't send it right now. Try again in a moment — or reach us on WhatsApp."></p>
           <div class="f-row">
             <div class="f-field">
               <label for="f-nome" data-pt="Nome" data-en="Name">Nome</label>
@@ -1302,24 +1175,24 @@
           <div class="f-row">
             <div class="f-field">
               <label for="f-email" data-pt="E-mail" data-en="Email">E-mail</label>
-              <input id="f-email" name="email" type="email" required="" placeholder="voce@suaempresa.com.br" data-pt-placeholder="voce@suaempresa.com.br" data-en-placeholder="you@yourcompany.com" />
+              <input id="f-email" name="email" type="email" required="" placeholder="voce@escritorio.com.br" data-pt-placeholder="voce@escritorio.com.br" data-en-placeholder="you@yourfirm.com" />
             </div>
             <div class="f-field">
-              <label for="f-faturamento" data-pt="Faturamento anual (R$ mi)" data-en="Annual revenue (R$ M)">Faturamento anual (R$ mi)</label>
-              <input id="f-faturamento" name="revenue" type="number" min="1" placeholder="60" data-pt-placeholder="60" data-en-placeholder="60" />
+              <label for="f-clientes" data-pt="Clientes na carteira" data-en="Clients in portfolio">Clientes na carteira</label>
+              <input id="f-clientes" name="clients" type="number" min="1" placeholder="120" data-pt-placeholder="120" data-en-placeholder="120" />
             </div>
           </div>
           <div class="f-field">
             <label for="f-msg" data-pt="Mensagem (opcional)" data-en="Message (optional)">Mensagem (opcional)</label>
-            <textarea id="f-msg" name="message" placeholder="Conte um pouco sobre a sua operação" data-pt-placeholder="Conte um pouco sobre a sua operação" data-en-placeholder="Tell us a bit about your operation"></textarea>
+            <textarea id="f-msg" name="message" placeholder="Conte um pouco sobre o seu escritório" data-pt-placeholder="Conte um pouco sobre o seu escritório" data-en-placeholder="Tell us a bit about your firm"></textarea>
           </div>
           <button type="submit" class="btn btn-dark" style="width: 100%;" id="lead-submit">
-            <span data-pt="Pedir diagnóstico gratuito" data-en="Request free diagnostic">Pedir diagnóstico gratuito</span>
+            <span data-pt="Pedir avaliação gratuita" data-en="Request free assessment">Pedir avaliação gratuita</span>
           </button>
         </form>
         <div class="form-success" id="form-success" style="display: none;">
-          <div class="t" data-pt="Recebemos o seu contato ✓" data-en="We got your message ✓">Recebemos o seu contato ✓</div>
-          <div class="s" data-pt="A nossa equipe responde em até 1 dia útil com as instruções para enviar a amostra de dados do diagnóstico." data-en="Our team replies within 1 business day with instructions for sending the data sample for your diagnostic.">A nossa equipe responde em até 1 dia útil com as instruções para enviar a amostra de dados do diagnóstico.</div>
+          <div class="t" data-pt="Recebemos seu contato ✓" data-en="We got your message ✓">Recebemos seu contato ✓</div>
+          <div class="s" data-pt="Nossa equipe responde em até 1 dia útil com as instruções para enviar os contratos da avaliação." data-en="Our team replies within 1 business day with instructions for sending the assessment contracts.">Nossa equipe responde em até 1 dia útil com as instruções para enviar os contratos da avaliação.</div>
         </div>
       </div>
     </div>
@@ -1333,8 +1206,8 @@
       <div class="footer-brand">
         <img class="brand-img" src="kontiva-logo-light.png" alt="Kontiva.ai" />
         <p class="footer-tagline"
-           data-pt="Copiloto fiscal e financeiro com IA para atravessar a reforma tributária: caixa, créditos e preço sob controle, do dado à decisão."
-           data-en="AI fiscal and financial copilot to navigate Brazil's tax reform: cash, credits and pricing under control, from data to decision.">Copiloto fiscal e financeiro com IA para atravessar a reforma tributária: caixa, créditos e preço sob controle, do dado à decisão.</p>
+           data-pt="Gestão de contratos e cobrança com IA, de ponta a ponta, para escritórios de contabilidade."
+           data-en="AI-powered contract and billing management, end to end, for accounting firms.">Gestão de contratos e cobrança com IA, de ponta a ponta, para escritórios de contabilidade.</p>
         <a href="https://wa.me/5551926343014?text=Ol%C3%A1%2C%20vim%20pelo%20site%20da%20Kontiva.ai"
            data-pt-href="https://wa.me/5551926343014?text=Ol%C3%A1%2C%20vim%20pelo%20site%20da%20Kontiva.ai"
            data-en-href="https://wa.me/5551926343014?text=Hi%2C%20I%20came%20from%20the%20Kontiva.ai%20website"
@@ -1365,7 +1238,7 @@
       <div class="footer-col">
         <h5 data-pt="Empresa" data-en="Company">Empresa</h5>
         <a href="#faq">FAQ</a>
-        <a href="#avaliacao" data-pt="Diagnóstico gratuito" data-en="Free diagnostic">Diagnóstico gratuito</a>
+        <a href="#avaliacao" data-pt="Avaliação gratuita" data-en="Free assessment">Avaliação gratuita</a>
       </div>
       <div class="footer-col">
         <h5 data-pt="Contato" data-en="Contact">Contato</h5>
@@ -1461,12 +1334,12 @@
 <!-- Calculator -->
 <script>
   (function () {
-    var faturamento = document.getElementById('calc-faturamento');
-    var carga = document.getElementById('calc-carga');
-    if (!faturamento || !carga) return;
-    // creditos em risco: ~50% do imposto e virem creditaveis, 15% perdidos por gestao manual (EY)
-    var FRACAO_CREDITAVEL = 0.5;
-    var PERDA_CREDITO = 0.15;
+    var clientes = document.getElementById('calc-clientes');
+    var ticket = document.getElementById('calc-ticket');
+    if (!clientes || !ticket) return;
+    var PERC = 0.02;
+    var HORAS_POR_CLIENTE = 1.5;
+    var CUSTO_HORA = 40;
 
     function brl(n) {
       return n.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL', maximumFractionDigits: 0 });
@@ -1475,22 +1348,18 @@
       var min = +input.min, max = +input.max, val = +input.value;
       input.style.setProperty('--fill', ((val - min) / (max - min) * 100).toFixed(1) + '%');
     }
-    function faixaFaturamento(v) {
-      if (v >= 1000000) return 'R$ ' + (v / 1000000).toLocaleString('pt-BR', { maximumFractionDigits: 1 }) + ' mi';
-      return 'R$ ' + Math.round(v / 1000) + ' mil';
-    }
     function update() {
-      var f = +faturamento.value, cg = +carga.value / 100;
-      fill(faturamento); fill(carga);
-      document.getElementById('calc-faturamento-v').textContent = faixaFaturamento(f);
-      document.getElementById('calc-carga-v').textContent = carga.value + '%';
-      var caixaParado = Math.round(f * cg);
-      var creditoAno = Math.round(f * cg * 12 * FRACAO_CREDITAVEL * PERDA_CREDITO);
-      document.getElementById('calc-caixa').textContent = brl(caixaParado);
-      document.getElementById('calc-credito').textContent = brl(creditoAno);
+      var c = +clientes.value, t = +ticket.value;
+      fill(clientes); fill(ticket);
+      document.getElementById('calc-clientes-v').textContent = c;
+      document.getElementById('calc-ticket-v').textContent = brl(t);
+      var perdaMes = Math.round(c * t * PERC);
+      document.getElementById('calc-mes').textContent = brl(perdaMes);
+      document.getElementById('calc-ano').textContent = brl(perdaMes * 12);
+      document.getElementById('calc-econ').textContent = brl(Math.round(c * HORAS_POR_CLIENTE * CUSTO_HORA));
     }
-    faturamento.addEventListener('input', update);
-    carga.addEventListener('input', update);
+    clientes.addEventListener('input', update);
+    ticket.addEventListener('input', update);
     update();
   })();
 </script>
@@ -1510,7 +1379,7 @@
   })();
 </script>
 
-<!-- Form: simula sucesso no preview de design -->
+<!-- Form — simula sucesso no preview de design -->
 <script>
   (function () {
     var form = document.getElementById('lead-form');
