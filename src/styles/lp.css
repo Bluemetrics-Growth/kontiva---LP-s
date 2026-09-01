@@ -295,34 +295,179 @@ p.lead { font-size: var(--fs-lead); line-height: 1.5; color: var(--cinza-escuro)
 .u-close .serif-accent { color: var(--azul-profundo); }
 
 /* =========================================================
-   DIFERENCIACAO (S4) - painel de instrumento escuro
+   DIFERENCIACAO (S4) - ESCADA de operacao (instrumento escuro)
+   Sobe conforme o Kontiva deixa de competir e passa a operar.
    ========================================================= */
-.ladder {
-  border-radius: var(--r-xl); overflow: hidden; border: 1px solid var(--hairline-dark); margin-top: 14px;
-  background: color-mix(in oklab, var(--azul-profundo-2) 40%, transparent);
-}
-.ladder-row { display: grid; grid-template-columns: 1.4fr 1fr 1.6fr; gap: 20px; padding: 24px 28px; border-bottom: 1px solid rgba(255,255,255,0.07); align-items: start; transition: background .3s; }
-.ladder-row:last-child { border-bottom: none; }
-.ladder-row.head { background: rgba(255,255,255,0.03); }
-.ladder-row.head div { font-family: var(--font-mono); font-size: 10.5px; font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase; color: rgba(234,246,255,0.5); }
-.ladder-step { font-weight: 600; color: var(--branco); font-size: 15.5px; }
-.ladder-step .n { font-family: var(--font-mono); color: rgba(234,246,255,0.4); margin-right: 10px; }
-.ladder-who, .ladder-pos { font-size: 14px; color: rgba(234,246,255,0.68); }
-.ladder-row:not(.head):not(.flagged):hover { background: rgba(255,255,255,0.03); }
-.ladder-row.flagged {
+.stair {
+  --riser: 66px;            /* altura de cada degrau que a escada sobe */
+  --stair-h: 480px;         /* altura total da caixa da escada no desktop */
   position: relative;
-  background: color-mix(in oklab, var(--ciano) 11%, transparent);
-  border-color: color-mix(in oklab, var(--ciano) 45%, transparent);
-  box-shadow: inset 3px 0 0 var(--ciano);
+  margin-top: 30px;
+  padding-left: 46px;       /* espaco para o eixo de operacao */
 }
-.ladder-row.flagged .ladder-step, .ladder-row.flagged .ladder-pos { color: var(--branco); }
-.ladder-row.flagged .ladder-step .n { color: var(--ciano); }
-.ladder-flag { display: inline-block; font-family: var(--font-mono); font-size: 10px; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; background: var(--ciano); color: var(--azul-profundo); padding: 4px 10px; border-radius: var(--r-pill); margin-bottom: 10px; box-shadow: 0 0 16px color-mix(in oklab, var(--ciano) 55%, transparent); }
-@media (max-width: 820px) {
-  .ladder-row { grid-template-columns: 1fr; gap: 8px; padding: 20px; }
-  .ladder-row.head { display: none; }
-  .ladder-who::before { content: "Quem esta la: "; color: rgba(234,246,255,0.4); }
-  .ladder-pos::before { content: "Kontiva: "; color: rgba(234,246,255,0.4); }
+
+/* Eixo vertical "nivel de operacao" que sobe a esquerda */
+.stair-axis {
+  position: absolute; left: 0; top: 0; bottom: 34px; width: 30px;
+  display: flex; flex-direction: column; align-items: center; justify-content: space-between;
+}
+.stair-axis::before {
+  content: ""; position: absolute; left: 50%; top: 0; bottom: 0; width: 1px; transform: translateX(-50%);
+  background: linear-gradient(to top, transparent, color-mix(in oklab, var(--ciano) 55%, transparent));
+}
+.stair-axis-lbl {
+  writing-mode: vertical-rl; transform: rotate(180deg);
+  font-family: var(--font-mono); font-size: 10px; font-weight: 700; letter-spacing: 0.22em;
+  text-transform: uppercase; color: rgba(234,246,255,0.42); white-space: nowrap;
+}
+.stair-axis-arrow {
+  color: var(--ciano); display: inline-flex; transform: rotate(-90deg);
+  filter: drop-shadow(0 0 8px color-mix(in oklab, var(--ciano) 60%, transparent));
+}
+
+/* Trilho: 4 colunas alinhadas por baixo, cada uma sobe um degrau */
+.stair-track {
+  list-style: none; margin: 0; padding: 0;
+  display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px;
+  align-items: stretch; min-height: var(--stair-h);
+  border-bottom: 1px solid var(--hairline-dark);
+}
+
+.stair-step {
+  position: relative; display: flex; flex-direction: column;
+  padding-top: calc((4 - var(--lvl)) * var(--riser));   /* degraus mais altos sobem mais */
+}
+
+/* Corpo do degrau (a "piso" com o conteudo) */
+.stair-body {
+  flex: 1; position: relative; min-width: 0;
+  border-radius: 14px 14px 0 0;
+  border: 1px solid var(--hairline-dark); border-bottom: 0;
+  background: color-mix(in oklab, var(--azul-profundo-2) 46%, transparent);
+  box-shadow: inset 0 2px 0 rgba(255,255,255,0.10);   /* lampejo do "degrau" no topo */
+  transition: transform .3s cubic-bezier(.2,.7,.1,1), box-shadow .3s, border-color .3s;
+  overflow: hidden;
+}
+.stair-body::before {   /* numero fantasma ao fundo */
+  content: attr(data-n); position: absolute; right: 10px; bottom: -14px;
+  font-family: var(--font-display); font-weight: 800; font-size: 120px; line-height: 1;
+  color: rgba(255,255,255,0.03); pointer-events: none;
+}
+.stair-body-in { position: relative; padding: 20px 20px 22px; display: flex; flex-direction: column; height: 100%; }
+
+.stair-top { display: flex; align-items: center; gap: 10px; margin-bottom: 14px; }
+.stair-num {
+  font-family: var(--font-mono); font-weight: 700; font-size: 13px; letter-spacing: 0.06em;
+  color: rgba(234,246,255,0.5);
+}
+.stair-ico {
+  width: 30px; height: 30px; border-radius: 8px; flex: none; margin-left: auto;
+  display: inline-flex; align-items: center; justify-content: center;
+  background: rgba(255,255,255,0.05); border: 1px solid var(--hairline-dark);
+  color: rgba(234,246,255,0.75);
+}
+.stair-title { font-size: 17px; line-height: 1.22; color: var(--branco); font-weight: 700; letter-spacing: -0.02em; }
+.stair-tag {
+  margin-top: 7px; font-family: var(--font-mono); font-size: 10.5px; letter-spacing: 0.02em;
+  color: color-mix(in oklab, var(--ciano) 45%, rgba(234,246,255,0.55)); line-height: 1.5; text-transform: none;
+}
+.stair-who { margin-top: 16px; }
+.stair-who-lbl {
+  display: block; font-family: var(--font-mono); font-size: 9.5px; font-weight: 700; letter-spacing: 0.16em;
+  text-transform: uppercase; color: rgba(234,246,255,0.4); margin-bottom: 8px;
+}
+.stair-chips { display: flex; flex-wrap: wrap; gap: 6px; }
+.stair-pos {
+  margin-top: auto; padding-top: 16px; font-size: 13px; line-height: 1.5;
+  color: rgba(234,246,255,0.66);
+}
+
+/* Chips-marca (nao sao logos oficiais, sao wordmarks estilizados) */
+.chip {
+  display: inline-flex; align-items: center; height: 26px; padding: 0 11px;
+  border-radius: var(--r-pill); font-size: 12px; font-weight: 600; letter-spacing: -0.01em;
+  border: 1px solid var(--hairline-dark); color: rgba(234,246,255,0.8);
+  background: rgba(255,255,255,0.04); white-space: nowrap;
+}
+.chip-mut { color: rgba(234,246,255,0.55); }
+.chip-erp { color: rgba(234,246,255,0.9); border-color: rgba(255,255,255,0.16); }
+.chip-kontiva {
+  color: var(--azul-profundo); font-weight: 700;
+  background: var(--ciano); border-color: transparent;
+  box-shadow: 0 0 16px color-mix(in oklab, var(--ciano) 45%, transparent);
+}
+.chip-sys {
+  font-family: var(--font-body);
+  color: rgba(234,246,255,0.82); border-color: rgba(255,255,255,0.14);
+}
+
+/* Estados por tipo de degrau */
+.stair-step.kind-commodity .stair-body { background: rgba(255,255,255,0.025); }
+.stair-step.kind-erp .stair-body { background: color-mix(in oklab, var(--azul-profundo-2) 42%, transparent); }
+.stair-step.kind-kontiva .stair-body {
+  border-color: color-mix(in oklab, var(--ciano) 30%, transparent);
+  box-shadow: inset 0 2px 0 color-mix(in oklab, var(--ciano) 45%, transparent);
+}
+.stair-step.kind-kontiva .stair-pos { color: rgba(234,246,255,0.82); }
+
+/* Degrau 4: a bandeira, iluminado */
+.stair-step.kind-flag .stair-body {
+  border-color: color-mix(in oklab, var(--ciano) 55%, transparent);
+  background:
+    linear-gradient(180deg, color-mix(in oklab, var(--ciano) 16%, transparent), color-mix(in oklab, var(--azul-profundo-2) 55%, transparent) 60%);
+  box-shadow:
+    inset 0 2px 0 var(--ciano),
+    0 24px 60px -24px color-mix(in oklab, var(--ciano) 55%, transparent);
+}
+.stair-step.kind-flag .stair-title,
+.stair-step.kind-flag .stair-pos { color: var(--branco); }
+.stair-step.kind-flag .stair-ico {
+  background: color-mix(in oklab, var(--ciano) 18%, transparent);
+  border-color: color-mix(in oklab, var(--ciano) 45%, transparent); color: var(--ciano);
+}
+.stair-flag {
+  display: inline-flex; align-items: center; margin-left: auto;
+  font-family: var(--font-mono); font-size: 9.5px; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase;
+  background: var(--ciano); color: var(--azul-profundo); padding: 4px 9px; border-radius: var(--r-pill);
+  box-shadow: 0 0 16px color-mix(in oklab, var(--ciano) 55%, transparent);
+}
+.stair-step.kind-flag .stair-ico { margin-left: 0; }
+
+/* Hover: o degrau se levanta um toque */
+.stair-body:hover { transform: translateY(-4px); }
+.stair-step.kind-flag .stair-body:hover { box-shadow: inset 0 2px 0 var(--ciano), 0 30px 70px -22px color-mix(in oklab, var(--ciano) 65%, transparent); }
+
+/* Faixa: sistemas sobre os quais o Kontiva roda */
+.stair-base {
+  margin-top: 26px; display: flex; align-items: center; flex-wrap: wrap; gap: 14px 20px;
+}
+.stair-base-lbl {
+  display: inline-flex; align-items: center; gap: 10px;
+  font-size: 14px; color: rgba(234,246,255,0.78);
+}
+.stair-base-lbl .tick {
+  width: 21px; height: 21px; border-radius: 6px; flex: none;
+  background: color-mix(in oklab, var(--ciano) 20%, transparent); border: 1px solid color-mix(in oklab, var(--ciano) 40%, transparent);
+  display: inline-flex; align-items: center; justify-content: center; color: var(--ciano);
+}
+.stair-base-chips { display: flex; flex-wrap: wrap; gap: 8px; }
+
+/* Tablet: 2 colunas, escada em dois lances */
+@media (max-width: 900px) {
+  .stair { --riser: 44px; --stair-h: auto; padding-left: 0; }
+  .stair-axis { display: none; }
+  .stair-track { grid-template-columns: 1fr 1fr; min-height: 0; border-bottom: 0; gap: 14px; }
+  .stair-step { padding-top: 0; }
+  .stair-body { border-radius: 14px; border-bottom: 1px solid var(--hairline-dark); }
+  .stair-step.kind-commodity, .stair-step.kind-kontiva { transform: translateY(calc(-1 * var(--riser))); }
+}
+
+/* Mobile: escada vertical, cada degrau com recuo crescente */
+@media (max-width: 620px) {
+  .stair-track { grid-template-columns: 1fr; }
+  .stair-step { transform: none !important; margin-left: calc((var(--lvl) - 1) * 16px); }
+  .stair-body::before { font-size: 92px; }
+  .stair-body:hover { transform: none; }
 }
 
 /* =========================================================

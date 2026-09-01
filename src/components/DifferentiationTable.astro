@@ -1,34 +1,100 @@
 ---
-// S4 A regua de diferenciacao. "ERP simula, agente opera." Degrau 4 e a bandeira.
-const rows = [
-  { n: '1', step: 'Tirar dúvida da reforma (chatbot)', who: 'Todos, de graça', pos: 'Não competimos aqui. Útil e genérico.', flag: false },
-  { n: '2', step: 'Simular regime por cliente', who: 'Domínio e Alterdata, no ERP', pos: 'Não abrimos conversa por aqui.', flag: false },
-  { n: '3', step: 'Simular a carteira inteira em massa, ranquear, white-label, multi-sistema', who: 'Só o Kontiva', pos: 'Todos os seus clientes de uma vez, em qualquer sistema, com a sua marca.', flag: false },
-  { n: '4', step: 'Operar a rotina: créditos, adimplência de fornecedor, caixa do split e pricing, contínuo, com observabilidade e aprovação', who: 'Vazio. Nossa bandeira.', pos: 'A pergunta que ninguém responde: quem vai rodar isso todo mês para os seus clientes?', flag: true },
+// S4 A regua de diferenciacao, agora como ESCADA de operacao.
+// Sobe conforme o Kontiva deixa de competir e passa a operar. Degrau 4 = a bandeira.
+import Icon from './Icon.astro';
+
+const steps = [
+  {
+    lvl: 1,
+    icon: 'ask',
+    title: 'Tirar dúvida da reforma',
+    tag: 'chatbot genérico',
+    whoLabel: 'Quem está lá',
+    players: [{ name: 'Chatbots', kind: 'mut' }],
+    pos: 'Não competimos aqui. Útil, porém genérico.',
+    kind: 'commodity',
+  },
+  {
+    lvl: 2,
+    icon: 'sim',
+    title: 'Simular o regime, cliente a cliente',
+    tag: 'dentro do ERP',
+    whoLabel: 'Quem está lá',
+    players: [{ name: 'Domínio', kind: 'erp' }, { name: 'Alterdata', kind: 'erp' }],
+    pos: 'Não abrimos conversa por aqui.',
+    kind: 'erp',
+  },
+  {
+    lvl: 3,
+    icon: 'layers',
+    title: 'Simular a carteira inteira, em massa',
+    tag: 'ranquear · white-label · multi-sistema',
+    whoLabel: 'Quem está lá',
+    players: [{ name: 'Kontiva', kind: 'kontiva' }],
+    pos: 'Todos os seus clientes de uma vez, em qualquer sistema, com a sua marca.',
+    kind: 'kontiva',
+  },
+  {
+    lvl: 4,
+    icon: 'bolt',
+    title: 'Operar a rotina, todo mês',
+    tag: 'créditos · adimplência de fornecedor · caixa do split · pricing',
+    whoLabel: 'Quem está lá',
+    players: [{ name: 'Kontiva', kind: 'kontiva' }],
+    pos: 'A pergunta que ninguém responde: quem vai rodar isso todo mês para os seus clientes?',
+    kind: 'flag',
+  },
 ];
+
+const sistemas = ['Domínio', 'Alterdata', 'Questor', 'Planilhas'];
 ---
 <section class="bg-dark grain" aria-labelledby="dif-h">
   <div class="shell">
     <div class="section-head reveal">
       <div class="eyebrow"><span class="dot-cyan"></span> A régua</div>
       <h2 id="dif-h">Onde a maioria para, o Kontiva começa.</h2>
-      <p class="lead">Tirar dúvida e simular um cliente por vez já é grátis nos ERPs. Ótimo, use o do seu ERP. O nosso degrau é outro.</p>
+      <p class="lead">Tirar dúvida e simular um cliente por vez já é grátis nos ERPs. Ótimo, use o do seu ERP. O nosso degrau é outro, mais acima.</p>
     </div>
 
-    <div class="ladder reveal delay-1">
-      <div class="ladder-row head">
-        <div>Degrau</div><div>Quem está lá</div><div>Como o Kontiva se posiciona</div>
+    <div class="stair reveal delay-1">
+      <div class="stair-axis" aria-hidden="true">
+        <span class="stair-axis-lbl">Nível de operação</span>
+        <span class="stair-axis-arrow"><Icon name="arrow" size={16} /></span>
       </div>
-      {rows.map((r) => (
-        <div class={`ladder-row ${r.flag ? 'flagged' : ''}`}>
-          <div class="ladder-step"><span class="n">{r.n}</span>{r.step}</div>
-          <div class="ladder-who">{r.who}</div>
-          <div class="ladder-pos">
-            {r.flag && <span class="ladder-flag">Nossa bandeira</span>}
-            {r.pos}
-          </div>
-        </div>
-      ))}
+
+      <ol class="stair-track">
+        {steps.map((s) => (
+          <li class={`stair-step kind-${s.kind}`} style={`--lvl:${s.lvl}`}>
+            <div class="stair-body" data-n={String(s.lvl).padStart(2, '0')}>
+              <div class="stair-body-in">
+                <div class="stair-top">
+                  <span class="stair-num">{String(s.lvl).padStart(2, '0')}</span>
+                  <span class="stair-ico"><Icon name={s.icon} size={18} /></span>
+                  {s.kind === 'flag' && <span class="stair-flag">Nossa bandeira</span>}
+                </div>
+                <h3 class="stair-title">{s.title}</h3>
+                <p class="stair-tag">{s.tag}</p>
+                <div class="stair-who">
+                  <span class="stair-who-lbl">{s.whoLabel}</span>
+                  <div class="stair-chips">
+                    {s.players.map((p) => (
+                      <span class={`chip chip-${p.kind}`}>{p.name}</span>
+                    ))}
+                  </div>
+                </div>
+                <p class="stair-pos">{s.pos}</p>
+              </div>
+            </div>
+          </li>
+        ))}
+      </ol>
+    </div>
+
+    <div class="stair-base reveal delay-2">
+      <span class="stair-base-lbl"><span class="tick"><Icon name="check" size={12} /></span> Roda sobre os sistemas que você já usa</span>
+      <div class="stair-base-chips">
+        {sistemas.map((n) => <span class="chip chip-sys">{n}</span>)}
+      </div>
     </div>
   </div>
 </section>
