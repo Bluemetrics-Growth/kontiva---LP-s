@@ -1,24 +1,61 @@
 ---
-import { whatsappHref } from '../data/showcase';
+// Rodape completo em colunas (PRD Alt.6): marca + logo, navegacao, contato,
+// redes sociais e legal. Fundo escuro do design system.
+import Icon from './Icon.astro';
+import {
+  whatsappHref,
+  INSTAGRAM_URL,
+  LINKEDIN_URL,
+  BLUEMETRICS_URL,
+  FOOTER_NAV,
+} from '../data/showcase';
 const year = new Date().getFullYear();
+const social = [
+  { name: 'Instagram', href: INSTAGRAM_URL, ico: 'instagram' },
+  { name: 'LinkedIn', href: LINKEDIN_URL, ico: 'linkedin' },
+  { name: 'WhatsApp', href: whatsappHref, ico: 'whatsapp' },
+];
 ---
 <footer class="site">
   <div class="shell">
-    <div class="foot-top">
-      <div>
-        <div class="brand-lockup"><span class="k">Kontiva</span><span class="dot">.</span><span class="ai">ai</span></div>
+    <div class="foot-cols">
+      <div class="foot-brand">
+        <img src="/brand/kontiva-logo-light.png" alt="Kontiva.ai" class="foot-logo" width="1559" height="287" />
         <p class="foot-tag">O Hub de agentes de IA que opera os processos críticos do escritório contábil.</p>
+        <a href={BLUEMETRICS_URL} target="_blank" rel="noopener noreferrer" class="foot-bm">uma empresa <b>BlueMetrics</b></a>
       </div>
-      <nav class="foot-links" aria-label="Contato e legal">
-        <a href={whatsappHref} target="_blank" rel="noreferrer" data-cta="whatsapp">WhatsApp</a>
+
+      <nav class="foot-col" aria-label="Navegação">
+        <h3 class="foot-col-h">Navegação</h3>
+        {FOOTER_NAV.map((l) => <a href={l.href}>{l.label}</a>)}
+      </nav>
+
+      <div class="foot-col">
+        <h3 class="foot-col-h">Contato</h3>
         <a href="mailto:contato@kontiva.ai">contato@kontiva.ai</a>
+        <a href={whatsappHref} target="_blank" rel="noopener noreferrer" data-cta="whatsapp" class="foot-wa">
+          <Icon name="whatsapp" size={16} class="ico" /> Falar no WhatsApp
+        </a>
+      </div>
+
+      <div class="foot-col">
+        <h3 class="foot-col-h">Redes sociais</h3>
+        <div class="foot-social">
+          {social.map((s) => (
+            <a href={s.href} target="_blank" rel="noopener noreferrer" aria-label={`Kontiva no ${s.name}`} data-cta={s.ico === 'whatsapp' ? 'whatsapp' : undefined}>
+              <Icon name={s.ico} size={19} />
+            </a>
+          ))}
+        </div>
+      </div>
+    </div>
+
+    <div class="foot-bottom">
+      <div class="foot-legal">
         <a href="/privacidade">Política de Privacidade</a>
         <a href="/termos">Termos de Uso</a>
-      </nav>
-    </div>
-    <div class="foot-bottom">
-      <span class="foot-seal"><b>Kontiva</b> é uma empresa BlueMetrics.</span>
-      <span>&copy; {year} Kontiva. Todos os direitos reservados.</span>
+      </div>
+      <span class="foot-seal"><b>Kontiva</b> é uma empresa BlueMetrics. &copy; {year} Kontiva.</span>
     </div>
   </div>
 </footer>

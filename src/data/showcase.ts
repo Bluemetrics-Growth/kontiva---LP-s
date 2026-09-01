@@ -56,3 +56,18 @@ export const WHATSAPP_NUM = '5511999999999';
 export const WHATSAPP_MSG =
   'Olá, quero agendar a demo da Kontiva com os dados do meu escritório.';
 export const whatsappHref = `https://wa.me/${WHATSAPP_NUM}?text=${encodeURIComponent(WHATSAPP_MSG)}`;
+
+// Redes sociais (PRD Alt.6). URLs placeholder ate o time confirmar.
+export const INSTAGRAM_URL = 'https://instagram.com/kontiva.ai';
+export const LINKEDIN_URL = 'https://linkedin.com/company/kontiva';
+export const BLUEMETRICS_URL = 'https://bluemetrics.ai';
+
+// Navegacao do rodape (ancoras das secoes)
+export const FOOTER_NAV = [
+  { label: 'A urgência', href: '#urgencia' },
+  { label: 'O que o agente faz', href: '#como-funciona' },
+  { label: 'Segundo agente', href: '#segundo-agente' },
+  { label: 'Por que confiar', href: '#por-que-confiar' },
+  { label: 'FAQ', href: '#faq' },
+  { label: 'Agendar demo', href: '#agendar' },
+];

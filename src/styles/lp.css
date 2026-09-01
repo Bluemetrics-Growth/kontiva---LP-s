@@ -5,7 +5,7 @@
 
 * { box-sizing: border-box; }
 
-html { scroll-behavior: smooth; }
+html { scroll-behavior: smooth; scroll-padding-top: 88px; }
 
 html, body {
   margin: 0; padding: 0;
@@ -160,10 +160,11 @@ p.lead { font-size: var(--fs-lead); line-height: 1.5; color: var(--cinza-escuro)
   opacity: 0.5;
 }
 .nav-inner { display: flex; align-items: center; justify-content: space-between; height: 74px; }
-.brand-lockup { display: flex; align-items: baseline; font-weight: 800; letter-spacing: -0.03em; font-size: 22px; }
+.brand-lockup { display: flex; align-items: center; font-weight: 800; letter-spacing: -0.03em; font-size: 22px; }
 .brand-lockup .k { color: var(--azul-profundo); }
 .brand-lockup .dot, .brand-lockup .ai { color: var(--ciano); }
-.nav .brand-note { font-family: var(--font-mono); font-size: 10px; letter-spacing: 0.08em; text-transform: uppercase; color: var(--cinza-texto); margin-left: 14px; }
+.brand-img { height: 30px; width: auto; }
+.nav .brand-note { font-family: var(--font-mono); font-size: 10px; letter-spacing: 0.08em; text-transform: uppercase; color: var(--cinza-texto); margin-left: 14px; padding-left: 14px; border-left: 1px solid var(--border-on-light-strong); }
 @media (max-width: 560px) { .nav .brand-note { display: none; } }
 
 /* Reveal on scroll (load orquestrado) */
@@ -259,6 +260,32 @@ p.lead { font-size: var(--fs-lead); line-height: 1.5; color: var(--cinza-escuro)
 .proof-item .dot { width: 6px; height: 6px; border-radius: 50%; background: var(--ciano); flex: none; box-shadow: 0 0 8px color-mix(in oklab, var(--ciano) 70%, transparent); }
 
 /* =========================================================
+   FAIXA DE INTEGRACAO (logos ERP que o Kontiva LE) - PRD Alt.1
+   ========================================================= */
+.integ { padding: 72px 0; }
+.integ-head { text-align: center; max-width: 720px; margin: 0 auto; }
+.integ-head .eyebrow { justify-content: center; margin-bottom: 16px; }
+.integ-title { font-size: clamp(24px, 3vw, 34px); line-height: 1.08; }
+.integ-sub { margin-top: 14px; font-size: 15.5px; color: var(--cinza-texto); max-width: 560px; margin-left: auto; margin-right: auto; }
+.integ-row {
+  margin-top: 40px; display: flex; flex-wrap: wrap; align-items: center; justify-content: center;
+  gap: clamp(28px, 6vw, 64px);
+}
+.integ-logo { display: inline-flex; align-items: center; }
+.integ-logo img {
+  width: auto; opacity: 0.62;
+  filter: grayscale(1);
+  transition: filter .3s ease, opacity .3s ease;
+}
+.integ-logo:hover img { filter: grayscale(0); opacity: 1; }
+.integ-plus { width: 1px; height: 30px; background: var(--border-on-light-strong); }
+.integ-sheet { font-family: var(--font-mono); font-size: 14px; font-weight: 600; letter-spacing: 0.02em; color: var(--cinza-texto); }
+@media (max-width: 560px) {
+  .integ-row { gap: 26px 32px; }
+  .integ-plus { display: none; }
+}
+
+/* =========================================================
    URGENCIA (S3)
    ========================================================= */
 .urgency-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 22px; }
@@ -290,9 +317,56 @@ p.lead { font-size: var(--fs-lead); line-height: 1.5; color: var(--cinza-escuro)
 .u-label.consequencia { color: var(--antes-tag-fg); }
 .u-label.caminho { color: color-mix(in oklab, var(--ciano) 74%, var(--azul-profundo)); }
 .u-block p { font-size: 14.5px; }
+/* Clippings de imprensa (PRD Alt.3) */
+.clip-band { margin-top: 56px; }
+.clip-head { text-align: center; margin-bottom: 26px; }
+.clip-head .eyebrow { justify-content: center; }
+.clip-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; }
+@media (max-width: 940px) {
+  .clip-grid { grid-auto-flow: column; grid-auto-columns: 82%; grid-template-columns: none; overflow-x: auto; scroll-snap-type: x mandatory; padding-bottom: 10px; margin: 0 -20px; padding-left: 20px; padding-right: 20px; }
+  .clip-card { scroll-snap-align: start; }
+}
+.clip-card {
+  display: flex; flex-direction: column; background: var(--branco);
+  border: 1px solid var(--border-on-light); border-radius: var(--r-lg); overflow: hidden;
+  box-shadow: 0 1px 2px rgba(10,31,63,0.04);
+  transition: transform .3s cubic-bezier(.2,.7,.1,1), box-shadow .3s ease, border-color .3s;
+}
+.clip-card:hover { transform: translateY(-4px); border-color: color-mix(in oklab, var(--ciano) 40%, transparent); box-shadow: var(--shadow-card); }
+.clip-shot { background: var(--branco); border-bottom: 1px solid var(--hairline-light); overflow: hidden; }
+.clip-shot img { width: 100%; height: auto; display: block; }
+.clip-meta { display: flex; align-items: center; justify-content: space-between; gap: 12px; padding: 14px 16px; }
+.clip-veiculo { font-weight: 700; font-size: 14px; color: var(--azul-profundo); }
+.clip-link { font-family: var(--font-mono); font-size: 12px; font-weight: 600; color: color-mix(in oklab, var(--ciano) 74%, var(--azul-profundo)); white-space: nowrap; }
+.clip-card:hover .clip-link { color: var(--azul-profundo); }
+.clip-note { margin-top: 22px; text-align: center; font-size: 13px; color: var(--cinza-texto); }
+
 .u-close { margin-top: 44px; text-align: center; }
 .u-close p { font-size: var(--fs-lead); color: var(--cinza-escuro); max-width: 740px; margin: 0 auto; text-wrap: balance; }
 .u-close .serif-accent { color: var(--azul-profundo); }
+
+/* =========================================================
+   VIRE O JOGO (PRD Alt.4) - a virada de negocio
+   ========================================================= */
+.turn-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 22px; }
+@media (max-width: 860px) { .turn-grid { grid-template-columns: 1fr; } }
+.turn-card {
+  position: relative; background: var(--cinza-claro); border: 1px solid var(--border-on-light);
+  border-radius: var(--r-xl); padding: 32px 30px; overflow: hidden;
+  transition: transform .35s cubic-bezier(.2,.7,.1,1), box-shadow .35s ease, border-color .35s;
+}
+.turn-card::before { content: ""; position: absolute; top: 0; left: 30px; right: 30px; height: 2px; background: linear-gradient(90deg, var(--ciano), transparent); opacity: 0.55; transition: opacity .35s; }
+.turn-card:hover { transform: translateY(-6px); border-color: color-mix(in oklab, var(--ciano) 45%, transparent); box-shadow: var(--shadow-card); }
+.turn-card:hover::before { opacity: 1; }
+.turn-top { display: flex; align-items: center; gap: 12px; margin-bottom: 18px; }
+.turn-ico { width: 42px; height: 42px; border-radius: var(--r-md); flex: none; background: color-mix(in oklab, var(--ciano) 14%, white); border: 1px solid color-mix(in oklab, var(--ciano) 28%, transparent); color: var(--azul-profundo); display: inline-flex; align-items: center; justify-content: center; }
+.turn-eyebrow { font-family: var(--font-mono); font-size: 11px; font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase; color: var(--cinza-texto); }
+.turn-tag { display: inline-block; font-family: var(--font-mono); font-size: 11px; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; color: color-mix(in oklab, var(--ciano) 74%, var(--azul-profundo)); margin-bottom: 12px; }
+.turn-title { font-size: clamp(20px, 2.3vw, 25px); line-height: 1.14; color: var(--azul-profundo); margin-bottom: 14px; }
+.turn-body { font-size: 15px; color: var(--cinza-escuro); }
+.turn-close { margin-top: 48px; text-align: center; display: flex; flex-direction: column; align-items: center; gap: 26px; }
+.turn-close p { font-size: var(--fs-lead); color: var(--cinza-escuro); max-width: 760px; text-wrap: balance; }
+.turn-close .serif-accent { color: var(--azul-profundo); }
 
 /* =========================================================
    DIFERENCIACAO (S4) - painel de instrumento escuro
@@ -360,10 +434,49 @@ p.lead { font-size: var(--fs-lead); line-height: 1.5; color: var(--cinza-escuro)
    ========================================================= */
 .hon-grid { display: grid; grid-template-columns: 1fr 1.05fr; gap: 60px; align-items: center; }
 @media (max-width: 940px) { .hon-grid { grid-template-columns: 1fr; gap: 40px; } }
-.hon-copy .qualify { margin: 24px 0; padding: 20px 22px; background: color-mix(in oklab, var(--ciano) 5%, var(--branco)); border: 1px solid color-mix(in oklab, var(--ciano) 24%, var(--border-on-light)); border-radius: var(--r-md); box-shadow: 0 1px 2px rgba(10,31,63,0.04); }
+.hon-copy .qualify { margin: 24px 0 0; padding: 20px 22px; background: color-mix(in oklab, var(--ciano) 5%, var(--branco)); border: 1px solid color-mix(in oklab, var(--ciano) 24%, var(--border-on-light)); border-radius: var(--r-md); box-shadow: 0 1px 2px rgba(10,31,63,0.04); }
 .hon-copy .qualify p { font-size: 15px; }
-.hon-close { margin-top: 26px; font-size: 15px; color: var(--cinza-escuro); }
+.hon-close { font-size: var(--fs-lead); color: var(--cinza-escuro); text-wrap: balance; }
 .hon-close .serif-accent { color: var(--azul-profundo); }
+
+.hon-sub-eyebrow { margin-bottom: 22px; }
+
+/* 3 cards "o que ele encontra" */
+.hon-find { margin-top: 64px; }
+.hon-find-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 18px; }
+@media (max-width: 860px) { .hon-find-grid { grid-template-columns: 1fr; } }
+.hon-find-card { background: var(--cinza-claro); border: 1px solid var(--border-on-light); border-radius: var(--r-lg); padding: 24px 24px 26px; transition: transform .3s cubic-bezier(.2,.7,.1,1), border-color .3s, box-shadow .3s; }
+.hon-find-card:hover { transform: translateY(-4px); border-color: color-mix(in oklab, var(--ciano) 40%, transparent); box-shadow: var(--shadow-card); }
+.hon-find-ico { width: 44px; height: 44px; border-radius: var(--r-md); background: color-mix(in oklab, var(--ciano) 14%, white); border: 1px solid color-mix(in oklab, var(--ciano) 28%, transparent); color: var(--azul-profundo); display: inline-flex; align-items: center; justify-content: center; margin-bottom: 18px; }
+.hon-find-title { font-size: 17px; color: var(--azul-profundo); margin-bottom: 8px; }
+.hon-find-line { font-size: 14px; color: var(--cinza-escuro); }
+
+/* mini-fluxo horizontal de 4 passos */
+.hon-flow { margin-top: 56px; }
+.hon-flow-steps { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(4, 1fr); gap: 0; }
+.hon-flow-step { position: relative; display: flex; flex-direction: column; align-items: flex-start; gap: 12px; padding: 22px 40px 22px 22px; background: var(--branco); border: 1px solid var(--border-on-light); }
+.hon-flow-step:first-child { border-radius: var(--r-lg) 0 0 var(--r-lg); }
+.hon-flow-step:last-child { border-radius: 0 var(--r-lg) var(--r-lg) 0; padding-right: 22px; }
+.hon-flow-step + .hon-flow-step { border-left: 0; }
+.hon-flow-n { font-family: var(--font-mono); font-size: 12px; font-weight: 700; letter-spacing: 0.08em; color: color-mix(in oklab, var(--ciano) 74%, var(--azul-profundo)); }
+.hon-flow-txt { font-size: 14px; font-weight: 600; color: var(--azul-profundo); line-height: 1.32; }
+.hon-flow-arrow { position: absolute; right: -11px; top: 50%; transform: translateY(-50%); z-index: 2; width: 22px; height: 22px; border-radius: 50%; background: var(--branco); border: 1px solid var(--border-on-light); color: color-mix(in oklab, var(--ciano) 74%, var(--azul-profundo)); display: inline-flex; align-items: center; justify-content: center; }
+@media (max-width: 860px) {
+  .hon-flow-steps { grid-template-columns: 1fr; }
+  .hon-flow-step, .hon-flow-step:first-child, .hon-flow-step:last-child { border-radius: var(--r-lg); }
+  .hon-flow-step + .hon-flow-step { border-left: 1px solid var(--border-on-light); margin-top: 28px; }
+  .hon-flow-arrow { right: 50%; top: auto; bottom: -25px; transform: translateX(50%) rotate(90deg); }
+}
+
+/* selo de aprovacao humana (faixa de destaque) */
+.hon-approval { margin-top: 40px; display: flex; align-items: center; gap: 18px; flex-wrap: wrap; background: var(--azul-profundo); color: var(--claro-escuro); border-radius: var(--r-xl); padding: 24px 28px; position: relative; overflow: hidden; border: 1px solid var(--hairline-dark); }
+.hon-approval::before { content: ""; position: absolute; inset: 0; background: radial-gradient(460px 220px at 100% 0%, color-mix(in oklab, var(--ciano) 20%, transparent), transparent 70%); pointer-events: none; }
+.hon-approval-ico { position: relative; width: 46px; height: 46px; border-radius: var(--r-md); flex: none; background: color-mix(in oklab, var(--ciano) 20%, transparent); border: 1px solid color-mix(in oklab, var(--ciano) 40%, transparent); color: var(--ciano); display: inline-flex; align-items: center; justify-content: center; }
+.hon-approval p { position: relative; color: rgba(234,246,255,0.78); font-size: 15px; flex: 1; min-width: 240px; }
+.hon-approval p strong { color: var(--branco); }
+
+.hon-tie { margin-top: 48px; text-align: center; display: flex; flex-direction: column; align-items: center; gap: 24px; }
+.hon-tie .hon-close { max-width: 720px; }
 
 /* =========================================================
    CHAT & MCP (S7)
@@ -481,14 +594,27 @@ footer.site::before {
   background-size: var(--grid-size) 100%; opacity: 0.5;
 }
 footer.site .shell { position: relative; z-index: 1; }
-footer.site .foot-top { display: flex; justify-content: space-between; gap: 32px; flex-wrap: wrap; margin-bottom: 38px; }
-footer.site .brand-lockup { color: #EAF6FF; font-size: 21px; }
-footer.site .brand-lockup .k { color: #EAF6FF; }
-footer.site .foot-tag { max-width: 380px; margin-top: 15px; color: rgba(234,246,255,0.6); line-height: 1.55; }
-footer.site .foot-links { display: flex; gap: 26px; flex-wrap: wrap; font-size: 14px; }
-footer.site .foot-links a:hover { color: var(--ciano); }
-footer.site .foot-bottom { display: flex; justify-content: space-between; gap: 20px; flex-wrap: wrap; padding-top: 28px; border-top: 1px solid rgba(255,255,255,0.07); font-size: 13px; color: rgba(234,246,255,0.45); }
-footer.site .foot-seal { color: rgba(234,246,255,0.6); }
+footer.site .foot-cols { display: grid; grid-template-columns: 1.7fr 1fr 1fr 1fr; gap: 40px; margin-bottom: 44px; }
+@media (max-width: 900px) { footer.site .foot-cols { grid-template-columns: 1fr 1fr; gap: 36px 32px; } }
+@media (max-width: 520px) { footer.site .foot-cols { grid-template-columns: 1fr; gap: 32px; text-align: left; } }
+footer.site .foot-logo { height: 30px; width: auto; margin-bottom: 16px; }
+footer.site .foot-tag { max-width: 340px; color: rgba(234,246,255,0.6); line-height: 1.55; }
+footer.site .foot-bm { display: inline-block; margin-top: 16px; font-size: 13px; color: rgba(234,246,255,0.55); font-family: var(--font-mono); letter-spacing: 0.02em; }
+footer.site .foot-bm b { color: #EAF6FF; font-weight: 600; }
+footer.site .foot-bm:hover { color: var(--ciano); }
+footer.site .foot-col { display: flex; flex-direction: column; gap: 13px; }
+footer.site .foot-col-h { font-size: 11px; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; color: rgba(234,246,255,0.45); font-family: var(--font-mono); margin-bottom: 3px; }
+footer.site .foot-col a { font-size: 14px; color: rgba(234,246,255,0.72); width: fit-content; }
+footer.site .foot-col a:hover { color: var(--ciano); }
+footer.site .foot-wa { display: inline-flex; align-items: center; gap: 8px; }
+footer.site .foot-wa .ico { width: 16px; height: 16px; flex: none; }
+footer.site .foot-social { display: flex; gap: 12px; }
+footer.site .foot-social a { width: 40px; height: 40px; border-radius: var(--r-sm); border: 1px solid rgba(255,255,255,0.12); background: rgba(255,255,255,0.04); color: #EAF6FF; display: inline-flex; align-items: center; justify-content: center; transition: transform .2s ease, border-color .2s ease, color .2s ease, background .2s ease; }
+footer.site .foot-social a:hover { transform: translateY(-2px); color: var(--ciano); border-color: color-mix(in oklab, var(--ciano) 50%, transparent); background: color-mix(in oklab, var(--ciano) 10%, transparent); }
+footer.site .foot-bottom { display: flex; justify-content: space-between; align-items: center; gap: 16px; flex-wrap: wrap; padding-top: 28px; border-top: 1px solid rgba(255,255,255,0.07); font-size: 13px; color: rgba(234,246,255,0.45); }
+footer.site .foot-legal { display: flex; gap: 22px; flex-wrap: wrap; }
+footer.site .foot-legal a:hover { color: var(--ciano); }
+footer.site .foot-seal { color: rgba(234,246,255,0.55); }
 footer.site .foot-seal b { color: #EAF6FF; font-weight: 600; }
 
 /* WhatsApp flutuante */

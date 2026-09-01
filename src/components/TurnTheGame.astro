@@ -1,0 +1,49 @@
+---
+// Nova secao "Vire o jogo" (PRD Alt.4). A virada: o medo da secao anterior
+// vira vantagem de negocio. Dois eixos: reter a base e ganhar contas novas.
+import Icon from './Icon.astro';
+import { CTA_PRIMARIO, CTA_ANCORA } from '../data/showcase';
+const eixos = [
+  {
+    ico: 'users',
+    eyebrow: 'Sua base atual',
+    tag: 'Retenção',
+    titulo: 'O cliente que sente a reforma primeiro é o que vai embora primeiro.',
+    corpo: 'Quem avisa o cliente antes do split apertar o caixa dele vira conselheiro, não fornecedor de guia. O Kontiva te dá o relatório de aviso pronto, cliente a cliente, para você chegar antes do problema. Entrega de mais qualidade é o que segura a carteira quando todo escritório estiver correndo atrás.',
+  },
+  {
+    ico: 'target',
+    eyebrow: 'Contas novas',
+    tag: 'Aquisição',
+    titulo: 'Chegue na reunião com o número, não com a promessa.',
+    corpo: 'Enquanto o concorrente diz “vamos acompanhar a reforma”, você mostra a simulação da carteira do prospect ranqueada por impacto e a projeção de caixa em reais. Operar a reforma vira argumento de venda: o escritório que chega com plano ganha a conta de quem só tem medo.',
+  },
+];
+---
+<section class="turn bg-page" aria-labelledby="turn-h">
+  <div class="shell">
+    <div class="section-head reveal" style="max-width:760px;">
+      <div class="eyebrow"><span class="dot-cyan"></span> Vire o jogo</div>
+      <h2 id="turn-h">A reforma é a maior chance de crescimento da década para quem se antecipa.</h2>
+    </div>
+
+    <div class="turn-grid">
+      {eixos.map((e, i) => (
+        <article class={`turn-card reveal delay-${i + 1}`}>
+          <div class="turn-top">
+            <span class="turn-ico"><Icon name={e.ico} size={20} /></span>
+            <span class="turn-eyebrow">{e.eyebrow}</span>
+          </div>
+          <span class="turn-tag">{e.tag}</span>
+          <h3 class="turn-title">{e.titulo}</h3>
+          <p class="turn-body">{e.corpo}</p>
+        </article>
+      ))}
+    </div>
+
+    <div class="turn-close reveal">
+      <p>A reforma tira o sono de quem não tem plano. Para quem tem, ela é a <span class="serif-accent">maior oportunidade</span> de crescimento da década.</p>
+      <a href={CTA_ANCORA} class="btn btn-primary btn-lg" data-cta="turn">{CTA_PRIMARIO}</a>
+    </div>
+  </div>
+</section>

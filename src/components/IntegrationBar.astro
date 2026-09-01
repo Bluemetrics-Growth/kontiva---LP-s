@@ -1,0 +1,29 @@
+---
+// Faixa de integracao (prova social) - PRD Alteracao 1.
+// Logos dos ERPs que o Kontiva LE (nao sao endosso comercial nem patrocinio).
+// Monocromaticos por padrao, cor no hover. Altura optica normalizada.
+const logos = [
+  { src: '/logos/dominio.png', alt: 'Logotipo Domínio Sistemas (Thomson Reuters)', h: 30 },
+  { src: '/logos/alterdata.png', alt: 'Logotipo Alterdata', h: 34 },
+  { src: '/logos/questor.png', alt: 'Logotipo Questor', h: 30 },
+];
+---
+<section class="integ bg-page" aria-labelledby="integ-h">
+  <div class="shell">
+    <div class="integ-head reveal">
+      <div class="eyebrow"><span class="dot-cyan"></span> Integração nativa</div>
+      <h2 id="integ-h" class="integ-title">Roda sobre os sistemas que você já usa.</h2>
+      <p class="integ-sub">O Kontiva lê os seus dados onde eles já estão. Você não troca de ERP nem migra nada.</p>
+    </div>
+
+    <div class="integ-row reveal delay-1">
+      {logos.map((l) => (
+        <span class="integ-logo">
+          <img src={l.src} alt={l.alt} loading="lazy" decoding="async" style={`height:${l.h}px`} />
+        </span>
+      ))}
+      <span class="integ-plus" aria-hidden="true"></span>
+      <span class="integ-sheet">+ planilhas</span>
+    </div>
+  </div>
+</section>

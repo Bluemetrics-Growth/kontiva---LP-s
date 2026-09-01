@@ -24,8 +24,31 @@ const cards = [
     caminho: 'O escritório que montar a operação agora atende mais clientes justo quando todos estarão perdidos.',
   },
 ];
+
+// Clippings de imprensa (PRD Alt.3). Citacao jornalistica: print + veiculo + link para a fonte.
+// URLs reais das manchetes (nunca reescrever a manchete: o print ja a mostra).
+const clippings = [
+  {
+    img: '/press/cartacapital.png',
+    veiculo: 'CartaCapital',
+    manchete: 'Contadores já sentem impacto da reforma tributária, mas maioria ainda não tem plano',
+    url: 'https://www.cartacapital.com.br/do-micro-ao-macro/contadores-reforma-tributaria-pesquisa/',
+  },
+  {
+    img: '/press/infomoney.png',
+    veiculo: 'InfoMoney',
+    manchete: 'Reforma Tributária: mais de 60% das empresas ainda não mediram o impacto nos negócios',
+    url: 'https://www.infomoney.com.br/minhas-financas/reforma-tributaria-mais-de-60-das-empresas-ainda-nao-mediram-o-impacto-nos-negocios/',
+  },
+  {
+    img: '/press/contabeis-ti.png',
+    veiculo: 'Contábeis',
+    manchete: 'Só 1% das empresas diz ter TI pronta para Reforma Tributária',
+    url: 'https://www.contabeis.com.br/noticias/78932/so-1-das-empresas-diz-ter-ti-pronta-para-reforma-tributaria',
+  },
+];
 ---
-<section class="bg-alt" aria-labelledby="urg-h">
+<section class="bg-alt" id="urgencia" aria-labelledby="urg-h">
   <div class="shell">
     <div class="section-head reveal">
       <div class="eyebrow"><span class="dot-cyan"></span> A urgência</div>
@@ -41,6 +64,26 @@ const cards = [
           <div class="u-block b-cam"><div class="u-label caminho">Caminho</div><p>{c.caminho}</p></div>
         </article>
       ))}
+    </div>
+
+    <div class="clip-band reveal">
+      <div class="clip-head">
+        <div class="eyebrow"><span class="dot-cyan"></span> O que a imprensa está dizendo</div>
+      </div>
+      <div class="clip-grid">
+        {clippings.map((c) => (
+          <a class="clip-card" href={c.url} target="_blank" rel="noopener noreferrer">
+            <div class="clip-shot">
+              <img src={c.img} alt={`Manchete: ${c.manchete} — ${c.veiculo}`} loading="lazy" decoding="async" />
+            </div>
+            <div class="clip-meta">
+              <span class="clip-veiculo">{c.veiculo}</span>
+              <span class="clip-link">Ler no site <span aria-hidden="true">↗</span></span>
+            </div>
+          </a>
+        ))}
+      </div>
+      <p class="clip-note">Manchetes reais, citadas com link para a fonte. Não somos só nós dizendo.</p>
     </div>
 
     <div class="u-close reveal">

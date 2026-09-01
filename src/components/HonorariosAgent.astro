@@ -1,9 +1,24 @@
 ---
-// S6 Segundo agente (Honorarios), com qualificacao.
+// S6 Segundo agente (Honorarios), com qualificacao. Redesenho visual (PRD Alt.5):
+// 3 cards "o que ele encontra" + mini-fluxo de 4 passos + selo de aprovacao humana.
+import Icon from './Icon.astro';
 import GestaoExcedentes from './app-frames/GestaoExcedentes.astro';
 import { CTA_PRIMARIO, CTA_ANCORA } from '../data/showcase';
+
+const encontra = [
+  { ico: 'clock', titulo: 'Reajuste esquecido', linha: 'O índice do contrato que ninguém aplicou.' },
+  { ico: 'users', titulo: 'Funcionário a mais na folha', linha: 'Volume que cresceu e a cobrança não acompanhou.' },
+  { ico: 'plus', titulo: 'Serviço avulso não faturado', linha: 'O extra que foi entregue e nunca virou cobrança.' },
+];
+
+const fluxo = [
+  'Consolida o mês',
+  'Cruza contrato × volume de serviço',
+  'Calcula excedente e reajuste',
+  'Explica cada cobrança (limite, valor observado, fórmula)',
+];
 ---
-<section class="bg-alt" aria-labelledby="hon-h">
+<section class="bg-alt" id="segundo-agente" aria-labelledby="hon-h">
   <div class="shell">
     <div class="hon-grid">
       <div class="hon-copy reveal">
@@ -11,19 +26,47 @@ import { CTA_PRIMARIO, CTA_ANCORA } from '../data/showcase';
         <h2 id="hon-h" style="margin-top:20px;">E tem um segundo agente que costuma se pagar sozinho.</h2>
 
         <div class="qualify">
-          <p>Se os seus contratos têm variáveis, excedentes e reajustes, o Agente de Honorários encontra o que fica sem cobrar: reajuste esquecido, funcionário a mais na folha, serviço avulso que ninguém faturou. Se a sua cobrança é toda fixa e simples, tudo bem, esse aqui não é para você.</p>
-        </div>
-
-        <p>Ele consolida o mês, cruza contrato com o volume de serviço prestado, calcula excedente e reajuste pelo índice do contrato, e explica cada cobrança com os limites contratados, os valores observados e a fórmula. A emissão só acontece pela interface, depois da sua revisão. Você aprova antes de qualquer coisa sair.</p>
-
-        <p class="hon-close">Os dois agentes vêm no mesmo Hub. O tributário puxa a fila, o de honorários <span class="serif-accent">paga a conta</span>.</p>
-
-        <div class="hero-cta-row" style="margin-top:28px;">
-          <a href={CTA_ANCORA} class="btn btn-primary" data-cta="s6">{CTA_PRIMARIO}</a>
+          <p>Se os seus contratos têm variáveis, excedentes e reajustes, o Agente de Honorários encontra o que fica sem cobrar. Se a sua cobrança é toda fixa e simples, tudo bem, esse aqui não é para você.</p>
         </div>
       </div>
 
       <div class="hon-frame reveal delay-1"><div class="viewfinder"><GestaoExcedentes /></div></div>
+    </div>
+
+    <div class="hon-find reveal">
+      <div class="hon-sub-eyebrow eyebrow"><span class="dot-cyan"></span> O que ele encontra</div>
+      <div class="hon-find-grid">
+        {encontra.map((c) => (
+          <article class="hon-find-card">
+            <span class="hon-find-ico"><Icon name={c.ico} size={20} /></span>
+            <h3 class="hon-find-title">{c.titulo}</h3>
+            <p class="hon-find-line">{c.linha}</p>
+          </article>
+        ))}
+      </div>
+    </div>
+
+    <div class="hon-flow reveal">
+      <div class="hon-sub-eyebrow eyebrow"><span class="dot-cyan"></span> Como funciona</div>
+      <ol class="hon-flow-steps">
+        {fluxo.map((step, i) => (
+          <li class="hon-flow-step">
+            <span class="hon-flow-n">{String(i + 1).padStart(2, '0')}</span>
+            <span class="hon-flow-txt">{step}</span>
+            {i < fluxo.length - 1 && <span class="hon-flow-arrow" aria-hidden="true"><Icon name="arrow" size={18} /></span>}
+          </li>
+        ))}
+      </ol>
+    </div>
+
+    <div class="hon-approval reveal">
+      <span class="hon-approval-ico"><Icon name="shield" size={22} /></span>
+      <p><strong>A emissão só acontece pela interface, depois da sua revisão.</strong> Você aprova antes de qualquer coisa sair.</p>
+    </div>
+
+    <div class="hon-tie reveal">
+      <p class="hon-close">Os dois agentes vêm no mesmo Hub. O tributário puxa a fila, o de honorários <span class="serif-accent">paga a conta</span>.</p>
+      <a href={CTA_ANCORA} class="btn btn-primary btn-lg" data-cta="s6">{CTA_PRIMARIO}</a>
     </div>
   </div>
 </section>
