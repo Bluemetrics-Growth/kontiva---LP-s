@@ -1,29 +1,89 @@
 ---
-// S6 Segundo agente (Honorarios), com qualificacao.
+// S6 Segundo agente (Honorarios). Duas dobras: macro (o dinheiro que escapa)
+// e micro (uma cobranca explicada e aprovada). Padrao de secao da LP:
+// eyebrow + H2 com italico serifado + intro + provas visuais + elementos escaneaveis.
+import Icon from './Icon.astro';
 import GestaoExcedentes from './app-frames/GestaoExcedentes.astro';
+import CobrancaAberta from './app-frames/CobrancaAberta.astro';
 import { CTA_PRIMARIO, CTA_ANCORA } from '../data/showcase';
+
+const achados = ['Reajuste esquecido', 'Funcionário a mais na folha', 'Serviço avulso não faturado'];
+
+const passos = [
+  { n: '01', t: 'Consolida e cruza.', d: 'Contrato contra o volume de serviço prestado no mês.' },
+  { n: '02', t: 'Calcula.', d: 'Excedente e reajuste pelo índice do próprio contrato.' },
+  { n: '03', t: 'Explica.', d: 'Cada cobrança com os limites contratados, os valores observados e a fórmula.' },
+];
 ---
 <section class="bg-alt" aria-labelledby="hon-h">
   <div class="shell">
-    <div class="hon-grid">
+
+    <!-- Dobra 1 - Macro: o dinheiro que escapa na carteira -->
+    <div class="hon-fold hon-grid">
       <div class="hon-copy reveal">
-        <div class="eyebrow"><span class="dot-cyan"></span> Segundo agente</div>
-        <h2 id="hon-h" style="margin-top:20px;">E tem um segundo agente que costuma se pagar sozinho.</h2>
+        <div class="eyebrow"><span class="dot-cyan"></span> Segundo agente · Honorários</div>
+        <h2 id="hon-h" style="margin-top:20px;">E tem um segundo agente que costuma se <span class="serif-accent">pagar sozinho</span>.</h2>
+        <p class="lead" style="margin-top:20px;">Se os seus contratos têm variáveis, excedentes e reajustes, o Agente de Honorários acha o que escapa da cobrança todo mês.</p>
 
-        <div class="qualify">
-          <p>Se os seus contratos têm variáveis, excedentes e reajustes, o Agente de Honorários encontra o que fica sem cobrar: reajuste esquecido, funcionário a mais na folha, serviço avulso que ninguém faturou. Se a sua cobrança é toda fixa e simples, tudo bem, esse aqui não é para você.</p>
+        <div class="hon-chips">
+          {achados.map((a) => (
+            <span class="hon-chip"><span class="d"></span>{a}</span>
+          ))}
         </div>
 
-        <p>Ele consolida o mês, cruza contrato com o volume de serviço prestado, calcula excedente e reajuste pelo índice do contrato, e explica cada cobrança com os limites contratados, os valores observados e a fórmula. A emissão só acontece pela interface, depois da sua revisão. Você aprova antes de qualquer coisa sair.</p>
-
-        <p class="hon-close">Os dois agentes vêm no mesmo Hub. O tributário puxa a fila, o de honorários <span class="serif-accent">paga a conta</span>.</p>
-
-        <div class="hero-cta-row" style="margin-top:28px;">
-          <a href={CTA_ANCORA} class="btn btn-primary" data-cta="s6">{CTA_PRIMARIO}</a>
-        </div>
+        <p class="hon-disqualify">Cobrança toda fixa e simples? Então esse agente não é para você.</p>
       </div>
 
       <div class="hon-frame reveal delay-1"><div class="viewfinder"><GestaoExcedentes /></div></div>
     </div>
+
+    <!-- Dobra 2 - Micro: uma cobranca explicada e aprovada -->
+    <div class="hon-fold hon-grid alt">
+      <div class="hon-copy reveal">
+        <div class="eyebrow"><span class="dot-cyan"></span> Como ele fatura</div>
+        <h2 style="margin-top:20px;">Ele calcula. Você <span class="serif-accent">aprova</span>. Aí sim sai.</h2>
+        <p class="lead" style="margin-top:20px;">O agente prepara a cobrança inteira e explica número por número, do jeito que dá para auditar.</p>
+
+        <div class="hon-steps">
+          {passos.map((p) => (
+            <div class="hon-step">
+              <div class="step-num">Passo {p.n}</div>
+              <h3>{p.t}</h3>
+              <p>{p.d}</p>
+            </div>
+          ))}
+        </div>
+
+        <div class="s5-bonus hon-badge">
+          <span class="b-ico"><Icon name="shield" size={20} /></span>
+          <div class="b-txt">
+            <strong>Aprovação humana</strong>
+            <p>A emissão só sai pela interface, depois da sua revisão. Fica registrado quem aprovou o quê.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="hon-frame reveal delay-1"><CobrancaAberta /></div>
+    </div>
+
+    <!-- Fecho: os dois agentes, o mesmo Hub -->
+    <div class="hon-duo reveal">
+      <h3 class="hon-duo-title">Os dois agentes, o mesmo Hub.</h3>
+      <div class="hon-duo-grid">
+        <div class="hon-duo-card">
+          <div class="hon-duo-role">Agente Tributário</div>
+          <p>puxa a fila</p>
+        </div>
+        <span class="hon-duo-link" aria-hidden="true"><Icon name="arrow" size={20} /></span>
+        <div class="hon-duo-card accent">
+          <div class="hon-duo-role">Agente de Honorários</div>
+          <p><span class="serif-accent">paga a conta</span></p>
+        </div>
+      </div>
+      <div class="hero-cta-row" style="justify-content:center; margin-top:32px;">
+        <a href={CTA_ANCORA} class="btn btn-primary btn-lg" data-cta="s6">{CTA_PRIMARIO}</a>
+      </div>
+    </div>
+
   </div>
 </section>
