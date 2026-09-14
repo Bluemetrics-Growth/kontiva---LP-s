@@ -34,22 +34,23 @@ import { CTA_PRIMARIO, CTA_ANCORA } from '../data/showcase';
 
     <div class="hero-visual reveal delay-2">
       <figure class="hero-photo">
-        <!--
-          Asset: colocar o original em public/hero-contadora.jpg (3:2 horizontal).
-          Upgrade responsivo (PRD 4), depois de gerar as variacoes com ferramenta
-          de imagem (cwebp / sharp), trocar o <img> abaixo por um <picture>:
-            <source type="image/webp" srcset="/hero-contadora-800.webp 800w, /hero-contadora-1600.webp 1600w, /hero-contadora-2400.webp 2400w" sizes="(max-width: 980px) 100vw, 42vw" />
-            <img src="/hero-contadora-1600.jpg" srcset="/hero-contadora-800.jpg 800w, /hero-contadora-1600.jpg 1600w, /hero-contadora-2400.jpg 2400w" sizes="(max-width: 980px) 100vw, 42vw" ... />
-          e atualizar o preload em Base.astro para a versao .webp principal.
-        -->
-        <img
-          src="/hero-contadora.jpg"
-          width="1500"
-          height="1000"
-          alt="Contadora em seu escritório, no comando da operação tributária."
-          fetchpriority="high"
-          decoding="async"
-        />
+        <picture>
+          <source
+            type="image/webp"
+            srcset="/hero-contadora-800.webp 800w, /hero-contadora-1600.webp 1600w, /hero-contadora-2400.webp 2400w"
+            sizes="(max-width: 980px) 100vw, 42vw"
+          />
+          <img
+            src="/hero-contadora-1600.jpg"
+            srcset="/hero-contadora-800.jpg 800w, /hero-contadora-1600.jpg 1600w, /hero-contadora-2400.jpg 2400w"
+            sizes="(max-width: 980px) 100vw, 42vw"
+            width="1600"
+            height="1067"
+            alt="Contadora em seu escritório, no comando da operação tributária."
+            fetchpriority="high"
+            decoding="async"
+          />
+        </picture>
         <span class="hero-scan" aria-hidden="true"></span>
       </figure>
       <div class="hero-panel">

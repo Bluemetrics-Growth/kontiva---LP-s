@@ -59,7 +59,15 @@ const siteLd = {
     <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
 
     <!-- Foto do hero (above the fold): prioriza o carregamento para o LCP -->
-    <link rel="preload" as="image" href="/hero-contadora.jpg" fetchpriority="high" />
+    <link
+      rel="preload"
+      as="image"
+      href="/hero-contadora-1600.webp"
+      type="image/webp"
+      imagesrcset="/hero-contadora-800.webp 800w, /hero-contadora-1600.webp 1600w, /hero-contadora-2400.webp 2400w"
+      imagesizes="(max-width: 980px) 100vw, 42vw"
+      fetchpriority="high"
+    />
 
     <!-- Fontes do design system (Google Fonts, font-display swap) -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
