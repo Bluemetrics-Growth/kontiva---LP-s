@@ -1,21 +1,43 @@
 ---
-// S1 Hero (Tributario). Headline A (B comentada para teste). Um CTA primario.
+// S1 Hero (Tributario). Foto full-bleed de background + overlay navy, texto branco.
+// Ver PRD "Hero com foto de background". Substitui a versao com a foto lateral ao
+// lado do painel: a foto vira background full-bleed, o painel de produto grande sai
+// do hero (aparece em detalhe na secao "O que o agente faz") e entra um selo de
+// prova glass no canto inferior direito. Copy inalterada.
 import Icon from './Icon.astro';
-import VisaoFinanceira from './app-frames/VisaoFinanceira.astro';
 import { CTA_PRIMARIO, CTA_ANCORA } from '../data/showcase';
 ---
-<section class="hero" id="topo" aria-labelledby="hero-h1">
-  <div class="shell hero-grid">
+<section class="hero hero-photo" id="topo" aria-labelledby="hero-h1">
+  <picture class="hero-photo-bg" aria-hidden="true">
+    <source
+      type="image/webp"
+      srcset="/hero-contadora-800.webp 800w, /hero-contadora-1600.webp 1600w, /hero-contadora-2400.webp 2400w"
+      sizes="100vw"
+    />
+    <img
+      src="/hero-contadora-1600.jpg"
+      srcset="/hero-contadora-800.jpg 800w, /hero-contadora-1600.jpg 1600w, /hero-contadora-2400.jpg 2400w"
+      sizes="100vw"
+      width="1600"
+      height="1067"
+      alt=""
+      fetchpriority="high"
+      decoding="async"
+    />
+  </picture>
+  <div class="hero-photo-overlay" aria-hidden="true"></div>
+  <div class="hero-photo-grid" aria-hidden="true"></div>
+
+  <div class="shell hero-photo-inner">
     <div class="hero-copy">
       <div class="eyebrow reveal"><span class="dot-cyan"></span> Reforma tributária · operação, não só simulação</div>
 
       <h1 id="hero-h1" class="reveal delay-1">
-        Enquanto todo mundo simula a reforma, o Kontiva <span class="accent">opera</span> ela com você.
+        O primeiro agente de IA tributária feito para <span class="accent">operar a reforma</span>.
       </h1>
-      <!-- Headline B (teste): Em 2027 seus clientes vão te perguntar o que fazer. A resposta se constrói agora. -->
 
       <p class="lead hero-sub reveal delay-2">
-        O agente de IA de gestão e operação tributária para escritórios contábeis. Responde qualquer dúvida da reforma com fonte e com o contexto dos seus dados, simula a carteira inteira de uma vez, e opera a rotina que vem aí: créditos, fornecedores e caixa. Com observabilidade total e a sua aprovação em cada passo.
+        Não é mais um simulador. O Kontiva entende os seus dados, projeta a carteira inteira e executa a rotina de créditos, fornecedores e caixa, sempre sob o seu comando.
       </p>
 
       <div class="hero-cta-row reveal delay-2">
@@ -29,11 +51,14 @@ import { CTA_PRIMARIO, CTA_ANCORA } from '../data/showcase';
       </div>
     </div>
 
-    <div class="hero-visual reveal delay-2">
-      <div class="viewfinder">
-        <VisaoFinanceira />
-        <div class="hero-scan" aria-hidden="true"></div>
+    <aside class="hero-proof reveal delay-3" aria-label="Exemplo ilustrativo de créditos identificados">
+      <span class="hero-proof-icon" aria-hidden="true"><Icon name="bolt" size={20} /></span>
+      <div class="hero-proof-main">
+        <span class="hero-proof-label">Créditos identificados</span>
+        <span class="hero-proof-value">R$ <b>214.700</b></span>
+        <span class="hero-proof-sub">recuperáveis em 60 meses</span>
       </div>
-    </div>
+      <span class="hero-proof-tag">Exemplo ilustrativo · dados de demonstração</span>
+    </aside>
   </div>
 </section>

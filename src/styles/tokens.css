@@ -48,10 +48,10 @@
   --font-serif-italic: 'Instrument Serif', Georgia, serif;
   --font-mono: 'JetBrains Mono', ui-monospace, monospace;
 
-  --fs-h1: clamp(40px, 6.4vw, 84px);
-  --fs-h2: clamp(32px, 4.4vw, 60px);
-  --fs-h3: clamp(21px, 2.2vw, 28px);
-  --fs-lead: clamp(17px, 1.6vw, 22px);
+  --fs-h1: clamp(38px, 5vw, 66px);
+  --fs-h2: clamp(30px, 3.6vw, 52px);
+  --fs-h3: clamp(20px, 2vw, 26px);
+  --fs-lead: clamp(17px, 1.4vw, 21px);
   --fs-body: 16px;
   --fs-eyebrow: 12px;
 
@@ -70,7 +70,7 @@
   --shadow-glow-hover: 0 1px 0 rgba(0,0,0,0.04), 0 18px 40px -12px color-mix(in oklab, var(--ciano) calc(80% * var(--accent-boost)), transparent);
 
   /* Layout */
-  --shell: 1240px;
+  --shell: 1360px;
   --space-section: 120px;
 }
 

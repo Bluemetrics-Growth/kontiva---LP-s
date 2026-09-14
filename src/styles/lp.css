@@ -188,31 +188,21 @@ p.lead { font-size: var(--fs-lead); line-height: 1.5; color: var(--cinza-escuro)
 @keyframes sweepX { 0% { transform: translateX(-40%); } 100% { transform: translateX(140%); } }
 
 /* =========================================================
-   HERO (S1)
+   HERO (S1) - foto full-bleed de background + overlay navy
+   Ver PRD "Hero com foto de background". A foto e background full-bleed,
+   texto branco por cima do degrade navy, painel de produto grande removido
+   e selo de prova glass no canto inferior direito.
    ========================================================= */
-.hero { padding: 92px 0 104px; overflow: hidden; position: relative; }
-.hero::before {
-  content: ""; position: absolute; inset: 0; pointer-events: none; z-index: 0;
-  background-image:
-    linear-gradient(var(--grid-on-light) 1px, transparent 1px),
-    linear-gradient(90deg, var(--grid-on-light) 1px, transparent 1px);
-  background-size: var(--grid-size) var(--grid-size);
-  -webkit-mask-image: radial-gradient(120% 90% at 78% 8%, #000 0%, transparent 70%);
-          mask-image: radial-gradient(120% 90% at 78% 8%, #000 0%, transparent 70%);
-}
-.hero::after {
-  content: ""; position: absolute; inset: 0; pointer-events: none; z-index: 0;
-  background: radial-gradient(760px circle at 86% 4%, color-mix(in oklab, var(--ciano) 9%, transparent), transparent 58%);
-}
-.hero-grid { display: grid; grid-template-columns: 1.04fr 0.96fr; gap: 68px; align-items: center; position: relative; z-index: 1; }
-@media (max-width: 980px) { .hero-grid { grid-template-columns: 1fr; gap: 48px; } }
-.hero h1 { margin-top: 24px; font-size: clamp(44px, 7.2vw, 92px); }
+.hero { position: relative; overflow: hidden; }
+
+/* --- Base compartilhada da copy do hero --- */
+.hero h1 { margin-top: 24px; font-size: clamp(36px, 4.2vw, 60px); }
 .hero h1 .accent {
   font-family: var(--font-serif-italic); font-style: italic; font-weight: 400;
   font-size: 1.06em; padding-right: 0.06em;
   color: color-mix(in oklab, var(--ciano) 30%, var(--azul-profundo));
 }
-.hero-sub { margin: 28px 0 34px; max-width: 588px; }
+.hero-sub { margin: 26px 0 34px; max-width: 640px; }
 .hero-cta-row { display: flex; flex-wrap: wrap; gap: 14px; align-items: center; }
 .hero-visual, .step-frame, .hon-frame, .chatmcp-visual { min-width: 0; }
 .hero-cta-note { margin-top: 18px; font-size: 14px; color: var(--cinza-texto); max-width: 520px; }
@@ -226,16 +216,118 @@ p.lead { font-size: var(--fs-lead); line-height: 1.5; color: var(--cinza-escuro)
   background: color-mix(in oklab, var(--ciano) 20%, white); border: 1px solid color-mix(in oklab, var(--ciano) 40%, transparent);
   display: inline-flex; align-items: center; justify-content: center; color: var(--azul-profundo);
 }
-/* Visual do hero com visor + beam de varredura */
-.hero-visual { position: relative; }
-.hero-visual .viewfinder::before, .hero-visual .viewfinder::after { width: 30px; height: 30px; }
-.hero-scan {
-  position: absolute; inset: 0; z-index: 6; pointer-events: none; overflow: hidden; border-radius: var(--r-xl);
+
+/* --- Variante com foto de background full-bleed --- */
+.hero-photo {
+  display: flex; align-items: center; isolation: isolate;
+  min-height: clamp(620px, 92vh, 880px);
+  background-color: var(--azul-profundo);
 }
-.hero-scan::after {
-  content: ""; position: absolute; left: 0; right: 0; height: 42%;
-  background: linear-gradient(180deg, transparent, color-mix(in oklab, var(--ciano) 16%, transparent), transparent);
-  animation: scanY 4.6s cubic-bezier(.6,0,.4,1) infinite;
+/* Foto full-bleed via <img> (object-fit cover) para casar com o preload/srcset
+   e proteger o LCP. Pessoa visivel a direita. */
+.hero-photo-bg { position: absolute; inset: 0; z-index: 0; pointer-events: none; }
+.hero-photo-bg img {
+  width: 100%; height: 100%; display: block;
+  /* Ancorar no topo: em telas largas o cover corta na vertical; mantendo o topo
+     a cabeca da pessoa nunca fica cortada (o excedente sai por baixo). */
+  object-fit: cover; object-position: 76% top;
+}
+/* Overlay navy: escuro a esquerda, clareando a direita (derivado do token) */
+.hero-photo-overlay {
+  position: absolute; inset: 0; z-index: 1; pointer-events: none;
+  background: linear-gradient(101deg,
+    color-mix(in srgb, var(--azul-profundo) 97%, transparent) 0%,
+    color-mix(in srgb, var(--azul-profundo) 94%, transparent) 30%,
+    color-mix(in srgb, var(--azul-profundo) 80%, transparent) 46%,
+    color-mix(in srgb, var(--azul-profundo) 42%, transparent) 60%,
+    color-mix(in srgb, var(--azul-profundo) 10%, transparent) 78%,
+    color-mix(in srgb, var(--azul-profundo) 2%, transparent) 100%);
+}
+/* Grade branca bem sutil, mascarada so no lado esquerdo (assinatura visual) */
+.hero-photo-grid {
+  position: absolute; inset: 0; z-index: 1; pointer-events: none; opacity: 0.14;
+  background-image:
+    linear-gradient(rgba(255,255,255,0.55) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255,255,255,0.55) 1px, transparent 1px);
+  background-size: var(--grid-size) var(--grid-size);
+  -webkit-mask-image: linear-gradient(90deg, #000 0%, #000 26%, transparent 60%);
+          mask-image: linear-gradient(90deg, #000 0%, #000 26%, transparent 60%);
+}
+.hero-photo-inner {
+  position: relative; z-index: 2; width: 100%;
+  padding-top: clamp(28px, 4vh, 52px); padding-bottom: clamp(28px, 4vh, 52px);
+}
+/* Conteudo ate ~55% a esquerda, sem invadir a pessoa */
+.hero-photo .hero-copy { width: min(55%, 600px); }
+
+/* Texto branco/claro sobre o degrade (contraste AA no lado escuro) */
+.hero-photo .eyebrow { color: color-mix(in oklab, var(--ciano) 60%, var(--claro-escuro)); }
+.hero-photo h1 { margin-top: 18px; color: var(--branco); }
+.hero-photo h1 .accent { color: color-mix(in oklab, var(--ciano) 78%, white); }
+.hero-photo .hero-sub { margin: 22px 0 28px; max-width: 560px; color: color-mix(in srgb, var(--branco) 86%, transparent); }
+.hero-photo .hero-cta-note { color: color-mix(in srgb, var(--branco) 72%, transparent); }
+.hero-photo .hero-seal { margin-top: 26px; padding-top: 22px; border-top-color: rgba(255,255,255,0.18); }
+.hero-photo .hero-seal div { color: color-mix(in srgb, var(--branco) 86%, transparent); }
+.hero-photo .hero-seal .tick { background: color-mix(in oklab, var(--ciano) 26%, white); }
+
+/* Selo de prova (glass), canto inferior direito.
+   Posicionado acima da zona do botao flutuante de WhatsApp (fixed). */
+.hero-proof {
+  position: absolute; right: 0; bottom: clamp(150px, 19vh, 190px); z-index: 3;
+  width: min(340px, 80vw);
+  display: grid; grid-template-columns: auto 1fr; gap: 6px 14px; align-items: start;
+  background: color-mix(in srgb, var(--azul-profundo) 64%, transparent);
+  -webkit-backdrop-filter: blur(14px); backdrop-filter: blur(14px);
+  border: 1px solid rgba(255,255,255,0.16);
+  border-radius: 18px; padding: 20px 22px;
+  box-shadow: 0 24px 60px -24px rgba(10,31,63,0.6);
+}
+.hero-proof-icon {
+  width: 40px; height: 40px; border-radius: 11px;
+  background: color-mix(in srgb, var(--ciano) 18%, transparent);
+  border: 1px solid color-mix(in srgb, var(--ciano) 34%, transparent);
+  color: color-mix(in oklab, var(--ciano) 80%, white);
+  display: inline-flex; align-items: center; justify-content: center;
+}
+.hero-proof-main { display: flex; flex-direction: column; gap: 2px; min-width: 0; }
+.hero-proof-label {
+  font-family: var(--font-mono); font-size: 10.5px; font-weight: 600;
+  letter-spacing: 0.12em; text-transform: uppercase;
+  color: color-mix(in srgb, var(--claro-escuro) 72%, transparent);
+}
+.hero-proof-value {
+  font-family: var(--font-display); font-weight: 700; font-size: 26px;
+  letter-spacing: -0.02em; line-height: 1.15; color: var(--branco);
+  font-variant-numeric: tabular-nums;
+}
+.hero-proof-value b { font-weight: 700; color: color-mix(in oklab, var(--ciano) 74%, white); }
+.hero-proof-sub { font-size: 12.5px; color: color-mix(in srgb, var(--claro-escuro) 72%, transparent); }
+.hero-proof-tag {
+  grid-column: 1 / -1; margin-top: 6px; padding-top: 10px;
+  border-top: 1px solid rgba(255,255,255,0.12);
+  font-size: 11px; color: color-mix(in srgb, var(--claro-escuro) 58%, transparent);
+}
+
+/* Responsivo: mobile full-bleed, overlay vertical mais forte, selo empilhado */
+@media (max-width: 860px) {
+  .hero-photo { min-height: auto; display: block; }
+  .hero-photo-bg img { object-position: 68% center; }
+  .hero-photo-overlay {
+    background: linear-gradient(178deg,
+      color-mix(in srgb, var(--azul-profundo) 90%, transparent) 0%,
+      color-mix(in srgb, var(--azul-profundo) 84%, transparent) 46%,
+      color-mix(in srgb, var(--azul-profundo) 80%, transparent) 72%,
+      color-mix(in srgb, var(--azul-profundo) 92%, transparent) 100%);
+  }
+  .hero-photo-grid {
+    opacity: 0.10;
+    -webkit-mask-image: linear-gradient(180deg, #000 0%, transparent 60%);
+            mask-image: linear-gradient(180deg, #000 0%, transparent 60%);
+  }
+  .hero-photo-inner { padding-top: 84px; padding-bottom: 56px; }
+  .hero-photo .hero-copy { width: 100%; }
+  .hero-photo .hero-sub { max-width: 100%; }
+  .hero-proof { position: static; width: 100%; margin-top: 30px; }
 }
 
 /* =========================================================
@@ -261,68 +353,229 @@ p.lead { font-size: var(--fs-lead); line-height: 1.5; color: var(--cinza-escuro)
 /* =========================================================
    URGENCIA (S3)
    ========================================================= */
-.urgency-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 22px; }
-@media (max-width: 940px) { .urgency-grid { grid-template-columns: 1fr; } }
+.urgency-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 22px; align-items: stretch; }
+@media (max-width: 940px) { .urgency-grid { grid-template-columns: 1fr; max-width: 520px; margin: 0 auto; } }
+
+/* Card: cabecalho (icone + categoria + marcador de tempo), problema, faixa de resposta. */
 .u-card {
-  position: relative; background: var(--branco); border: 1px solid var(--border-on-light); border-radius: var(--r-xl);
-  padding: 30px 28px 28px; transition: transform .35s cubic-bezier(.2,.7,.1,1), box-shadow .35s ease, border-color .35s;
-  overflow: hidden;
+  position: relative; display: flex; flex-direction: column;
+  background: var(--branco); border: 1px solid var(--border-on-light); border-radius: var(--r-xl);
+  padding: 26px 26px 0; overflow: hidden; box-shadow: var(--shadow-card);
 }
-/* tick de visor no canto superior direito de cada cartao */
-.u-card::before {
-  content: ""; position: absolute; top: 14px; right: 14px; width: 14px; height: 14px;
-  border-top: 1.5px solid color-mix(in oklab, var(--ciano) 55%, transparent);
-  border-right: 1.5px solid color-mix(in oklab, var(--ciano) 55%, transparent);
-  opacity: 0.5; transition: opacity .35s;
+/* canto tecnico (visor), discreto e estatico. Sem hover generico por card (PRD 9). */
+.u-card::after {
+  content: ""; position: absolute; top: 16px; right: 16px; width: 16px; height: 16px;
+  border-top: 2px solid color-mix(in oklab, var(--ciano) 42%, transparent);
+  border-right: 2px solid color-mix(in oklab, var(--ciano) 42%, transparent);
+  border-top-right-radius: 5px;
 }
-.u-card:hover { transform: translateY(-6px); border-color: color-mix(in oklab, var(--ciano) 45%, transparent); box-shadow: var(--shadow-card); }
-.u-card:hover::before { opacity: 1; }
-.u-card .u-eyebrow { font-family: var(--font-mono); font-size: 12px; font-weight: 600; letter-spacing: 0.04em; color: var(--azul-profundo); text-transform: uppercase; margin-bottom: 20px; display: flex; align-items: center; gap: 11px; }
-.u-card .u-eyebrow .u-ico { width: 34px; height: 34px; border-radius: var(--r-sm); background: color-mix(in oklab, var(--ciano) 14%, white); border: 1px solid color-mix(in oklab, var(--ciano) 28%, transparent); color: var(--azul-profundo); display: inline-flex; align-items: center; justify-content: center; flex: none; }
-.u-block { margin-bottom: 15px; padding-left: 14px; position: relative; }
-.u-block::before { content: ""; position: absolute; left: 0; top: 3px; bottom: 3px; width: 2px; border-radius: 2px; }
-.u-block.b-fato::before { background: var(--border-on-light-strong); }
-.u-block.b-cons::before { background: color-mix(in oklab, var(--antes-tag-fg) 45%, transparent); }
-.u-block.b-cam::before { background: var(--ciano); }
-.u-block:last-child { margin-bottom: 0; }
-.u-label { font-family: var(--font-mono); font-size: 10.5px; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; margin-bottom: 6px; }
-.u-label.fato { color: var(--cinza-texto); }
-.u-label.consequencia { color: var(--antes-tag-fg); }
-.u-label.caminho { color: color-mix(in oklab, var(--ciano) 74%, var(--azul-profundo)); }
-.u-block p { font-size: 14.5px; }
-.u-close { margin-top: 44px; text-align: center; }
-.u-close p { font-size: var(--fs-lead); color: var(--cinza-escuro); max-width: 740px; margin: 0 auto; text-wrap: balance; }
-.u-close .serif-accent { color: var(--azul-profundo); }
+
+.u-head { display: flex; align-items: center; gap: 12px; margin-bottom: 20px; }
+.u-ico {
+  flex: 0 0 40px; height: 40px; display: grid; place-items: center;
+  background: var(--ciano-suave); border-radius: var(--r-sm);
+  color: color-mix(in oklab, var(--ciano) 60%, var(--azul-profundo));
+}
+.u-meta { display: flex; flex-direction: column; min-width: 0; }
+.u-cat { font-family: var(--font-display); font-weight: 600; font-size: 14px; line-height: 1.15; color: var(--azul-profundo); }
+.u-when { margin-top: 3px; font-family: var(--font-mono); font-size: 11px; font-weight: 600; letter-spacing: 0.04em; color: var(--cinza-texto); }
+
+/* Problema: fato em peso (tinta, nunca cor), consequencia em cinza. Sem rotulos. */
+.u-fact { font-size: 17px; font-weight: 600; line-height: 1.34; letter-spacing: -0.01em; color: var(--azul-profundo); margin: 0 0 8px; }
+.u-fact b { font-weight: 700; color: var(--azul-profundo); }
+.u-conseq { font-size: 14.5px; line-height: 1.5; color: var(--cinza-texto); margin: 0 0 24px; }
+
+/* Resposta Kontiva: unica faixa de destaque, alinhada ao pe (cards de altura igual). */
+.u-answer {
+  margin: auto -26px 0; padding: 18px 26px 22px;
+  background: var(--ciano-suave); border-top: 1px solid color-mix(in oklab, var(--ciano) 30%, transparent);
+  display: flex; gap: 12px; align-items: flex-start;
+}
+.u-k {
+  flex: 0 0 26px; height: 26px; margin-top: 1px; display: grid; place-items: center;
+  background: var(--ciano); border-radius: 8px; color: #fff;
+  font-family: var(--font-display); font-weight: 700; font-size: 16px; line-height: 1;
+  box-shadow: 0 4px 10px -3px color-mix(in oklab, var(--ciano) 55%, transparent);
+}
+.u-do { font-size: 14.5px; line-height: 1.45; font-weight: 500; color: var(--azul-profundo); margin: 0; }
+
+.u-close { margin: 52px auto 0; text-align: center; font-size: var(--fs-lead); line-height: 1.5; color: var(--cinza-escuro); max-width: 44ch; font-weight: 500; text-wrap: balance; }
+.u-close .serif-accent { color: color-mix(in oklab, var(--ciano) 66%, var(--azul-profundo)); }
 
 /* =========================================================
-   DIFERENCIACAO (S4) - painel de instrumento escuro
+   DIFERENCIACAO (S4) - ESCADA de operacao (instrumento escuro)
+   Sobe conforme o Kontiva deixa de competir e passa a operar.
    ========================================================= */
-.ladder {
-  border-radius: var(--r-xl); overflow: hidden; border: 1px solid var(--hairline-dark); margin-top: 14px;
-  background: color-mix(in oklab, var(--azul-profundo-2) 40%, transparent);
-}
-.ladder-row { display: grid; grid-template-columns: 1.4fr 1fr 1.6fr; gap: 20px; padding: 24px 28px; border-bottom: 1px solid rgba(255,255,255,0.07); align-items: start; transition: background .3s; }
-.ladder-row:last-child { border-bottom: none; }
-.ladder-row.head { background: rgba(255,255,255,0.03); }
-.ladder-row.head div { font-family: var(--font-mono); font-size: 10.5px; font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase; color: rgba(234,246,255,0.5); }
-.ladder-step { font-weight: 600; color: var(--branco); font-size: 15.5px; }
-.ladder-step .n { font-family: var(--font-mono); color: rgba(234,246,255,0.4); margin-right: 10px; }
-.ladder-who, .ladder-pos { font-size: 14px; color: rgba(234,246,255,0.68); }
-.ladder-row:not(.head):not(.flagged):hover { background: rgba(255,255,255,0.03); }
-.ladder-row.flagged {
+.stair {
+  --riser: 66px;            /* altura de cada degrau que a escada sobe */
+  --stair-h: 480px;         /* altura total da caixa da escada no desktop */
   position: relative;
-  background: color-mix(in oklab, var(--ciano) 11%, transparent);
-  border-color: color-mix(in oklab, var(--ciano) 45%, transparent);
-  box-shadow: inset 3px 0 0 var(--ciano);
+  margin-top: 30px;
+  padding-left: 46px;       /* espaco para o eixo de operacao */
 }
-.ladder-row.flagged .ladder-step, .ladder-row.flagged .ladder-pos { color: var(--branco); }
-.ladder-row.flagged .ladder-step .n { color: var(--ciano); }
-.ladder-flag { display: inline-block; font-family: var(--font-mono); font-size: 10px; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; background: var(--ciano); color: var(--azul-profundo); padding: 4px 10px; border-radius: var(--r-pill); margin-bottom: 10px; box-shadow: 0 0 16px color-mix(in oklab, var(--ciano) 55%, transparent); }
-@media (max-width: 820px) {
-  .ladder-row { grid-template-columns: 1fr; gap: 8px; padding: 20px; }
-  .ladder-row.head { display: none; }
-  .ladder-who::before { content: "Quem esta la: "; color: rgba(234,246,255,0.4); }
-  .ladder-pos::before { content: "Kontiva: "; color: rgba(234,246,255,0.4); }
+
+/* Eixo vertical "nivel de operacao" que sobe a esquerda */
+.stair-axis {
+  position: absolute; left: 0; top: 0; bottom: 34px; width: 30px;
+  display: flex; flex-direction: column; align-items: center; justify-content: space-between;
+}
+.stair-axis::before {
+  content: ""; position: absolute; left: 50%; top: 0; bottom: 0; width: 1px; transform: translateX(-50%);
+  background: linear-gradient(to top, transparent, color-mix(in oklab, var(--ciano) 55%, transparent));
+}
+.stair-axis-lbl {
+  writing-mode: vertical-rl; transform: rotate(180deg);
+  font-family: var(--font-mono); font-size: 10px; font-weight: 700; letter-spacing: 0.22em;
+  text-transform: uppercase; color: rgba(234,246,255,0.42); white-space: nowrap;
+}
+.stair-axis-arrow {
+  color: var(--ciano); display: inline-flex; transform: rotate(-90deg);
+  filter: drop-shadow(0 0 8px color-mix(in oklab, var(--ciano) 60%, transparent));
+}
+
+/* Trilho: 4 colunas alinhadas por baixo, cada uma sobe um degrau */
+.stair-track {
+  list-style: none; margin: 0; padding: 0;
+  display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px;
+  align-items: stretch; min-height: var(--stair-h);
+  border-bottom: 1px solid var(--hairline-dark);
+}
+
+.stair-step {
+  position: relative; display: flex; flex-direction: column;
+  padding-top: calc((4 - var(--lvl)) * var(--riser));   /* degraus mais altos sobem mais */
+}
+
+/* Corpo do degrau (a "piso" com o conteudo) */
+.stair-body {
+  flex: 1; position: relative; min-width: 0;
+  border-radius: 14px 14px 0 0;
+  border: 1px solid var(--hairline-dark); border-bottom: 0;
+  background: color-mix(in oklab, var(--azul-profundo-2) 46%, transparent);
+  box-shadow: inset 0 2px 0 rgba(255,255,255,0.10);   /* lampejo do "degrau" no topo */
+  transition: transform .3s cubic-bezier(.2,.7,.1,1), box-shadow .3s, border-color .3s;
+  overflow: hidden;
+}
+.stair-body::before {   /* numero fantasma ao fundo */
+  content: attr(data-n); position: absolute; right: 10px; bottom: -14px;
+  font-family: var(--font-display); font-weight: 800; font-size: 120px; line-height: 1;
+  color: rgba(255,255,255,0.03); pointer-events: none;
+}
+.stair-body-in { position: relative; padding: 20px 20px 22px; display: flex; flex-direction: column; height: 100%; }
+
+.stair-top { display: flex; align-items: center; gap: 10px; margin-bottom: 14px; }
+.stair-num {
+  font-family: var(--font-mono); font-weight: 700; font-size: 13px; letter-spacing: 0.06em;
+  color: rgba(234,246,255,0.5);
+}
+.stair-ico {
+  width: 30px; height: 30px; border-radius: 8px; flex: none; margin-left: auto;
+  display: inline-flex; align-items: center; justify-content: center;
+  background: rgba(255,255,255,0.05); border: 1px solid var(--hairline-dark);
+  color: rgba(234,246,255,0.75);
+}
+.stair-title { font-size: 17px; line-height: 1.22; color: var(--branco); font-weight: 700; letter-spacing: -0.02em; }
+.stair-tag {
+  margin-top: 7px; font-family: var(--font-mono); font-size: 10.5px; letter-spacing: 0.02em;
+  color: color-mix(in oklab, var(--ciano) 45%, rgba(234,246,255,0.55)); line-height: 1.5; text-transform: none;
+}
+.stair-who { margin-top: 16px; }
+.stair-who-lbl {
+  display: block; font-family: var(--font-mono); font-size: 9.5px; font-weight: 700; letter-spacing: 0.16em;
+  text-transform: uppercase; color: rgba(234,246,255,0.4); margin-bottom: 8px;
+}
+.stair-chips { display: flex; flex-wrap: wrap; gap: 6px; }
+.stair-pos {
+  margin-top: auto; padding-top: 16px; font-size: 13px; line-height: 1.5;
+  color: rgba(234,246,255,0.66);
+}
+
+/* Chips-marca (nao sao logos oficiais, sao wordmarks estilizados) */
+.chip {
+  display: inline-flex; align-items: center; height: 26px; padding: 0 11px;
+  border-radius: var(--r-pill); font-size: 12px; font-weight: 600; letter-spacing: -0.01em;
+  border: 1px solid var(--hairline-dark); color: rgba(234,246,255,0.8);
+  background: rgba(255,255,255,0.04); white-space: nowrap;
+}
+.chip-mut { color: rgba(234,246,255,0.55); }
+.chip-erp { color: rgba(234,246,255,0.9); border-color: rgba(255,255,255,0.16); }
+.chip-kontiva {
+  color: var(--azul-profundo); font-weight: 700;
+  background: var(--ciano); border-color: transparent;
+  box-shadow: 0 0 16px color-mix(in oklab, var(--ciano) 45%, transparent);
+}
+.chip-sys {
+  font-family: var(--font-body);
+  color: rgba(234,246,255,0.82); border-color: rgba(255,255,255,0.14);
+}
+
+/* Estados por tipo de degrau */
+.stair-step.kind-commodity .stair-body { background: rgba(255,255,255,0.025); }
+.stair-step.kind-erp .stair-body { background: color-mix(in oklab, var(--azul-profundo-2) 42%, transparent); }
+.stair-step.kind-kontiva .stair-body {
+  border-color: color-mix(in oklab, var(--ciano) 30%, transparent);
+  box-shadow: inset 0 2px 0 color-mix(in oklab, var(--ciano) 45%, transparent);
+}
+.stair-step.kind-kontiva .stair-pos { color: rgba(234,246,255,0.82); }
+
+/* Degrau 4: a bandeira, iluminado */
+.stair-step.kind-flag .stair-body {
+  border-color: color-mix(in oklab, var(--ciano) 55%, transparent);
+  background:
+    linear-gradient(180deg, color-mix(in oklab, var(--ciano) 16%, transparent), color-mix(in oklab, var(--azul-profundo-2) 55%, transparent) 60%);
+  box-shadow:
+    inset 0 2px 0 var(--ciano),
+    0 24px 60px -24px color-mix(in oklab, var(--ciano) 55%, transparent);
+}
+.stair-step.kind-flag .stair-title,
+.stair-step.kind-flag .stair-pos { color: var(--branco); }
+.stair-step.kind-flag .stair-ico {
+  background: color-mix(in oklab, var(--ciano) 18%, transparent);
+  border-color: color-mix(in oklab, var(--ciano) 45%, transparent); color: var(--ciano);
+}
+.stair-flag {
+  display: inline-flex; align-items: center; margin-left: auto;
+  font-family: var(--font-mono); font-size: 9.5px; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase;
+  background: var(--ciano); color: var(--azul-profundo); padding: 4px 9px; border-radius: var(--r-pill);
+  box-shadow: 0 0 16px color-mix(in oklab, var(--ciano) 55%, transparent);
+}
+.stair-step.kind-flag .stair-ico { margin-left: 0; }
+
+/* Hover: o degrau se levanta um toque */
+.stair-body:hover { transform: translateY(-4px); }
+.stair-step.kind-flag .stair-body:hover { box-shadow: inset 0 2px 0 var(--ciano), 0 30px 70px -22px color-mix(in oklab, var(--ciano) 65%, transparent); }
+
+/* Faixa: sistemas sobre os quais o Kontiva roda */
+.stair-base {
+  margin-top: 26px; display: flex; align-items: center; flex-wrap: wrap; gap: 14px 20px;
+}
+.stair-base-lbl {
+  display: inline-flex; align-items: center; gap: 10px;
+  font-size: 14px; color: rgba(234,246,255,0.78);
+}
+.stair-base-lbl .tick {
+  width: 21px; height: 21px; border-radius: 6px; flex: none;
+  background: color-mix(in oklab, var(--ciano) 20%, transparent); border: 1px solid color-mix(in oklab, var(--ciano) 40%, transparent);
+  display: inline-flex; align-items: center; justify-content: center; color: var(--ciano);
+}
+.stair-base-chips { display: flex; flex-wrap: wrap; gap: 8px; }
+
+/* Tablet: 2 colunas, escada em dois lances */
+@media (max-width: 900px) {
+  .stair { --riser: 44px; --stair-h: auto; padding-left: 0; }
+  .stair-axis { display: none; }
+  .stair-track { grid-template-columns: 1fr 1fr; min-height: 0; border-bottom: 0; gap: 14px; }
+  .stair-step { padding-top: 0; }
+  .stair-body { border-radius: 14px; border-bottom: 1px solid var(--hairline-dark); }
+  .stair-step.kind-commodity, .stair-step.kind-kontiva { transform: translateY(calc(-1 * var(--riser))); }
+}
+
+/* Mobile: escada vertical, cada degrau com recuo crescente */
+@media (max-width: 620px) {
+  .stair-track { grid-template-columns: 1fr; }
+  .stair-step { transform: none !important; margin-left: calc((var(--lvl) - 1) * 16px); }
+  .stair-body::before { font-size: 92px; }
+  .stair-body:hover { transform: none; }
 }
 
 /* =========================================================
@@ -356,14 +609,88 @@ p.lead { font-size: var(--fs-lead); line-height: 1.5; color: var(--cinza-escuro)
 .bg-dark .section-cta p { color: rgba(234,246,255,0.72); }
 
 /* =========================================================
-   HONORARIOS (S6)
+   HONORARIOS (S6) - duas dobras (macro -> micro)
    ========================================================= */
 .hon-grid { display: grid; grid-template-columns: 1fr 1.05fr; gap: 60px; align-items: center; }
 @media (max-width: 940px) { .hon-grid { grid-template-columns: 1fr; gap: 40px; } }
-.hon-copy .qualify { margin: 24px 0; padding: 20px 22px; background: color-mix(in oklab, var(--ciano) 5%, var(--branco)); border: 1px solid color-mix(in oklab, var(--ciano) 24%, var(--border-on-light)); border-radius: var(--r-md); box-shadow: 0 1px 2px rgba(10,31,63,0.04); }
-.hon-copy .qualify p { font-size: 15px; }
-.hon-close { margin-top: 26px; font-size: 15px; color: var(--cinza-escuro); }
-.hon-close .serif-accent { color: var(--azul-profundo); }
+
+/* Segunda dobra alterna o lado (mockup a esquerda, texto a direita) para dar ritmo */
+@media (min-width: 941px) {
+  .hon-grid.alt .hon-copy { order: 2; }
+  .hon-grid.alt .hon-frame { order: 1; }
+}
+
+/* Espacamento entre as dobras = ritmo de secoes irmas (uma secao coesa em dois tempos) */
+.hon-fold + .hon-fold { margin-top: var(--space-section); }
+@media (max-width: 720px) { .hon-fold + .hon-fold { margin-top: 76px; } }
+
+.hon-copy h2 { line-height: 1.02; }
+.hon-copy .serif-accent { color: color-mix(in oklab, var(--ciano) 26%, var(--azul-profundo)); }
+
+/* Chips do que o agente encontra (mesma linguagem de chip da secao "A regua", em fundo claro) */
+.hon-chips { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 26px; }
+.hon-chip {
+  display: inline-flex; align-items: center; gap: 9px;
+  background: var(--branco); border: 1px solid var(--border-on-light-strong);
+  border-radius: var(--r-pill); padding: 10px 16px 10px 14px;
+  font-size: 13.5px; font-weight: 600; color: var(--cinza-escuro);
+  box-shadow: 0 1px 2px rgba(10,31,63,0.04);
+}
+.hon-chip .d {
+  width: 7px; height: 7px; border-radius: 50%; background: var(--ciano); flex: none;
+  box-shadow: 0 0 0 4px color-mix(in oklab, var(--ciano) 16%, transparent), 0 0 8px color-mix(in oklab, var(--ciano) 60%, transparent);
+}
+
+.hon-disqualify { margin-top: 20px; font-size: 13.5px; color: var(--cinza-texto); }
+
+/* Passos numerados (mesmo componente da secao "O que o agente faz") */
+.hon-steps { display: flex; flex-direction: column; gap: 22px; margin-top: 30px; }
+.hon-step .step-num { margin-bottom: 8px; }
+.hon-step h3 { font-size: 18px; margin-bottom: 5px; }
+.hon-step p { font-size: 15px; }
+
+/* Badge de confianca (reusa o padrao visual do bonus de operacao) */
+.hon-badge { margin-top: 30px; }
+
+/* Prova visual da Dobra 2: screenshot real do produto (analise de cobranca) */
+.shot-img {
+  display: block; width: 100%; height: auto; border-radius: var(--r-xl);
+  border: 1px solid rgba(10,31,63,0.1); background: var(--azul-profundo);
+  box-shadow: var(--shadow-dark), 0 40px 90px -50px color-mix(in oklab, var(--ciano) 38%, transparent);
+}
+.shot-cap { margin-top: 16px; text-align: right; }
+.shot-cap span {
+  display: inline-flex; align-items: center;
+  font-size: 10.5px; font-weight: 600; letter-spacing: 0.02em; color: var(--cinza-texto);
+  background: var(--branco); border: 1px solid var(--border-on-light-strong);
+  border-radius: var(--r-pill); padding: 5px 12px;
+}
+
+/* Fecho: os dois agentes, o mesmo Hub */
+.hon-duo { margin-top: var(--space-section); text-align: center; }
+@media (max-width: 720px) { .hon-duo { margin-top: 76px; } }
+.hon-duo-title { font-size: var(--fs-h3); color: var(--azul-profundo); margin-bottom: 30px; }
+.hon-duo-grid { display: flex; align-items: stretch; justify-content: center; gap: 18px; flex-wrap: wrap; }
+.hon-duo-card {
+  flex: 1 1 300px; max-width: 380px; background: var(--branco);
+  border: 1px solid var(--border-on-light-strong); border-radius: var(--r-xl);
+  padding: 26px 28px; box-shadow: 0 1px 2px rgba(10,31,63,0.04);
+}
+.hon-duo-card.accent { border-color: color-mix(in oklab, var(--ciano) 50%, transparent); box-shadow: 0 12px 30px -16px color-mix(in oklab, var(--ciano) 40%, transparent); }
+.hon-duo-role { font-family: var(--font-mono); font-size: 12px; font-weight: 700; letter-spacing: 0.06em; text-transform: uppercase; color: var(--azul-profundo); margin-bottom: 8px; }
+.hon-duo-card p { font-size: var(--fs-lead); color: var(--cinza-escuro); }
+.hon-duo-card.accent .serif-accent { color: color-mix(in oklab, var(--ciano) 30%, var(--azul-profundo)); }
+.hon-duo-link {
+  display: inline-flex; align-items: center; justify-content: center; align-self: center; flex: none;
+  width: 42px; height: 42px; border-radius: 50%;
+  background: color-mix(in oklab, var(--ciano) 14%, var(--branco)); border: 1px solid color-mix(in oklab, var(--ciano) 34%, transparent);
+  color: color-mix(in oklab, var(--ciano) 74%, var(--azul-profundo));
+}
+@media (max-width: 620px) {
+  .hon-duo-grid { flex-direction: column; align-items: stretch; }
+  .hon-duo-card { flex: 0 0 auto; max-width: none; }
+  .hon-duo-link { transform: rotate(90deg); }
+}
 
 /* =========================================================
    CHAT & MCP (S7)
