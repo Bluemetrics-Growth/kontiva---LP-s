@@ -1,27 +1,32 @@
 ---
-// S3 A urgencia (regra dos 3 elementos: fato, consequencia, caminho).
+// S3 A urgencia, refatorada (PRD "Refatorar a secao A Urgencia").
+// A logica dos 3 elementos (fato, consequencia, caminho) vira hierarquia visual,
+// nao rotulo. Ciano so nos elementos Kontiva: eyebrow, selo "k", faixa de resposta.
 import Icon from './Icon.astro';
 const cards = [
   {
     ico: 'cash',
-    eyebrow: 'Split payment',
-    fato: 'Em 2027, o split payment debita o imposto na hora da venda.',
-    consequencia: 'O caixa do seu cliente muda, e ninguém projetou isso ainda.',
-    caminho: 'O Kontiva projeta o fluxo de caixa pós-split por cliente, com relatório de aviso pronto.',
+    cat: 'Split payment',
+    when: '2027',
+    fact: 'O imposto sai do caixa <b>na hora da venda.</b>',
+    conseq: 'O caixa do seu cliente muda, e ninguém projetou isso ainda.',
+    resp: 'Projetamos o caixa pós-split por cliente, com relatório de aviso pronto.',
   },
   {
     ico: 'truck',
-    eyebrow: 'Crédito condicionado ao fornecedor',
-    fato: 'O crédito do seu cliente passa a depender de o fornecedor dele ter pago o imposto.',
-    consequencia: 'Monitorar isso, cliente a cliente, todo mês, é impossível na mão.',
-    caminho: 'O Kontiva acompanha os fornecedores e sinaliza quem gera crédito e quem não gera.',
+    cat: 'Crédito condicionado',
+    when: 'todo mês',
+    fact: 'O crédito passa a depender de o <b>fornecedor ter pago</b> o imposto.',
+    conseq: 'Conferir isso, cliente a cliente, é impossível na mão.',
+    resp: 'Acompanhamos os fornecedores e sinalizamos quem gera crédito.',
   },
   {
     ico: 'clock',
-    eyebrow: 'A janela',
-    fato: '32,7% das empresas nem começaram a se adaptar. A simplificação só chega em 2033.',
-    consequencia: 'Até lá são dois sistemas convivendo, o período mais complexo da história.',
-    caminho: 'O escritório que montar a operação agora atende mais clientes justo quando todos estarão perdidos.',
+    cat: 'A janela',
+    when: '2026 › 2033',
+    fact: '<b>32,7%</b> das empresas nem começaram a se adaptar.',
+    conseq: 'Até 2033, dois sistemas convivendo: o período mais complexo da história.',
+    resp: 'Quem monta a operação agora atende justo quando todos estarão perdidos.',
   },
 ];
 ---
@@ -32,19 +37,26 @@ const cards = [
       <h2 id="urg-h">A reforma não é um cálculo. É uma operação nova que começa em 2027 e não acaba em 2033.</h2>
     </div>
 
-    <div class="urgency-grid">
-      {cards.map((c, i) => (
-        <article class={`u-card reveal delay-${i + 1}`}>
-          <div class="u-eyebrow"><span class="u-ico"><Icon name={c.ico} size={16} /></span> {c.eyebrow}</div>
-          <div class="u-block b-fato"><div class="u-label fato">Fato</div><p>{c.fato}</p></div>
-          <div class="u-block b-cons"><div class="u-label consequencia">Consequência</div><p>{c.consequencia}</p></div>
-          <div class="u-block b-cam"><div class="u-label caminho">Caminho</div><p>{c.caminho}</p></div>
+    <div class="urgency-grid reveal">
+      {cards.map((c) => (
+        <article class="u-card">
+          <div class="u-head">
+            <span class="u-ico"><Icon name={c.ico} size={20} /></span>
+            <span class="u-meta">
+              <span class="u-cat">{c.cat}</span>
+              <span class="u-when">{c.when}</span>
+            </span>
+          </div>
+          <p class="u-fact" set:html={c.fact}></p>
+          <p class="u-conseq">{c.conseq}</p>
+          <div class="u-answer">
+            <span class="u-k" aria-hidden="true">k</span>
+            <p class="u-do">{c.resp}</p>
+          </div>
         </article>
       ))}
     </div>
 
-    <div class="u-close reveal">
-      <p>Mesma urgência que o mercado prega. Com uma diferença: aqui tem <span class="serif-accent">caminho</span>, e dá tempo de começar.</p>
-    </div>
+    <p class="u-close reveal">Mesma urgência que o mercado prega. Com uma diferença: aqui tem <span class="serif-accent">caminho</span>, e dá tempo de começar.</p>
   </div>
 </section>

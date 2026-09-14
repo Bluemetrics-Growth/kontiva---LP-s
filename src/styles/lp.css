@@ -261,38 +261,54 @@ p.lead { font-size: var(--fs-lead); line-height: 1.5; color: var(--cinza-escuro)
 /* =========================================================
    URGENCIA (S3)
    ========================================================= */
-.urgency-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 22px; }
-@media (max-width: 940px) { .urgency-grid { grid-template-columns: 1fr; } }
+.urgency-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 22px; align-items: stretch; }
+@media (max-width: 940px) { .urgency-grid { grid-template-columns: 1fr; max-width: 520px; margin: 0 auto; } }
+
+/* Card: cabecalho (icone + categoria + marcador de tempo), problema, faixa de resposta. */
 .u-card {
-  position: relative; background: var(--branco); border: 1px solid var(--border-on-light); border-radius: var(--r-xl);
-  padding: 30px 28px 28px; transition: transform .35s cubic-bezier(.2,.7,.1,1), box-shadow .35s ease, border-color .35s;
-  overflow: hidden;
+  position: relative; display: flex; flex-direction: column;
+  background: var(--branco); border: 1px solid var(--border-on-light); border-radius: var(--r-xl);
+  padding: 26px 26px 0; overflow: hidden; box-shadow: var(--shadow-card);
 }
-/* tick de visor no canto superior direito de cada cartao */
-.u-card::before {
-  content: ""; position: absolute; top: 14px; right: 14px; width: 14px; height: 14px;
-  border-top: 1.5px solid color-mix(in oklab, var(--ciano) 55%, transparent);
-  border-right: 1.5px solid color-mix(in oklab, var(--ciano) 55%, transparent);
-  opacity: 0.5; transition: opacity .35s;
+/* canto tecnico (visor), discreto e estatico. Sem hover generico por card (PRD 9). */
+.u-card::after {
+  content: ""; position: absolute; top: 16px; right: 16px; width: 16px; height: 16px;
+  border-top: 2px solid color-mix(in oklab, var(--ciano) 42%, transparent);
+  border-right: 2px solid color-mix(in oklab, var(--ciano) 42%, transparent);
+  border-top-right-radius: 5px;
 }
-.u-card:hover { transform: translateY(-6px); border-color: color-mix(in oklab, var(--ciano) 45%, transparent); box-shadow: var(--shadow-card); }
-.u-card:hover::before { opacity: 1; }
-.u-card .u-eyebrow { font-family: var(--font-mono); font-size: 12px; font-weight: 600; letter-spacing: 0.04em; color: var(--azul-profundo); text-transform: uppercase; margin-bottom: 20px; display: flex; align-items: center; gap: 11px; }
-.u-card .u-eyebrow .u-ico { width: 34px; height: 34px; border-radius: var(--r-sm); background: color-mix(in oklab, var(--ciano) 14%, white); border: 1px solid color-mix(in oklab, var(--ciano) 28%, transparent); color: var(--azul-profundo); display: inline-flex; align-items: center; justify-content: center; flex: none; }
-.u-block { margin-bottom: 15px; padding-left: 14px; position: relative; }
-.u-block::before { content: ""; position: absolute; left: 0; top: 3px; bottom: 3px; width: 2px; border-radius: 2px; }
-.u-block.b-fato::before { background: var(--border-on-light-strong); }
-.u-block.b-cons::before { background: color-mix(in oklab, var(--antes-tag-fg) 45%, transparent); }
-.u-block.b-cam::before { background: var(--ciano); }
-.u-block:last-child { margin-bottom: 0; }
-.u-label { font-family: var(--font-mono); font-size: 10.5px; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; margin-bottom: 6px; }
-.u-label.fato { color: var(--cinza-texto); }
-.u-label.consequencia { color: var(--antes-tag-fg); }
-.u-label.caminho { color: color-mix(in oklab, var(--ciano) 74%, var(--azul-profundo)); }
-.u-block p { font-size: 14.5px; }
-.u-close { margin-top: 44px; text-align: center; }
-.u-close p { font-size: var(--fs-lead); color: var(--cinza-escuro); max-width: 740px; margin: 0 auto; text-wrap: balance; }
-.u-close .serif-accent { color: var(--azul-profundo); }
+
+.u-head { display: flex; align-items: center; gap: 12px; margin-bottom: 20px; }
+.u-ico {
+  flex: 0 0 40px; height: 40px; display: grid; place-items: center;
+  background: var(--ciano-suave); border-radius: var(--r-sm);
+  color: color-mix(in oklab, var(--ciano) 60%, var(--azul-profundo));
+}
+.u-meta { display: flex; flex-direction: column; min-width: 0; }
+.u-cat { font-family: var(--font-display); font-weight: 600; font-size: 14px; line-height: 1.15; color: var(--azul-profundo); }
+.u-when { margin-top: 3px; font-family: var(--font-mono); font-size: 11px; font-weight: 600; letter-spacing: 0.04em; color: var(--cinza-texto); }
+
+/* Problema: fato em peso (tinta, nunca cor), consequencia em cinza. Sem rotulos. */
+.u-fact { font-size: 17px; font-weight: 600; line-height: 1.34; letter-spacing: -0.01em; color: var(--azul-profundo); margin: 0 0 8px; }
+.u-fact b { font-weight: 700; color: var(--azul-profundo); }
+.u-conseq { font-size: 14.5px; line-height: 1.5; color: var(--cinza-texto); margin: 0 0 24px; }
+
+/* Resposta Kontiva: unica faixa de destaque, alinhada ao pe (cards de altura igual). */
+.u-answer {
+  margin: auto -26px 0; padding: 18px 26px 22px;
+  background: var(--ciano-suave); border-top: 1px solid color-mix(in oklab, var(--ciano) 30%, transparent);
+  display: flex; gap: 12px; align-items: flex-start;
+}
+.u-k {
+  flex: 0 0 26px; height: 26px; margin-top: 1px; display: grid; place-items: center;
+  background: var(--ciano); border-radius: 8px; color: #fff;
+  font-family: var(--font-display); font-weight: 700; font-size: 16px; line-height: 1;
+  box-shadow: 0 4px 10px -3px color-mix(in oklab, var(--ciano) 55%, transparent);
+}
+.u-do { font-size: 14.5px; line-height: 1.45; font-weight: 500; color: var(--azul-profundo); margin: 0; }
+
+.u-close { margin: 52px auto 0; text-align: center; font-size: var(--fs-lead); line-height: 1.5; color: var(--cinza-escuro); max-width: 44ch; font-weight: 500; text-wrap: balance; }
+.u-close .serif-accent { color: color-mix(in oklab, var(--ciano) 66%, var(--azul-profundo)); }
 
 /* =========================================================
    DIFERENCIACAO (S4) - ESCADA de operacao (instrumento escuro)
