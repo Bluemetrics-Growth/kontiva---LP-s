@@ -228,7 +228,9 @@ p.lead { font-size: var(--fs-lead); line-height: 1.5; color: var(--cinza-escuro)
 .hero-photo-bg { position: absolute; inset: 0; z-index: 0; pointer-events: none; }
 .hero-photo-bg img {
   width: 100%; height: 100%; display: block;
-  object-fit: cover; object-position: 76% center;
+  /* Ancorar no topo: em telas largas o cover corta na vertical; mantendo o topo
+     a cabeca da pessoa nunca fica cortada (o excedente sai por baixo). */
+  object-fit: cover; object-position: 76% top;
 }
 /* Overlay navy: escuro a esquerda, clareando a direita (derivado do token) */
 .hero-photo-overlay {
