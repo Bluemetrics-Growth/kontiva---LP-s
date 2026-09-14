@@ -1,5 +1,8 @@
 ---
 // S1 Hero (Tributario). Headline A (B comentada para teste). Um CTA primario.
+// Layout Opcao A (PRD Hero foto humana): copy a esquerda, foto da contadora a
+// direita. O painel de produto flutua sobre o canto inferior esquerdo da foto,
+// area limpa da imagem, sem cobrir o rosto da protagonista (terco direito).
 import Icon from './Icon.astro';
 import VisaoFinanceira from './app-frames/VisaoFinanceira.astro';
 import { CTA_PRIMARIO, CTA_ANCORA } from '../data/showcase';
@@ -30,9 +33,27 @@ import { CTA_PRIMARIO, CTA_ANCORA } from '../data/showcase';
     </div>
 
     <div class="hero-visual reveal delay-2">
-      <div class="viewfinder">
+      <figure class="hero-photo">
+        <!--
+          Asset: colocar o original em public/hero-contadora.jpg (3:2 horizontal).
+          Upgrade responsivo (PRD 4), depois de gerar as variacoes com ferramenta
+          de imagem (cwebp / sharp), trocar o <img> abaixo por um <picture>:
+            <source type="image/webp" srcset="/hero-contadora-800.webp 800w, /hero-contadora-1600.webp 1600w, /hero-contadora-2400.webp 2400w" sizes="(max-width: 980px) 100vw, 42vw" />
+            <img src="/hero-contadora-1600.jpg" srcset="/hero-contadora-800.jpg 800w, /hero-contadora-1600.jpg 1600w, /hero-contadora-2400.jpg 2400w" sizes="(max-width: 980px) 100vw, 42vw" ... />
+          e atualizar o preload em Base.astro para a versao .webp principal.
+        -->
+        <img
+          src="/hero-contadora.jpg"
+          width="1500"
+          height="1000"
+          alt="Contadora em seu escritório, no comando da operação tributária."
+          fetchpriority="high"
+          decoding="async"
+        />
+        <span class="hero-scan" aria-hidden="true"></span>
+      </figure>
+      <div class="hero-panel">
         <VisaoFinanceira />
-        <div class="hero-scan" aria-hidden="true"></div>
       </div>
     </div>
   </div>
