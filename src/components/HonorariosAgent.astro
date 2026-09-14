@@ -4,8 +4,7 @@
 // eyebrow + H2 com italico serifado + intro + provas visuais + elementos escaneaveis.
 import Icon from './Icon.astro';
 import GestaoExcedentes from './app-frames/GestaoExcedentes.astro';
-import CobrancaAberta from './app-frames/CobrancaAberta.astro';
-import { CTA_PRIMARIO, CTA_ANCORA } from '../data/showcase';
+import { CTA_PRIMARIO, CTA_ANCORA, seloExemplo } from '../data/showcase';
 
 const achados = ['Reajuste esquecido', 'Funcionário a mais na folha', 'Serviço avulso não faturado'];
 
@@ -63,7 +62,20 @@ const passos = [
         </div>
       </div>
 
-      <div class="hon-frame reveal delay-1"><CobrancaAberta /></div>
+      <div class="hon-frame reveal delay-1">
+        <div class="viewfinder">
+          <img
+            class="shot-img"
+            src="/produto/analise-cobranca.jpg"
+            width="924"
+            height="540"
+            loading="lazy"
+            decoding="async"
+            alt="Tela do Kontiva na análise de cobrança da Construtora Horizonte: o agente compara quanto deveria ter sido cobrado com quanto foi efetivamente cobrado e mostra a diferença encontrada no período."
+          />
+        </div>
+        <p class="shot-cap"><span>{seloExemplo}</span></p>
+      </div>
     </div>
 
     <!-- Fecho: os dois agentes, o mesmo Hub -->

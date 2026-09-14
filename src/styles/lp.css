@@ -650,40 +650,18 @@ p.lead { font-size: var(--fs-lead); line-height: 1.5; color: var(--cinza-escuro)
 /* Badge de confianca (reusa o padrao visual do bonus de operacao) */
 .hon-badge { margin-top: 30px; }
 
-/* Card de cobranca aberta (Dobra 2), sobre a base do chat-mock (observabilidade) */
-.calc-card { padding: 22px 24px 24px; }
-.calc-card .chat-head { margin-bottom: 16px; }
-.calc-body { position: relative; display: flex; flex-direction: column; gap: 14px; }
-.calc-client { display: flex; align-items: center; gap: 12px; }
-.calc-avatar {
-  width: 34px; height: 34px; border-radius: 9px; flex: none;
-  background: color-mix(in oklab, var(--ciano) 20%, transparent); border: 1px solid color-mix(in oklab, var(--ciano) 40%, transparent);
-  color: var(--ciano); display: inline-flex; align-items: center; justify-content: center;
+/* Prova visual da Dobra 2: screenshot real do produto (analise de cobranca) */
+.shot-img {
+  display: block; width: 100%; height: auto; border-radius: var(--r-xl);
+  border: 1px solid rgba(10,31,63,0.1); background: var(--azul-profundo);
+  box-shadow: var(--shadow-dark), 0 40px 90px -50px color-mix(in oklab, var(--ciano) 38%, transparent);
 }
-.calc-clienttx strong { display: block; color: #fff; font-size: 14.5px; font-weight: 600; }
-.calc-clienttx small { display: block; margin-top: 2px; font-size: 12px; color: rgba(234,246,255,0.6); }
-.calc-rows { display: flex; flex-direction: column; border: 1px solid rgba(255,255,255,0.08); border-radius: var(--r-md); overflow: hidden; }
-.calc-row { display: flex; align-items: center; justify-content: space-between; gap: 14px; padding: 11px 15px; border-bottom: 1px solid rgba(255,255,255,0.07); }
-.calc-row:last-child { border-bottom: 0; }
-.calc-row.flag { background: color-mix(in oklab, var(--ciano) 10%, transparent); }
-.calc-k { font-size: 12.5px; color: rgba(234,246,255,0.66); }
-.calc-v { font-family: var(--font-mono); font-size: 12.5px; font-weight: 600; color: var(--claro-escuro); text-align: right; }
-.calc-row.flag .calc-v { color: var(--ciano); }
-.calc-formula { display: flex; flex-direction: column; gap: 7px; padding: 13px 15px; background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.08); border-radius: var(--r-md); }
-.calc-formula-lbl { font-family: var(--font-mono); font-size: 9.5px; font-weight: 700; letter-spacing: 0.16em; text-transform: uppercase; color: rgba(234,246,255,0.42); }
-.calc-formula code { font-family: var(--font-mono); font-size: 12.5px; color: var(--ciano); line-height: 1.45; }
-.calc-total { display: flex; align-items: baseline; justify-content: space-between; gap: 14px; padding: 14px 16px; border-radius: var(--r-md); background: color-mix(in oklab, var(--ciano) 14%, transparent); border: 1px solid color-mix(in oklab, var(--ciano) 30%, transparent); }
-.calc-total-lbl { font-size: 11px; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; color: rgba(234,246,255,0.7); }
-.calc-total-v { font-family: var(--font-display); font-weight: 700; font-size: 26px; letter-spacing: -0.02em; color: #fff; font-variant-numeric: tabular-nums; }
-.calc-foot { display: flex; align-items: center; justify-content: space-between; gap: 12px; flex-wrap: wrap; }
-.calc-state { display: inline-flex; align-items: center; gap: 8px; font-size: 12.5px; font-weight: 600; color: var(--claro-escuro); }
-.calc-state .d { width: 7px; height: 7px; border-radius: 50%; background: var(--ciano); flex: none; box-shadow: 0 0 0 4px color-mix(in oklab, var(--ciano) 16%, transparent); }
-.calc-approve { display: inline-flex; align-items: center; gap: 7px; background: var(--ciano); color: var(--azul-profundo); font-size: 12.5px; font-weight: 700; padding: 8px 15px; border-radius: var(--r-sm); box-shadow: 0 8px 20px -10px color-mix(in oklab, var(--ciano) 60%, transparent); }
-.calc-src { display: block; font-family: var(--font-mono); font-size: 10.5px; color: rgba(234,246,255,0.5); }
-.calc-seal {
-  display: inline-flex; align-self: flex-start; margin-top: 16px;
-  font-size: 10.5px; font-weight: 600; letter-spacing: 0.02em; color: rgba(234,246,255,0.9);
-  background: rgba(10,31,63,0.55); border: 1px solid rgba(255,255,255,0.14); border-radius: var(--r-pill); padding: 6px 12px;
+.shot-cap { margin-top: 16px; text-align: right; }
+.shot-cap span {
+  display: inline-flex; align-items: center;
+  font-size: 10.5px; font-weight: 600; letter-spacing: 0.02em; color: var(--cinza-texto);
+  background: var(--branco); border: 1px solid var(--border-on-light-strong);
+  border-radius: var(--r-pill); padding: 5px 12px;
 }
 
 /* Fecho: os dois agentes, o mesmo Hub */
